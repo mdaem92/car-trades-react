@@ -21,10 +21,28 @@ export const FormInputContainer = styled.input`
   display: block;
   font-size:14px;
   margin: 5px 10px;
-  &:focus ~ .form-input-label{
-    display: none;
-    color: red;
-  }
+  //&:focus ~ .form-input-label{
+  //  display: none;
+  //  color: red;
+  //}
+  &:focus  {
+        & + label {
+          opacity: 0;
+        }
+   }
+   &:valid{
+    & + label {
+      opacity: 0;
+    }
+   }
+   //&:invalid:not(:focus):not(:placeholder-shown) {
+   //     // Show a light reminder
+   //     background: pink;
+   //     & + label {
+   //       opacity: 0;
+   //     }
+   //   }
+  
   
   
   
