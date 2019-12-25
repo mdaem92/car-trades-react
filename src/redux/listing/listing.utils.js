@@ -1,5 +1,5 @@
 export const editListing =(listings,idToEdit,updates)=>{
-    return listings.map(listing=>{
+    return listings.map(listing =>{
         if(listing.id===idToEdit){
             return {
                 ...listing,
@@ -7,6 +7,8 @@ export const editListing =(listings,idToEdit,updates)=>{
 
             }
         }
+        return null
+
     })
 }
 

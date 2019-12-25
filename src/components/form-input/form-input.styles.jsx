@@ -1,38 +1,31 @@
-import styled,{css} from 'styled-components'
-import {Input} from 'reactstrap'
+import styled from 'styled-components'
 
 
 const subColor = 'grey'
-const mainColor= 'black'
 
-const shrinkLabelText = css`
-  top: -14px;
-  font-size: 12px;
-  color: ${mainColor};
-`
+
 export const GroupContainer = styled.div`
   position: relative;
-  width: 200px;
+  width: 270px;
   
 `
 export const FormInputContainer = styled.input`
-  width: 100%;
+  
   border-radius: 5px;
   height: 40px;
-  color: ${subColor};
-  border: 1px solid ${subColor};
-  font-family: Roboto ;
+  width: 100%;
+   max-width: 250px;
+  // color: ${subColor};
+  border: 1px solid rgba(195,189,188,0.96);
+  //font-family: Roboto ;
   display: block;
-  font-size:18px;
+  font-size:14px;
+  margin: 5px 10px;
   &:focus ~ .form-input-label{
     display: none;
-    
+    color: red;
   }
-  ::placeholder{
-
-    margin-left: 10px;
-    
-  }
+  
   
   
 `
@@ -41,13 +34,14 @@ export const FormInputContainer = styled.input`
 export const FormInputLabel = styled.label`
   color: ${subColor};
  
-    //font-size: 18px;
+    font-size: 14px;
     //font-family: Roboto;
-    //font-weight: normal;
-    //position: absolute;
-    //pointer-events: none;
-    //left: 10px;
-    //top: 10px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 20px;
+    top: 15px;
+    
     
 
 `
