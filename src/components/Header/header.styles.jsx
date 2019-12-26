@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
+const blue =' #0069d9';
 
 export const HeaderContainer = styled.div`
   height: 70px;
@@ -15,6 +16,7 @@ export const HeaderContainer = styled.div`
     margin-bottom:20px;
   }
 `
+
 export const LogoContainer = styled(Link)`
   height: 100%;
   width: 70px;
@@ -30,6 +32,14 @@ export const OptionsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  .anchor{
+    text-decoration: none;
+    color: grey;
+    &:hover{
+      color:${blue};
+    }
+    
+  }
   @media and screen (max-width:800px){
    width:80%;
     

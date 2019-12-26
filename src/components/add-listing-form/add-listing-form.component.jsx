@@ -19,61 +19,30 @@ const AddListingForm = (
         setFieldValue,
         errors,
         touched,
+        handleChange,
+        handleSubmit
 
     })=>{
-    const [state,setState]=useState({
-        condition:'',
-        make:'',
-        model:'',
-        mileage:'',
-        registered:'',
-        price:'',
-        carData,
+    const [state,setState]=useState({carData})
 
-    })
-
-    const handleSubmit = (e)=>{
-        e.preventDefault()
-        console.log('submitting',state )
-        const {carData,...rest} = state
-        addListing(rest)
-        setState({
-            ...state,
-            condition:'',
-            make:'',
-            model:'',
-            mileage:'',
-            registered:'',
-            price:'',
-        })
-    }
-    const handleChange= (option,event)=>{
-        if(event){
-            const {name} = event
-            if(option){
-                const {value} = option
-                console.log(` ${[name]}:${value}`)
-                setState({...state, [name]:value})
-            }else{
-                setState({...state, [name]:''})
-            }
+    const handleSelectChange= (option,{name})=>{
+        if (option){
+            const {value} = option
+            setFieldValue(name,value)
+            console.log(values)
         }else{
-            const {name,value} = option.target
-            // console.log(option)
-            console.log(` ${[name]}:${value}`)
-            setState({...state, [name]:value})
+            setFieldValue(name,'')
         }
-
     }
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form >
         <CardContainer  body sm='6'>
             <FormGroupContainer >
                 <FormSelect
                     isClearable
                     placeholder={'Select Condition'}
                     name={'condition'}
-                    onChange={handleChange}
+                    onChange={handleSelectChange}
                     options={conditionData}
                 />
 
@@ -81,46 +50,39 @@ const AddListingForm = (
                     isClearable
                     placeholder={'Select Make'}
                     name={'make'}
-                    onChange={handleChange}
+                    onChange={handleSelectChange}
                     options={state.carData.makes}
-                    // defaultValue={state.make}
                 />
-
                 <FormSelect
                     isClearable
                     placeholder={'Select Model'}
                     name={'model'}
-                    onChange={handleChange}
-                    options={state.make?state.carData.formattedData[state.make].models:[]}
-                    isDisabled={!state.make}
-                    // defaultValue={state.model}
+                    onChange={handleSelectChange}
+                    options={values.make?state.carData.formattedData[values.make].models:[]}
+                    isDisabled={!values.make}
                 />
             </FormGroupContainer>
             <FormGroupContainer>
-                <FormInput
+                <Field
                     name='mileage'
                     type='number'
                     label={'Select Mileage'}
-                    value={state.mileage}
                     required
-                    handleChange={handleChange}
+                    as={FormInput}
                 />
-                <FormInput
+                <Field
                     name='price'
                     type='number'
-                    // placeholder={'Select Price'}
                     label={'Select Price'}
-                    value={state.price}
                     required
-                    handleChange={handleChange}
+                    as={FormInput}
                 />
-                <FormInput
+                <Field
                     name='registered'
                     type='number'
                     label={'Select Year'}
-                    value={state.registered}
                     required
-                    handleChange={handleChange}
+                    as={FormInput}
                 />
             </FormGroupContainer>
             <FormGroupContainer>
@@ -135,12 +97,15 @@ const AddListingForm = (
             </FormGroupContainer>
         </CardContainer>
         <ImageUpload />
-
+            <ImageUpload />
+            <ImageUpload />
+            <ImageUpload />
+            <ImageUpload />
+            <ImageUpload />
+            <ImageUpload />
         </Form>
     )
 }
-
-
 
 const mapDispatchToProps = dispatch=>({
     addListing:listing=>dispatch(addListing(listing))
@@ -158,16 +123,18 @@ const ConnectedFormikAddListingForm = withFormik({
         }
     ){
         return {
-            make:make?make:'',
-            model:model?model:'',
+            condition:condition?{value:condition,label:condition} :undefined ,
+            make:make?{value:make,label:make}:undefined,
+            model:model?{value:model,label:model}:undefined,
             price:price?price:'',
             mileage:mileage?mileage:'',
             registered:registered?registered:'',
-            condition:condition?condition :'' ,
+
         }
     },
-    handleSubmit(listingData,{props,setSubmitting,resetForm}){
-        console.log(listingData)
+    handleSubmit(values,{props,setSubmitting,resetForm}){
+        console.log(values)
+        resetForm()
     },
     validationSchema:Yup.object().shape({
         make:Yup.string().required(),

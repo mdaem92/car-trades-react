@@ -15,6 +15,7 @@ export const FormGroupContainer = styled(FormGroup)`
 export const CardContainer = styled(Card)`
 position: relative;
 margin-bottom: 20px;
+//padding-bottom: 50px;
  
 `
 export const StrapButton = styled(Button)`

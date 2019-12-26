@@ -1,7 +1,7 @@
 import React from 'react'
 import {HeaderContainer , LogoContainer , OptionLink , OptionsContainer  } from './header.styles'
 import {ReactComponent as Logo} from '../../assets/crown.svg'
-
+import {NavLink} from 'reactstrap'
 const Header = ()=>{
     return (
         <HeaderContainer>
@@ -9,14 +9,11 @@ const Header = ()=>{
                 <Logo className='logo'/>
             </LogoContainer>
             <OptionsContainer>
-                <OptionLink to='/inventory'>Inventory</OptionLink>
-                <OptionLink to='/information'>Information</OptionLink>
-                <OptionLink to='/add-listing'>Add Listing</OptionLink>
-                <OptionLink to='/compare'>Compare</OptionLink>
+                <OptionLink className={'anchor'} to='/inventory'>Inventory</OptionLink>
+                <OptionLink className={'anchor'} to='/information'>Information</OptionLink>
+                <OptionLink className={'anchor'} to='/add-listing'>Add Listing</OptionLink>
+                <OptionLink className={'anchor'} to='/compare'>Compare</OptionLink>
             </OptionsContainer>
-
-
-
         </HeaderContainer>
     )
 }

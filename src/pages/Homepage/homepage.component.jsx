@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from "../../components/footer/footer.component";
 
 
 const Homepage = ()=>{
@@ -11,6 +12,7 @@ const Homepage = ()=>{
                 </div>
 
             </div>
+            <Footer isHomepage/>
 
         </div>
     )
