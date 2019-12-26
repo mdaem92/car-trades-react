@@ -19,6 +19,10 @@ const InventoryPage = ()=>{
                 </InventoryFiltersContainer>
                 <InventoryListingsContainer>
                     <ListingPreview/>
+                    <ListingPreview/>
+                    <ListingPreview/>
+                    <ListingPreview/>
+                    <ListingPreview/>
 
                 </InventoryListingsContainer>
             </InventoryContainer>

@@ -34,7 +34,7 @@ export const InventoryListingsContainer = styled.div`
   max-width: 60%;
   display: flex;
   //border: 1px solid ${borderColor};
-  background-color: white;
+  //background-color: white;
   flex-direction: column;
   margin:10px 100px 10px 5px ;
 `
