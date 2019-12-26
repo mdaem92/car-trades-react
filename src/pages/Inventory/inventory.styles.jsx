@@ -23,15 +23,14 @@ export const InventoryFiltersContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   background-color: white;
-  margin-left: 100px;
-  //border: 1px solid ${borderColor};
+  margin-left: 50px;
   margin-bottom:10px ;
   margin-top: 10px;
   height: max-content;
 `
 
 export const InventoryListingsContainer = styled.div`
-  max-width: 60%;
+  max-width: 65%;
   display: flex;
   //border: 1px solid ${borderColor};
   //background-color: white;

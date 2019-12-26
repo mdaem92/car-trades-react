@@ -3,6 +3,8 @@ import Badge from 'reactstrap/lib/Badge'
 import Button from 'reactstrap/lib/Button'
 import Collapse from 'reactstrap/lib/Collapse'
 
+import {ReactComponent as PriceTag} from '../../assets/price-tag.svg'
+
 export const ListingContainer = styled.div`
   display: grid;
   grid-template-columns: auto 40% 20%;
@@ -68,3 +70,6 @@ export const Wrapper = styled.div`
   padding: 10px;
   margin-bottom: 20px;
 `
+
+
+

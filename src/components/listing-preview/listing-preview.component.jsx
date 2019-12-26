@@ -1,12 +1,15 @@
 import React from 'react'
-import {ListingContainer,
+import {
+    ListingContainer,
     ListingImage,
     ListingCondition,
     ListingInfoCell,
     ToggleDetailsButton,
     CollapseContainer,
     CollapseContent,
-    Wrapper
+    Wrapper,
+    PriceTagContainer,
+    PriceContainer
 } from './listing-preview.styles'
 import {
     Card,
@@ -24,11 +27,12 @@ const ListingPreview = ()=>{
                 <ListingCondition pill color={'primary'} >Used</ListingCondition>
                 <span className={'text'}>2016 Honda CRZ </span>
             </ListingInfoCell>
-
+            
 
             <div>
                 sdfhsadkjf haksdhf adshf asdhjf asdjf opasdjf psoajf oj
             </div>
+
             <div>
                 sdfhsadkjf haksdhf adshf asdhjf asdjf opasdjf psoajf oj
             </div>
@@ -37,6 +41,7 @@ const ListingPreview = ()=>{
             </div>
             <ToggleDetailsButton
                 onClick={()=>setIsOpen(!isOpen)}
+                color={'primary'}
 
             >View More
             </ToggleDetailsButton>

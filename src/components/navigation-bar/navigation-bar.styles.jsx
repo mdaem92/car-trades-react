@@ -17,6 +17,7 @@ export const NavigationContainer = styled.div`
 `
 export const TitleContainer = styled.span`
   font-size: 30px;
+  color: #58575f;
   font-weight: bold;
   //font-weight: bolder;
   display: flex;
