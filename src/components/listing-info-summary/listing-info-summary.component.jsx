@@ -6,6 +6,7 @@ import fuel from '../../assets/fuel.svg'
 import gear from '../../assets/manual-transmission.svg'
 import gauge from '../../assets/gauge.svg'
 import car from '../../assets/car.svg'
+import seat from '../../assets/seat.svg'
 
 const ListingInfoSummary = ()=>{
     return (
@@ -15,7 +16,7 @@ const ListingInfoSummary = ()=>{
             <SummaryItem title={'Automatic'} icon={gear}/>
             <SummaryItem title={'50 MPG'} icon={gauge}/>
             <SummaryItem title={'Coupe'} icon={car}/>
-            <SummaryItem title={'1.5 L'} icon={engine}/>
+            <SummaryItem title={'2'} icon={seat}/>
                 {/*<CarEngine/>*/}
 
 

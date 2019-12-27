@@ -23,7 +23,6 @@ const InventoryPage = ()=>{
                     <ListingPreview/>
                     <ListingPreview/>
                     <ListingPreview/>
-
                 </InventoryListingsContainer>
             </InventoryContainer>
             <Footer/>
