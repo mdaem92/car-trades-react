@@ -1,14 +1,24 @@
-import styled from 'styled-components'
-import {Link} from 'react-router-dom'
+import styled, {css} from 'styled-components'
+import {NavLink,Link} from 'react-router-dom'
 
-const blue =' #0069d9';
+const blue =' #357ae8';
 
 export const HeaderContainer = styled.div`
-  height: 70px;
+  position: fixed;
+   z-index: 999;
+  top: 0;
+  background-color: white;
+  ${props => props.scrolled && css`
+    background-color:${blue};  
+    -webkit-transition: background-color 500ms ease-in;
+    -ms-transition: background-color 500ms ease-in;
+    transition: background-color 500ms ease-in;
+  `}
+  height: 100px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
+  //margin-bottom: 25px;
   
   @media and screen (max-width:800px){
     height:60px;
@@ -20,7 +30,9 @@ export const HeaderContainer = styled.div`
 export const LogoContainer = styled(Link)`
   height: 100%;
   width: 70px;
-  padding: 25px;
+  padding: 25px 10px;
+  margin-left: 50px;
+  
   @media and screen (max-width:800px){
     width:50px;
     padding: 0;
@@ -35,18 +47,26 @@ export const OptionsContainer = styled.div`
   .anchor{
     text-decoration: none;
     color: grey;
+    ${props => props.scrolled && css`
+    color:white;  
+  `}
     &:hover{
-      color:${blue};
+      color:${props => props.scrolled ? 'grey':blue}
     }
-    
+  }
+  .active{
+    font-weight: bold;
+    color: darken(40%);
   }
   @media and screen (max-width:800px){
    width:80%;
     
   }
 `
-export const OptionLink = styled(Link)`
+export const OptionLink = styled(NavLink)`
   padding: 10px 15px;
   cursor: pointer;
+  
   //text-decoration: none;
+  
 `

@@ -8,42 +8,49 @@ import {
     CollapseContainer,
     CollapseContent,
     Wrapper,
-    PriceTagContainer,
-    PriceContainer
+    ListingPriceContainer,
+    ListingInfoSummaryContainer
 } from './listing-preview.styles'
-import {
-    Card,
-    Collapse,
-    CardBody,
+import {CardBody} from 'reactstrap'
+import ListingInfoSummary from "../listing-info-summary/listing-info-summary.component";
 
-} from 'reactstrap'
+
 const ListingPreview = ()=>{
+
     const [isOpen,setIsOpen] = React.useState(false)
+
     return (
-        <Wrapper>
-        <ListingContainer>
+        <Wrapper isOpen={isOpen}>
+        <ListingContainer >
             <ListingImage className='image' imageUrl={'http://clipart-library.com/images/6Tp5kekyc.jpg'} />
             <ListingInfoCell>
                 <ListingCondition pill color={'primary'} >Used</ListingCondition>
                 <span className={'text'}>2016 Honda CRZ </span>
             </ListingInfoCell>
-            
-
-            <div>
-                sdfhsadkjf haksdhf adshf asdhjf asdjf opasdjf psoajf oj
-            </div>
-
-            <div>
-                sdfhsadkjf haksdhf adshf asdhjf asdjf opasdjf psoajf oj
-            </div>
-            <div>
-                sdfhsadkjf haksdhf adshf asdhjf asdjf opasdjf psoajf oj
-            </div>
+            <ListingPriceContainer>$16855</ListingPriceContainer>
+            {/*<div>*/}
+            {/*    sdfhsadkjf haksdhf adshf asdhjf asdjf opasdjf psoajf oj*/}
+            {/*</div>*/}
+            {/*<ListingInfoSummary/>*/}
+            <ListingInfoSummaryContainer>
+                <ListingInfoSummary/>
+            </ListingInfoSummaryContainer>
+            {/*<div>*/}
+            {/*    sdfhsadkjf haksdhf adshf asdhjf asdjf opasdjf psoajf oj*/}
+            {/*</div>*/}
+            {/*<div>*/}
+            {/*    sdfhsadkjf haksdhf adshf asdhjf asdjf opasdjf psoajf oj*/}
+            {/*</div>*/}
             <ToggleDetailsButton
                 onClick={()=>setIsOpen(!isOpen)}
                 color={'primary'}
 
-            >View More
+            >
+                {
+                isOpen?
+                `Show Less`: 'Show More'
+                }
+
             </ToggleDetailsButton>
         </ListingContainer>
             <CollapseContainer isOpen={isOpen}>

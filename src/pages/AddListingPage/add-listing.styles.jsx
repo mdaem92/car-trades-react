@@ -23,6 +23,7 @@ export const AddListingContainer = styled.div`
 `
 export const BackgroundContainer = styled.div`
   background-color: ${offGrey};
+  width: 100%;
 `
 
 export const PageTitleContainer = styled.div`
