@@ -9,11 +9,10 @@ import {
     TabPane,
     Row,
     Col,
-    CardTitle,
-    Card,
-    CardText,
-    Button
 } from 'reactstrap'
+import ListingPreviewImageSlider from "../listing-preview-image-slider/listing-preview-image-slider.component";
+
+
 const ListingPreviewTabs = ()=>{
     const [activeTab, setActiveTab] = useState('1');
 
@@ -28,15 +27,15 @@ const ListingPreviewTabs = ()=>{
                         className={classnames({ active: activeTab === '1' })}
                         onClick={() => { toggle('1'); }}
                     >
-                        <span>Tab1</span>
+                        <span>Specifications</span>
                     </NavLinkContainer>
                 </NavItemContainer>
                 <NavItemContainer>
                     <NavLinkContainer
                         className={classnames({ active: activeTab === '2' })}
-                        onClick={() => { toggle('2'); }}
+                        onClick={() => { toggle('2') }}
                     >
-                        Moar Tabs
+                        <span>Image Gallery</span>
                     </NavLinkContainer>
                 </NavItemContainer>
             </Nav>
@@ -49,22 +48,7 @@ const ListingPreviewTabs = ()=>{
                     </Row>
                 </TabPane>
                 <TabPane tabId="2">
-                    <Row>
-                        <Col sm="6">
-                            <Card body>
-                                <CardTitle>Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                <Button>Go somewhere</Button>
-                            </Card>
-                        </Col>
-                        <Col sm="6">
-                            <Card body>
-                                <CardTitle>Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                <Button>Go somewhere</Button>
-                            </Card>
-                        </Col>
-                    </Row>
+                   <ListingPreviewImageSlider/>
                 </TabPane>
             </TabContent>
         </TabContainer>

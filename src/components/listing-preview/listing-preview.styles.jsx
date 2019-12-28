@@ -72,7 +72,7 @@ export const CollapseContent = styled.div`
   width: 100%;
   display: inline-block;
   grid-row: span 3 / 1;
-  border: 1px solid black;
+  //border: 1px solid black;
   
 `
 

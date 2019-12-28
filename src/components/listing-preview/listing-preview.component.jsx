@@ -44,10 +44,10 @@ const ListingPreview = ()=>{
         </ListingContainer>
             <CollapseContainer isOpen={isOpen}>
                 <CollapseContent >
-                    <CardBody >
-                        <ListingPreviewTabs/>
+                    {/*<CardBody >*/}
+                    <ListingPreviewTabs/>
 
-                    </CardBody>
+                    {/*</CardBody>*/}
                 </CollapseContent>
             </CollapseContainer>
         </Wrapper>
