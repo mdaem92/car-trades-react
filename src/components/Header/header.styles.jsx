@@ -5,7 +5,7 @@ const blue =' #357ae8';
 
 export const HeaderContainer = styled.div`
   position: fixed;
-   z-index: 999;
+  z-index: 999;
   top: 0;
   background-color: white;
   ${props => props.scrolled && css`

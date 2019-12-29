@@ -9,9 +9,10 @@ import {
     CollapseContent,
     Wrapper,
     ListingPriceContainer,
-    ListingInfoSummaryContainer
+    ListingInfoSummaryContainer,
+    ListingPreviewFooterPriceContainer,
+    ListingPreviewFooter
 } from './listing-preview.styles'
-import {CardBody} from 'reactstrap'
 import ListingInfoSummary from "../listing-info-summary/listing-info-summary.component";
 import ListingPreviewTabs from "../listing-preview-tabs/listing-preview-tabs.component";
 
@@ -23,7 +24,7 @@ const ListingPreview = ()=>{
     return (
         <Wrapper isOpen={isOpen}>
         <ListingContainer >
-            <ListingImage className='image' imageUrl={'http://clipart-library.com/images/6Tp5kekyc.jpg'} />
+            <ListingImage className='image' imageUrl={'https://en.wikipedia.org/wiki/Honda_CR-Z#/media/File:2014_Honda_CR-Z_Sport-T_i-VTEC_1.5_Front.jpg'} />
             <ListingInfoCell>
                 <ListingCondition pill color={'primary'} >Used</ListingCondition>
                 <span className={'text'}>2016 Honda CRZ </span>
@@ -46,6 +47,13 @@ const ListingPreview = ()=>{
                 <CollapseContent >
                     {/*<CardBody >*/}
                     <ListingPreviewTabs/>
+                    <ListingPreviewFooter>
+                        <ListingPreviewFooterPriceContainer>$16855</ListingPreviewFooterPriceContainer>
+                        <ToggleDetailsButton isFooter={true}>
+                            Contact owner
+                        </ToggleDetailsButton>
+                    </ListingPreviewFooter>
+
 
                     {/*</CardBody>*/}
                 </CollapseContent>

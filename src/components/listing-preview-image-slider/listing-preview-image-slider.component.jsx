@@ -4,10 +4,11 @@ import {
     CarouselItem,
     CarouselControl,
     CarouselIndicators,
-    CarouselCaption
 } from 'reactstrap';
+
 import {CarouselContainer} from "./listing-preview-image-slider.styles";
 import {items} from './temoporary-items'
+import ListingPreviewImageGallery from "../listing-preview-image-gallery/listing-preview-image-gallery.component";
 
 const ListingPreviewImageSlider = (props) => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -39,7 +40,8 @@ const ListingPreviewImageSlider = (props) => {
                 onExiting={() => setAnimating(true)}
                 onExited={() => setAnimating(false)}
             >
-                <CarouselCaption className="text-danger" captionText={item.caption} captionHeader={item.caption} />
+                <ListingPreviewImageGallery/>
+
             </CarouselItem>
         );
     });

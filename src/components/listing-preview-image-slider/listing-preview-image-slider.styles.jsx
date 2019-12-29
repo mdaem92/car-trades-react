@@ -19,17 +19,20 @@ const arrowStyles = css`
 `
 
 export const CarouselContainer = styled.div`
-  //border: 1px solid black;
-  //margin-top: 20px;
+
   .custom-tag {
-   max-width: 100%;
-   height: 500px;
-   background: white;
+    max-width: 100%;
+    background: white;
+    margin-bottom: 50px;
+    //margin-top: 20px;
    }
 // .carousel-control-prev-icon,
 // .carousel-control-next-icon {
 //   ${arrowStyles}
 // }
+  .carousel-indicators{
+    //margin-top: 20px;
+}
 
 //.carousel-control-next-icon:after
 //{

@@ -3,8 +3,6 @@ import {TabContainer, NavItemContainer, NavLinkContainer} from './listing-previe
 import classnames from 'classnames'
 import {
     Nav,
-    NavItem,
-    NavLink,
     TabContent,
     TabPane,
     Row,
