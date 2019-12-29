@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled,{css} from 'styled-components'
 
 export const ImageGalleryGridContainer = styled.div`
   display: grid;
@@ -15,18 +15,25 @@ export const ImageGalleryGridContainer = styled.div`
 
 `
 
+const imageStyles = css`
+
+  background-image: ${(props)=> `url(${props.image})`};
+  background-position: center;
+  background-size: cover;
+`
+
 export const Image1 = styled.div`
   grid-area: image1;
-  border: 1px solid red;
   height: 300px;
+  ${imageStyles}
 `
 export const Image2 = styled.div`
   grid-area: image2;
   height: 145px;
-  border: 1px solid blue;
+  ${imageStyles}
 `
 export const Image3 = styled.div`
   grid-area: image3;
-  border: 1px solid black;
   height: 145px;
+  ${imageStyles}
 `

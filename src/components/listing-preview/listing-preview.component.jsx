@@ -24,7 +24,7 @@ const ListingPreview = ()=>{
     return (
         <Wrapper isOpen={isOpen}>
         <ListingContainer >
-            <ListingImage className='image' imageUrl={'https://en.wikipedia.org/wiki/Honda_CR-Z#/media/File:2014_Honda_CR-Z_Sport-T_i-VTEC_1.5_Front.jpg'} />
+            <ListingImage className='image' imageUrl={require('../../assets/t1.jpg')} />
             <ListingInfoCell>
                 <ListingCondition pill color={'primary'} >Used</ListingCondition>
                 <span className={'text'}>2016 Honda CRZ </span>
