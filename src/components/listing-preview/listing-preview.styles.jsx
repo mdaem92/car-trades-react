@@ -1,10 +1,12 @@
-import styled, {css} from 'styled-components'
+import styled, {css, keyframes} from 'styled-components'
 import Badge from 'reactstrap/lib/Badge'
 import Button from 'reactstrap/lib/Button'
+import TabContent from 'reactstrap/lib/TabContent'
 import Collapse from 'reactstrap/lib/Collapse'
 import React from 'react'
 
 import {ReactComponent as PriceTag} from '../../assets/price-tag.svg'
+import TabPane from "reactstrap/lib/TabPane";
 
 
 const offGrey = '#f7f7f7'
@@ -143,4 +145,8 @@ export const ListingPreviewFooterPriceContainer=styled.h2`
   //margin-top: 10px;
   
 `
+
+
+
+
 
