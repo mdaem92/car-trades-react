@@ -41,8 +41,8 @@ export const TitleContainer = styled.h3`
    font-size: 12px;
    margin-top: 5px;
    ${props=>props.isExtended && css`
-       font-size: 16px;
-       font-weight: bold;
+       font-size: 14px;
+       //font-weight: bold;
        margin: 25px 10px 25px 50px;
        justify-content: flex-end;
        
@@ -55,7 +55,7 @@ export const InfoContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  //display: none;
+
 `
 export const DescriptionContainer = styled.h3`
   color: grey;

@@ -11,7 +11,8 @@ import {
     ListingPriceContainer,
     ListingInfoSummaryContainer,
     ListingPreviewFooterPriceContainer,
-    ListingPreviewFooter
+    ListingPreviewFooter,
+    PriceBackground
 } from './listing-preview.styles'
 import ListingInfoSummary from "../listing-info-summary/listing-info-summary.component";
 import ListingPreviewTabs from "../listing-preview-tabs/listing-preview-tabs.component";
@@ -29,7 +30,7 @@ const ListingPreview = ()=>{
                 <ListingCondition pill color={'primary'} >Used</ListingCondition>
                 <span className={'text'}>2016 Honda CRZ </span>
             </ListingInfoCell>
-            <ListingPriceContainer>$16855</ListingPriceContainer>
+            <ListingPriceContainer>$1685500</ListingPriceContainer>
             <ListingInfoSummaryContainer>
                 <ListingInfoSummary/>
             </ListingInfoSummaryContainer>
@@ -49,7 +50,7 @@ const ListingPreview = ()=>{
                     <ListingPreviewTabs/>
                     <ListingPreviewFooter>
                         <ListingPreviewFooterPriceContainer>$16855</ListingPreviewFooterPriceContainer>
-                        <ToggleDetailsButton isFooter={true}>
+                        <ToggleDetailsButton color={'primary'} isFooter={true}>
                             Contact owner
                         </ToggleDetailsButton>
                     </ListingPreviewFooter>

@@ -17,6 +17,9 @@ import {ReactComponent as Gear} from '../../assets/car icons/gearshift.svg'
 import {ReactComponent as Gauge} from '../../assets/car icons/ui.svg'
 import {ReactComponent as Car} from '../../assets/car icons/car.svg'
 import {ReactComponent as Seat} from '../../assets/car icons/seat.svg'
+import {ReactComponent as AC} from '../../assets/car icons/celsius.svg'
+import {ReactComponent as Power} from '../../assets/car icons/power.svg'
+import {ReactComponent as CarKey} from '../../assets/car icons/car-key.svg'
 
 
 
@@ -43,10 +46,15 @@ const ListingPreviewSpecifications = ()=>{
             <SummaryItem description={'Seats'} title={'2'} isExtended>
                 <Seat className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem description={'A/C'} title={'Dual auto'} icon={ac} isExtended/>
-            <SummaryItem description={'Engine Power'} title={'195hp'} icon={power} isExtended/>
-            <SummaryItem description={'Previous Owners'} title={'0'} icon={owner} isExtended/>
-
+            <SummaryItem description={'AC'} title={'Dual Automatic'} isExtended>
+                <AC className={'summary-icon'}/>
+            </SummaryItem>
+            <SummaryItem description={'Engine Power'} title={'195hp'} isExtended>
+                <Power className={'summary-icon'}/>
+            </SummaryItem>
+            <SummaryItem description={'Previous Owners'} title={'1'} isExtended>
+                <CarKey className={'summary-icon'}/>
+            </SummaryItem>
         </ListingPreviewSpecificationsGrid>
     )
 }

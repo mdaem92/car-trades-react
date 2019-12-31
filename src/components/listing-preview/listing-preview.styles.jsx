@@ -64,10 +64,13 @@ export const ListingInfoCell = styled.div`
 // export const ToggleDetailsButton = styled(Button)`
 export const ToggleDetailsButton = styled(({ isFooter, ...rest }) => <Button {...rest} />)`
 
-  width: 150px;
-  height: 50px ;
+  //max-width: 150px;
+  //height: 50px ;
   margin: auto;
-  ${props=>props.isFooter?FooterButtonStyles:null}
+  ${props=>props.isFooter && FooterButtonStyles};
+  @media (max-width:800px){
+    display: none;
+  }
   //grid-area: toggle;
   
 `
@@ -98,23 +101,28 @@ export const Wrapper = styled.div`
 `
 
 export const ListingPriceContainer = styled.h3`
+  //border: 1px solid black;
 
   font-size: ${priceFontSize};
+  text-align: center;
   font-weight: bold;
-  padding: 10px;
-  margin: 20px 10px;
+  //padding: 50px 30px;
+  margin-bottom: 0;
+  margin-top: 50px;
+  //background-image: linear-gradient(rgba(0, 123, 255, 0.6), white);
   @media screen and (max-width: 800px){
     font-size: 15px;
     margin: 10px;
   }
-
 `
+
+
 export const ListingInfoSummaryContainer = styled.div`
   grid-area: summary;
-  margin: 5px 10px;
-  //padding: 5px;
-  //border: 1px  solid black;
-  background-color:${offGrey};
+  //margin: 5px 10px;
+  //padding-top: inherit;
+  margin: 10px 10px 0 10px;
+  background-color: ${offGrey};
 `
 
 export const PaymentButton=styled(Button)`
@@ -134,7 +142,7 @@ export const ListingPreviewFooter = styled.div`
 
 const FooterButtonStyles = css`
   grid-area: footer-button;
-  margin-right:15px;
+  //margin-right:15px;
 `
 export const ListingPreviewFooterPriceContainer=styled.h2`
   grid-area: footer-price;
