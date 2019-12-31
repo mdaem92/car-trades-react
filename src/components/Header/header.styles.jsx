@@ -14,7 +14,7 @@ export const HeaderContainer = styled.div`
     -ms-transition: background-color 500ms ease-in;
     transition: background-color 500ms ease-in;
   `}
-  height: 100px;
+  height: 70px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -30,8 +30,9 @@ export const HeaderContainer = styled.div`
 export const LogoContainer = styled(Link)`
   height: 100%;
   width: 70px;
-  padding: 25px 10px;
+  padding: 15px 10px;
   margin-left: 50px;
+  align-items: center;
   
   @media and screen (max-width:800px){
     width:50px;

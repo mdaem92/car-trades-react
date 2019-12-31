@@ -1,45 +1,45 @@
 import styled,{css} from 'styled-components'
 
 
-const ExtendedStyles = css`
-  display: none;
-`
-
-export const IconContainer = styled.div`
-  
-`
-
 export const SummaryItemContainer = styled.div`
   
   display: flex;
   flex-direction: column;
   background-color: white;
-  //margin-top: 2px;
-  //margin-bottom: 2px;
   ${props=>props.isExtended && css`
     flex-direction: row;
     border-top: 1px solid #f7f7f7f7;
+    height: 50px;
     
   `}
-  .icon{
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    margin: 10px 0 10px 30px;
-    ${props=>props.isExtended && css`
-      height: 40px;
-      align-items: center;
-      margin: 10px 0 10px 15px;
-      width: 40px;
-      justify-content: flex-start;
-    `}
-
-   
+  
+    
   }
+`
+
+export const ImageContainer = styled.div`
+  
+ .summary-icon{
+      width: 30px;
+      height: 30px;
+      display: block;
+      margin: auto;
+      padding-top: 5px;
+      ${props=>props.isExtended && css`
+
+        width: 30px;
+        height: 100%;
+        padding-top: 0;
+        justify-content: flex-start;
+        margin:0;
+        
+      `}
+    } 
 `
 export const TitleContainer = styled.h3`
    text-align: center;
    font-size: 12px;
+   margin-top: 5px;
    ${props=>props.isExtended && css`
        font-size: 16px;
        font-weight: bold;
@@ -54,6 +54,8 @@ export const InfoContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
+  //display: none;
 `
 export const DescriptionContainer = styled.h3`
   color: grey;

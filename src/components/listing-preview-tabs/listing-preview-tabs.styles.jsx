@@ -1,13 +1,28 @@
-import styled from 'styled-components'
+import styled,{keyframes} from 'styled-components'
 import NavItem from 'reactstrap/lib/NavItem'
 import {NavLink} from 'reactstrap'
+import Tabs from 'reactstrap'
 
 const blue = '#357ae8'
+
+const tabAnimationKeyFrame = keyframes`
+  0%{
+     opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+`
 export const TabContainer = styled.div`
 
   .nav{
     border-bottom: 1px solid #f7f7f7f7;
+    margin-top: 20px;
     
+  }
+
+  .tab-pane{
+    animation: ${tabAnimationKeyFrame} 200ms ease-in;
   }
   
 

@@ -5,31 +5,13 @@ import {
     Nav,
     TabContent,
     TabPane,
-    Row,
-    Col,
 } from 'reactstrap'
 import ListingPreviewImageSlider from "../listing-preview-image-slider/listing-preview-image-slider.component";
 import ListingPreviewSpecifications from "../listing-preview-specifications/listing-preview-specifications.component";
-import {TabContentContainer} from "../listing-preview/listing-preview.styles";
+import tabItems from "./tabItems";
+import DealerNotes from '../listing-preview-dealer-notes/listing-preview-dealer-notes.component'
+import OptionsList from "../listing-preview-options-list/listing-preview-options-list.component";
 
-const tabItems = [
-    {
-        tabId:'1',
-        title:'Specifications'
-    },
-    {
-        tabId:'2',
-        title:'Image Gallery'
-    },
-    {
-        tabId:'3',
-        title:'Dealer Notes'
-    },
-    {
-        tabId:'4',
-        title:'Options List'
-    }
-]
 
 const ListingPreviewTabs = ()=>{
     const [activeTab, setActiveTab] = useState('1');
@@ -54,17 +36,17 @@ const ListingPreviewTabs = ()=>{
                 ))}
             </Nav>
             <TabContent activeTab={activeTab}>
-                <TabPane tabId="1">
+                <TabPane  tabId="1">
                     <ListingPreviewSpecifications/>
                 </TabPane>
-                <TabPane tabId="2">
+                <TabPane  tabId="2">
                    <ListingPreviewImageSlider/>
                 </TabPane>
                 <TabPane tabId="3">
-                    third tab
+                    <DealerNotes/>
                 </TabPane>
                 <TabPane tabId="4">
-                    4th tab
+                    <OptionsList/>
                 </TabPane>
             </TabContent>
         </TabContainer>
