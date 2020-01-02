@@ -6,9 +6,9 @@ const ListingPreviewImageGallery = ()=>{
     return (
         <div>
             <ImageGalleryGridContainer>
-                <Image1 image={require('../../assets/t1.jpg')}/>
+                <Image1 image={require('../../assets/t3.jpg')}/>
                 <Image2 image={require('../../assets/t2.jpg')}/>
-                <Image3 image={require('../../assets/t3.jpg')}/>
+                <Image3 image={require('../../assets/t1.jpg')}/>
             </ImageGalleryGridContainer>
         </div>
 

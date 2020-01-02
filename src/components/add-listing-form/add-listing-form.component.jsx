@@ -5,10 +5,11 @@ import {carData, conditionData} from "../../carData/arrayData";
 import {CardContainer, FormGroupContainer, StrapButton} from './add-listing-form.styles'
 import {connect} from 'react-redux'
 import {addListing} from "../../redux/listing/listing.actions";
-import {withFormik,Formik,Form,Field} from 'formik'
+import {withFormik,Form,Field} from 'formik'
 import * as Yup from "yup";
 
 import ImageUpload from "../image-upload/image-upload.component";
+import AddListingProgressBar from "../add-listing-progress-bar/add-listing-progress-bar.component";
 
 
 
@@ -35,75 +36,79 @@ const AddListingForm = (
         }
     }
     return (
-        <Form >
-        <CardContainer  body sm='6'>
-            <FormGroupContainer >
-                <FormSelect
-                    isClearable
-                    placeholder={'Select Condition'}
-                    name={'condition'}
-                    onChange={handleSelectChange}
-                    options={conditionData}
-                />
+        <div>
+            <AddListingProgressBar value={2} max={3}/>
+            <Form >
+                <CardContainer  body sm='6'>
+                    <FormGroupContainer >
+                        <FormSelect
+                            isClearable
+                            placeholder={'Select Condition'}
+                            name={'condition'}
+                            onChange={handleSelectChange}
+                            options={conditionData}
+                        />
 
-                <FormSelect
-                    isClearable
-                    placeholder={'Select Make'}
-                    name={'make'}
-                    onChange={handleSelectChange}
-                    options={state.carData.makes}
-                />
-                <FormSelect
-                    isClearable
-                    placeholder={'Select Model'}
-                    name={'model'}
-                    onChange={handleSelectChange}
-                    options={values.make?state.carData.formattedData[values.make].models:[]}
-                    isDisabled={!values.make}
-                />
-            </FormGroupContainer>
-            <FormGroupContainer>
-                <Field
-                    name='mileage'
-                    type='number'
-                    label={'Select Mileage'}
-                    required
-                    as={FormInput}
-                />
-                <Field
-                    name='price'
-                    type='number'
-                    label={'Select Price'}
-                    required
-                    as={FormInput}
-                />
-                <Field
-                    name='registered'
-                    type='number'
-                    label={'Select Year'}
-                    required
-                    as={FormInput}
-                />
-            </FormGroupContainer>
-            <FormGroupContainer>
-                <StrapButton
-                    color="primary"
-                    size="lg"
-                    type='submit'
-                >
-                    Submit
-                </StrapButton>{' '}
+                        <FormSelect
+                            isClearable
+                            placeholder={'Select Make'}
+                            name={'make'}
+                            onChange={handleSelectChange}
+                            options={state.carData.makes}
+                        />
+                        <FormSelect
+                            isClearable
+                            placeholder={'Select Model'}
+                            name={'model'}
+                            onChange={handleSelectChange}
+                            options={values.make?state.carData.formattedData[values.make].models:[]}
+                            isDisabled={!values.make}
+                        />
+                    </FormGroupContainer>
+                    <FormGroupContainer>
+                        <Field
+                            name='mileage'
+                            type='number'
+                            label={'Select Mileage'}
+                            required
+                            as={FormInput}
+                        />
+                        <Field
+                            name='price'
+                            type='number'
+                            label={'Select Price'}
+                            required
+                            as={FormInput}
+                        />
+                        <Field
+                            name='registered'
+                            type='number'
+                            label={'Select Year'}
+                            required
+                            as={FormInput}
+                        />
+                    </FormGroupContainer>
+                    <FormGroupContainer>
+                        <StrapButton
+                            color="primary"
+                            size="lg"
+                            type='submit'
+                        >
+                            Submit
+                        </StrapButton>{' '}
 
-            </FormGroupContainer>
-        </CardContainer>
-        <ImageUpload />
-            <ImageUpload />
-            <ImageUpload />
-            <ImageUpload />
-            <ImageUpload />
-            <ImageUpload />
-            <ImageUpload />
-        </Form>
+                    </FormGroupContainer>
+                </CardContainer>
+                <ImageUpload />
+                <ImageUpload />
+                <ImageUpload />
+                <ImageUpload />
+                <ImageUpload />
+                <ImageUpload />
+                <ImageUpload />
+            </Form>
+        </div>
+
     )
 }
 

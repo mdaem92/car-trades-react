@@ -1,7 +1,6 @@
 import styled,{keyframes} from 'styled-components'
 import NavItem from 'reactstrap/lib/NavItem'
 import {NavLink} from 'reactstrap'
-import Tabs from 'reactstrap'
 
 const blue = '#357ae8'
 

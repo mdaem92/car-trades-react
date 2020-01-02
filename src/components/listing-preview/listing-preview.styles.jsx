@@ -1,12 +1,9 @@
-import styled, {css, keyframes} from 'styled-components'
+import styled, {css} from 'styled-components'
 import Badge from 'reactstrap/lib/Badge'
 import Button from 'reactstrap/lib/Button'
-import TabContent from 'reactstrap/lib/TabContent'
 import Collapse from 'reactstrap/lib/Collapse'
 import React from 'react'
 
-import {ReactComponent as PriceTag} from '../../assets/price-tag.svg'
-import TabPane from "reactstrap/lib/TabPane";
 
 
 const offGrey = '#f7f7f7'
@@ -15,7 +12,8 @@ const priceFontSize = '30px'
 
 export const ListingContainer = styled.div`
   display: grid;
-  grid-template-columns: auto 40% 20%;
+  //previously was auto 40% 20%
+  grid-template-columns: 2fr 2fr 1fr;
   grid-template-rows: auto auto ;
   grid-template-areas: 
     "image name price"
@@ -125,9 +123,7 @@ export const ListingInfoSummaryContainer = styled.div`
   background-color: ${offGrey};
 `
 
-export const PaymentButton=styled(Button)`
-  
-`
+
 
 export const ListingPreviewFooter = styled.div`
   display: grid;

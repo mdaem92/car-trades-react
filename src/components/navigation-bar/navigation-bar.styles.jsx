@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const offGrey = '#fcfcfc'
-const borderColor = '#00000020'
 export const NavigationContainer = styled.div`
   width: 100%;
   display: flex;

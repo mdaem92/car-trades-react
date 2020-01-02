@@ -1,23 +1,5 @@
-import styled,{css} from 'styled-components'
-import {
-    Carousel,
-    CarouselItem,
-    CarouselControl,
-    CarouselIndicators,
-    CarouselCaption
-}from 'reactstrap'
+import styled from 'styled-components'
 
-const arrowColor = '#58575f'
-
-const arrowStyles = css`
-  //height: 100px;
-  //width: 100px;
-  outline: none;
-  background-size: 100%, 100%;
-  border-radius: 50%;
-  //border: 1px solid black;
-  background-image: none;
-`
 
 export const CarouselContainer = styled.div`
    

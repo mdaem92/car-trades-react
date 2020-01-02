@@ -4,6 +4,7 @@ import {NavLink,Link} from 'react-router-dom'
 const blue =' #357ae8';
 
 export const HeaderContainer = styled.div`
+
   position: fixed;
   z-index: 999;
   top: 0;
@@ -44,7 +45,7 @@ export const OptionsContainer = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-evenly;
   .anchor{
     text-decoration: none;
     color: grey;
@@ -53,6 +54,19 @@ export const OptionsContainer = styled.div`
   `}
     &:hover{
       color:${props => props.scrolled ? 'grey':blue}
+    }
+  }
+  .anchor-signup{
+    text-decoration: none;
+    border: 1px solid black;
+    font-size: 12px;
+    color: grey;
+    ${props => props.scrolled && css`
+    color:white; 
+    border-color: white; 
+  `}
+    &:hover{
+      color:${props => props.scrolled ? 'grey':blue};
     }
   }
   .active{

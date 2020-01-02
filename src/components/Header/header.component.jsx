@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import {HeaderContainer , LogoContainer , OptionLink , OptionsContainer  } from './header.styles'
 import {ReactComponent as Logo} from '../../assets/crown.svg'
+import HeaderUserAccount from "../HeaderUserAccount/header-user-account.component";
+
+
 const Header = ()=>{
 
     const [scrolled,setScrolled] = useState(false)
@@ -14,10 +17,13 @@ const Header = ()=>{
     }
     useEffect(()=>{
         window.addEventListener('scroll',listenScrollEvent)
+
         return ()=>{
             window.removeEventListener('scroll',listenScrollEvent)
+
         }
     },[scrolled])
+
     return (
         <HeaderContainer scrolled={scrolled}>
             <LogoContainer to='/'>
@@ -28,8 +34,14 @@ const Header = ()=>{
                 <OptionLink activeClassName={'active'} className={'anchor'} to='/information'>Information</OptionLink>
                 <OptionLink activeClassName={'active'} className={'anchor'} to='/add-listing'>Add Listing</OptionLink>
                 <OptionLink activeClassName={'active'} className={'anchor'} to='/compare'>Compare</OptionLink>
+                {/*<OptionLink activeClassName={'active'} className={'anchor-signup'} to='/signin-signup'>LOGIN or REGISTER</OptionLink>*/}
+                <HeaderUserAccount scrolled={scrolled}/>
             </OptionsContainer>
         </HeaderContainer>
     )
 }
+
+
+
+
 export default Header

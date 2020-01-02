@@ -2,15 +2,6 @@ import React from 'react'
 import {} from './listing-preview-specifications.styles'
 import {ListingPreviewSpecificationsGrid} from "./listing-preview-specifications.styles";
 import SummaryItem from "../summary-item/summary-item.component";
-// import engine from "../../assets/car-engine.svg";
-// import fuel from "../../assets/fuel.svg";
-// import gear from "../../assets/manual-transmission.svg";
-// import gauge from "../../assets/gauge.svg";
-// import car from "../../assets/car.svg";
-// import seat from "../../assets/seat.svg";
-import ac from '../../assets/air-conditioning.svg'
-import power from '../../assets/turbo-engine.svg'
-import owner from '../../assets/owner.svg'
 import {ReactComponent as Engine} from '../../assets/car icons/engine.svg';
 import {ReactComponent as Fuel} from '../../assets/car icons/transportation.svg'
 import {ReactComponent as Gear} from '../../assets/car icons/gearshift.svg'

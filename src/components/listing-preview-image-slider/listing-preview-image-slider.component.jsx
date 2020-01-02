@@ -40,6 +40,7 @@ const ListingPreviewImageSlider = (props) => {
                 onExiting={() => setAnimating(true)}
                 onExited={() => setAnimating(false)}
             >
+                {/*items must have id */}
                 <ListingPreviewImageGallery/>
 
             </CarouselItem>

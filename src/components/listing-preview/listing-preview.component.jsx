@@ -12,7 +12,6 @@ import {
     ListingInfoSummaryContainer,
     ListingPreviewFooterPriceContainer,
     ListingPreviewFooter,
-    PriceBackground
 } from './listing-preview.styles'
 import ListingInfoSummary from "../listing-info-summary/listing-info-summary.component";
 import ListingPreviewTabs from "../listing-preview-tabs/listing-preview-tabs.component";

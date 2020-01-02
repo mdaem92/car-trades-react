@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import AppRouter from "./routers/appRouter.component";
 
-
 const App=()=> {
+
   return (
     <div >
      <AppRouter/>

@@ -8,6 +8,7 @@ import ComparePage from "../pages/Compare/compare.component";
 import InventoryPage from "../pages/Inventory/inventory.component";
 import Header from "../components/Header/header.component";
 import AddListingPage from "../pages/AddListingPage/add-listing.component";
+import SigninSignupPage from "../pages/signup-signin-page/signup-signin-page.component";
 export const history = createBrowserHistory()
 const AppRouter = ()=>{
 
@@ -21,7 +22,7 @@ const AppRouter = ()=>{
                 <Route exact path='/users/:userName' component={UserAccountPage}/>
                 <Route exact path='/compare' component={ComparePage}/>
                 <Route exact path='/add-listing' component={AddListingPage}/>
-
+                <Route exact path='/signin-signup' component={SigninSignupPage}/>
             </Switch>
         </Router>
 

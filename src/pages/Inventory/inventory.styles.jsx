@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import {
-    Card,
-}from 'reactstrap'
+
 
 const offGrey = '#f7f7f7'
 const borderColor = '#00000020'
