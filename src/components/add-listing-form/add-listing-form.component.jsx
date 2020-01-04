@@ -4,13 +4,12 @@ import FormInput from "../form-input/form-input.component";
 import {carData, conditionData} from "../../carData/arrayData";
 import {CardContainer, FormGroupContainer, StrapButton} from './add-listing-form.styles'
 import {connect} from 'react-redux'
-import {addListing} from "../../redux/listing/listing.actions";
 import {withFormik,Form,Field} from 'formik'
 import * as Yup from "yup";
-
-import ImageUpload from "../image-upload/image-upload.component";
+import {withRouter} from 'react-router-dom';
+import PicturesWall from "../image-upload/image-upload.component";
 import AddListingProgressBar from "../add-listing-progress-bar/add-listing-progress-bar.component";
-
+import {addListing} from "../../redux/listing/listing.actions";
 
 
 const AddListingForm = (
@@ -21,8 +20,8 @@ const AddListingForm = (
         errors,
         touched,
         handleChange,
-        handleSubmit
-
+        handleSubmit,
+        dispatch
     })=>{
     const [state,setState]=useState({carData})
 
@@ -32,7 +31,7 @@ const AddListingForm = (
             setFieldValue(name,value)
             console.log(values)
         }else{
-            setFieldValue(name,'')
+            setFieldValue(name,undefined)
         }
     }
     return (
@@ -48,7 +47,6 @@ const AddListingForm = (
                             onChange={handleSelectChange}
                             options={conditionData}
                         />
-
                         <FormSelect
                             isClearable
                             placeholder={'Select Make'}
@@ -99,24 +97,17 @@ const AddListingForm = (
 
                     </FormGroupContainer>
                 </CardContainer>
-                <ImageUpload />
-                <ImageUpload />
-                <ImageUpload />
-                <ImageUpload />
-                <ImageUpload />
-                <ImageUpload />
-                <ImageUpload />
+
             </Form>
         </div>
 
     )
 }
 
-const mapDispatchToProps = dispatch=>({
-    addListing:listing=>dispatch(addListing(listing))
-})
-const ConnectedAddListingForm =  connect(undefined,mapDispatchToProps)(AddListingForm)
-const ConnectedFormikAddListingForm = withFormik({
+// const mapDispatchToProps = dispatch=>({
+//     addListing:listing=>dispatch(addListing(listing))
+// })
+const FormikAddListingForm = withFormik({
     mapPropsToValues(
         {
             make,
@@ -139,6 +130,9 @@ const ConnectedFormikAddListingForm = withFormik({
     },
     handleSubmit(values,{props,setSubmitting,resetForm}){
         console.log(values)
+        props.dispatch(addListing(values))
+        setSubmitting(false)
+        props.history.push('/inventory')
         resetForm()
     },
     validationSchema:Yup.object().shape({
@@ -150,5 +144,7 @@ const ConnectedFormikAddListingForm = withFormik({
         registered:Yup.string().required(),
     })
 
-})(ConnectedAddListingForm)
-export default ConnectedFormikAddListingForm
+})(AddListingForm)
+const ConnectedAddListingForm =  connect()(FormikAddListingForm)
+
+export default withRouter(ConnectedAddListingForm)

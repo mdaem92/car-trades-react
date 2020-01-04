@@ -31,7 +31,36 @@ const formatAndFetch= ()=> {
     }
 
 }
+const formatAndFetchForAntD = ()=>{
+    console.log('fetching makes and models ANTD')
+    const textByLine = text.toString().split("\n")
 
+    return textByLine.map((line)=>{
+        const l = line.split(",")
+        const lineModels = l.slice(1,l.length)
+        const value = l[0]
+        const label = l[0]
+        const children = lineModels.map(model=>{
+            return {
+                value:model,
+                label:model
+            }
+        })
+        console.log({
+            value,
+            label,
+            children
+        })
+        return {
+            value,
+            label,
+            children
+        }
+
+    })
+}
+
+export const antDCarData = formatAndFetchForAntD()
 export const carData = formatAndFetch()
 
 export const fetchMileage = (from,to)=>{

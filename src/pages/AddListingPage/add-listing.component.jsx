@@ -4,10 +4,9 @@ import {
     BackgroundContainer,
     PageTitleContainer
 } from './add-listing.styles'
-import {default as AddListingForm} from "../../components/add-listing-form/add-listing-form.component";
 import Footer from "../../components/footer/footer.component";
-import AddListingProgressBar from "../../components/add-listing-progress-bar/add-listing-progress-bar.component";
 
+import AddListingSteps from "../../components/ad-listing-form-steps/add-listing-steps.component";
 
 const AddListingPage = (props)=>{
     const [progress,setProgress] = useState(0)
@@ -16,8 +15,7 @@ const AddListingPage = (props)=>{
         <BackgroundContainer >
             <AddListingContainer >
                 <PageTitleContainer>Add your Listing</PageTitleContainer>
-                {/*<AddListingForm/>*/}
-                <AddListingForm/>
+                <AddListingSteps/>
 
             </AddListingContainer>
             <Footer/>

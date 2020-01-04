@@ -17,7 +17,7 @@ const SimpleStyles = css`
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 100px;
+  height: 80px;
   color: whitesmoke;
   background-color: #357ae8;
   margin-top: 50px;
