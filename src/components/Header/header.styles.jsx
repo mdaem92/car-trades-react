@@ -25,6 +25,7 @@ export const HeaderContainer = styled.div`
     height:60px;
     padding:10px;
     margin-bottom:20px;
+    overflow-x: hidden;
   }
 `
 

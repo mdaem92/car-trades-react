@@ -13,14 +13,20 @@ import {
     ListingPreviewFooterPriceContainer,
     ListingPreviewFooter,
 } from './listing-preview.styles'
+import {message} from 'antd'
 import ListingInfoSummary from "../listing-info-summary/listing-info-summary.component";
 import ListingPreviewTabs from "../listing-preview-tabs/listing-preview-tabs.component";
+import ListingPreviewContactModal from "../listing-preview-contact-modal/listing-preview-contact-modal.component";
 
 
 const ListingPreview = ()=>{
-
-    const [isOpen,setIsOpen] = React.useState(false)
-
+    const [state,setState] = React.useState({
+        isOpen:false,
+        showModal:false,
+        showConfirm:false
+    })
+    // const [isOpen,setIsOpen] = React.useState(false)
+    const {isOpen,showModal,showConfirm} =state
     return (
         <Wrapper isOpen={isOpen}>
         <ListingContainer >
@@ -34,7 +40,10 @@ const ListingPreview = ()=>{
                 <ListingInfoSummary/>
             </ListingInfoSummaryContainer>
             <ToggleDetailsButton
-                onClick={()=>setIsOpen(!isOpen)}
+                onClick={()=>setState({
+                    ...state,
+                    isOpen:!state.isOpen
+                })}
                 color={'primary'}
             >
                 {
@@ -49,11 +58,31 @@ const ListingPreview = ()=>{
                     <ListingPreviewTabs/>
                     <ListingPreviewFooter>
                         <ListingPreviewFooterPriceContainer>$16855</ListingPreviewFooterPriceContainer>
-                        <ToggleDetailsButton color={'primary'} isFooter={true}>
+                        <ToggleDetailsButton
+                            color={'primary'}
+                            isFooter={true}
+                            onClick={()=>setState({
+                                ...state,
+                                showModal: true
+                            })}
+                        >
                             Contact owner
                         </ToggleDetailsButton>
+                        <ListingPreviewContactModal
+                            visible={showModal}
+                            onOk={()=>{
+                                setState({
+                                ...state,
+                                showModal: false,
+                                })
+                                message.success('Message sent.')
+                            }}
+                            onCancel={()=>setState({
+                                ...state,
+                                showModal: false
+                            })}
+                        />
                     </ListingPreviewFooter>
-
 
                     {/*</CardBody>*/}
                 </CollapseContent>
