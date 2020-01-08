@@ -10,7 +10,6 @@ const Header = ()=>{
 
     const listenScrollEvent = ()=>{
         if(window.scrollY){
-            console.log('scrolling', window.scrollY)
             setScrolled(true)
         }else{
             setScrolled(false)

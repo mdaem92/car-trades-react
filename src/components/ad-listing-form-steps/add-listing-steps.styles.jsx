@@ -12,7 +12,7 @@ const animateStep = keyframes`
 
 export const StepsContentContainer = styled.div`
 
-  height: 300px;
+  height: auto;
   
   //margin-top: 16px;
   border: 1px dashed #e9e9e9;
