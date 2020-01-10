@@ -1,6 +1,9 @@
 import React from 'react'
 import {CardContainer} from "../add-listing-form/add-listing-form.styles";
-import { Upload, Icon, Modal } from 'antd';
+import { Upload, Icon, Modal,message as AntMessage } from 'antd';
+import firebase from '../../firebase/firebase.utils'
+import shortid from 'shortid'
+import {ImageUploadContainer} from "./image-upload.styles";
 
 function getBase64(file) {
     return new Promise((resolve, reject) => {
@@ -29,6 +32,7 @@ class PicturesWall extends React.Component {
     handleCancel = () => this.setState({previewVisible: false});
 
     handlePreview = async file => {
+        console.log('handlePreview',file)
         if (!file.url && !file.preview) {
             file.preview = await getBase64(file.originFileObj);
         }
@@ -39,33 +43,69 @@ class PicturesWall extends React.Component {
         });
     };
 
-    handleChange = ({fileList}) => this.setState({fileList});
+    handleChange = ({fileList}) =>{
+        console.log('handleChange',fileList)
+        this.setState({fileList});
+    }
+    beforeUpload = (file) => {
+        const isImage = file.type.indexOf('image/') === 0;
+        if (!isImage) {
+            AntMessage.error('You can only upload image file!');
+        }
+
+        // You can remove this validation if you want
+        const isLt5M = file.size / 1024 / 1024 < 5;
+        if (!isLt5M) {
+            AntMessage.error('Image must smaller than 5MB!');
+        }
+        return isImage && isLt5M;
+    };
+    customUpload = async ({ onError, onSuccess, file }) => {
+        const storage = firebase.storage()
+        const metadata = {
+            contentType: 'image/jpeg'
+        }
+        const storageRef = await storage.ref()
+        const imageName = shortid.generate() //a unique name for the image
+        const imgFile = storageRef.child(`images/${imageName}.png`)
+        try {
+            const image = await imgFile.put(file, metadata);
+            onSuccess(null, image)
+        }catch(e) {
+            onError(e);
+        }
+    };
+    onDownload = (file)=>{
+        console.log(file)
+    }
 
     render() {
         const {previewVisible, previewImage, fileList} = this.state;
         const uploadButton = (
             <div>
-                <Icon type="plus"/>
-                <div className="ant-upload-text">Upload</div>
+                <Icon type="upload"/>
+                <div className="ant-upload-text">Add Images</div>
             </div>
         );
         return (
-            <div className="clearfix">
+            <ImageUploadContainer>
                 <Upload
                     multiple
                     accept={'image'}
-                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                     listType="picture-card"
                     fileList={fileList}
                     onPreview={this.handlePreview}
                     onChange={this.handleChange}
+                    beforeUpload={this.beforeUpload}
+                    customRequest={this.customUpload}
+                    onDownload={this.onDownload}
                 >
                     {fileList.length >= 8 ? null : uploadButton}
                 </Upload>
                 <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
                     <img alt="example" style={{width: '100%'}} src={previewImage}/>
                 </Modal>
-            </div>
+            </ImageUploadContainer>
         );
     }
 }

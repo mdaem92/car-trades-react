@@ -10,10 +10,14 @@ export const GridContainer = styled.div`
     "engine-label e-selects"
     "fuel-label f-selects"
   ;
+  .ant-select{
+    margin-right: 10px; 
+  }
   
 `
 export const LabelContainer = styled.h4`
-  text-align: center;
+
+  //text-align: center;
   align-content: center;
   color:grey;
   font-size: 18px;
@@ -22,9 +26,13 @@ export const LabelContainer = styled.h4`
 `
 
 export const SelectsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  grid-auto-rows: auto;
-  //grid-column-gap: 10px;
-  //justify-content: space-around;
+  //display: grid;
+  //grid-template-columns: repeat(3,1fr);
+  //grid-auto-rows: auto;
+  //
+  ////grid-row-gap: ;
+  ////justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  
 `

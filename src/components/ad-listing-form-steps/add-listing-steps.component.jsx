@@ -9,7 +9,7 @@ const { Step } = Steps;
 
 const steps = [
     {
-        title: 'Choose Make and Model',
+        title: 'Choose Car',
 
     },
     {
@@ -25,7 +25,11 @@ const steps = [
     }
 ];
 const AddListingSteps = ()=>{
-    const [state,setState]= useState({current:0,status:''})
+    const [state,setState]= useState({
+        current:0,
+        status:'',
+        loading:false
+    })
 
     const next=()=> {
         const current = state.current + 1;
@@ -53,7 +57,20 @@ const AddListingSteps = ()=>{
                     </Button>
                 )}
                 {current === steps.length - 1 && (
-                    <Button type="primary" onClick={() => message.success('Processing complete!')}>
+                    <Button type="primary" loading={state.loading} onClick={() =>{
+                        setState({
+                            ...state,
+                            loading: true
+                        })
+                        setTimeout(()=>{
+                            message.success('Processing complete!')
+                            setState({
+                                ...state,
+                                loading:false
+                            })
+                        },2000)
+
+                    }}>
                         Done
                     </Button>
                 )}

@@ -11,7 +11,9 @@ const animateStep = keyframes`
 `
 
 export const StepsContentContainer = styled.div`
-
+margin-top: 24px;
+  padding-top: 8px;
+  padding-left: 8px;
   height: auto;
   
   //margin-top: 16px;

@@ -65,7 +65,8 @@ const AddListingFormSpecs = () => {
 
     return (
         <GridContainer>
-            <LabelContainer>Fuel:</LabelContainer>
+
+            <LabelContainer>Fuel</LabelContainer>
             <SelectsContainer>
                 <Select
                     showSearch
@@ -100,7 +101,7 @@ const AddListingFormSpecs = () => {
                 </Select>
             </SelectsContainer>
 
-            <LabelContainer>Engine:</LabelContainer>
+            <LabelContainer>Engine</LabelContainer>
             <SelectsContainer>
                 <Select
                     showSearch
