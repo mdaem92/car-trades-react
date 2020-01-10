@@ -4,6 +4,7 @@ import {CarouselContainer, StepsActionContainer, StepsContentContainer} from './
 import PicturesWall from "../image-upload/image-upload.component";
 import { Steps, Button, message } from 'antd';
 import NewAddListing from "../new-add-listing-form/new-add-listing-form.component";
+import {withRouter} from 'react-router-dom'
 
 const { Step } = Steps;
 
@@ -24,7 +25,7 @@ const steps = [
         title:'Choose Price'
     }
 ];
-const AddListingSteps = ()=>{
+const AddListingSteps = ({history})=>{
     const [state,setState]= useState({
         current:0,
         status:'',
@@ -68,6 +69,7 @@ const AddListingSteps = ()=>{
                                 ...state,
                                 loading:false
                             })
+                            history.push('/inventory')
                         },2000)
 
                     }}>
@@ -85,4 +87,4 @@ const AddListingSteps = ()=>{
     )
 }
 
-export default AddListingSteps
+export default withRouter(AddListingSteps)

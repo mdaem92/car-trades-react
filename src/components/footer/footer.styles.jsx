@@ -27,6 +27,7 @@ const SimpleStyles = css`
 const HomepageStyles = css`
 
   position: fixed;
+ 
   right: 0;
   bottom: 0;
   width: 70%;
