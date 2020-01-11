@@ -1,15 +1,30 @@
-import styled from 'styled-components'
+import styled,{keyframes} from 'styled-components'
 import {Menu} from 'antd'
 import React from 'react'
 
+const darkBlue = '#10153b'
+const blue = '#357ae8'
+
+
 export const MenuContainer = styled(Menu)`
 
-  background-color: #10153b;
-  //background-color: #007bff;
+  background-color:${blue};
+   //background: linear-gradient(to bottom, #10153b 0%, #357ae8 100%);
  color: white;
+  .ant-menu-submenu-title{
+    &:hover{
+      color: grey;
+    }
+  }
+ 
  .ant-menu-sub{
-  background-color:#10153b ;
+  //background-color:#10153b ;
+  background-color:${blue} ;
+  // background: linear-gradient(to bottom, #10153b 0%, #357ae8 100%);
   color: white;
+ }
+ .active{
+  border: 1px solid white;
  }
  .groupContainer{
   .item{
@@ -19,10 +34,7 @@ export const MenuContainer = styled(Menu)`
  // 
 `
 export const MakeModelContainer = styled.div`
-  //display: flex;
-  //flex-direction: column;
-  //padding: 10px 5px;
-  //justify-content: space-around;
+
   .item{
     margin: 5px 30px ;
   }

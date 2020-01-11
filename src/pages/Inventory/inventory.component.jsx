@@ -9,41 +9,40 @@ import {BackgroundContainer,
 } from './inventory.styles'
 import InventoryFilters from "../../components/inventory-filters/inventory-filters.component";
 import ListingPreview from "../../components/listing-preview/listing-preview.component";
+import InventoryResultsOverview from "../../components/inventory-results-overview/inventory-results-overview.component";
+import {Pagination,Affix} from 'antd'
 
 const InventoryPage = ()=>{
-    const [scrolled,setScrolled] = useState(false)
 
-    const listenScrollEvent = ()=>{
-        if(window.scrollY>100){
-            setScrolled(true)
-        }else{
-            setScrolled(false)
-        }
-    }
 
-    useEffect(()=>{
-        window.addEventListener('scroll',listenScrollEvent)
-        return ()=>{
-            window.removeEventListener('scroll',listenScrollEvent)
-        }
-    },[scrolled])
     return(
         <BackgroundContainer >
             <NavigationBar title={'Inventory'}/>
             <InventoryContainer body>
-                <InventoryFiltersContainer scrolled={scrolled}>
+                <InventoryFiltersContainer >
+                    <Affix
+                        style={{width:'100%'}}
+                        offsetTop={100}
+                        onChange={affixed => console.log(affixed)}
+                    >
+                        <div>
+                            <InventoryFilters/>
 
-                    <InventoryFilters/>
+                        </div>
 
-
+                    </Affix>
                 </InventoryFiltersContainer>
                 <InventoryListingsContainer>
+                    <InventoryResultsOverview/>
                     <ListingPreview/>
                     <ListingPreview/>
                     <ListingPreview/>
                     <ListingPreview/>
                     <ListingPreview/>
+                    <ListingPreview/>
+                    <Pagination className={'pagination'} size="small" total={5000} showSizeChanger showQuickJumper />
                 </InventoryListingsContainer>
+
             </InventoryContainer>
             <Footer/>
         </BackgroundContainer>

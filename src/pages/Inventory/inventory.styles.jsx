@@ -1,5 +1,5 @@
 import styled,{css} from 'styled-components'
-
+import {Affix} from 'antd'
 
 const offGrey = '#f7f7f7'
 const borderColor = '#00000020'
@@ -22,12 +22,7 @@ export const InventoryContainer = styled.div`
 `
 export const InventoryFiltersContainer = styled.div`
   width: 20%;
-  //position: fixed;
-  //width: auto;
-  //max-width: 400px;
   display: flex;
-  //justify-content: flex-start;
-  //background-color: white;
   margin-left: 50px;
   margin-bottom:10px ;
   margin-top: 10px;
@@ -48,6 +43,9 @@ export const InventoryListingsContainer = styled.div`
   //border: 1px solid ${borderColor};
   flex-direction: column;
   margin:10px 100px 10px 5px ;
+  .pagination{
+    justify-content: center;
+  }
   @media screen and (max-width: 800px){
 
     width: 100%;
