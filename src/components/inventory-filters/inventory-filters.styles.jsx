@@ -16,6 +16,9 @@ export const MenuContainer = styled(Menu)`
       color: grey;
     }
   }
+  .ant-radio-wrapper{
+      color: white;
+  }
  
  .ant-menu-sub{
   //background-color:#10153b ;
@@ -23,8 +26,21 @@ export const MenuContainer = styled(Menu)`
   // background: linear-gradient(to bottom, #10153b 0%, #357ae8 100%);
   color: white;
  }
+ .ant-slider-mark-text{
+ 
+  color: white;
+ }
  .active{
   border: 1px solid white;
+ }
+ .inventory-filters-options-tree-container{
+  //margin-bottom: 10px;
+  //margin-left: 20px;
+  margin: 0 20px 10px 30px;
+  .ant-tree-title{
+    color: white;
+  }
+ 
  }
  .groupContainer{
   .item{

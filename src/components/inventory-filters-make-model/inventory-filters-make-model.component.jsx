@@ -11,13 +11,10 @@ const InventoryFiltersMakeModel = () => {
     }
     return (
         <div className={'groupContainer'} key="8" >
-            <Radio.Group className={'item'}
-                         name={'condition'}
-                         onChange={onChange}
-                         // defaultValue={}
-            >
-                <Radio.Button value="new">New</Radio.Button>
-                <Radio.Button value="used">Used</Radio.Button>
+            <Radio.Group className={'item'}>
+                <Radio value={'new'}>New</Radio>
+                <Radio value={'used'}>Used</Radio>
+
             </Radio.Group>
             <Cascader
                 className={'item'}

@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
+
+const blue = `#357ae8`
 export const ListingContainer = styled.div`
   display: grid;
-  background-color: #357ae8;
+  background-color: white;
   //previously was auto 40% 20%
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr auto;
   grid-template-areas: 
     "results empty"
     "active sort"
-    
-  
   ;
   padding: 10px;
   margin-bottom: 20px;
@@ -25,7 +25,7 @@ align-items:center;
     height:max-content;
     margin: 0 10px;
     padding: 0;
-    color: white;
+    color: ${blue};
     font-weight: bolder;
     
   }

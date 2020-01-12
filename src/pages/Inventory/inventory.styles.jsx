@@ -23,6 +23,7 @@ export const InventoryContainer = styled.div`
 export const InventoryFiltersContainer = styled.div`
   width: 20%;
   display: flex;
+  flex-direction: column;
   margin-left: 50px;
   margin-bottom:10px ;
   margin-top: 10px;

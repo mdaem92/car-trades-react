@@ -10,27 +10,38 @@ import {BackgroundContainer,
 import InventoryFilters from "../../components/inventory-filters/inventory-filters.component";
 import ListingPreview from "../../components/listing-preview/listing-preview.component";
 import InventoryResultsOverview from "../../components/inventory-results-overview/inventory-results-overview.component";
-import {Pagination,Affix} from 'antd'
+import {Pagination,Affix,Switch} from 'antd'
 
 const InventoryPage = ()=>{
-
+    const [affixed,setAffixed]=useState(false)
 
     return(
         <BackgroundContainer >
-            <NavigationBar title={'Inventory'}/>
+            {/*<NavigationBar title={'Inventory'}/>*/}
             <InventoryContainer body>
                 <InventoryFiltersContainer >
-                    <Affix
-                        style={{width:'100%'}}
-                        offsetTop={100}
-                        onChange={affixed => console.log(affixed)}
-                    >
-                        <div>
-                            <InventoryFilters/>
+                    <div>
+                        <Switch checkedChildren="fixed"  checked={affixed} onChange={()=>setAffixed(!affixed)}/>
+                    </div>
+                    {
+                        affixed?
+                            (
+                                <Affix
+                                    style={{width:'100%'}}
+                                    offsetTop={80}
+                                    onChange={affixed => console.log(affixed)}
+                                >
+                                    <div>
+                                        <InventoryFilters/>
+                                    </div>
+                                </Affix>
+                            )
+                            :
+                            (
+                                <InventoryFilters/>
+                            )
+                    }
 
-                        </div>
-
-                    </Affix>
                 </InventoryFiltersContainer>
                 <InventoryListingsContainer>
                     <InventoryResultsOverview/>

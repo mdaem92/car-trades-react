@@ -5,6 +5,7 @@ import {MenuContainer,MakeModelContainer} from "./inventory-filters.styles";
 import InventoryFiltersMakeModel from "../inventory-filters-make-model/inventory-filters-make-model.component";
 import InventoryFiltersSpecs from "../inventory-filters-specs/inventory-filters-specs.component";
 import moment from 'moment'
+import InventoryFiltersOptionsTree from "../inventory-filters-options-tree/inventory-filters-options-tree.component";
 
 const { SubMenu } = Menu
 const SubMenuTitle = ({title,type})=>{
@@ -19,11 +20,9 @@ const InventoryFilters = () => {
 
     const handleChange = (value,name)=>console.log(value,name)
     return (
-
             <MenuContainer
                 mode="inline"
             >
-                {/*<Switch checkedChildren="fixed" unCheckedChildren="affixed" defaultChecked />*/}
                 <SubMenu
                     key="makeModel"
                     title={<SubMenuTitle title={'Make & Model'} type={'car'}/>}
@@ -34,7 +33,6 @@ const InventoryFilters = () => {
                     key="specs"
                     title={<SubMenuTitle title={'Specifications'} type={'control'}/>}
                 >
-                    {console.log('moment: ',typeof parseInt(moment().format('YYYY')))}
                     <SubMenu
                         key="price"
                         title={'Price'}
@@ -42,11 +40,10 @@ const InventoryFilters = () => {
                         <InventoryFiltersSpecs
                             range
                             min={0}
-                            max={200000}
+                            max={150000}
                             name={'price'}
                             step={500}
                             tipFormatter={(value)=>`$${value}`}
-
                         />
                     </SubMenu>
                     <SubMenu key="mileage" title="Mileage">
@@ -76,14 +73,8 @@ const InventoryFilters = () => {
                     key="more"
                     title={<SubMenuTitle title={'More options'} type={'more'}/>}
 
-
                 >
-                    <Menu.Item key="9">Option 9</Menu.Item>
-                    <Menu.Item key="10">Option 10</Menu.Item>
-                    <SubMenu key="sub5" title="Submenu">
-                        <Menu.Item key="11">Option 11</Menu.Item>
-                        <Menu.Item key="12">Option 12</Menu.Item>
-                    </SubMenu>
+                    <InventoryFiltersOptionsTree/>
                 </SubMenu>
             </MenuContainer>
 
