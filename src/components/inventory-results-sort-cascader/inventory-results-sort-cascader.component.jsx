@@ -51,6 +51,7 @@ const options = [
 
 ];
 
+
 const InventoryResultsSortCascader=()=> {
 
     const[state,setState] = useState({
@@ -64,10 +65,17 @@ const InventoryResultsSortCascader=()=> {
     };
 
         return (
-            <CascaderContainer>
+            <CascaderContainer id={'cascader'}>
                 {state.text}
                 &nbsp;
-                <Cascader options={options} onChange={onChange}>
+                <Cascader
+
+                    className={'cascader'}
+                    getPopupContainer={() => document.getElementById('cascader')}
+                    popupClassName={'popup'}
+                    options={options}
+                    onChange={onChange}
+                >
                     <a href="#">Change Sort</a>
                 </Cascader>
             </CascaderContainer>
