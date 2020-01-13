@@ -21,9 +21,9 @@ export const MenuContainer = styled(Menu)`
   }
  
  .ant-menu-sub{
-  //background-color:#10153b ;
+  /* //background-color:#10153b ; */
   background-color:${blue} ;
-  // background: linear-gradient(to bottom, #10153b 0%, #357ae8 100%);
+  /* // background: linear-gradient(to bottom, #10153b 0%, #357ae8 100%); */
   color: white;
  }
  .ant-slider-mark-text{
@@ -34,8 +34,8 @@ export const MenuContainer = styled(Menu)`
   border: 1px solid white;
  }
  .inventory-filters-options-tree-container{
-  //margin-bottom: 10px;
-  //margin-left: 20px;
+  /* //margin-bottom: 10px; */
+  /* //margin-left: 20px; */
   margin: 0 20px 10px 30px;
   .ant-tree-title{
     color: white;
@@ -47,7 +47,7 @@ export const MenuContainer = styled(Menu)`
     margin: 5px 30px ;
   }
  }
- // 
+ 
 `
 export const MakeModelContainer = styled.div`
 

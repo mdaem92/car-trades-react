@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import {connect} from 'react-redux'
 import Footer from "../../components/footer/footer.component";
 import NavigationBar from "../../components/navigation-bar/nagivation-bar.component";
 import {BackgroundContainer,
@@ -11,25 +12,24 @@ import InventoryFilters from "../../components/inventory-filters/inventory-filte
 import ListingPreview from "../../components/listing-preview/listing-preview.component";
 import InventoryResultsOverview from "../../components/inventory-results-overview/inventory-results-overview.component";
 import {Pagination,Affix,Switch} from 'antd'
+import {createStructuredSelector} from "reselect";
+import {isFixedSelector} from "../../redux/inventory-filters/inventory-filters.selectors";
 
-const InventoryPage = ()=>{
-    const [affixed,setAffixed]=useState(false)
+const InventoryPage = ({affixed})=>{
+    // const [affixed,setAffixed]=useState(false)
 
     return(
         <BackgroundContainer >
             {/*<NavigationBar title={'Inventory'}/>*/}
             <InventoryContainer body>
                 <InventoryFiltersContainer >
-                    <div>
-                        <Switch checkedChildren="fixed"  checked={affixed} onChange={()=>setAffixed(!affixed)}/>
-                    </div>
                     {
                         affixed?
                             (
                                 <Affix
                                     style={{width:'100%'}}
                                     offsetTop={80}
-                                    onChange={affixed => console.log(affixed)}
+                                    // onChange={affixed => console.log(affixed)}
                                 >
                                     <div>
                                         <InventoryFilters/>
@@ -41,6 +41,7 @@ const InventoryPage = ()=>{
                                 <InventoryFilters/>
                             )
                     }
+
 
                 </InventoryFiltersContainer>
                 <InventoryListingsContainer>
@@ -59,4 +60,7 @@ const InventoryPage = ()=>{
         </BackgroundContainer>
     )
 }
-export default InventoryPage
+const mapStateToProps = createStructuredSelector({
+    affixed:isFixedSelector
+})
+export default connect(mapStateToProps)(InventoryPage)
