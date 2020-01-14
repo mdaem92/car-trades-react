@@ -1,20 +1,20 @@
 import React from 'react'
 import Footer from "../../components/footer/footer.component";
-
-
+import {GridContainer,BackgroundImageContainer,SearchContainer} from "./homepage.styles";
+import HomepageImageCarousel from "../../components/homepage-image-carousel/homepage-image-carousel.component";
 const Homepage = ()=>{
     return (
-        <div className='homepage'>
-            <div className = 'directory-menu'>
-                <div className='directory-item'>
-                    homepage
+        <GridContainer>
+            <BackgroundImageContainer>
+                <HomepageImageCarousel/>
+            </BackgroundImageContainer>
+            <SearchContainer>
+                Search
+            </SearchContainer>
 
-                </div>
-
-            </div>
             <Footer isHomepage/>
 
-        </div>
+        </GridContainer>
     )
 }
 export default Homepage

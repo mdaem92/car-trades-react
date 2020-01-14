@@ -25,7 +25,7 @@ const SimpleStyles = css`
 `
 
 const HomepageStyles = css`
-
+  //display: none;
   position: fixed;
  
   right: 0;
@@ -35,6 +35,7 @@ const HomepageStyles = css`
   color: whitesmoke;
   background-color: #357ae8;
   margin-top: 50px;
+  //border: 1px dashed white;
 
 `
 

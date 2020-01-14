@@ -16,11 +16,8 @@ import {createStructuredSelector} from "reselect";
 import {isFixedSelector} from "../../redux/inventory-filters/inventory-filters.selectors";
 
 const InventoryPage = ({affixed})=>{
-    // const [affixed,setAffixed]=useState(false)
-
     return(
         <BackgroundContainer >
-            {/*<NavigationBar title={'Inventory'}/>*/}
             <InventoryContainer body>
                 <InventoryFiltersContainer >
                     {
@@ -41,8 +38,6 @@ const InventoryPage = ({affixed})=>{
                                 <InventoryFilters/>
                             )
                     }
-
-
                 </InventoryFiltersContainer>
                 <InventoryListingsContainer>
                     <InventoryResultsOverview/>

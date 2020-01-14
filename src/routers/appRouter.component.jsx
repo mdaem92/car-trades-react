@@ -9,6 +9,7 @@ import InventoryPage from "../pages/Inventory/inventory.component";
 import Header from "../components/Header/header.component";
 import AddListingPage from "../pages/AddListingPage/add-listing.component";
 import SigninSignupPage from "../pages/signup-signin-page/signup-signin-page.component";
+import Footer from "../components/footer/footer.component";
 export const history = createBrowserHistory()
 const AppRouter = ()=>{
 
@@ -24,6 +25,7 @@ const AppRouter = ()=>{
                 <Route exact path='/add-listing' component={AddListingPage}/>
                 <Route exact path='/signin-signup' component={SigninSignupPage}/>
             </Switch>
+            {/*<Footer isHomepage/>*/}
         </Router>
 
     )

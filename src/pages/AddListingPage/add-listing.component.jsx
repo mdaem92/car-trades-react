@@ -18,7 +18,7 @@ const AddListingPage = (props)=>{
                 <AddListingSteps/>
 
             </AddListingContainer>
-            <Footer/>
+            {/*<Footer/>*/}
         </BackgroundContainer>
 
     )
