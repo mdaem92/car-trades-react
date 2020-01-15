@@ -1,4 +1,4 @@
-import styled,{keyframes} from 'styled-components'
+import styled,{keyframes,css} from 'styled-components'
 import {Menu} from 'antd'
 import React from 'react'
 
@@ -8,12 +8,19 @@ const blue = '#357ae8'
 
 export const MenuContainer = styled(Menu)`
 
+  .make-model{
+    .ant-menu-submenu-popup{
+      display: none;
+    }
+    
+  }
   background-color:${blue};
    //background: linear-gradient(to bottom, #10153b 0%, #357ae8 100%);
  color: white;
   .ant-menu-submenu-title{
     &:hover{
       color: grey;
+      
     }
   }
   .ant-radio-wrapper{
@@ -43,8 +50,22 @@ export const MenuContainer = styled(Menu)`
  
  }
  .groupContainer{
+  
   .item{
     margin: 5px 30px ;
+  }
+
+ }
+
+ 
+ .search-icon{
+  //display: none;
+  margin-left:20px;
+  margin-right: 20px;
+  font-size: 20px;
+  &:hover{
+    font-size: 25px;
+    transition: font-size 300ms ease-in-out;
   }
  }
  

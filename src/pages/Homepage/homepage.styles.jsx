@@ -7,7 +7,7 @@ const switchImage = css`
 export const GridContainer = styled.div`
   background-color: #f7f7f7;
   display: grid;
-  grid-template-columns: 4fr 1fr 1fr 3fr 3fr;
+  grid-template-columns: 4fr 1fr 0.5fr 5fr 0.5fr;
   grid-template-rows:  1fr 2fr 1fr;
   
   //grid-template-areas: 
@@ -41,7 +41,7 @@ export const BackgroundImageContainer = styled.div`
   // background-position: center;
   // background-size: cover;
       vertical-align: top;
-
+  pointer-events: none;
   // background-image: ${({imageUrl}) => `url(${imageUrl})`};
   .carousel{
     //height:89.5vh;
@@ -59,10 +59,13 @@ export const BackgroundImageContainer = styled.div`
 export const SearchContainer = styled.div`
   //grid-area:S;
   //background-color: red;
-  
-  background-color: white;
+  display: flex;
+  //justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  //background-color: white;
   //border: 1px dashed black ;
-  grid-column: 2 /span 3;
+  grid-column: 4 /span 1;
   grid-row: 2 / span 2;
   height: 150px;
   z-index: 999;

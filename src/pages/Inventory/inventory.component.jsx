@@ -11,7 +11,7 @@ import {BackgroundContainer,
 import InventoryFilters from "../../components/inventory-filters/inventory-filters.component";
 import ListingPreview from "../../components/listing-preview/listing-preview.component";
 import InventoryResultsOverview from "../../components/inventory-results-overview/inventory-results-overview.component";
-import {Pagination,Affix,Switch} from 'antd'
+import {Pagination,Affix} from 'antd'
 import {createStructuredSelector} from "reselect";
 import {isFixedSelector} from "../../redux/inventory-filters/inventory-filters.selectors";
 

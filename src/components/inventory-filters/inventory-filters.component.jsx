@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Menu, Icon, Switch } from 'antd';
+import {Menu, Icon, Switch, Button, Cascader} from 'antd';
 import {antDCarData} from "../../carData/arrayData";
 import {MenuContainer,MakeModelContainer} from "./inventory-filters.styles";
 import InventoryFiltersMakeModel from "../inventory-filters-make-model/inventory-filters-make-model.component";
@@ -16,18 +16,22 @@ const SubMenuTitle = ({title,type})=>{
         </span>
     )
 }
-const InventoryFilters = () => {
+const InventoryFilters = ({isHomepage}) => {
 
     const handleChange = (value,name)=>console.log(value,name)
     return (
             <MenuContainer
-                mode="inline"
+                mode={isHomepage?"horizontal":"inline"}
+                // inlineCollapsed={true}
             >
                 <SubMenu
                     key="makeModel"
                     title={<SubMenuTitle title={'Make & Model'} type={'car'}/>}
+                    popupClassName={'popup'}
+                    className={'make-model'}
+                    getPopupContainer={() => document.getElementById('make-model')}
                 >
-                    <InventoryFiltersMakeModel/>
+                    <InventoryFiltersMakeModel />
                 </SubMenu>
                 <SubMenu
                     key="specs"
@@ -76,6 +80,14 @@ const InventoryFilters = () => {
                 >
                     <InventoryFiltersOptionsTree/>
                 </SubMenu>
+
+                {
+                    isHomepage &&
+                    <>
+                        <Icon className={'search-icon'} type="search" onClick={()=>console.log('clicking')}/>
+                    </>
+
+                }
             </MenuContainer>
 
     );

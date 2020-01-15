@@ -25,6 +25,7 @@ const InventoryFiltersMakeModel = () => {
                 placeholder={'Select Make and Model'}
                 popupPlacement={'bottomLeft'}
                 showSearch={{filter}}
+
             />
 
         </div>
