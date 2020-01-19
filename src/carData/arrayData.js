@@ -60,6 +60,39 @@ const formatAndFetchForAntD = ()=>{
     })
 }
 
+const formatAndFetchForAntDTreeSelect = ()=>{
+    console.log('fetching makes and models ANTD tree select')
+    const textByLine = text.toString().split("\n")
+    return textByLine.map((line)=>{
+        const l = line.split(",")
+        const lineModels = l.slice(1,l.length)
+        var title, value, key;
+        title=value=key=l[0]
+
+        const children = lineModels.map(model=>{
+            return {
+                title:model,
+                value:model,
+                key:model,
+            }
+        })
+        console.log({
+            title,
+            value,
+            key,
+            children
+        })
+        return {
+            title,
+            value,
+            key,
+            children
+        }
+
+    })
+}
+
+export const treeSelectCarData = formatAndFetchForAntDTreeSelect()
 export const antDCarData = formatAndFetchForAntD()
 export const carData = formatAndFetch()
 

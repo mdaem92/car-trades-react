@@ -4,7 +4,7 @@ import {CustomSlider} from './inventory-filters-specs.styles'
 const {SubMenu} = Menu
 
 
-const InventoryFiltersSpecs = ({name,min,max,...otherProps}) => {
+const InventoryFiltersSpecs = ({name,min,max,isHomepage,...otherProps}) => {
     const handleChange = (value,name)=>console.log(value,name)
 
     const createMarks = ()=>{
@@ -34,15 +34,14 @@ const InventoryFiltersSpecs = ({name,min,max,...otherProps}) => {
         }
     }
     return (
-        <>
-            <CustomSlider
-                {...otherProps}
-                onChange={(value)=>handleChange(value,name)}
-                marks={createMarks()}
-                min={min}
-                max={max}
-            />
-        </>
+
+        <CustomSlider
+            {...otherProps}
+            onChange={(value)=>handleChange(value,name)}
+            marks={createMarks()}
+            min={min}
+            max={max}
+        />
 
     );
 };

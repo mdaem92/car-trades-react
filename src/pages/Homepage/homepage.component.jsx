@@ -1,8 +1,8 @@
 import React from 'react'
 import Footer from "../../components/footer/footer.component";
-import {GridContainer,BackgroundImageContainer,SearchContainer} from "./homepage.styles";
+import {GridContainer,BackgroundImageContainer,SearchContainer,LabelContainer} from "./homepage.styles";
 import HomepageImageCarousel from "../../components/homepage-image-carousel/homepage-image-carousel.component";
-import InventoryFilters from "../../components/inventory-filters/inventory-filters.component";
+import HomepageInventorySearch from "../../components/homepage-inventory-search/hompage-inventory-search.component";
 
 const Homepage = ()=>{
     return (
@@ -11,8 +11,8 @@ const Homepage = ()=>{
                 <HomepageImageCarousel/>
             </BackgroundImageContainer>
             <SearchContainer>
-                {/*<HomepageInventorySearch/>*/}
-                <InventoryFilters isHomepage/>
+                {/*<InventoryFilters isHomepage/>*/}
+                <HomepageInventorySearch/>
             </SearchContainer>
 
             <Footer isHomepage/>

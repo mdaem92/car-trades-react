@@ -50,7 +50,7 @@ export const MenuContainer = styled(Menu)`
  
  }
  .groupContainer{
-  
+
   .item{
     margin: 5px 30px ;
   }

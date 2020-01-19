@@ -1,7 +1,6 @@
-import React,{useState} from 'react';
-import {Menu, Icon, Switch, Button, Cascader} from 'antd';
-import {antDCarData} from "../../carData/arrayData";
-import {MenuContainer,MakeModelContainer} from "./inventory-filters.styles";
+import React from 'react';
+import {Menu, Icon} from 'antd';
+import {MenuContainer} from "./inventory-filters.styles";
 import InventoryFiltersMakeModel from "../inventory-filters-make-model/inventory-filters-make-model.component";
 import InventoryFiltersSpecs from "../inventory-filters-specs/inventory-filters-specs.component";
 import moment from 'moment'
@@ -31,7 +30,7 @@ const InventoryFilters = ({isHomepage}) => {
                     className={'make-model'}
                     getPopupContainer={() => document.getElementById('make-model')}
                 >
-                    <InventoryFiltersMakeModel />
+                    <InventoryFiltersMakeModel isHomepage={isHomepage} />
                 </SubMenu>
                 <SubMenu
                     key="specs"
@@ -52,6 +51,7 @@ const InventoryFilters = ({isHomepage}) => {
                     </SubMenu>
                     <SubMenu key="mileage" title="Mileage">
                         <InventoryFiltersSpecs
+                            isHomepage={isHomepage}
                             range
                             min={0}
                             max={200000}
@@ -63,6 +63,7 @@ const InventoryFilters = ({isHomepage}) => {
                     </SubMenu>
                     <SubMenu key="year" title="Year">
                         <InventoryFiltersSpecs
+                            isHomepage={isHomepage}
                             range
                             min={1950}
                             max={parseInt(moment().format('YYYY'))}

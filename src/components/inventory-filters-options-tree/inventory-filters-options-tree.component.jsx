@@ -158,42 +158,6 @@ const InventoryFiltersOptionsTree = () => {
     const {value,searchValue}=state
     return (
         <div className={'inventory-filters-options-tree-container'}>
-            {/*<Tree*/}
-            {/*    checkable*/}
-            {/*    defaultExpandedKeys={['fuel', 'color','transmission']}*/}
-            {/*    onSelect={onSelect}*/}
-            {/*    onCheck={onCheck}*/}
-            {/*    selectable={false}*/}
-            {/*>*/}
-            {/*    <TreeNode checkable={false} title={'Color'} key={'color'}>*/}
-            {/*        <TreeNode  title={'White'} key={'white'}/>*/}
-            {/*        <TreeNode  title={'Black'} key={'black'}/>*/}
-            {/*        <TreeNode  title={'Silver'} key={'silver'}/>*/}
-            {/*        <TreeNode  title={'Red'} key={'red'}/>*/}
-            {/*        <TreeNode  title={'Blue'} key={'blue'}/>*/}
-            {/*        <TreeNode  title={'Other'} key={'other'}/>*/}
-
-            {/*    </TreeNode>*/}
-            {/*    <TreeNode  checkable={false} title={'Fuel'} key={'fuel'}>*/}
-            {/*        <TreeNode title={'Diesel'} key={'diesel'}/>*/}
-            {/*        <TreeNode title={'Electric'} key={'electric'}/>*/}
-            {/*        <TreeNode title={'Hybrid'} key={'hybrid'}/>*/}
-            {/*        <TreeNode title={'Petrol'} key={'petrol'}/>*/}
-            {/*        <TreeNode title={'LPG'} key={'lpg'}/>*/}
-            {/*    </TreeNode>*/}
-            {/*    <TreeNode checkable={false} title={'Transmission'} key={'transmission'}>*/}
-            {/*        <TreeNode title={'Automatic'} key={'auto'}/>*/}
-            {/*        <TreeNode title={'Manual'} key={'manual'}/>*/}
-            {/*        <TreeNode title={'Semi-Automatic'} key={'semi-auto'}/>*/}
-            {/*    </TreeNode>*/}
-            {/*    <TreeNode checkable={false} title={'Previous Owners'} key={'prevOwners'}>*/}
-            {/*        <TreeNode title={'1'} key={'1'}/>*/}
-            {/*        <TreeNode title={'2'} key={'2'}/>*/}
-            {/*        <TreeNode title={'3'} key={'3'}/>*/}
-            {/*        <TreeNode title={'More'} key={'4'}/>*/}
-            {/*    </TreeNode>*/}
-            {/*</Tree>*/}
-
             <TreeSelect
                 style={{ width: '187px' }}
                 value={value}
@@ -208,8 +172,6 @@ const InventoryFiltersOptionsTree = () => {
                 onChange={onChange}
                 // onSearch={onSearch}
                 // showSearch={false}
-
-
             />
         </div>
     );

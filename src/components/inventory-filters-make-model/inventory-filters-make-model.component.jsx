@@ -1,8 +1,9 @@
 import React from 'react';
-import {Cascader, Radio} from "antd";
-import {antDCarData} from "../../carData/arrayData";
+import {Cascader, Radio, Select, TreeSelect} from "antd";
+import {antDCarData,treeSelectCarData} from "../../carData/arrayData";
+import {GroupContainer} from "./inventory-filters-make-model.styles";
 
-const InventoryFiltersMakeModel = () => {
+const InventoryFiltersMakeModel = ({isHomepage}) => {
     const onChange = (e)=>{
         console.log(e)
     }
@@ -10,13 +11,18 @@ const InventoryFiltersMakeModel = () => {
         return path.some(option => option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1);
     }
     return (
-        <div className={'groupContainer'} key="8" >
-            <Radio.Group className={'item'}>
-                <Radio value={'new'}>New</Radio>
-                <Radio value={'used'}>Used</Radio>
-
-            </Radio.Group>
+        <GroupContainer isHomepage={isHomepage}>
+            {
+                !isHomepage &&
+                <Radio.Group
+                    className={'item'}
+                >
+                    <Radio value={'new'}>New</Radio>
+                    <Radio value={'used'}>Used</Radio>
+                </Radio.Group>
+            }
             <Cascader
+                autoFocus
                 className={'item'}
                 options={antDCarData}
                 name={'make'}
@@ -25,10 +31,10 @@ const InventoryFiltersMakeModel = () => {
                 placeholder={'Select Make and Model'}
                 popupPlacement={'bottomLeft'}
                 showSearch={{filter}}
-
             />
 
-        </div>
+
+        </GroupContainer>
     );
 };
 
