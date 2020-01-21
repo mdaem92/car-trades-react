@@ -31,7 +31,18 @@ export const SearchContainer = styled.div`
   align-items: center;
   grid-column: 4 /span 1;
   grid-row: 2 / span 1;
-  z-index: 999;
+  //z-index: 999;
+`
+export const SearchLabelContainer = styled.div`
+  grid-column: 4 /span 1;
+  grid-row: 1 / span 1;
+  display: flex;
+  //justify-content: space-around;
+  align-items: flex-end;
+  font-size: 50px;
+  font-weight: bold;
+  color: grey;
+  margin-bottom: 20px;
   
 `
 

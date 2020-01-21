@@ -1,5 +1,5 @@
 import React, {useEffect,useState} from 'react';
-import {Menu, Icon, Radio, Cascader, InputNumber, Button} from 'antd';
+import {Menu, Icon, Radio, Cascader, InputNumber, Button,Input} from 'antd';
 import {InventorySearchContainer,InputContainer,ButtonContainer} from './homepage-inventory-search.styles'
 import InventoryFiltersMakeModel from "../inventory-filters-make-model/inventory-filters-make-model.component";
 
@@ -7,8 +7,8 @@ import InventoryFiltersMakeModel from "../inventory-filters-make-model/inventory
 const HomepageInventorySearch = () => {
     const [state,setState] = useState({
         current:'make-model',
-        priceFrom: null,
-        priceTo:null,
+        priceFrom: 0,
+        priceTo:0,
 
     })
     useEffect(()=>{
@@ -20,13 +20,26 @@ const HomepageInventorySearch = () => {
         console.log(e)
         setState({current:key})
     }
-    const onChange = (value,type)=>{
-        console.log(value,type)
-        setState({
-            ...state,
-            [type]:value
-        })
+    const onChange = (e)=>{
+        const {value,name}=e.target
+        if(value) {
+            return setState({
+                ...state,
+                [name]: parseInt(value)
+            })
+        }
+            return setState({
+                ...state,
+                [name]:undefined
+            })
     }
+    const onFocus = (e)=>{
+        console.log('focusing',e)
+    }
+    const onBlur = (e)=>{
+        console.log('bluring',e)
+    }
+
     const filter = (inputValue, path) =>{
         return path.some(option => option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1);
     }
@@ -36,29 +49,34 @@ const HomepageInventorySearch = () => {
                 <InventoryFiltersMakeModel isHomepage/>
             </InputContainer>
             <InputContainer>
-                <InputNumber
-                    defaultValue={state.priceFrom}
-                    placeholder={'From'}
+                <Input
+                    placeholder={'Min Price'}
                     className={'input'}
+                    type={'number'}
+                    name={'priceFrom'}
+                    prefix={'$'}
                     min={0}
-                    max={100000}
+                    max={state.priceTo?state.priceTo-500:100000}
                     step={500}
-                    formatter={value => `$${value}`}
-                    parser={value => value.replace('$', '')}
-                    onChange={(value)=>onChange(value,'priceFrom')}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    onFocus={onFocus}
                 />
             </InputContainer>
             <InputContainer>
-                <InputNumber
-                    defaultValue={state.priceTo}
+                {console.log('type of priceFrom',typeof state.priceFrom)}
+                <Input
+                    type={'number'}
+                    prefix={'$'}
+                    name={'priceTo'}
                     className={'input'}
-                    placeholder={'To'}
-                    min={state.priceFrom+500}
+                    placeholder={'Max Price'}
+                    min={state.priceFrom?state.priceFrom+500:500}
                     max={100000}
                     step={500}
-                    formatter={value => `$${value}`}
-                    parser={value => value.replace('$', '')}
-                    onChange={(value)=>onChange(value,'priceTo')}
+                    onChange={onChange}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
                 />
             </InputContainer>
             <ButtonContainer onClick={()=>console.log('clicking')}>
