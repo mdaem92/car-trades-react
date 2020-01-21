@@ -1,4 +1,5 @@
 import styled,{css} from 'styled-components'
+import {Icon} from "antd";
 
 const toggleHomepageView = props=>{
     if(props.isHomepage){
@@ -10,7 +11,11 @@ const toggleHomepageView = props=>{
 
 export const FooterContainer = styled.div`
 
-  ${toggleHomepageView}
+  ${toggleHomepageView};
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  
 `
 const SimpleStyles = css`
   //position: fixed;
@@ -38,4 +43,13 @@ const HomepageStyles = css`
   //border: 1px dashed white;
 
 `
+
+export const SocialsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100px;
+  margin-right: 50px;
+`
+
 

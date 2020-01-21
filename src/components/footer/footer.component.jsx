@@ -1,5 +1,6 @@
 import React from 'react'
-import {FooterContainer} from "./footer.styles";
+import {FooterContainer,SocialsContainer} from "./footer.styles";
+import {Icon}from 'antd'
 
 
 
@@ -7,7 +8,11 @@ const Footer = ({isHomepage})=>{
 
     return (
         <FooterContainer isHomepage={isHomepage}>
-            SOme footer
+            <SocialsContainer>
+                <Icon type="twitter" />
+                <Icon type="facebook" />
+                <Icon type="instagram" />
+            </SocialsContainer>
         </FooterContainer>
         )
 

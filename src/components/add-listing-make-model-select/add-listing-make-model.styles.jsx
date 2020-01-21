@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 
 export const GridContainer = styled.div`
+*{
+  border-radius: 0;
+  font-size: 12px;
+}
   display: grid;
   padding: 15px 20px;
   grid-row-gap: 5px;

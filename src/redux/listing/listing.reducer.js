@@ -4,7 +4,6 @@ import {editListing, removeListing} from "./listing.utils";
 const listingReducerDefault = {
     listings:[],
     isListingsLoading:true,
-
 }
 export default (state=listingReducerDefault,action)=>{
     switch (action.type) {

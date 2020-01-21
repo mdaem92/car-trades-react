@@ -1,5 +1,19 @@
 import ListingsActionTypes from "./listing.types";
-
+// const listingDefault = {
+//     make:'',
+//     model:'',
+//     mileage:undefined,
+//     year:undefined,
+//     body:'',
+//     seatNumber:undefined,
+//     prevOwners:undefined,
+//     fuelEconomy:undefined,
+//     fuelType:'',
+//     engineCapacity: undefined,
+//     enginePower:undefined,
+//     transmission:''
+//
+// }
 export const addListing = (listing)=>({
     type:ListingsActionTypes.ADD_LISTING,
     listing

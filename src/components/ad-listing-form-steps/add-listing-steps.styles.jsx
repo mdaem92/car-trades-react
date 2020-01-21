@@ -33,4 +33,7 @@ margin-top: 24px;
 
 export const StepsActionContainer = styled.div`
     margin-top: 24px;
+    .ant-btn{
+      border-radius: 0;
+    }
 `
