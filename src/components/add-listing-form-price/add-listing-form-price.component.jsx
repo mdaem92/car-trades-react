@@ -1,29 +1,35 @@
 import React,{useState} from 'react';
+import {connect} from 'react-redux'
 import {PriceInputContainer,LabelContainer,AppraisalButton,CustomInputNumber} from "./add-listing-form-price.styles";
 import {message} from "antd";
 import PriceAppraisalModal from "../add-listing-form-price-appraisal-modal/price-appraisal.component";
+import {createStructuredSelector} from "reselect";
+import {setPrice,requestAppraisal} from "../../redux/add-listing-form/add-listing-form.actions";
+import {isAppraisalRequested, priceSelector} from "../../redux/add-listing-form/add-listing-form.selectors";
 
-const AddListingFormPrice = () => {
+const AddListingFormPrice = ({price,setPrice,isAppraisalRequested,requestAppraisal}) => {
     const [state,setState] = useState({
-        price:null,
+        // price:null,
         modalText: 'Your car data will be sent to our servers and you will be notified shortly with our appraisal results',
         modalVisible: false,
         modalConfirmLoading: false,
     })
     const onChange = (value)=>{
         console.log(value)
-        setState({
-            ...state,
-            price:value
-        })
+        // setState({
+        //     ...state,
+        //     price:value
+        // })
+        setPrice(value)
     }
-    const {price,modalText,modalConfirmLoading,modalVisible} = state
+    const {modalText,modalConfirmLoading,modalVisible} = state
     const handleOk = ()=>{
         setState({
             ...state,
             // modalText: 'communicating...',
             modalConfirmLoading: true,
         });
+        requestAppraisal()
         setTimeout(() => {
             setState({
                 modalVisible: false,
@@ -43,7 +49,7 @@ const AddListingFormPrice = () => {
         <PriceInputContainer>
             <LabelContainer>Your Price</LabelContainer>
             <CustomInputNumber
-                defaultValue={state.price}
+                defaultValue={price}
                 placeholder={'Price'}
                 min={100}
                 step={500}
@@ -53,7 +59,7 @@ const AddListingFormPrice = () => {
             />
             <LabelContainer>Or our appraisal </LabelContainer>
             <>
-                <AppraisalButton type="primary" onClick={()=>setState({
+                <AppraisalButton type="primary" disabled={isAppraisalRequested} onClick={()=>setState({
                     ...state,
                     modalVisible: true
                 })} >
@@ -73,4 +79,13 @@ const AddListingFormPrice = () => {
     );
 };
 
-export default AddListingFormPrice;
+const mapStateToProps = createStructuredSelector({
+    price:priceSelector,
+    isAppraisalRequested:isAppraisalRequested
+})
+const mapDispatchToProps = (dispatch) => ({
+    setPrice: (price) => dispatch(setPrice(price)),
+    requestAppraisal: () => dispatch(requestAppraisal())
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(AddListingFormPrice);

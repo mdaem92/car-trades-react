@@ -19,3 +19,10 @@ export const setFileList = (fileList)=>({
     type:AddListingFormActionTypes.SET_FILE_LIST,
     fileList
 })
+export const setPrice = (price)=>({
+    type:AddListingFormActionTypes.SET_PRICE,
+    price,
+})
+export const requestAppraisal = ()=>({
+    type:AddListingFormActionTypes.REQUEST_APPRAISAL,
+})

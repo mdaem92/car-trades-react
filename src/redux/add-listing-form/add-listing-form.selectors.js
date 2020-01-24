@@ -63,3 +63,11 @@ export const fileListSelector = createSelector(
     addListingFormSelector,
     addListingForm=>addListingForm.imageFileList?addListingForm.imageFileList:[]
 )
+export const priceSelector = createSelector(
+    addListingFormSelector,
+    addListingForm=>addListingForm.price
+)
+export const isAppraisalRequested = createSelector(
+    addListingFormSelector,
+    addListingForm=>addListingForm.isAppraisalRequested
+)

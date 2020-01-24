@@ -15,6 +15,8 @@ const addListingFormDefaultState = {
     enginePower:undefined,
     transmission:undefined,
     imageFileList:[],
+    price:undefined,
+    isAppraisalRequested:false,
     loading:false
 }
 
@@ -45,6 +47,18 @@ export default (state=addListingFormDefaultState,action)=>{
             return{
                 ...state,
                 imageFileList:action.fileList
+            }
+        case AddListingFormActionTypes.SET_PRICE:
+            return{
+                ...state,
+                price:action.price,
+                isAppraisalRequested:false
+            }
+        case AddListingFormActionTypes.REQUEST_APPRAISAL:
+            return{
+                ...state,
+                price:undefined,
+                isAppraisalRequested:true
             }
         default:
             return state
