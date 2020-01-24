@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
     InputNumber,
     Select,
@@ -21,24 +21,9 @@ const {Option} = Select
 
 const AddListingFormSpecs = ({fuelEconomy,fuelType,engineCapacity,enginePower,transmission,setFieldValue}) => {
 
-    // const [state,setState] = useState({
-    //     fuelEconomy:undefined,
-    //     fuelType:undefined,
-    //     engineCapacity:undefined,
-    //     enginePower:undefined,
-    //     hpData:[...Array(1000).keys()]
-    // })
-    // useEffect(()=>{
-    //     console.log(state)
-    // },[state])
-
     const onSelectChange = (value,metadata)=>{
 
         const{name} = metadata.props
-        // setState({
-        //     ...state,
-        //     [name]:value
-        // })
         setFieldValue(name,value)
 
     }
@@ -118,21 +103,6 @@ const AddListingFormSpecs = ({fuelEconomy,fuelType,engineCapacity,enginePower,tr
                     }
                     <Option name={'engineCapacity'} key={8} value={8}>Other</Option>
                 </Select>
-                {/*<Select*/}
-                {/*    showSearch*/}
-                {/*    defaultValue={enginePower}*/}
-                {/*    style={{ width: 120 }}*/}
-                {/*    placeholder="Power"*/}
-                {/*    optionFilterProp="children"*/}
-                {/*    onChange={onSelectChange}*/}
-                {/*    onBlur={onBlur}*/}
-                {/*    onFocus={onFocus}*/}
-                {/*>*/}
-                {/*    {*/}
-
-                {/*        state.hpData.map((i)=><Option name={'enginePower'} key={i} value={i}>{i} Hp</Option>)*/}
-                {/*    }*/}
-                {/*</Select>*/}
                 <InputNumber
                     // style={{borderRadius:0}}
                     min={10}

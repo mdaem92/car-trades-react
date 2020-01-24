@@ -14,6 +14,7 @@ const addListingFormDefaultState = {
     engineCapacity:undefined,
     enginePower:undefined,
     transmission:undefined,
+    imageFileList:[],
     loading:false
 }
 
@@ -39,6 +40,11 @@ export default (state=addListingFormDefaultState,action)=>{
             return {
                 ...state,
                 isSubmitted:action.isSubmitted
+            }
+        case AddListingFormActionTypes.SET_FILE_LIST:
+            return{
+                ...state,
+                imageFileList:action.fileList
             }
         default:
             return state

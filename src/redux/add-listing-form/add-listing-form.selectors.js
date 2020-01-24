@@ -59,3 +59,7 @@ export const transmissionSelector = createSelector(
     addListingFormSelector,
     addListingForm=>addListingForm.transmission
 )
+export const fileListSelector = createSelector(
+    addListingFormSelector,
+    addListingForm=>addListingForm.imageFileList?addListingForm.imageFileList:[]
+)

@@ -14,5 +14,8 @@ export const setFieldValue = (name,value)=>({
 export const setSubmitted = (isSubmitted)=>({
     type:AddListingFormActionTypes.SET_SUBMITTED,
     isSubmitted,
-
+})
+export const setFileList = (fileList)=>({
+    type:AddListingFormActionTypes.SET_FILE_LIST,
+    fileList
 })
