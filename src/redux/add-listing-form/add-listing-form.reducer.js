@@ -8,7 +8,7 @@ const addListingFormDefaultState = {
     mileage:undefined,
     bodyType:undefined,
     seatCount:undefined,
-    prevOwners:undefined,
+    // prevOwners:undefined,
     fuelEconomy:undefined,
     fuelType:undefined,
     engineCapacity:undefined,
@@ -38,11 +38,8 @@ export default (state=addListingFormDefaultState,action)=>{
                 ...state,
                 [action.name]:action.value
             }
-        case AddListingFormActionTypes.SET_SUBMITTED:
-            return {
-                ...state,
-                isSubmitted:action.isSubmitted
-            }
+        case AddListingFormActionTypes.RESET_FORM:
+            return addListingFormDefaultState
         case AddListingFormActionTypes.SET_FILE_LIST:
             return{
                 ...state,

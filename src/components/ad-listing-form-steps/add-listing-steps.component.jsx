@@ -11,14 +11,14 @@ import {
     addListingFormSelector
 } from "../../redux/add-listing-form/add-listing-form.selectors";
 import {setNextStep, setPrevStep,setFieldValue} from "../../redux/add-listing-form/add-listing-form.actions";
-import {addListing} from "../../redux/listing/listing.actions";
+// import {addListing} from "../../redux/listing/listing.actions";
+import {addListingStart} from "../../redux/listing/listing.actions";
 
 const { Step } = Steps;
 
 const steps = [
     {
         title: 'Choose Car',
-
     },
     {
         title: 'Choose Specs',
@@ -26,19 +26,12 @@ const steps = [
     },
     {
         title: 'Upload Images',
-
     },
     {
         title:'Choose Price'
     }
 ];
-const AddListingSteps = ({history,current,loading,next,prev,formData,addListing,allowNextStep})=>{
-    // const [state,setState]= useState({
-    //     current:0,
-    //     status:'',
-    //     loading:false
-    // })
-
+const AddListingSteps = ({history,current,loading,next,prev,formData,addListingStart})=>{
     const isNextStepAllowed = ()=>{
         switch (current){
             case 0:{
@@ -78,22 +71,11 @@ const AddListingSteps = ({history,current,loading,next,prev,formData,addListing,
                     <Button
                         type="primary"
                         loading={loading}
-                        onClick={() =>{
-                            console.log('clicking')
-                            // setState({
-                            //     ...state,
-                            //     loading: true
-                            // })
-                            // setTimeout(()=>{
-                            //     message.success('Processing complete!')
-                            //     setState({
-                            //         ...state,
-                            //         loading:false
-                            //     })
-                            //     history.push('/inventory')
-                            // },2000)
-
-
+                        onClick={()=>{
+                            console.log('clicking',formData)
+                            addListingStart(formData)
+                            history.push('/inventory')
+                            message.success('Listing successfully added')
                         }}
                     >
                         Done
@@ -121,7 +103,7 @@ const mapDispatchToProps = (dispatch)=>({
     next:()=>dispatch(setNextStep()),
     prev:()=>dispatch(setPrevStep()),
     setFieldValue:(name,value)=>dispatch(setFieldValue(name,value)),
-    addListing:(listing)=>dispatch(addListing(listing))
+    addListingStart:(formData)=>dispatch(addListingStart(formData))
 })
 const ConnectedAddListingSteps = connect(mapStateToProps,mapDispatchToProps)(AddListingSteps)
 export default withRouter(ConnectedAddListingSteps)
