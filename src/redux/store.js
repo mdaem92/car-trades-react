@@ -6,7 +6,8 @@ import rootReducer from "./rootReducer";
 import {parse, stringify} from 'flatted/esm';
 import createSagaMiddleware from 'redux-saga'
 
-import {addListingStart, onAddListingStart} from "./listing/listing.saga";
+import {addListingStart, onAddListingStart, onFetchListingsStart} from "./listing/listing.saga";
+import rootSaga from "./rootSaga";
 
 console.log('middleware',createSagaMiddleware)
 const sagaMiddleware = createSagaMiddleware()
@@ -22,12 +23,13 @@ export const transformCircular = createTransform(
 const persistConfig = {
     key:'root',
     storage,
-    transforms: [transformCircular]
+    transforms: [transformCircular],
+    blacklist:['listings']
 }
 
 const persistedReducer = persistReducer(persistConfig,rootReducer)
 const store = createStore(persistedReducer,applyMiddleware(...middlewares))
-sagaMiddleware.run(onAddListingStart)
+sagaMiddleware.run(rootSaga)
 export default store
 export const persistor = persistStore(store)
 

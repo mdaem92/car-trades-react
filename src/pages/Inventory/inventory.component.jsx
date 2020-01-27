@@ -16,8 +16,15 @@ import {createStructuredSelector} from "reselect";
 import {isFixedSelector} from "../../redux/inventory-filters/inventory-filters.selectors";
 import InventoryListingPreviewList
     from "../../components/inventory-listing-preview-list/inventory-listing-preview-list.component";
+import InventoryListingPreviewListContainer
+    from "../../components/inventory-listing-preview-list/inventory-listing-preview-list-container";
+import {fetchListingsStart} from "../../redux/listing/listing.actions";
 
-const InventoryPage = ({affixed})=>{
+
+const InventoryPage = ({affixed,fetchListings})=>{
+    useEffect(()=>{
+        fetchListings()
+    },[fetchListings])
     return(
         <BackgroundContainer >
             <InventoryContainer body>
@@ -43,7 +50,8 @@ const InventoryPage = ({affixed})=>{
                 </InventoryFiltersContainer>
                 <InventoryListingsContainer>
                     <InventoryResultsOverview/>
-                    <InventoryListingPreviewList/>
+                    {/*<InventoryListingPreviewList/>*/}
+                    <InventoryListingPreviewListContainer/>
                     <Pagination className={'pagination'} size="small" total={5000} showSizeChanger showQuickJumper />
                 </InventoryListingsContainer>
 
@@ -55,4 +63,7 @@ const InventoryPage = ({affixed})=>{
 const mapStateToProps = createStructuredSelector({
     affixed:isFixedSelector
 })
-export default connect(mapStateToProps)(InventoryPage)
+const mapDispatchToProps = (dispatch)=>({
+    fetchListings:()=>dispatch(fetchListingsStart())
+})
+export default connect(mapStateToProps,mapDispatchToProps)(InventoryPage)

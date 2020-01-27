@@ -1,19 +1,5 @@
 import ListingsActionTypes from "./listing.types";
-// const listingDefault = {
-//     make:'',
-//     model:'',
-//     mileage:undefined,
-//     year:undefined,
-//     body:'',
-//     seatNumber:undefined,
-//     prevOwners:undefined,
-//     fuelEconomy:undefined,
-//     fuelType:'',
-//     engineCapacity: undefined,
-//     enginePower:undefined,
-//     transmission:''
-//
-// }
+
 export const addListing = (listing)=>({
     type:ListingsActionTypes.ADD_LISTING,
     listing
@@ -31,11 +17,23 @@ export const addListingStart = (listingData)=>({
     type:ListingsActionTypes.ADD_LISTING_START,
     listingData
 })
-export const addListingSuccess = (newListing)=>({
+export const addListingSuccess = ()=>({
     type:ListingsActionTypes.ADD_LISTING_SUCCESS,
-    newListing
+
 })
 export const addListingFailure = (errorMessage)=>({
     type:ListingsActionTypes.ADD_LISTING_FAILURE,
+    errorMessage
+})
+
+export const fetchListingsStart = ()=>({
+    type:ListingsActionTypes.FETCH_LISTINGS_START,
+})
+export const fetchListingsSuccess = (listings)=>({
+    type:ListingsActionTypes.FETCH_LISTINGS_SUCCESS,
+    listings
+})
+export const fetchListingsFailure = (errorMessage)=>({
+    type:ListingsActionTypes.FETCH_LISTINGS_FAILURE,
     errorMessage
 })

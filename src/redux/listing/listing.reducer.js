@@ -26,18 +26,30 @@ export default (state=listingReducerDefault,action)=>{
                 ...state,
                 listings:removeListing(state.listings,action.id)
             }
-        // case ListingsActionTypes.ADD_LISTING_START:
-        //     return{
-        //         ...state,
-        //         isListingsLoading:true
-        //     }
+        case ListingsActionTypes.FETCH_LISTINGS_START:
+            return{
+                ...state,
+                isListingsLoading:true
+            }
+        case ListingsActionTypes.FETCH_LISTINGS_SUCCESS:
+            return{
+                ...state,
+                listings:action.listings,
+                isListingsLoading:false
+            }
+        case ListingsActionTypes.FETCH_LISTINGS_FAILURE:
+            return{
+                ...state,
+                isListingsLoading:false,
+                errorMessage:action.errorMessage
+            }
         case ListingsActionTypes.ADD_LISTING_SUCCESS:
             return{
                 ...state,
-                listings:[
-                    ...state.listings,
-                    action.newListing
-                ],
+                // listings:[
+                //     ...state.listings,
+                //     action.newListing
+                // ],
                 isListingsLoading:false
             }
         case ListingsActionTypes.ADD_LISTING_FAILURE:
