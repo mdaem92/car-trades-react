@@ -18,10 +18,15 @@ export const GridContainer = styled.div`
   .ant-radio-group{
     margin-right: 10px;
   }
+  .ant-calendar-picker{
+    margin-right:10px;
+  }
+  
 `
 export const SelectContainer = styled.div`
   display: flex;
   flex-direction: row;
+  
   //   //   //justify-content: space-around;
   //   //   //height: 300px;
 `

@@ -38,5 +38,8 @@ export const SelectsContainer = styled.div`
   ////justify-content: space-around;
   display: flex;
   flex-direction: row;
+  .ant-input-number{
+   margin-right: 10px;
+  }
   
 `

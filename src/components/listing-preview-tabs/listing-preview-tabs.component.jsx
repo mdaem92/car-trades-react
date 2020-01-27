@@ -13,7 +13,8 @@ import DealerNotes from '../listing-preview-dealer-notes/listing-preview-dealer-
 import OptionsList from "../listing-preview-options-list/listing-preview-options-list.component";
 
 
-const ListingPreviewTabs = ()=>{
+const ListingPreviewTabs = (props)=>{
+    const {imageFileList,...specs} = props
     const [activeTab, setActiveTab] = useState('1');
 
     const toggle = tab => {
@@ -37,10 +38,10 @@ const ListingPreviewTabs = ()=>{
             </Nav>
             <TabContent activeTab={activeTab}>
                 <TabPane  tabId="1">
-                    <ListingPreviewSpecifications/>
+                    <ListingPreviewSpecifications {...specs}/>
                 </TabPane>
                 <TabPane  tabId="2">
-                   <ListingPreviewImageSlider/>
+                   <ListingPreviewImageSlider images={imageFileList}/>
                 </TabPane>
                 <TabPane tabId="3">
                     <DealerNotes/>

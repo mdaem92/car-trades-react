@@ -19,25 +19,54 @@ import ListingPreviewTabs from "../listing-preview-tabs/listing-preview-tabs.com
 import ListingPreviewContactModal from "../listing-preview-contact-modal/listing-preview-contact-modal.component";
 
 
-const ListingPreview = ()=>{
+const ListingPreview = (
+    {
+        condition,
+        make,
+        model,
+        mileage,
+        bodyType,
+        seatCount,
+        fuelEconomy,
+        fuelType,
+        engineCapacity,
+        enginePower,
+        imageFileList,
+        transmission,
+        price,
+        year
+
+    })=>{
+        const listingData = {
+            mileage,
+            bodyType,
+            seatCount,
+            fuelEconomy,
+            fuelType,
+            engineCapacity,
+            enginePower,
+            imageFileList,
+            transmission,
+        }
     const [state,setState] = React.useState({
         isOpen:false,
         showModal:false,
         showConfirm:false
     })
     // const [isOpen,setIsOpen] = React.useState(false)
+
     const {isOpen,showModal,showConfirm} =state
     return (
         <Wrapper isOpen={isOpen}>
         <ListingContainer >
-            <ListingImage className='image' imageUrl={require('../../assets/t1.jpg')} />
+            <ListingImage className='image' imageUrl={imageFileList?imageFileList[0].url:imageFileList} />
             <ListingInfoCell>
-                <ListingCondition pill color={'primary'} >Used</ListingCondition>
-                <span className={'text'}>2016 Honda CRZ </span>
+                <ListingCondition pill color={'primary'} >{condition.toUpperCase()}</ListingCondition>
+                <span className={'text'}>{year} {make} {model} </span>
             </ListingInfoCell>
-            <ListingPriceContainer>$1685500</ListingPriceContainer>
+            <ListingPriceContainer>${price}</ListingPriceContainer>
             <ListingInfoSummaryContainer>
-                <ListingInfoSummary/>
+                <ListingInfoSummary {...listingData}/>
             </ListingInfoSummaryContainer>
             <ToggleDetailsButton
                 onClick={()=>setState({
@@ -55,9 +84,9 @@ const ListingPreview = ()=>{
             <CollapseContainer isOpen={isOpen}>
                 <CollapseContent >
                     {/*<CardBody >*/}
-                    <ListingPreviewTabs/>
+                    <ListingPreviewTabs {...listingData}/>
                     <ListingPreviewFooter>
-                        <ListingPreviewFooterPriceContainer>$16855</ListingPreviewFooterPriceContainer>
+                        <ListingPreviewFooterPriceContainer>${price}</ListingPreviewFooterPriceContainer>
                         <ToggleDetailsButton
                             color={'primary'}
                             isFooter={true}

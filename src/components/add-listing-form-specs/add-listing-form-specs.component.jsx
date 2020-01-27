@@ -28,7 +28,6 @@ const AddListingFormSpecs = ({fuelEconomy,fuelType,engineCapacity,enginePower,tr
 
     }
 
-
     function onBlur() {
         console.log('blur');
     }
@@ -41,8 +40,11 @@ const AddListingFormSpecs = ({fuelEconomy,fuelType,engineCapacity,enginePower,tr
         console.log('search:', val);
     }
 
-    const onInputChange = (a,b)=>{
-        console.log(a,b)
+    const onInputChange = (value)=>{
+        if(typeof value==='number'){
+            console.log('setting')
+            setFieldValue('enginePower',value)
+        }
     }
 
     return (
@@ -104,12 +106,13 @@ const AddListingFormSpecs = ({fuelEconomy,fuelType,engineCapacity,enginePower,tr
                     <Option name={'engineCapacity'} key={8} value={8}>Other</Option>
                 </Select>
                 <InputNumber
-                    // style={{borderRadius:0}}
+                    type={'number'}
                     min={10}
                     max={2000}
                     step={50}
+                    precision={0}
                     defaultValue={enginePower}
-                    onChange={(value)=>setFieldValue('enginePower',value)}
+                    onChange={onInputChange}
                     placeholder={'Power'}
                 />
 

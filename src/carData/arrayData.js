@@ -46,11 +46,11 @@ const formatAndFetchForAntD = ()=>{
                 label:model
             }
         })
-        console.log({
-            value,
-            label,
-            children
-        })
+        // console.log({
+        //     value,
+        //     label,
+        //     children
+        // })
         return {
             value,
             label,
@@ -61,7 +61,7 @@ const formatAndFetchForAntD = ()=>{
 }
 
 const formatAndFetchForAntDTreeSelect = ()=>{
-    console.log('fetching makes and models ANTD tree select')
+    // console.log('fetching makes and models ANTD tree select')
     const textByLine = text.toString().split("\n")
     return textByLine.map((line)=>{
         const l = line.split(",")
@@ -76,12 +76,12 @@ const formatAndFetchForAntDTreeSelect = ()=>{
                 key:model,
             }
         })
-        console.log({
-            title,
-            value,
-            key,
-            children
-        })
+        // console.log({
+        //     title,
+        //     value,
+        //     key,
+        //     children
+        // })
         return {
             title,
             value,

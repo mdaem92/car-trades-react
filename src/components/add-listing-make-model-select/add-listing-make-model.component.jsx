@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Cascader, InputNumber, Radio, Select} from "antd";
+import {Cascader, InputNumber, Radio, Select,DatePicker} from "antd";
 import {antDCarData} from "../../carData/arrayData";
 import {GridContainer,SelectContainer,LabelContainer} from "./add-listing-make-model.styles";
 import {connect} from "react-redux";
@@ -11,6 +11,8 @@ import {
     seatCountSelector
 } from "../../redux/add-listing-form/add-listing-form.selectors";
 import {setFieldValue} from "../../redux/add-listing-form/add-listing-form.actions";
+import moment from "moment";
+
 
 const {Option} = Select
 
@@ -40,6 +42,7 @@ const AddListingMakeModel = ({condition,make,model,bodyType,seatCount,mileage,se
         setFieldValue(name,value)
     }
 
+
     const onCascaderChange = (value)=>{
         console.log(value)
         const [make,model]=value
@@ -49,6 +52,7 @@ const AddListingMakeModel = ({condition,make,model,bodyType,seatCount,mileage,se
     }
 
     const filter = (inputValue, path) =>{
+
         return path.some(option => option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1);
     }
     return (
@@ -64,6 +68,12 @@ const AddListingMakeModel = ({condition,make,model,bodyType,seatCount,mileage,se
                     <Radio.Button style={{borderRadius:0,width:'60px'}} value="new">New</Radio.Button>
                     <Radio.Button style={{borderRadius:0,width:'60px'}} value="used">Used</Radio.Button>
                 </Radio.Group>
+                <DatePicker
+                    onChange={(value)=>console.log(value.format('YYYY-MM-DD'))}
+                    placeholder={'Select registered'}
+                    onSearch={(value)=>console.log(value)}
+                    title={'sdadsa'}
+                />
                 <Cascader
                     style={{borderRadius:0}}
                     options={antDCarData}
@@ -114,6 +124,8 @@ const AddListingMakeModel = ({condition,make,model,bodyType,seatCount,mileage,se
                 </Select>
                 <InputNumber
                     style={{borderRadius:0}}
+                    precision={0}
+                    type={'number'}
                     min={0}
                     max={500000}
                     step={500}

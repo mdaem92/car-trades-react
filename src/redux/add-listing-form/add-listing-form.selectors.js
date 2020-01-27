@@ -71,3 +71,7 @@ export const isAppraisalRequested = createSelector(
     addListingFormSelector,
     addListingForm=>addListingForm.isAppraisalRequested
 )
+export const addListingErrorMessageSelector = createSelector(
+    addListingFormSelector,
+    addListingForm=>addListingForm.errorMessage
+)

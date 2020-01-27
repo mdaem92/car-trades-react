@@ -21,14 +21,14 @@ const PicturesWall =({uploadedList,setFileList})=> {
     const [state,setState] = useState({
         previewVisible: false,
         previewImage: '',
-        fileList: [
-            // {
-            //     uid: '-1',
-            //     name: 'image.png',
-            //     status: 'done',
-            //     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-            // },
-        ],
+        // fileList: [
+        //     // {
+        //     //     uid: '-1',
+        //     //     name: 'image.png',
+        //     //     status: 'done',
+        //     //     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        //     // },
+        // ],
     })
     useEffect(()=>{
         console.log('current state:',state)
@@ -49,14 +49,16 @@ const PicturesWall =({uploadedList,setFileList})=> {
   }
 
     const handlePreview = async file => {
-        console.log('handlePreview',file.originFileObj)
-        if (!file.originFileObj.url && !file.preview) {
+        console.log('handlePreview',file.url)
+        if (!file.url && !file.preview) {
             file.preview = await getBase64(file.originFileObj);
         }
-        console.log('file url: ',file.originFileObj.url)
+        // console.log('originFileObj url: ',file.originFileObj.url)
+        console.log('file url: ',file.url)
+
         setState({
             ...state,
-            previewImage: file.originFileObj.url || file.preview,
+            previewImage: file.url || file.preview,
             previewVisible: true,
         });
     };
@@ -71,6 +73,10 @@ const PicturesWall =({uploadedList,setFileList})=> {
     }
     const handleCancel = ()=>{
         console.log('cancelling')
+        setState({
+            ...state,
+            previewVisible:false
+        })
     }
     const beforeUpload = (file) => {
         console.log('before upload: ',file)
@@ -110,6 +116,7 @@ const PicturesWall =({uploadedList,setFileList})=> {
             }
         );
     }
+
     const customUpload = async ({ onError, onSuccess,onProgress, file }) => {
         console.log('uploading')
         const storage = firebase.storage()
@@ -130,7 +137,7 @@ const PicturesWall =({uploadedList,setFileList})=> {
             file.url=url
             setFileList([
                 ...uploadedList,
-                file
+               file
             ])
             console.log('file after upload: ', file)
             // onProgress({ percent: Math.round(loaded / total * 100).toFixed(2) }, file)

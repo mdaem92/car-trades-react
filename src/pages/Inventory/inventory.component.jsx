@@ -14,6 +14,8 @@ import InventoryResultsOverview from "../../components/inventory-results-overvie
 import {Pagination,Affix} from 'antd'
 import {createStructuredSelector} from "reselect";
 import {isFixedSelector} from "../../redux/inventory-filters/inventory-filters.selectors";
+import InventoryListingPreviewList
+    from "../../components/inventory-listing-preview-list/inventory-listing-preview-list.component";
 
 const InventoryPage = ({affixed})=>{
     return(
@@ -41,12 +43,7 @@ const InventoryPage = ({affixed})=>{
                 </InventoryFiltersContainer>
                 <InventoryListingsContainer>
                     <InventoryResultsOverview/>
-                    <ListingPreview/>
-                    <ListingPreview/>
-                    <ListingPreview/>
-                    <ListingPreview/>
-                    <ListingPreview/>
-                    <ListingPreview/>
+                    <InventoryListingPreviewList/>
                     <Pagination className={'pagination'} size="small" total={5000} showSizeChanger showQuickJumper />
                 </InventoryListingsContainer>
 
