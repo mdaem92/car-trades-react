@@ -6,16 +6,10 @@ import ListingPreview from "../listing-preview/listing-preview.component";
 import {fetchListingsStart} from "../../redux/listing/listing.actions";
 
 
-const InventoryListingPreviewList = ({listings,fetchListings}) =>{
-
-    // useEffect(()=>{
-    //     fetchListings()
-    //     console.log('fetching')
-    // },[fetchListings])
+const InventoryListingPreviewList = ({listings}) =>{
 
     return (
         listings.map(({loading,isAppraisalRequested,...otherProps})=>{
-            console.log('listings props',otherProps)
             return(<ListingPreview key={otherProps.id}{...otherProps}/>)
         })
     )

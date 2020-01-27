@@ -1,7 +1,17 @@
 import {InventoryFiltersActionTypes} from "./inventory-filters.types";
 
 const inventoryFiltersDefaultState = {
-    isFixed:false
+    isFixed:false,
+    conditions:[],
+    make:undefined,
+    model:undefined,
+    mileage:[],
+    price:[],
+    year:[],
+    colors:[],
+    fuelTypes:[],
+    transmissions:[],
+    prevOwners:[]
 }
 
 export default (state=inventoryFiltersDefaultState,action)=>{

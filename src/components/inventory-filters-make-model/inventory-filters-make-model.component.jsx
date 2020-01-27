@@ -4,8 +4,11 @@ import {antDCarData,treeSelectCarData} from "../../carData/arrayData";
 import {GroupContainer} from "./inventory-filters-make-model.styles";
 
 const InventoryFiltersMakeModel = ({isHomepage}) => {
-    const onChange = (e)=>{
+    const onMakeModelChange = (e)=>{
         console.log(e)
+    }
+    const onRadioChange = (value)=>{
+        console.log(value)
     }
     const filter = (inputValue, path) =>{
         return path.some(option => option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1);
@@ -15,6 +18,7 @@ const InventoryFiltersMakeModel = ({isHomepage}) => {
             {
                 !isHomepage &&
                 <Radio.Group
+                    // onChange={onRadioChange}
                     className={'item'}
                 >
                     <Radio value={'new'}>New</Radio>
@@ -26,7 +30,7 @@ const InventoryFiltersMakeModel = ({isHomepage}) => {
                 className={'item'}
                 options={antDCarData}
                 name={'make'}
-                onChange={onChange}
+                onChange={onMakeModelChange}
                 changeOnSelect
                 placeholder={'Select Make and Model'}
                 popupPlacement={'bottomLeft'}

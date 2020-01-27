@@ -9,7 +9,6 @@ import createSagaMiddleware from 'redux-saga'
 import {addListingStart, onAddListingStart, onFetchListingsStart} from "./listing/listing.saga";
 import rootSaga from "./rootSaga";
 
-console.log('middleware',createSagaMiddleware)
 const sagaMiddleware = createSagaMiddleware()
 const middlewares = [sagaMiddleware]
 if(process.env.NODE_ENV==='development'){

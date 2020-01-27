@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Footer from "../../components/footer/footer.component";
 import {GridContainer,BackgroundImageContainer,SearchContainer,SearchLabelContainer} from "./homepage.styles";
 import HomepageImageCarousel from "../../components/homepage-image-carousel/homepage-image-carousel.component";
