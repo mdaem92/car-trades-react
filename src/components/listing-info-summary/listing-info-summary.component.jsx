@@ -1,5 +1,4 @@
 import React from 'react'
-import {connect}from 'react-redux'
 import {ListingInfoSummaryContainer} from './listing-info-summary.styles'
 import SummaryItem from "../summary-item/summary-item.component";
 import {ReactComponent as Engine} from '../../assets/car icons/engine.svg';
@@ -8,28 +7,35 @@ import {ReactComponent as Gear} from '../../assets/car icons/gearshift.svg'
 import {ReactComponent as Gauge} from '../../assets/car icons/ui.svg'
 import {ReactComponent as Car} from '../../assets/car icons/car.svg'
 import {ReactComponent as Seat} from '../../assets/car icons/seat.svg'
-import {createStructuredSelector} from "reselect";
 
 
-const ListingInfoSummary = ()=>{
+const ListingInfoSummary = (
+    {
+        engineCapacity,
+        fuelType,
+        transmission,
+        fuelEconomy,
+        bodyType,
+        seatCount,
+    })=>{
     return (
         <ListingInfoSummaryContainer>
-            <SummaryItem title={'1.5 L'} >
+            <SummaryItem title={`${engineCapacity}`} >
                 <Engine className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem title={'Hybrid'} >
+            <SummaryItem title={`${fuelType}`} >
                 <Fuel className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem title={'Automatic'} >
+            <SummaryItem title={`${transmission}`} >
                 <Gear className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem title={'50 MPG'} >
+            <SummaryItem title={`${fuelEconomy} Mpg`} >
                 <Gauge className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem title={'Coupe'} >
+            <SummaryItem title={`${bodyType}`} >
                 <Car className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem title={'2'} >
+            <SummaryItem title={`${seatCount}`} >
                 <Seat className={'summary-icon'}/>
             </SummaryItem>
 
@@ -37,9 +43,7 @@ const ListingInfoSummary = ()=>{
     )
 }
 
-const mapStateToProps = createStructuredSelector({
 
-})
 
-export default connect()(ListingInfoSummary)
+export default ListingInfoSummary
 

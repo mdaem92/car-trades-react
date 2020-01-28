@@ -40,16 +40,21 @@ export default (state=addListingFormDefaultState,action)=>{
             }
         case AddListingFormActionTypes.RESET_FORM:
             return addListingFormDefaultState
-        case AddListingFormActionTypes.SET_FILE_LIST:
+        case AddListingFormActionTypes.ADD_IMAGE:
             return{
                 ...state,
-                imageFileList:action.fileList
+                imageFileList:[...state.imageFileList,action.image]
             }
         case AddListingFormActionTypes.SET_PRICE:
             return{
                 ...state,
                 price:action.price,
                 isAppraisalRequested:false
+            }
+        case AddListingFormActionTypes.SET_FILE_LIST:
+            return{
+                ...state,
+                imageFileList:action.fileList
             }
         case AddListingFormActionTypes.REQUEST_APPRAISAL:
             return{

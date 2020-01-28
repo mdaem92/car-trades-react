@@ -15,35 +15,45 @@ import {ReactComponent as CarKey} from '../../assets/car icons/car-key.svg'
 
 
 
-const ListingPreviewSpecifications = ()=>{
+const ListingPreviewSpecifications = (
+    {
+        mileage,
+        fuelType,
+        engineCapacity,
+        seatCount,
+        transmission,
+        fuelEconomy,
+        bodyType,
+        enginePower,
+    })=>{
 
     return (
         <ListingPreviewSpecificationsGrid>
-            <SummaryItem description={'Engine Capacity'} title={'1.5 L'} isExtended>
+            <SummaryItem description={'Engine Capacity'} title={`${engineCapacity}`} isExtended>
                 <Engine className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem description={'Fuel Type'} title={'Gas'} isExtended>
+            <SummaryItem description={'Fuel Type'} title={`${fuelType}`} isExtended>
                 <Fuel className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem description={'Transmission'} title={'Automatic'} isExtended>
+            <SummaryItem description={'Transmission'} title={`${transmission}`} isExtended>
                 <Gear className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem description={'Fuel Economy'} title={'50MPG'} isExtended>
+            <SummaryItem description={'Fuel Economy'} title={`${fuelEconomy}`} isExtended>
                 <Gauge className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem description={'Body Type'} title={'Coupe'} isExtended>
+            <SummaryItem description={'Body Type'} title={`${bodyType}`} isExtended>
                 <Car className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem description={'Seats'} title={'2'} isExtended>
+            <SummaryItem description={'Seats'} title={`${seatCount}`} isExtended>
                 <Seat className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem description={'AC'} title={'Dual Automatic'} isExtended>
+            <SummaryItem description={`AC`} title={`Dual Auto`} isExtended>
                 <AC className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem description={'Engine Power'} title={'195hp'} isExtended>
+            <SummaryItem description={'Engine Power'} title={`${enginePower} Hp`} isExtended>
                 <Power className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem description={'Previous Owners'} title={'1'} isExtended>
+            <SummaryItem description={'Mileage'} title={`${mileage} Km`} isExtended>
                 <CarKey className={'summary-icon'}/>
             </SummaryItem>
         </ListingPreviewSpecificationsGrid>

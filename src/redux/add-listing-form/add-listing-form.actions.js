@@ -14,6 +14,10 @@ export const setFieldValue = (name,value)=>({
 export const resetForm = ()=>({
     type:AddListingFormActionTypes.RESET_FORM,
 })
+export const addImage = (image)=>({
+    type:AddListingFormActionTypes.ADD_IMAGE,
+    image
+})
 export const setFileList = (fileList)=>({
     type:AddListingFormActionTypes.SET_FILE_LIST,
     fileList

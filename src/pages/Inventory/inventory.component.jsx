@@ -19,11 +19,15 @@ import InventoryListingPreviewList
 import InventoryListingPreviewListContainer
     from "../../components/inventory-listing-preview-list/inventory-listing-preview-list-container";
 import {fetchListingsStart} from "../../redux/listing/listing.actions";
+import {isListingsCollectedSelector} from "../../redux/listing/listing.selectors";
 
 
-const InventoryPage = ({affixed,fetchListings})=>{
+const InventoryPage = ({affixed,fetchListings,isListingsCollected})=>{
     useEffect(()=>{
-        fetchListings()
+        if(!isListingsCollected){
+            fetchListings()
+        }
+
     },[fetchListings])
     return(
         <BackgroundContainer >
@@ -61,7 +65,8 @@ const InventoryPage = ({affixed,fetchListings})=>{
     )
 }
 const mapStateToProps = createStructuredSelector({
-    affixed:isFixedSelector
+    affixed:isFixedSelector,
+    isListingsCollected:isListingsCollectedSelector
 })
 const mapDispatchToProps = (dispatch)=>({
     fetchListings:()=>dispatch(fetchListingsStart())

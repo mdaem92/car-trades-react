@@ -17,9 +17,9 @@ export const addListingStart = (listingData)=>({
     type:ListingsActionTypes.ADD_LISTING_START,
     listingData
 })
-export const addListingSuccess = ()=>({
+export const addListingSuccess = (newListing)=>({
     type:ListingsActionTypes.ADD_LISTING_SUCCESS,
-
+    // newListing
 })
 export const addListingFailure = (errorMessage)=>({
     type:ListingsActionTypes.ADD_LISTING_FAILURE,

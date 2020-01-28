@@ -12,8 +12,12 @@ export const isListingsLoadingSelector = createSelector(
     listings=>listings.isListingsLoading
 )
 
-// export const getFieldSelector = createSelector(
-//     listingsSelector,
-// )
+export const isListingsCollectedSelector = createSelector(
+    inventoryListingsSelector,
+    listings=>{
+        console.log('size of inventory listings: ',listings.length )
+        return listings.length>0
+    }
+)
 
 

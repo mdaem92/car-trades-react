@@ -5,7 +5,7 @@ import firebase,{firestore} from '../../firebase/firebase.utils'
 import shortid from 'shortid'
 import {ImageUploadContainer} from "./image-upload.styles";
 import {createStructuredSelector} from "reselect";
-import {setFileList} from "../../redux/add-listing-form/add-listing-form.actions";
+import {addImage, setFileList} from "../../redux/add-listing-form/add-listing-form.actions";
 import{fileListSelector} from "../../redux/add-listing-form/add-listing-form.selectors";
 
 function getBase64(file) {
@@ -17,7 +17,7 @@ function getBase64(file) {
     });
 }
 
-const PicturesWall =({uploadedList,setFileList})=> {
+const PicturesWall =({uploadedList,addImage,setFileList})=> {
     const [state,setState] = useState({
         previewVisible: false,
         previewImage: '',
@@ -35,13 +35,15 @@ const PicturesWall =({uploadedList,setFileList})=> {
     },[state])
 
   const handleRemove= async(file)=>{
+        console.log('file to delete:',file)
+      console.log('uploaded list:' ,uploadedList)
       const storage = firebase.storage()
       const storageRef = await storage.ref()
-      const imageName = file.name
-      const imgFile = storageRef.child(`images/${imageName}`)
+      const uid = file.uid
+      const imgFile = storageRef.child(`images/${uid}`)
       try{
           await imgFile.delete()
-          const newUploadedList = uploadedList.filter((item)=>item.name!==imageName)
+          const newUploadedList = uploadedList.filter((item)=>item.uid!==uid)
           setFileList(newUploadedList)
       }catch(e){
           console.log(e)
@@ -118,14 +120,14 @@ const PicturesWall =({uploadedList,setFileList})=> {
     }
 
     const customUpload = async ({ onError, onSuccess,onProgress, file }) => {
-        console.log('uploading')
+        console.log('uploading',file)
         const storage = firebase.storage()
         const metadata = {
             contentType: 'image/jpeg'
         }
         const storageRef = await storage.ref()
         // const imageName = shortid.generate() //a unique name for the image
-        const imageName = file.name
+        const imageName = file.uid
 
         // const imgFile = storageRef.child(`images/${imageName}.png`)
         const imgFile = storageRef.child(`images/${imageName}`)
@@ -135,10 +137,8 @@ const PicturesWall =({uploadedList,setFileList})=> {
             const image = await imgFile.put(file, metadata);
             const url = await imgFile.getDownloadURL()
             file.url=url
-            setFileList([
-                ...uploadedList,
-               file
-            ])
+            console.log('setFileList:',file)
+            addImage(file)
             console.log('file after upload: ', file)
             // onProgress({ percent: Math.round(loaded / total * 100).toFixed(2) }, file)
             console.log('url',url)
@@ -188,6 +188,7 @@ const mapStateToProps = createStructuredSelector({
     uploadedList:fileListSelector
 })
 const mapDispatchToProps = (dispatch)=>({
+    addImage:(image)=>dispatch(addImage(image)),
     setFileList:(fileList)=>dispatch(setFileList(fileList))
 })
 export default connect(mapStateToProps,mapDispatchToProps)(PicturesWall)

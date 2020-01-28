@@ -10,8 +10,9 @@ import {CarouselContainer} from "./listing-preview-image-slider.styles";
 import {items} from './temoporary-items'
 import ListingPreviewImageGallery from "../listing-preview-image-gallery/listing-preview-image-gallery.component";
 
-const ListingPreviewImageSlider = (props) => {
+const ListingPreviewImageSlider = ({images}) => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [tempImages,setTempImages] = useState(images)
     const [animating, setAnimating] = useState(false);
 
     const next = () => {
@@ -30,7 +31,16 @@ const ListingPreviewImageSlider = (props) => {
         if (animating) return;
         setActiveIndex(newIndex);
     }
-
+    const createItems = (num)=>{
+        console.log('creating items',num)
+        if(!!num)return null
+        const count = parseInt(num/3)
+        const result = [...Array(count).keys()].map(item=>({id:item,items:[...Array(count)]}))
+        console.log('create items',result)
+        return result
+    }
+    console.log(`this listing has ${images.length} images`)
+    // const items = [...Array(Math.ceil(images.length/3)).keys()]
     const slides = items.map((item) => {
         return (
             <CarouselItem
@@ -41,7 +51,10 @@ const ListingPreviewImageSlider = (props) => {
                 onExited={() => setAnimating(false)}
             >
                 {/*items must have id */}
-                <ListingPreviewImageGallery/>
+                <ListingPreviewImageGallery
+                    key={item.id}
+                    // images={tempImages.splice(0,3)}
+                />
 
             </CarouselItem>
         );

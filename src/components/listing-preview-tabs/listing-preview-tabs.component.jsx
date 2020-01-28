@@ -15,6 +15,7 @@ import OptionsList from "../listing-preview-options-list/listing-preview-options
 
 const ListingPreviewTabs = (props)=>{
     const {imageFileList,...specs} = props
+
     const [activeTab, setActiveTab] = useState('1');
 
     const toggle = tab => {

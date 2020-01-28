@@ -53,7 +53,6 @@ const ListingPreview = (
         showModal:false,
         showConfirm:false
     })
-    // const [isOpen,setIsOpen] = React.useState(false)
 
     const {isOpen,showModal,showConfirm} =state
     return (
@@ -62,7 +61,7 @@ const ListingPreview = (
             <ListingImage className='image' imageUrl={imageFileList?imageFileList[0].url:imageFileList} />
             <ListingInfoCell>
                 <ListingCondition pill color={'primary'} >{condition.toUpperCase()}</ListingCondition>
-                <span className={'text'}>{year} {make} {model} </span>
+                <span className={'text'}>{year} {make} {model.trim()} </span>
             </ListingInfoCell>
             <ListingPriceContainer>${price}</ListingPriceContainer>
             <ListingInfoSummaryContainer>

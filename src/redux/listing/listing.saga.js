@@ -9,6 +9,8 @@ export function* addListingAsync({listingData}){
     console.log('from saga ',listingData )
     const {isSubmitted,currentStep,isLoading,imageFileList,...otherProps} =listingData
     const convertedImageList = imageFileList.map((obj)=> Object.assign({}, obj));
+    console.log('converted images',convertedImageList)
+    console.log('original images',imageFileList)
     yield console.log('add listing async')
     try{
         yield put(setFieldValue('loading',true))
@@ -30,7 +32,6 @@ const getListingsFromSnapshot = (snapshot)=>{
             id:doc.id,
             ...doc.data()
         }
-
     })
 }
 export function* fetchListingsAsync(){
