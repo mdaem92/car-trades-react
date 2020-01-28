@@ -2,13 +2,13 @@ import React from 'react'
 import {ImageGalleryGridContainer,Image1,Image2,Image3} from './listing-preview-image-gallery.styles'
 
 
-const ListingPreviewImageGallery = ({page,images})=>{
+const ListingPreviewImageGallery = ({images})=>{
     return (
         <div>
             <ImageGalleryGridContainer>
-                <Image1 image={require('../../assets/t3.jpg')}/>
-                <Image2 image={require('../../assets/t2.jpg')}/>
-                <Image3 image={require('../../assets/t1.jpg')}/>
+                <Image1 image={images[0]?images[0].url:images}/>
+                <Image2 image={images[1]?images[1].url:images}/>
+                <Image3 image={images[2]?images[2].url:images}/>
                 {
                     console.log('images in gallery: ',images)
                 }

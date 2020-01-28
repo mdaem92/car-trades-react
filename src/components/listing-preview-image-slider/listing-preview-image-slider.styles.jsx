@@ -20,40 +20,25 @@ export const CarouselContainer = styled.div`
     //left:-45px ;
     margin-right: 100px;
    }
-   .carousel-control-prev{
-    
 
-   }
-   .carousel-control-next{
-
-    
-   }
-   
-   
-
-  .carousel-indicators{
-    //margin-top: 20px;
+ .ant-carousel .slick-slide {
+  text-align: center;
+  //height: 160px;
+  //line-height: 160px;
+  //background: #364d79;
+  //overflow: hidden;
+ 
 }
+  .ant-carousel .slick-dots li {
+    background-color: grey;
+    
+  }
+ .ant-carousel .slick-dots li.slick-active button:hover,
+ .ant-carousel .slick-dots li.slick-active button:focus ,
+ .ant-carousel .slick-dots li.slick-active button{
+  background-color: #357ae8;!important;
+ }
 
-//.carousel-control-next-icon:after
-//{
-//  content: '\u2bc8';
-//  font-size: 30px;
-//  font-weight: bold;
-//  color: grey;
-//  //margin-left: 20px;
-//}
-////
-//.carousel-control-prev-icon:after {
-//  content: '\u2bc7';
-//  font-size: 30px;
-//  font-weight: bold;
-//  color: grey;
-//  margin-left: 20px;
-//}
 
-.carousel-indicators li {
-  background-color: grey;
-}
 
 `
