@@ -46,10 +46,10 @@ export default (state=listingReducerDefault,action)=>{
         case ListingsActionTypes.ADD_LISTING_SUCCESS:
             return{
                 ...state,
-                // listings:[
-                //     ...state.listings,
-                //     action.newListing
-                // ],
+                listings:[
+                    ...state.listings,
+                    action.newListing
+                ],
                 isListingsLoading:false
             }
         case ListingsActionTypes.ADD_LISTING_FAILURE:

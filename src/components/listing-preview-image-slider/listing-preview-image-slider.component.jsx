@@ -17,7 +17,7 @@ const ListingPreviewImageSlider = ({images}) => {
     });
     return (
         <CarouselContainer>
-            <Carousel autoplay={false} dots> {slides} </Carousel>
+            <Carousel autoplay={false} dots swipe> {slides} </Carousel>
         </CarouselContainer>
     );
 }

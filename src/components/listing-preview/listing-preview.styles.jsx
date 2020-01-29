@@ -48,6 +48,7 @@ export const ListingImage = styled.div`
 `
 export const ListingCondition = styled(Badge)`
   width: 100px;
+  border-radius: 1px;
 `
 export const ListingInfoCell = styled.div`
   width: 100%;
@@ -55,7 +56,7 @@ export const ListingInfoCell = styled.div`
   //border-radius: 20%/50%;
   display: flex;
   flex-direction: column;
-  padding: 5px;
+  padding-left: 20px;
 `
 
 
@@ -104,9 +105,21 @@ export const ListingPriceContainer = styled.h3`
   font-size: ${priceFontSize};
   text-align: center;
   font-weight: bold;
+  color:#58575f;
   //padding: 50px 30px;
   margin-bottom: 0;
   margin-top: 50px;
+  .currency{
+ 
+    fill: #58575f;
+
+    height: 25px;
+    width: auto;
+    margin-bottom: 5px;
+    margin-right: -5px;
+    
+    
+  }
   //background-image: linear-gradient(rgba(0, 123, 255, 0.6), white);
   @media screen and (max-width: 800px){
     font-size: 15px;
@@ -146,6 +159,17 @@ export const ListingPreviewFooterPriceContainer=styled.h2`
   font-weight: bold;
   font-size: ${priceFontSize};
   margin-bottom: 0;
+  .currency{
+ 
+    fill: ${blue};
+
+    height: 25px;
+    width: auto;
+    margin-bottom: 5px;
+    margin-right: -5px;
+    
+  }
+  
   //margin-top: 10px;
   
 `

@@ -8,6 +8,7 @@ const addListingFormDefaultState = {
     mileage:undefined,
     bodyType:undefined,
     seatCount:undefined,
+    registered:undefined,
     // prevOwners:undefined,
     fuelEconomy:undefined,
     fuelType:undefined,

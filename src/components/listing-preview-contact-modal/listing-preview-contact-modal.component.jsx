@@ -6,12 +6,13 @@ const ListingPreviewContactModal = ({onCancel,onOk,...otherProps}) => {
         <Modal
             title="Contact dealer"
             centered
+            closable={false}
             footer={[
                 <Button
                     key="back
                     " onClick={onCancel}
                 >
-                    Return
+                    Cancel
                 </Button>,
                 <Button
                     key="submit"

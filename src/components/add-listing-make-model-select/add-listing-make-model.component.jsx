@@ -69,7 +69,8 @@ const AddListingMakeModel = ({condition,make,model,bodyType,seatCount,mileage,se
                     <Radio.Button style={{borderRadius:0,width:'60px'}} value="used">Used</Radio.Button>
                 </Radio.Group>
                 <DatePicker
-                    onChange={(value)=>console.log(value.format('YYYY-MM-DD'))}
+                    // onChange={(value)=>console.log(value.format('YYYY-MM-DD'))}
+                    onChange={(value)=>value?setFieldValue('registered',parseInt(value.format('YYYY'))):setFieldValue('registered',undefined)}
                     placeholder={'Select registered'}
                     onSearch={(value)=>console.log(value)}
                     title={'sdadsa'}

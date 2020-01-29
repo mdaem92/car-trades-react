@@ -1,4 +1,5 @@
 import React from 'react'
+import {ReactComponent as Dollar} from "../../assets/dollar-currency-sign.svg";
 import {
     ListingContainer,
     ListingImage,
@@ -13,7 +14,7 @@ import {
     ListingPreviewFooterPriceContainer,
     ListingPreviewFooter,
 } from './listing-preview.styles'
-import {message} from 'antd'
+import {message,Icon} from 'antd'
 import ListingInfoSummary from "../listing-info-summary/listing-info-summary.component";
 import ListingPreviewTabs from "../listing-preview-tabs/listing-preview-tabs.component";
 import ListingPreviewContactModal from "../listing-preview-contact-modal/listing-preview-contact-modal.component";
@@ -34,7 +35,7 @@ const ListingPreview = (
         imageFileList,
         transmission,
         price,
-        year
+        registered
 
     })=>{
         const listingData = {
@@ -60,10 +61,10 @@ const ListingPreview = (
         <ListingContainer >
             <ListingImage className='image' imageUrl={imageFileList?imageFileList[0].url:imageFileList} />
             <ListingInfoCell>
-                <ListingCondition pill color={'primary'} >{condition.toUpperCase()}</ListingCondition>
-                <span className={'text'}>{year} {make} {model.trim()} </span>
+                <ListingCondition color={'primary'} >{condition.toUpperCase()}</ListingCondition>
+                <span className={'text'}>{registered} {make} {model.trim()} </span>
             </ListingInfoCell>
-            <ListingPriceContainer>${price}</ListingPriceContainer>
+            <ListingPriceContainer><Dollar className={'currency'}>$</Dollar>{price}</ListingPriceContainer>
             <ListingInfoSummaryContainer>
                 <ListingInfoSummary {...listingData}/>
             </ListingInfoSummaryContainer>
@@ -85,7 +86,7 @@ const ListingPreview = (
                     {/*<CardBody >*/}
                     <ListingPreviewTabs {...listingData}/>
                     <ListingPreviewFooter>
-                        <ListingPreviewFooterPriceContainer>${price}</ListingPreviewFooterPriceContainer>
+                        <ListingPreviewFooterPriceContainer><Dollar className={'currency'}>$</Dollar>{price}</ListingPreviewFooterPriceContainer>
                         <ToggleDetailsButton
                             color={'primary'}
                             isFooter={true}
@@ -99,16 +100,21 @@ const ListingPreview = (
                         <ListingPreviewContactModal
                             visible={showModal}
                             onOk={()=>{
+                                console.log('closing')
                                 setState({
                                 ...state,
                                 showModal: false,
                                 })
                                 message.success('Message sent.')
                             }}
-                            onCancel={()=>setState({
+                            onCancel={()=>{
+                                console.log('cancelling')
+                                setState({
                                 ...state,
                                 showModal: false
-                            })}
+                                })
+                            }}
+
                         />
                     </ListingPreviewFooter>
 
@@ -119,4 +125,4 @@ const ListingPreview = (
 
     )
 }
-export default ListingPreview
+export default React.memo(ListingPreview)

@@ -1,8 +1,8 @@
 import {createSelector}from 'reselect'
 
-const inventorySelector = state=>state.inventoryFilters
+export const inventoryFiltersSelector = state=>state.inventoryFilters
 
 export const isFixedSelector = createSelector(
-    inventorySelector,
+    inventoryFiltersSelector,
     (inventoryFilters)=>inventoryFilters.isFixed
 )

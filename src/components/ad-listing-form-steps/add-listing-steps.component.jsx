@@ -35,8 +35,8 @@ const AddListingSteps = ({history,current,loading,next,prev,formData,addListingS
     const isNextStepAllowed = ()=>{
         switch (current){
             case 0:{
-                const {condition,make,model,bodyType,seatCount,mileage} = formData
-                const firstStepData = {condition,make,model,bodyType,seatCount,mileage}
+                const {condition,make,model,bodyType,seatCount,mileage,registered} = formData
+                const firstStepData = {condition,make,model,bodyType,seatCount,mileage,registered}
                 console.log(Object.values(firstStepData))
                 return Object.values(firstStepData).includes(undefined)
             }

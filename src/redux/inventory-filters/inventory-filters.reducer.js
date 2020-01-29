@@ -2,16 +2,17 @@ import {InventoryFiltersActionTypes} from "./inventory-filters.types";
 
 const inventoryFiltersDefaultState = {
     isFixed:false,
-    conditions:[],
+    condition:'new',
     make:undefined,
     model:undefined,
-    mileage:[],
-    price:[],
-    year:[],
+    mileage:[0,0],
+    price:[0,0],
+    year:[0,0],
     colors:[],
     fuelTypes:[],
     transmissions:[],
-    prevOwners:[]
+    sortBy:'price',
+    sortType:'asc'
 }
 
 export default (state=inventoryFiltersDefaultState,action)=>{
@@ -20,6 +21,11 @@ export default (state=inventoryFiltersDefaultState,action)=>{
             return {
                 ...state,
                 isFixed:!state.isFixed
+            }
+        case InventoryFiltersActionTypes.SET_FIELD_VALUE:
+            return{
+                ...state,
+                [action.name]:action.value
             }
         default:
             return state

@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {Menu,Slider,InputNumber} from 'antd'
+import{connect}from 'react-redux'
 import {CustomSlider} from './inventory-filters-specs.styles'
+import {setFieldValue} from "../../redux/inventory-filters/inventory-filters.actions";
 const {SubMenu} = Menu
 
 
-const InventoryFiltersSpecs = ({name,min,max,isHomepage,...otherProps}) => {
-    const handleChange = (value,name)=>console.log(value,name)
-
+const InventoryFiltersSpecs = ({name,min,max,isHomepage,setFieldValue,...otherProps}) => {
+    const handleChange = (value,name)=>setFieldValue(name,value)
     const createMarks = ()=>{
         switch (name) {
             case 'year':
@@ -46,4 +47,7 @@ const InventoryFiltersSpecs = ({name,min,max,isHomepage,...otherProps}) => {
     );
 };
 
-export default InventoryFiltersSpecs;
+const mapDispatchToProps = (dispatch)=>({
+    setFieldValue:(name,value)=>dispatch(setFieldValue(name,value))
+})
+export default connect(undefined,mapDispatchToProps)(InventoryFiltersSpecs);

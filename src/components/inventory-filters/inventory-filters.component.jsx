@@ -1,10 +1,13 @@
 import React from 'react';
+import {connect}from 'react-redux';
 import {Menu, Icon} from 'antd';
 import {MenuContainer} from "./inventory-filters.styles";
 import InventoryFiltersMakeModel from "../inventory-filters-make-model/inventory-filters-make-model.component";
 import InventoryFiltersSpecs from "../inventory-filters-specs/inventory-filters-specs.component";
 import moment from 'moment'
 import InventoryFiltersOptionsTree from "../inventory-filters-options-tree/inventory-filters-options-tree.component";
+import {inventoryFiltersSelector} from "../../redux/inventory-filters/inventory-filters.selectors";
+import {createStructuredSelector} from "reselect";
 
 const { SubMenu } = Menu
 const SubMenuTitle = ({title,type})=>{
@@ -15,9 +18,10 @@ const SubMenuTitle = ({title,type})=>{
         </span>
     )
 }
-const InventoryFilters = ({isHomepage}) => {
+const InventoryFilters = ({isHomepage,filtersData}) => {
 
     const handleChange = (value,name)=>console.log(value,name)
+    const {year,price,mileage} = filtersData
     return (
             <MenuContainer
                 mode={isHomepage?"horizontal":"inline"}
@@ -47,6 +51,8 @@ const InventoryFilters = ({isHomepage}) => {
                             name={'price'}
                             step={500}
                             tipFormatter={(value)=>`$${value}`}
+                            defaultValue={price}
+
                         />
                     </SubMenu>
                     <SubMenu key="mileage" title="Mileage">
@@ -58,6 +64,8 @@ const InventoryFilters = ({isHomepage}) => {
                             step={500}
                             tipFormatter={(value)=>`${value}Km`}
                             name={'mileage'}
+                            defaultValue={mileage}
+
                             // onChange={(value,name)=>handleChange(value,'mileage')}
                         />
                     </SubMenu>
@@ -70,6 +78,7 @@ const InventoryFilters = ({isHomepage}) => {
                             step={1}
                             name={'year'}
                             tipFormatter={(value)=>`${value}`}
+                            defaultValue={year}
                             // onChange={(value,name)=>handleChange(value,'year')}
                         />
                     </SubMenu>
@@ -93,5 +102,7 @@ const InventoryFilters = ({isHomepage}) => {
 
     );
 };
-
-export default InventoryFilters;
+const mapStateToProps = createStructuredSelector({
+    filtersData:inventoryFiltersSelector
+})
+export default connect(mapStateToProps)(InventoryFilters);
