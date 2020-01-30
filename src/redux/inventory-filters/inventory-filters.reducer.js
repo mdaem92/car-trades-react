@@ -25,7 +25,19 @@ export default (state=inventoryFiltersDefaultState,action)=>{
         case InventoryFiltersActionTypes.SET_FIELD_VALUE:
             return{
                 ...state,
+                // [action.name]:[...state[action.name],action.value]
                 [action.name]:action.value
+            }
+        case InventoryFiltersActionTypes.APPEND_OPTION:
+            return{
+                ...state,
+                [action.listName]:[...state[action.listName],action.value]
+            }
+        case InventoryFiltersActionTypes.REMOVE_OPTION:
+            console.log('reducer received: ',action.listName)
+            return{
+                ...state,
+                [action.listName]:state[action.listName].filter(item=>item!==action.value)
             }
         default:
             return state

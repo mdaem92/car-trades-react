@@ -8,3 +8,14 @@ export const setFieldValue = (name,value)=>({
     name,
     value
 })
+
+export const appendOption=(listName,value)=>({
+    type:InventoryFiltersActionTypes.APPEND_OPTION,
+    listName,
+    value
+})
+export const removeOption = (listName,value)=>({
+    type:InventoryFiltersActionTypes.REMOVE_OPTION,
+    listName,
+    value
+})
