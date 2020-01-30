@@ -38,8 +38,8 @@ const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,rem
         console.log('on change:',title)
         console.log('on change:',data)
         const{preValue,allCheckedNodes}=data
+
         //signifies deletion
-        // console.log(` conditional ${preValue.length}>${allCheckedNodes.length}`)
         if( allCheckedNodes && preValue.length>allCheckedNodes.length){
             const {key} = data.triggerNode
             console.log('key',key)
