@@ -39,6 +39,9 @@ export default (state=inventoryFiltersDefaultState,action)=>{
                 ...state,
                 [action.listName]:state[action.listName].filter(item=>item!==action.value)
             }
+        case InventoryFiltersActionTypes.RESET_FILTERS:{
+            return inventoryFiltersDefaultState
+        }
         default:
             return state
 

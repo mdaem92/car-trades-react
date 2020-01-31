@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {connect}from 'react-redux'
 import {createStructuredSelector} from "reselect";
-import {inventoryListingsSelector} from "../../redux/listing/listing.selectors";
+import {filteredListingsSelector, inventoryListingsSelector} from "../../redux/listing/listing.selectors";
 import ListingPreview from "../listing-preview/listing-preview.component";
 import {fetchListingsStart} from "../../redux/listing/listing.actions";
 
@@ -18,7 +18,8 @@ const InventoryListingPreviewList = ({listings}) =>{
 
 
 const mapStateToProps= createStructuredSelector({
-    listings:inventoryListingsSelector
+    // listings:inventoryListingsSelector
+    listings:filteredListingsSelector
 })
 const mapDispatchToProps = (dispatch)=>({
     fetchListings:()=>dispatch(fetchListingsStart())

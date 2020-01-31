@@ -19,3 +19,7 @@ export const removeOption = (listName,value)=>({
     listName,
     value
 })
+
+export const resetFilters = ()=>({
+    type:InventoryFiltersActionTypes.RESET_FILTERS,
+})

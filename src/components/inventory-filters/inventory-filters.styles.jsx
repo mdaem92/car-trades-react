@@ -8,6 +8,11 @@ const blue = '#357ae8'
 
 export const MenuContainer = styled(Menu)`
 
+   .reset-form-submenu{
+    .ant-menu-submenu-arrow{
+      display: none;
+    }
+   }
   .make-model{
     .ant-menu-submenu-popup{
       display: none;

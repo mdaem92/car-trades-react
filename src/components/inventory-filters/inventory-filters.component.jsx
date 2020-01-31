@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect}from 'react-redux';
-import {Menu, Icon} from 'antd';
+import {Menu, Icon, Button} from 'antd';
 import {MenuContainer} from "./inventory-filters.styles";
 import InventoryFiltersMakeModel from "../inventory-filters-make-model/inventory-filters-make-model.component";
 import InventoryFiltersSpecs from "../inventory-filters-specs/inventory-filters-specs.component";
@@ -8,6 +8,7 @@ import moment from 'moment'
 import InventoryFiltersOptionsTree from "../inventory-filters-options-tree/inventory-filters-options-tree.component";
 import {inventoryFiltersSelector} from "../../redux/inventory-filters/inventory-filters.selectors";
 import {createStructuredSelector} from "reselect";
+import {resetFilters} from "../../redux/inventory-filters/inventory-filters.actions";
 
 const { SubMenu } = Menu
 const SubMenuTitle = ({title,type})=>{
@@ -18,7 +19,7 @@ const SubMenuTitle = ({title,type})=>{
         </span>
     )
 }
-const InventoryFilters = ({isHomepage,filtersData}) => {
+const InventoryFilters = ({isHomepage,filtersData,resetFilters}) => {
 
     const handleChange = (value,name)=>console.log(value,name)
     const {year,price,mileage} = filtersData
@@ -90,14 +91,21 @@ const InventoryFilters = ({isHomepage,filtersData}) => {
                 >
                     <InventoryFiltersOptionsTree/>
                 </SubMenu>
+                <SubMenu
+                    className={'reset-form-submenu'}
+                    key={'reset'}
+                    title={ <SubMenuTitle title={'Reset filters'} type={'redo'} onClick={()=>console.log('clicking reset')}/>}
+                    onTitleClick={()=>resetFilters()}
 
-                {
-                    isHomepage &&
-                    <>
-                        <Icon className={'search-icon'} type="search" onClick={()=>console.log('clicking')}/>
-                    </>
+                />
 
-                }
+                {/*{*/}
+                {/*    isHomepage &&*/}
+                {/*    <>*/}
+                {/*        <Icon className={'search-icon'} type="search" onClick={()=>console.log('clicking')}/>*/}
+                {/*    </>*/}
+
+                {/*}*/}
             </MenuContainer>
 
     );
@@ -105,4 +113,7 @@ const InventoryFilters = ({isHomepage,filtersData}) => {
 const mapStateToProps = createStructuredSelector({
     filtersData:inventoryFiltersSelector
 })
-export default connect(mapStateToProps)(InventoryFilters);
+const mapDispatchToProps = (dispatch)=>({
+    resetFilters:()=>dispatch(resetFilters())
+})
+export default connect(mapStateToProps,mapDispatchToProps)(InventoryFilters);

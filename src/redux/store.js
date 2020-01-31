@@ -5,8 +5,6 @@ import storage from 'redux-persist/lib/storage'
 import rootReducer from "./rootReducer";
 import {parse, stringify} from 'flatted/esm';
 import createSagaMiddleware from 'redux-saga'
-
-import {addListingStart, onAddListingStart, onFetchListingsStart} from "./listing/listing.saga";
 import rootSaga from "./rootSaga";
 
 const sagaMiddleware = createSagaMiddleware()
