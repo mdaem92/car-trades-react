@@ -23,3 +23,7 @@ export const removeOption = (listName,value)=>({
 export const resetFilters = ()=>({
     type:InventoryFiltersActionTypes.RESET_FILTERS,
 })
+export const setOpenKeys = (keys)=>({
+    type: InventoryFiltersActionTypes.SET_OPEN_KEYS,
+    keys
+})

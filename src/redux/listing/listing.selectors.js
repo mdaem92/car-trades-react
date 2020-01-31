@@ -26,12 +26,12 @@ export const filteredListingsSelector = createSelector(
         const results= listings.filter(listing=>{
             const makeMatch = make?listing.make.toLowerCase()===make.toLowerCase():true
             const modelMatch = model? (model.trim().toLowerCase()===listing.model.trim().toLowerCase()||/(\b[1-9]|[A-Z]) ([^\s]+)\b/.test(model.trim().toLowerCase()) && model.startsWith(listing.model.trim().toLowerCase()[0])):true
-            const mileageMatch = !!mileage[1]?(listing.mileage >= mileage[0] && listing.mileage <= mileage[1] ):(listing.mileage>=mileage[0])
-            const priceMatch = !!price[1]?(listing.price >= price[0] && listing.price <= price[1]):(listing.price>=price[0])
+            const mileageMatch = !!mileage[1]?(listing.mileage >= mileage[0] && listing.mileage <= mileage[1] || mileage[1]>=200000 ):(listing.mileage>=mileage[0])
+            const priceMatch = !!price[1]?(listing.price >= price[0] && listing.price <= price[1] || price[1]>=150000):(listing.price>=price[0])
             const yearMatch = !!year[1]?(listing.registered>=year[0] && listing.registered<=year[1]):(listing.registered>=year[0])
-            const colorsMatch = !!colors.length?colors.includes(listing.color):true
-            const transmissionsMatch = !!transmissions.length?transmissions.includes(listing.transmission):true
-            const fuelTypesMatch = !!fuelTypes.length?fuelTypes.includes(listing.fuelType):true
+            const colorsMatch = !!colors.length?colors.includes(listing.color.toLowerCase())||colors[0]==='color':true
+            const transmissionsMatch = !!transmissions.length?transmissions.includes(listing.transmission.toLowerCase())||transmissions[0]==='transmission':true
+            const fuelTypesMatch = !!fuelTypes.length?fuelTypes.includes(listing.fuelType.toLowerCase())||fuelTypes[0]==='fuel':true
             const conditionMatch = condition? listing.condition.toLowerCase()===condition.toLowerCase():true
             console.log('this listing: ',listing)
             console.log(`${!!year[1]}?(${listing.registered} >= ${year[0]} && ${listing.registered} <= ${year[1]} ):(${listing.registered}>=${year[0]}) year match:${yearMatch} ${typeof year[0]} ${typeof listing.registered}`)

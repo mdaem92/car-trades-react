@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect}from 'react-redux';
 import {Menu, Icon, Button} from 'antd';
 import {MenuContainer} from "./inventory-filters.styles";
@@ -8,7 +8,7 @@ import moment from 'moment'
 import InventoryFiltersOptionsTree from "../inventory-filters-options-tree/inventory-filters-options-tree.component";
 import {inventoryFiltersSelector} from "../../redux/inventory-filters/inventory-filters.selectors";
 import {createStructuredSelector} from "reselect";
-import {resetFilters} from "../../redux/inventory-filters/inventory-filters.actions";
+import {resetFilters, setOpenKeys} from "../../redux/inventory-filters/inventory-filters.actions";
 
 const { SubMenu } = Menu
 const SubMenuTitle = ({title,type})=>{
@@ -19,13 +19,15 @@ const SubMenuTitle = ({title,type})=>{
         </span>
     )
 }
-const InventoryFilters = ({isHomepage,filtersData,resetFilters}) => {
+const InventoryFilters = ({isHomepage,filtersData,resetFilters,setOpenKeys}) => {
 
     const handleChange = (value,name)=>console.log(value,name)
-    const {year,price,mileage} = filtersData
+    const {year,price,mileage,openKeys} = filtersData
     return (
             <MenuContainer
                 mode={isHomepage?"horizontal":"inline"}
+                defaultOpenKeys={openKeys}
+                onOpenChange={(key)=>setOpenKeys(key)}
                 // inlineCollapsed={true}
             >
                 <SubMenu
@@ -94,7 +96,7 @@ const InventoryFilters = ({isHomepage,filtersData,resetFilters}) => {
                 <SubMenu
                     className={'reset-form-submenu'}
                     key={'reset'}
-                    title={ <SubMenuTitle title={'Reset filters'} type={'redo'} onClick={()=>console.log('clicking reset')}/>}
+                    title={ <SubMenuTitle title={'Reset filters'} type={'redo'} />}
                     onTitleClick={()=>resetFilters()}
 
                 />
@@ -114,6 +116,7 @@ const mapStateToProps = createStructuredSelector({
     filtersData:inventoryFiltersSelector
 })
 const mapDispatchToProps = (dispatch)=>({
-    resetFilters:()=>dispatch(resetFilters())
+    resetFilters:()=>dispatch(resetFilters()),
+    setOpenKeys:(keys)=>dispatch(setOpenKeys(keys))
 })
 export default connect(mapStateToProps,mapDispatchToProps)(InventoryFilters);

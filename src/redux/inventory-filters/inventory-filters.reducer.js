@@ -2,6 +2,7 @@ import {InventoryFiltersActionTypes} from "./inventory-filters.types";
 
 const inventoryFiltersDefaultState = {
     isFixed:false,
+    openKeys:['makeModel','specs','more'],
     condition:'new',
     make:undefined,
     model:undefined,
@@ -42,6 +43,11 @@ export default (state=inventoryFiltersDefaultState,action)=>{
         case InventoryFiltersActionTypes.RESET_FILTERS:{
             return inventoryFiltersDefaultState
         }
+        case InventoryFiltersActionTypes.SET_OPEN_KEYS:
+            return {
+                ...state,
+                openKeys:action.keys
+            }
         default:
             return state
 

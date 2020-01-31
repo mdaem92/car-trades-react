@@ -23,7 +23,9 @@ const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,rem
         console.log('state: ',state)
     },[state])
 
-    const onSelect = (value,{props:{eventKey}})=>{
+    const onSelect = (value,{props:{eventKey}},data)=>{
+        console.log('on select', value,eventKey,data)
+
         if(value){
             console.log('value: ',value)
             console.log('treeNode',eventKey)
@@ -38,15 +40,23 @@ const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,rem
         console.log('on change:',title)
         console.log('on change:',data)
         const{preValue,allCheckedNodes}=data
-
         //signifies deletion
         if( allCheckedNodes && preValue.length>allCheckedNodes.length){
             const {key} = data.triggerNode
-            console.log('key',key)
-            const listName = types[key.substring(0,3)]
-            const {triggerValue} = data
-            console.log(triggerValue,listName)
-            removeOption(listName,triggerValue)
+            if(key){
+                console.log('key',key)
+                const listName = types[key.substring(0,3)]
+                const {triggerValue} = data
+                console.log(triggerValue,listName)
+                removeOption(listName,triggerValue)
+            }else{
+                console.log('getting here')
+                const{eventKey}=data.triggerNode.props
+                const name = types[eventKey.substring(0,3)]
+                const {triggerValue} = data
+                removeOption(name,triggerValue)
+            }
+
         }
         else if(!allCheckedNodes){
             setFieldValue('fuelTypes',[])
@@ -60,9 +70,7 @@ const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,rem
         <div className={'inventory-filters-options-tree-container'}>
             <TreeSelect
                 style={{ width: '187px' }}
-                // value={value}
                 value={[...colors,...fuelTypes,...transmissions]}
-
                 allowClear
                 multiple
                 dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
