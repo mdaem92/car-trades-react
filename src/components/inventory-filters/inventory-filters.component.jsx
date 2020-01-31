@@ -54,7 +54,7 @@ const InventoryFilters = ({isHomepage,filtersData,resetFilters,setOpenKeys}) => 
                             name={'price'}
                             step={500}
                             tipFormatter={(value)=>`$${value}`}
-                            defaultValue={price}
+                            value={price}
 
                         />
                     </SubMenu>
@@ -67,7 +67,7 @@ const InventoryFilters = ({isHomepage,filtersData,resetFilters,setOpenKeys}) => 
                             step={500}
                             tipFormatter={(value)=>`${value}Km`}
                             name={'mileage'}
-                            defaultValue={mileage}
+                            value={mileage}
 
                             // onChange={(value,name)=>handleChange(value,'mileage')}
                         />
@@ -81,7 +81,7 @@ const InventoryFilters = ({isHomepage,filtersData,resetFilters,setOpenKeys}) => 
                             step={1}
                             name={'year'}
                             tipFormatter={(value)=>`${value}`}
-                            defaultValue={year}
+                            value={year}
                             // onChange={(value,name)=>handleChange(value,'year')}
                         />
                     </SubMenu>
@@ -101,13 +101,6 @@ const InventoryFilters = ({isHomepage,filtersData,resetFilters,setOpenKeys}) => 
 
                 />
 
-                {/*{*/}
-                {/*    isHomepage &&*/}
-                {/*    <>*/}
-                {/*        <Icon className={'search-icon'} type="search" onClick={()=>console.log('clicking')}/>*/}
-                {/*    </>*/}
-
-                {/*}*/}
             </MenuContainer>
 
     );

@@ -1,9 +1,10 @@
 import {InventoryFiltersActionTypes} from "./inventory-filters.types";
+import moment from 'moment'
 
 const inventoryFiltersDefaultState = {
     isFixed:false,
     openKeys:['makeModel','specs','more'],
-    condition:'new',
+    condition:undefined,
     make:undefined,
     model:undefined,
     mileage:[0,0],
@@ -41,7 +42,12 @@ export default (state=inventoryFiltersDefaultState,action)=>{
                 [action.listName]:state[action.listName].filter(item=>item!==action.value)
             }
         case InventoryFiltersActionTypes.RESET_FILTERS:{
-            return inventoryFiltersDefaultState
+            return {
+                ...inventoryFiltersDefaultState,
+                isFixed:state.isFixed,
+                sortBy: state.sortBy,
+                sortType:state.sortType
+            }
         }
         case InventoryFiltersActionTypes.SET_OPEN_KEYS:
             return {

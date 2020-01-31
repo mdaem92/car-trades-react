@@ -28,7 +28,7 @@ const InventoryFiltersMakeModel = ({isHomepage,filtersData,setFieldValue}) => {
                 <Radio.Group
                     onChange={onRadioChange}
                     className={'item'}
-                    defaultValue={condition}
+                    value={condition}
                 >
                     <Radio value={'new'}>New</Radio>
                     <Radio value={'used'}>Used</Radio>
@@ -36,7 +36,7 @@ const InventoryFiltersMakeModel = ({isHomepage,filtersData,setFieldValue}) => {
             }
             <Cascader
                 autoFocus
-                defaultValue={(make&&model)?[make,model]:null}
+                value={(make&&model)?[make,model]:null}
                 className={'item'}
                 options={antDCarData}
                 name={'make'}

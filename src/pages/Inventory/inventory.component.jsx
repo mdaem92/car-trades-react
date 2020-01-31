@@ -39,7 +39,6 @@ const InventoryPage = ({affixed,fetchListings,isListingsCollected})=>{
                                 <Affix
                                     style={{width:'100%'}}
                                     offsetTop={80}
-                                    // onChange={affixed => console.log(affixed)}
                                 >
                                     <div>
                                         <InventoryFilters/>

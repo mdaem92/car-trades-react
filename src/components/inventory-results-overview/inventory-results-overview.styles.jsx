@@ -14,8 +14,8 @@ export const ListingContainer = styled.div`
   ;
   padding: 10px;
   margin-bottom: 20px;
-  //height: max-content;
-  height: 144px;
+  height:192px;
+  //height: 144px;
   transition: all 3000ms ease ;
  `
 export const Results = styled.div`
@@ -35,7 +35,8 @@ align-items:center;
 `
 export const ActiveFilters = styled.div`
   grid-area: active;
-    transition: all 3000ms ease ;
+    //transition: all 3000ms ease ;
+  
 
 
 `
