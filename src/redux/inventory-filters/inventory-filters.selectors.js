@@ -25,22 +25,24 @@ export const inventoryActiveFiltersTagSelector = createSelector(
         console.log('filters: ',filters)
 
         const cases = {
-            make:filters.make?`${filters.make} ${filters.model} `:undefined,
+            make:filters.make?`${filters.make} ${filters.model?filters.model:''} `:undefined,
             // model:filters.model?`${filters.model}`:undefined,
             condition:filters.condition? `Condition: ${filters.condition}`:undefined,
             mileage: !!filters.mileage[1]?`Mileage: ${filters.mileage[0]}Km to ${filters.mileage[1]}Km`:undefined,
             price:!!filters.price[1]?`Price:$${filters.price[0]} to $${filters.price[1]}`:undefined,
-            year:!!filters.year[1] && filters.year[1]>0?`Year: ${filters.year[0]} to ${filters.year[1]}`:undefined,
+            year:!!filters.year[1] ?`Year: ${filters.year[0]} to ${filters.year[1]}`:undefined,
+            // year: filters.year[1]>1950 ?`Year: ${filters.year[0]} to ${filters.year[1]}`:undefined,
             colors:!!filters.colors.length?`Colors: ${filters.colors.toString()}`:undefined,
-            fuelTypes:!!filters.fuelTypes.length?`${filters.fuelTypes.toString()}`:undefined,
-            transmissions:!!filters.transmissions.length?`${filters.transmissions.toString()}`:undefined,
+            fuelTypes:!!filters.fuelTypes.length?`Fuel: ${filters.fuelTypes.toString()}`:undefined,
+            transmissions:!!filters.transmissions.length?`Transmission: ${filters.transmissions.toString()}`:undefined,
+
         }
         const activeFilters = Object.keys(filters).map(filter=>{
-            console.log('fff',filter)
+            // console.log('fff',filter)
             return cases[filter]
         })
 
-        console.log('active filters: ', Object.keys(filters),cases)
+        // console.log('active filters: ', Object.keys(filters),cases)
 
         return activeFilters.filter(filter=>!!filter)
 

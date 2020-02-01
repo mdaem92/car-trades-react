@@ -32,7 +32,6 @@ const ActiveFiltersGroup =({tags,setFieldValue})=>{
         }else if(tagName.includes('mileage')){
             setFieldValue('mileage',[0,0])
             console.log('mileage ', tags )
-
         }else if (tagName.includes('price')){
             setFieldValue('price',[0,0])
             console.log('price ', tags )

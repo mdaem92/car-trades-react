@@ -15,7 +15,7 @@ export const isListingsLoadingSelector = createSelector(
 export const isListingsCollectedSelector = createSelector(
     inventoryListingsSelector,
     listings=>{
-        console.log('size of inventory listings: ',listings.length )
+        // console.log('size of inventory listings: ',listings.length )
         return listings.length>0
     }
 )
@@ -33,8 +33,8 @@ export const filteredListingsSelector = createSelector(
             const transmissionsMatch = !!transmissions.length?transmissions.includes(listing.transmission.toLowerCase())||transmissions[0]==='transmission':true
             const fuelTypesMatch = !!fuelTypes.length?fuelTypes.includes(listing.fuelType.toLowerCase())||fuelTypes[0]==='fuel':true
             const conditionMatch = condition? listing.condition.toLowerCase()===condition.toLowerCase():true
-            console.log('this listing: ',listing)
-            console.log(`${!!year[1]}?(${listing.registered} >= ${year[0]} && ${listing.registered} <= ${year[1]} ):(${listing.registered}>=${year[0]}) year match:${yearMatch} ${typeof year[0]} ${typeof listing.registered}`)
+            // console.log('this listing: ',listing)
+            // console.log(`${!!year[1]}?(${listing.registered} >= ${year[0]} && ${listing.registered} <= ${year[1]} ):(${listing.registered}>=${year[0]}) year match:${yearMatch} ${typeof year[0]} ${typeof listing.registered}`)
             return makeMatch && modelMatch && conditionMatch && mileageMatch &&priceMatch && yearMatch && colorsMatch && transmissionsMatch && fuelTypesMatch && conditionMatch
 
         }).sort((a,b)=>{
@@ -61,7 +61,7 @@ export const filteredListingsSelector = createSelector(
 
             }
         })
-        console.log('visbile listings: ',results,{make,model,mileage,price,year,colors,transmissions,fuelTypes,condition,sortBy,sortType})
+        // console.log('visbile listings: ',results,{make,model,mileage,price,year,colors,transmissions,fuelTypes,condition,sortBy,sortType})
         return results
     }
 )

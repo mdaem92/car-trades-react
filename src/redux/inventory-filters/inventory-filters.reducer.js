@@ -1,6 +1,6 @@
 import {InventoryFiltersActionTypes} from "./inventory-filters.types";
 import moment from 'moment'
-
+const thisYear = parseInt(moment().format('YYYY'))
 const inventoryFiltersDefaultState = {
     isFixed:false,
     openKeys:['makeModel','specs','more'],
@@ -9,7 +9,7 @@ const inventoryFiltersDefaultState = {
     model:undefined,
     mileage:[0,0],
     price:[0,0],
-    year:[0,0],
+    year:[1950,thisYear],
     colors:[],
     fuelTypes:[],
     transmissions:[],

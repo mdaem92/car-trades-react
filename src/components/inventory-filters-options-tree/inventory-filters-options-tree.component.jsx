@@ -18,10 +18,7 @@ const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,rem
         value:undefined,
         searchValue:undefined
     })
-
-    useEffect(()=>{
-        console.log('state: ',state)
-    },[state])
+    
 
     const onSelect = (value,{props:{eventKey}},data)=>{
         console.log('on select', value,eventKey,data)
@@ -44,13 +41,13 @@ const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,rem
         if( allCheckedNodes && preValue.length>allCheckedNodes.length){
             const {key} = data.triggerNode
             if(key){
-                console.log('key',key)
+                // console.log('key',key)
                 const listName = types[key.substring(0,3)]
                 const {triggerValue} = data
-                console.log(triggerValue,listName)
+                // console.log(triggerValue,listName)
                 removeOption(listName,triggerValue)
             }else{
-                console.log('getting here')
+                // console.log('getting here')
                 const{eventKey}=data.triggerNode.props
                 const name = types[eventKey.substring(0,3)]
                 const {triggerValue} = data
@@ -81,7 +78,7 @@ const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,rem
                 showCheckedStrategy={TreeSelect.SHOW_CHILD}
                 onChange={handleDelete}
                 onSelect={onSelect}
-                onBlur={()=>console.log('blur')}
+                // onBlur={()=>console.log('blur')}
                 // onSearch={onSearch}
                 // showSearch={false}
             />
