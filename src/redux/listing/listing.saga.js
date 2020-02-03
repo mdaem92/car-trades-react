@@ -3,7 +3,9 @@ import ListingsActionTypes from './listing.types'
 import {firestore} from "../../firebase/firebase.utils";
 import {addListingFailure, addListingSuccess, fetchListingsFailure, fetchListingsSuccess} from "./listing.actions";
 import {setFieldValue} from "../add-listing-form/add-listing-form.actions";
+import {setFieldValue as setInventoryFilterFieldValue}from '../inventory-filters/inventory-filters.actions'
 import {resetForm} from "../add-listing-form/add-listing-form.actions";
+import {InventoryFiltersActionTypes} from "../inventory-filters/inventory-filters.types";
 
 export function* addListingAsync({listingData}){
     console.log('from saga ',listingData )
@@ -53,6 +55,10 @@ export function* onFetchListingsStart(){
         fetchListingsAsync
     )
 }
+
+
+
+
 export function* onAddListingStart(){
     yield takeLatest(
         ListingsActionTypes.ADD_LISTING_START,

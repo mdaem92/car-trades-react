@@ -23,6 +23,8 @@ const InventoryFilters = ({isHomepage,filtersData,resetFilters,setOpenKeys}) => 
 
     const handleChange = (value,name)=>console.log(value,name)
     const {year,price,mileage,openKeys} = filtersData
+    console.log('type of price ',typeof price)
+    console.log('filters data ',filtersData)
     return (
             <MenuContainer
                 mode={isHomepage?"horizontal":"inline"}

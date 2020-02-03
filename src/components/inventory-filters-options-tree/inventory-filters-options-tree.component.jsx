@@ -19,15 +19,34 @@ const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,rem
         searchValue:undefined
     })
 
+    useEffect(()=>{
+        console.log('current state: ',state.value)
+    },[state])
+
 
     const onSelect = (value,{props:{eventKey}},data)=>{
         console.log('on select', value,eventKey,data)
 
+        // if(value){
+        //     console.log('value: ',value)
+        //     console.log('treeNode',eventKey)
+        //     const listName = types[eventKey.substring(0,3)]
+        //     appendOption(listName,value)
+        // }
         if(value){
-            console.log('value: ',value)
-            console.log('treeNode',eventKey)
-            const listName = types[eventKey.substring(0,3)]
-            appendOption(listName,value)
+            if(value==='color'){
+                setFieldValue('colors',["white", "black", "silver", "red", "blue"])
+            }else if(value==='transmission'){
+                setFieldValue('transmissions',["auto", "manual", "semi-auto"])
+            }else if(value==='fuel'){
+                setFieldValue('fuelTypes',["diesel", "electric", "hybrid", "petrol", "lpg"])
+            }else{
+                console.log('value: ',value)
+                console.log('treeNode',eventKey)
+                const listName = types[eventKey.substring(0,3)]
+                appendOption(listName,value)
+            }
+
         }
 
     }
@@ -38,20 +57,25 @@ const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,rem
         console.log('on change:',data)
         const{preValue,allCheckedNodes}=data
         //signifies deletion
-        if( allCheckedNodes && preValue.length>allCheckedNodes.length){
+        console.log('preValue: ',preValue, 'allCheckedNodes: ',allCheckedNodes)
+        //instead of value there was allCheckedNodes
+        if( allCheckedNodes && preValue.length>value.length){
             const {key} = data.triggerNode
             if(key){
-                // console.log('key',key)
+                console.log('key exists')
                 const listName = types[key.substring(0,3)]
                 const {triggerValue} = data
-                // console.log(triggerValue,listName)
+                console.log('on change: ',triggerValue,listName)
                 removeOption(listName,triggerValue)
+                // setFieldValue(listName,value)
             }else{
-                // console.log('getting here')
+                console.log('key doesnt exist')
                 const{eventKey}=data.triggerNode.props
                 const name = types[eventKey.substring(0,3)]
                 const {triggerValue} = data
+                console.log('on change else part: ',triggerValue,name,value)
                 removeOption(name,triggerValue)
+                // setFieldValue(name,value)
             }
 
         }
@@ -62,12 +86,37 @@ const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,rem
         }
     }
 
+    const handleChange = (value,title,data)=>{
+        console.log('on change')
+        console.log('value: ',value)
+        console.log('data: ',data)
+        console.log('title: ',title)
+        setState({
+            ...state,
+            value
+        })
+
+        const {eventKey}=data.triggerNode.props
+
+        // const name = types[eventKey.substring(0,3)]
+        console.log(types[eventKey.substring(0,3)])
+        // setFieldValue(name,value)
+    }
+    const handleSelect = (value,data,title)=>{
+        console.log('on select')
+        console.log('value: ',value)
+        console.log('data: ',data)
+        console.log('title: ',title)
+
+    }
+
     const {colors,fuelTypes,transmissions}=filtersData
     return (
         <div className={'inventory-filters-options-tree-container'}>
             <TreeSelect
                 style={{ width: '187px' }}
                 value={[...colors,...fuelTypes,...transmissions]}
+                // value={state.value}
                 allowClear
                 multiple
                 dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}

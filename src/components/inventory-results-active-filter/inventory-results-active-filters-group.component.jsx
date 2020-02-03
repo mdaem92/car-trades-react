@@ -14,23 +14,15 @@ import FlipMove from "react-flip-move";
 
 const ActiveFiltersGroup =({tags,setFieldValue})=>{
 
-    // const[state,setState] = useState({tags})
-
     const handleClose = removedTag => {
-        // const tags = state.tags.filter(tag => tag !== removedTag);
-        // console.log(tags);
-        // setState({ tags });
+
         console.log(removedTag)
         console.log(typeof removedTag)
         const tagName= removedTag.toLowerCase()
-
-        // const tags = state.tags.filter(tag => tag !== removedTag)
         console.log(`tag name ${tagName} `,tagName.includes('year'))
         if(tagName.includes('year')){
-            setFieldValue('year',[1950,moment().format('YYYY')])
+            setFieldValue('year',[1950,parseInt(moment().format('YYYY'))])
             console.log('year ', tags )
-
-
         }else if(tagName.includes('mileage')){
             setFieldValue('mileage',[0,0])
             console.log('mileage ', tags )
@@ -41,7 +33,16 @@ const ActiveFiltersGroup =({tags,setFieldValue})=>{
             setFieldValue('condition','')
         }else if (tagName.includes('colors')){
             setFieldValue('colors',[])
+        }else if(tagName.includes('transmission')){
+            setFieldValue('transmissions',[])
+        }else if(tagName.includes('fuel')){
+            setFieldValue('fuelTypes',[])
         }
+        else{
+            setFieldValue('make',undefined)
+            setFieldValue('model',undefined)
+        }
+
     };
 
     const forMap = tag => {

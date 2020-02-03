@@ -1,5 +1,5 @@
 import {all,call} from 'redux-saga/effects'
-import {onAddListingStart, onFetchListingsStart} from "./listing/listing.saga";
+import {onAddListingStart, onFetchListingsStart, onSetFieldValue} from "./listing/listing.saga";
 
 
 export default function* rootSaga(){

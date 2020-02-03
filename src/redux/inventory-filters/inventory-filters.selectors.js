@@ -32,9 +32,13 @@ export const inventoryActiveFiltersTagSelector = createSelector(
             price:!!filters.price[1]?`Price:$${filters.price[0]} to $${filters.price[1]}`:undefined,
             year:!!filters.year[1] ?`Year: ${filters.year[0]} to ${filters.year[1]}`:undefined,
             // year: filters.year[1]>1950 ?`Year: ${filters.year[0]} to ${filters.year[1]}`:undefined,
-            colors:!!filters.colors.length?`Colors: ${filters.colors.toString()}`:undefined,
-            fuelTypes:!!filters.fuelTypes.length?`Fuel: ${filters.fuelTypes.toString()}`:undefined,
-            transmissions:!!filters.transmissions.length?`Transmission: ${filters.transmissions.toString()}`:undefined,
+            // colors:!!filters.colors.length?`Colors: ${filters.colors.toString()}`:undefined,
+            colors:!!filters.colors.length?filters.colors.length===5?('All colors'):(`Colors: ${filters.colors.toString()}`):undefined,
+            // fuelTypes:!!filters.fuelTypes.length?`Fuel: ${filters.fuelTypes.toString()}`:undefined,
+            fuelTypes:!!filters.fuelTypes.length?filters.fuelTypes.length===5?('All fuel types'):(`Fuel: ${filters.fuelTypes.toString()}`):undefined,
+
+            // transmissions:!!filters.transmissions.length?`Transmission: ${filters.transmissions.toString()}`:undefined,
+            transmissions:!!filters.transmissions.length?filters.transmissions.length===3?('All transmissions'):(`Transmission: ${filters.transmissions.toString()}`):undefined,
 
         }
         const activeFilters = Object.keys(filters).map(filter=>{
@@ -42,7 +46,8 @@ export const inventoryActiveFiltersTagSelector = createSelector(
             return cases[filter]
         })
 
-        // console.log('active filters: ', Object.keys(filters),cases)
+        console.log('active filters: ', activeFilters, 'cases: ',cases)
+        console.log('active filters: ',activeFilters.filter(filter=>!!filter))
 
         return activeFilters.filter(filter=>!!filter)
 

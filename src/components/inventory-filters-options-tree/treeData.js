@@ -70,7 +70,7 @@ export const treeData = [
         children: [
             {
                 title: 'Automatic',
-                value: 'automatic',
+                value: 'auto',
                 key: '0-2-0',
             },
             {
@@ -80,41 +80,41 @@ export const treeData = [
             },
             {
                 title: 'Semi-Automatic',
-                value: 'semi-automatic',
+                value: 'semi-auto',
                 key: '0-2-2',
             },
         ]
     },
-    {
-        title: 'Previous Owners',
-        value: 'previous owners',
-        key: '0-3',
-        children: [
-            {
-                title: '1',
-                key: '0-3-0',
-                value: '0-3-0',
-                parent:'prevOwners'
-            },
-            {
-                title: '2',
-                key: '0-3-1',
-                value: '0-3-1',
-                parent:'prevOwners'
-            },
-            {
-                title: '3',
-                key: '0-3-2',
-                value: '0-3-2',
-                parent:'prevOwners'
-            },
-            {
-                title: 'More',
-                key: '0-3-3',
-                value: '0-3-3',
-                parent:'prevOwners'
-            },
-
-        ]
-    },
+    // {
+    //     title: 'Previous Owners',
+    //     value: 'previous owners',
+    //     key: '0-3',
+    //     children: [
+    //         {
+    //             title: '1',
+    //             key: '0-3-0',
+    //             value: '0-3-0',
+    //             parent:'prevOwners'
+    //         },
+    //         {
+    //             title: '2',
+    //             key: '0-3-1',
+    //             value: '0-3-1',
+    //             parent:'prevOwners'
+    //         },
+    //         {
+    //             title: '3',
+    //             key: '0-3-2',
+    //             value: '0-3-2',
+    //             parent:'prevOwners'
+    //         },
+    //         {
+    //             title: 'More',
+    //             key: '0-3-3',
+    //             value: '0-3-3',
+    //             parent:'prevOwners'
+    //         },
+    //
+    //     ]
+    // },
 ];
