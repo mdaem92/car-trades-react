@@ -18,7 +18,7 @@ const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,rem
         value:undefined,
         searchValue:undefined
     })
-    
+
 
     const onSelect = (value,{props:{eventKey}},data)=>{
         console.log('on select', value,eventKey,data)

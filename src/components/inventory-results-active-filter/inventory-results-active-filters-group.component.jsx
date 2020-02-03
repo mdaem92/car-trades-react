@@ -5,10 +5,12 @@ import { TweenOneGroup } from 'rc-tween-one';
 import {TagsGroupContainer} from "./inventory-results-active-filters-group.styles";
 import {createStructuredSelector} from "reselect";
 import {setFieldValue} from "../../redux/inventory-filters/inventory-filters.actions";
+import moment from 'moment'
 import {
     inventoryActiveFiltersTagSelector,
     inventoryFiltersSelector
 } from "../../redux/inventory-filters/inventory-filters.selectors";
+import FlipMove from "react-flip-move";
 
 const ActiveFiltersGroup =({tags,setFieldValue})=>{
 
@@ -23,9 +25,9 @@ const ActiveFiltersGroup =({tags,setFieldValue})=>{
         const tagName= removedTag.toLowerCase()
 
         // const tags = state.tags.filter(tag => tag !== removedTag)
-        console.log('tag name ',tagName.includes('year'))
+        console.log(`tag name ${tagName} `,tagName.includes('year'))
         if(tagName.includes('year')){
-            setFieldValue('year',[0,0])
+            setFieldValue('year',[1950,moment().format('YYYY')])
             console.log('year ', tags )
 
 
@@ -66,22 +68,42 @@ const ActiveFiltersGroup =({tags,setFieldValue})=>{
             <div>
                 <TagsGroupContainer>
                     {!!tags.length ? <span className={'label'}>Active filters</span>:<span className={'label'}> No active filters</span>}
-                    <TweenOneGroup
+                    {/*<TweenOneGroup*/}
+                    {/*    className={'tag-group'}*/}
+                    {/*    enter={{*/}
+                    {/*        scale: 0.8,*/}
+                    {/*        opacity: 0,*/}
+                    {/*        type: 'from',*/}
+                    {/*        duration: 100,*/}
+                    {/*        onComplete: e => {*/}
+                    {/*            e.target.style = '';*/}
+                    {/*        },*/}
+                    {/*    }}*/}
+                    {/*    leave={{ opacity: 0, width: 0, scale: 0, duration: 200 }}*/}
+                    {/*    appear={false}*/}
+                    {/*>*/}
+                    {/*    {tagChild}*/}
+                    {/*</TweenOneGroup>*/}
+                    <FlipMove
                         className={'tag-group'}
-                        enter={{
-                            scale: 0.8,
-                            opacity: 0,
-                            type: 'from',
-                            duration: 100,
-                            onComplete: e => {
-                                e.target.style = '';
-                            },
-                        }}
-                        leave={{ opacity: 0, width: 0, scale: 0, duration: 200 }}
-                        appear={false}
+
                     >
-                        {tagChild}
-                    </TweenOneGroup>
+                        {tags.map(tag=>
+                            <div key={tag}>
+                                <Tag
+                                    // key={tag}
+                                    className={'tag'}
+                                    closable
+                                    onClose={e => {
+                                        e.preventDefault();
+                                        handleClose(tag);
+                                    }}
+                                 >
+                                    {tag}
+                                </Tag>
+                            </div>
+                        )}
+                    </FlipMove>
                 </TagsGroupContainer>
             </div>
         );
