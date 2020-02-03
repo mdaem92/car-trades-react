@@ -35,7 +35,8 @@ const ListingPreview = (
         imageFileList,
         transmission,
         price,
-        registered
+        registered,
+        userName
 
     })=>{
         const listingData = {
@@ -48,6 +49,7 @@ const ListingPreview = (
             enginePower,
             imageFileList,
             transmission,
+            userName
         }
     const [state,setState] = React.useState({
         isOpen:false,

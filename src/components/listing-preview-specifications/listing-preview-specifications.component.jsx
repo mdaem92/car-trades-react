@@ -1,5 +1,6 @@
 import React from 'react'
 import {} from './listing-preview-specifications.styles'
+import {Link}from 'react-router-dom'
 import {ListingPreviewSpecificationsGrid} from "./listing-preview-specifications.styles";
 import SummaryItem from "../summary-item/summary-item.component";
 import {ReactComponent as Engine} from '../../assets/car icons/engine.svg';
@@ -11,7 +12,9 @@ import {ReactComponent as Seat} from '../../assets/car icons/seat.svg'
 import {ReactComponent as AC} from '../../assets/car icons/celsius.svg'
 import {ReactComponent as Power} from '../../assets/car icons/power.svg'
 import {ReactComponent as CarKey} from '../../assets/car icons/car-key.svg'
-
+import {ReactComponent as User} from '../../assets/user.svg';
+import {Icon} from 'antd'
+import {OptionLink} from "../Header/header.styles";
 
 
 
@@ -25,6 +28,7 @@ const ListingPreviewSpecifications = (
         fuelEconomy,
         bodyType,
         enginePower,
+        userName
     })=>{
 
     return (
@@ -56,6 +60,22 @@ const ListingPreviewSpecifications = (
             <SummaryItem description={'Mileage'} title={`${mileage} Km`} isExtended>
                 <CarKey className={'summary-icon'}/>
             </SummaryItem>
+            {userName &&
+            <SummaryItem
+                description={'Uploaded by'}
+                title={
+                    <OptionLink
+                        className={'anchor'}
+                        style={{padding:'0'}}
+                        to={`/${encodeURI(userName)}/listings`}
+                    >
+                        {userName}
+                    </OptionLink>
+                }
+                isExtended
+            >
+                <User className={'summary-icon'}/>
+            </SummaryItem>}
         </ListingPreviewSpecificationsGrid>
     )
 }

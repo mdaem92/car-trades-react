@@ -20,6 +20,7 @@ import InventoryListingPreviewListContainer
     from "../../components/inventory-listing-preview-list/inventory-listing-preview-list-container";
 import {fetchListingsStart} from "../../redux/listing/listing.actions";
 import {isListingsCollectedSelector} from "../../redux/listing/listing.selectors";
+import CustomPagination from "../../components/inventory-pagination/inventory-pagination.component";
 
 
 const InventoryPage = ({affixed,fetchListings,isListingsCollected})=>{
@@ -27,7 +28,6 @@ const InventoryPage = ({affixed,fetchListings,isListingsCollected})=>{
         if(!isListingsCollected){
             fetchListings()
         }
-
     },[fetchListings])
     return(
         <BackgroundContainer >
@@ -55,7 +55,22 @@ const InventoryPage = ({affixed,fetchListings,isListingsCollected})=>{
                     <InventoryResultsOverview/>
                     {/*<InventoryListingPreviewList/>*/}
                     <InventoryListingPreviewListContainer/>
-                    <Pagination className={'pagination'} size="small" total={5000} showSizeChanger showQuickJumper />
+                    {/*<Pagination*/}
+                    {/*    defaultCurrent={5}*/}
+                    {/*    defaultPageSize={20}*/}
+                    {/*    hideOnSinglePage*/}
+                    {/*    pageSizeOptions={['10','20','30','40','50']}*/}
+                    {/*    className={'pagination'}*/}
+                    {/*    size="small"*/}
+                    {/*    total={500}*/}
+                    {/*    showSizeChanger*/}
+                    {/*    showQuickJumper*/}
+                    {/*    onChange={(number,size)=>console.log(number,size)}*/}
+                    {/*    onShowSizeChange={(current,size)=>{*/}
+                    {/*        console.log('on size change' ,size)*/}
+                    {/*    }}*/}
+                    {/*/>*/}
+                    <CustomPagination/>
                 </InventoryListingsContainer>
 
             </InventoryContainer>

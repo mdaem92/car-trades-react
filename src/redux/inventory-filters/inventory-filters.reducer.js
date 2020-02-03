@@ -14,7 +14,9 @@ const inventoryFiltersDefaultState = {
     fuelTypes:[],
     transmissions:[],
     sortBy:'price',
-    sortType:'asc'
+    sortType:'asc',
+    currentPage:1,
+    pageSize:10
 }
 
 export default (state=inventoryFiltersDefaultState,action)=>{

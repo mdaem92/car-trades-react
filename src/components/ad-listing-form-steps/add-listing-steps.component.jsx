@@ -13,6 +13,7 @@ import {
 import {setNextStep, setPrevStep,setFieldValue} from "../../redux/add-listing-form/add-listing-form.actions";
 // import {addListing} from "../../redux/listing/listing.actions";
 import {addListingStart} from "../../redux/listing/listing.actions";
+import {currentUserSelector} from "../../redux/auth/auth.selectors";
 
 const { Step } = Steps;
 
@@ -31,7 +32,18 @@ const steps = [
         title:'Choose Price'
     }
 ];
-const AddListingSteps = ({history,current,loading,next,prev,formData,addListingStart,errorMessage})=>{
+const AddListingSteps = (
+    {
+        history,
+        current,
+        loading,
+        next,
+        prev,
+        formData,
+        addListingStart,
+        errorMessage,
+        currentUser
+    })=>{
     const isNextStepAllowed = ()=>{
         switch (current){
             case 0:{
@@ -73,7 +85,8 @@ const AddListingSteps = ({history,current,loading,next,prev,formData,addListingS
                         loading={loading}
                         onClick={()=>{
                             console.log('clicking',formData)
-                            addListingStart(formData)
+                            // addListingStart(formData)
+                            addListingStart({...formData,userName:currentUser.displayName})
                             if(!errorMessage){
                                 message.success('Listing successfully added')
                                 history.push('/inventory')
@@ -101,8 +114,9 @@ const mapStateToProps = createStructuredSelector({
     current:stepSelector,
     loading:loadingSelector,
     formData:addListingFormSelector,
-    errorMessage:addListingErrorMessageSelector
+    errorMessage:addListingErrorMessageSelector,
     // allowNextStep:allowNextStepSelector
+    currentUser:currentUserSelector
 })
 
 const mapDispatchToProps = (dispatch)=>({

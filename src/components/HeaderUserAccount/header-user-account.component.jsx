@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import {connect}from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {
     DropdownMenu,
@@ -10,19 +11,25 @@ import {DropdownContainer,
 } from "./header-user-account.styles";
 import{auth} from '../../firebase/firebase.utils'
 import {signInWithGoogle} from "../../firebase/firebase.utils";
+import {createStructuredSelector} from "reselect";
+import {checkUserSession, googleSignInStart, signOutStart} from "../../redux/auth/auth.actions";
+import {currentUserSelector} from "../../redux/auth/auth.selectors";
 
 
-const HeaderUserAccount = ({scrolled,history,location,match})=>{
-    const [currentUser,setCurrentUser] = useState(undefined)
+const HeaderUserAccount = (
+    {
+        scrolled,
+        history,
+        location,
+        match,
+        checkUserSession,
+        currentUser,
+        googleSignIn,
+        signOut
+    })=>{
     useEffect(()=>{
-        const unsubscribeFromAuth = auth.onAuthStateChanged((user)=>{
-            console.log(user)
-            setCurrentUser(user)
-        })
-        return ()=>{
-            unsubscribeFromAuth()
-        }
-    },[setCurrentUser])
+        checkUserSession()
+    },[checkUserSession])
 
     const handleClick = ({target:{value :path}})=>{
         history.push(`${match.url}${currentUser.displayName}/${path}`)
@@ -47,7 +54,7 @@ const HeaderUserAccount = ({scrolled,history,location,match})=>{
                                 Account settings
                             </DropdownItem>
                             <DropdownItem divider />
-                            <DropdownItem onClick={()=>auth.signOut()}>
+                            <DropdownItem onClick={()=>signOut()}>
                                 Sign out
                             </DropdownItem>
                         </DropdownMenu>
@@ -55,11 +62,19 @@ const HeaderUserAccount = ({scrolled,history,location,match})=>{
                 </div>
             ):(
                 <div>
-                    <Button variant="outline-success" onClick={signInWithGoogle}>Login</Button>
+                    <Button variant="outline-success" onClick={()=>googleSignIn()}>Login</Button>
                 </div>
             )}
         </div>
     )
 }
-
-export default withRouter(HeaderUserAccount)
+const mapStateToProps = createStructuredSelector({
+    currentUser:currentUserSelector
+})
+const mapDispatchToProps = (dispatch)=>({
+    checkUserSession:()=>dispatch(checkUserSession()),
+    googleSignIn:()=>dispatch(googleSignInStart()),
+    signOut:()=>dispatch(signOutStart())
+})
+const WithRouterUserAccount = withRouter(HeaderUserAccount)
+export default connect(mapStateToProps,mapDispatchToProps)(WithRouterUserAccount)

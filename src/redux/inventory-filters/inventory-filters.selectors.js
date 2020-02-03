@@ -55,6 +55,13 @@ export const inventoryActiveFiltersTagSelector = createSelector(
         // console.log('active filters: ',results)
         // return results
 
-
     }
+)
+export const paginationCurrentPageSelector = createSelector(
+    inventoryFiltersSelector,
+    (inventoryFilters)=>inventoryFilters.currentPage
+)
+export const paginationPageSizeSelector = createSelector(
+    inventoryFiltersSelector,
+    (inventoryFilters)=>inventoryFilters.pageSize
 )

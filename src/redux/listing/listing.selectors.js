@@ -70,4 +70,18 @@ export const filteredListingsLengthSelector = createSelector(
     filteredListingsSelector,
     listings=>listings?listings.length:0
 )
+export const paginationSelector = createSelector(
+    filtersSelector,
+    ({currentPage,pageSize})=>{return {currentPage,pageSize}}
+)
+export const paginatedFilteredListingsSelector = createSelector(
+    filteredListingsSelector,
+    paginationSelector,
+    (listings,{currentPage,pageSize})=>{
+        const from = (currentPage-1)*pageSize
+        const to = from +pageSize
+        console.log(`from:${from} to:${to} length:${listings.length}`,listings.slice(from,to))
+        return listings.slice(from,to)
+    }
+)
 

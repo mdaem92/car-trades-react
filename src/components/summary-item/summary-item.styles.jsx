@@ -35,6 +35,7 @@ export const ImageContainer = styled.div`
         
       `}
     } 
+    
 `
 export const TitleContainer = styled.h3`
    text-align: center;

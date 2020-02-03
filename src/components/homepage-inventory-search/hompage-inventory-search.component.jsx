@@ -2,9 +2,10 @@ import React, {useEffect,useState} from 'react';
 import {Menu, Icon, Radio, Cascader, InputNumber, Button,Input} from 'antd';
 import {InventorySearchContainer,InputContainer,ButtonContainer} from './homepage-inventory-search.styles'
 import InventoryFiltersMakeModel from "../inventory-filters-make-model/inventory-filters-make-model.component";
+import {withRouter} from "react-router-dom";
 
 
-const HomepageInventorySearch = () => {
+const HomepageInventorySearch = ({history}) => {
     const [state,setState] = useState({
         current:'make-model',
         priceFrom: 0,
@@ -79,11 +80,11 @@ const HomepageInventorySearch = () => {
                     onBlur={onBlur}
                 />
             </InputContainer>
-            <ButtonContainer onClick={()=>console.log('clicking')}>
+            <ButtonContainer onClick={()=>history.push('/inventory')}>
                 Go
             </ButtonContainer>
         </InventorySearchContainer>
     );
 };
 
-export default HomepageInventorySearch;
+export default withRouter(HomepageInventorySearch);
