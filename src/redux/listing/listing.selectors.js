@@ -38,7 +38,6 @@ export const filteredListingsSelector = createSelector(
             return makeMatch && modelMatch && conditionMatch && mileageMatch &&priceMatch && yearMatch && colorsMatch && transmissionsMatch && fuelTypesMatch && conditionMatch
 
         }).sort((a,b)=>{
-
             if(sortBy==='mileage'){
                 if(sortType==='desc'){
                     return a.mileage<b.mileage?1:-1
@@ -84,4 +83,7 @@ export const paginatedFilteredListingsSelector = createSelector(
         return listings.slice(from,to)
     }
 )
-
+// export const isParkedListingSelector=()=> createSelector(
+//     paginatedFilteredListingsSelector,
+//
+// )

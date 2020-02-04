@@ -1,10 +1,15 @@
 import React from 'react'
+import {GridContainer} from "../../components/add-listing-form-specs/add-listing-form-specs.styles";
+import CompareListing from "../../components/compare-listing/compare-listing.component";
 
-const ComparePage = ()=>{
+const ComparePage = ({listings})=>{
     return (
-        <div className='compare=page'>
-            compare page
-        </div>
+        <GridContainer>
+            {
+                // listings.map(listing=><CompareListing {...listing}/>)
+            }
+        </GridContainer>
     )
 }
+
 export default ComparePage

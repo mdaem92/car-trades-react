@@ -17,6 +17,7 @@ const ListingInfoSummary = (
         fuelEconomy,
         bodyType,
         seatCount,
+        mileage
     })=>{
     return (
         <ListingInfoSummaryContainer>
@@ -29,7 +30,7 @@ const ListingInfoSummary = (
             <SummaryItem title={`${transmission}`} >
                 <Gear className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem title={`${fuelEconomy} Mpg`} >
+            <SummaryItem title={`${mileage} Km`} >
                 <Gauge className={'summary-icon'}/>
             </SummaryItem>
             <SummaryItem title={`${bodyType}`} >

@@ -18,6 +18,7 @@ import {message,Icon} from 'antd'
 import ListingInfoSummary from "../listing-info-summary/listing-info-summary.component";
 import ListingPreviewTabs from "../listing-preview-tabs/listing-preview-tabs.component";
 import ListingPreviewContactModal from "../listing-preview-contact-modal/listing-preview-contact-modal.component";
+import ListingPreviewUserButtons from "../listing-preview-user-buttons/listing-preview-user-buttons.component";
 
 
 const ListingPreview = (
@@ -36,7 +37,10 @@ const ListingPreview = (
         transmission,
         price,
         registered,
-        userName
+        userName,
+        id,
+        isCompared,
+        isParked
 
     })=>{
         const listingData = {
@@ -66,7 +70,10 @@ const ListingPreview = (
                 <ListingCondition color={'primary'} >{condition.toUpperCase()}</ListingCondition>
                 <span className={'text'}>{registered} {make} {model.trim()} </span>
             </ListingInfoCell>
-            <ListingPriceContainer><Dollar className={'currency'}>$</Dollar>{price}</ListingPriceContainer>
+            <ListingPriceContainer>
+                <ListingPreviewUserButtons isCompared={isCompared} isParked={isParked} listingId={id}/>
+                <Dollar className={'currency'}>$</Dollar>{price
+            }</ListingPriceContainer>
             <ListingInfoSummaryContainer>
                 <ListingInfoSummary {...listingData}/>
             </ListingInfoSummaryContainer>

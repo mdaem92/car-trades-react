@@ -101,14 +101,16 @@ export const Wrapper = styled.div`
 
 export const ListingPriceContainer = styled.h3`
   //border: 1px solid black;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   font-size: ${priceFontSize};
   text-align: center;
   font-weight: bold;
   color:#58575f;
   //padding: 50px 30px;
   margin-bottom: 0;
-  margin-top: 50px;
+  //margin-top: 50px;
   .currency{
  
     fill: #58575f;

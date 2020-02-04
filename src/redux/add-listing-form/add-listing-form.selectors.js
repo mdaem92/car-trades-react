@@ -75,3 +75,11 @@ export const addListingErrorMessageSelector = createSelector(
     addListingFormSelector,
     addListingForm=>addListingForm.errorMessage
 )
+export const colorSelector = createSelector(
+    addListingFormSelector,
+    addListingForm=>addListingForm.color
+)
+export const registeredSelector = createSelector(
+    addListingFormSelector,
+    addListingForm=>addListingForm.registered
+)

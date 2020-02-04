@@ -42,9 +42,9 @@ const ListingPreviewSpecifications = (
             <SummaryItem description={'Transmission'} title={`${transmission}`} isExtended>
                 <Gear className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem description={'Fuel Economy'} title={`${fuelEconomy}`} isExtended>
-                <Gauge className={'summary-icon'}/>
-            </SummaryItem>
+            {/*<SummaryItem description={'Fuel Economy'} title={`${fuelEconomy}`} isExtended>*/}
+            {/*    <Gauge className={'summary-icon'}/>*/}
+            {/*</SummaryItem>*/}
             <SummaryItem description={'Body Type'} title={`${bodyType}`} isExtended>
                 <Car className={'summary-icon'}/>
             </SummaryItem>
@@ -58,7 +58,7 @@ const ListingPreviewSpecifications = (
                 <Power className={'summary-icon'}/>
             </SummaryItem>
             <SummaryItem description={'Mileage'} title={`${mileage} Km`} isExtended>
-                <CarKey className={'summary-icon'}/>
+                <Gauge className={'summary-icon'}/>
             </SummaryItem>
             {userName &&
             <SummaryItem

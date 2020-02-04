@@ -85,7 +85,6 @@ const AddListingSteps = (
                         loading={loading}
                         onClick={()=>{
                             console.log('clicking',formData)
-                            // addListingStart(formData)
                             addListingStart({...formData,userName:currentUser.displayName})
                             if(!errorMessage){
                                 message.success('Listing successfully added')
@@ -115,7 +114,6 @@ const mapStateToProps = createStructuredSelector({
     loading:loadingSelector,
     formData:addListingFormSelector,
     errorMessage:addListingErrorMessageSelector,
-    // allowNextStep:allowNextStepSelector
     currentUser:currentUserSelector
 })
 

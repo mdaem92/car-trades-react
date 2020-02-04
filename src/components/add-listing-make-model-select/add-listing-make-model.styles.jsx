@@ -21,6 +21,9 @@ export const GridContainer = styled.div`
   .ant-calendar-picker{
     margin-right:10px;
   }
+  .ant-input-number{
+    margin-right: 10px;
+  }
   
 `
 export const SelectContainer = styled.div`

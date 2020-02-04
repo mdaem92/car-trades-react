@@ -37,3 +37,10 @@ export const fetchListingsFailure = (errorMessage)=>({
     type:ListingsActionTypes.FETCH_LISTINGS_FAILURE,
     errorMessage
 })
+export const toggleParking = (id)=>({
+    type:ListingsActionTypes.TOGGLE_PARKING,
+})
+export const toggleCompare = (id)=>({
+    type:ListingsActionTypes.TOGGLE_COMPARE,
+
+})

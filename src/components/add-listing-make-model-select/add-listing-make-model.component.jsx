@@ -8,7 +8,7 @@ import {
     bodyTypeSelector,
     conditionSelector, makeSelector, modelSelector,
     mileageSelector,
-    seatCountSelector
+    seatCountSelector, colorSelector, registeredSelector
 } from "../../redux/add-listing-form/add-listing-form.selectors";
 import {setFieldValue} from "../../redux/add-listing-form/add-listing-form.actions";
 import moment from "moment";
@@ -16,18 +16,17 @@ import moment from "moment";
 
 const {Option} = Select
 
-const AddListingMakeModel = ({condition,make,model,bodyType,seatCount,mileage,setFieldValue}) => {
-
-    // const [state,setState] = useState({
-    //     condition:'new',
-    //     bodyType:undefined,
-    //     seatCount:0,
-    //     prevOwners:'',
-    // })
-
-    // useEffect(()=>{
-    //     console.log('current state:',state)
-    // },[state])
+const AddListingMakeModel = (
+    {
+        condition,
+        make,
+        model,
+        bodyType,
+        seatCount,
+        mileage,
+        setFieldValue,
+        color,
+    }) => {
 
     const onChange = (e)=>{
 
@@ -60,20 +59,21 @@ const AddListingMakeModel = ({condition,make,model,bodyType,seatCount,mileage,se
             <LabelContainer>Condition & Title</LabelContainer>
             <SelectContainer>
                 <Radio.Group
-                    style={{width:'120px'}}
+                    style={{width:'110px'}}
                     name={'condition'}
                     onChange={onChange}
                     defaultValue={condition}
                 >
-                    <Radio.Button style={{borderRadius:0,width:'60px'}} value="new">New</Radio.Button>
-                    <Radio.Button style={{borderRadius:0,width:'60px'}} value="used">Used</Radio.Button>
+                    <Radio.Button style={{borderRadius:0,width:'55px'}} value="new">New</Radio.Button>
+                    <Radio.Button style={{borderRadius:0,width:'55px'}} value="used">Used</Radio.Button>
                 </Radio.Group>
                 <DatePicker
                     // onChange={(value)=>console.log(value.format('YYYY-MM-DD'))}
                     onChange={(value)=>value?setFieldValue('registered',parseInt(value.format('YYYY'))):setFieldValue('registered',undefined)}
                     placeholder={'Select registered'}
                     onSearch={(value)=>console.log(value)}
-                    title={'sdadsa'}
+                    // defaultValue={registered}
+
                 />
                 <Cascader
                     style={{borderRadius:0}}
@@ -94,7 +94,7 @@ const AddListingMakeModel = ({condition,make,model,bodyType,seatCount,mileage,se
                     defaultValue={bodyType}
                     name={'bodyType'}
                     showSearch
-                    style={{ width: 120,borderRadius:0 }}
+                    style={{ width: 120,borderRadius:0}}
                     placeholder="Body Type"
                     optionFilterProp="children"
                     onChange={(value)=>onSelectChange(value,'bodyType')}
@@ -134,6 +134,23 @@ const AddListingMakeModel = ({condition,make,model,bodyType,seatCount,mileage,se
                     onChange={(value)=>onSelectChange(value,'mileage')}
                     placeholder={'Mileage'}
                 />
+                <Select
+                    style={{ width: 120,borderRadius:0 }}
+                    showSearch
+                    defaultValue={color}
+                    placeholder="Select Color"
+                    optionFilterProp="children"
+                    onChange={(value)=>setFieldValue('color',value)}
+                    onSearch={(val)=>console.log(val)}
+                    filterOption={(input, option) =>
+                        option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                    }
+                >
+                    {
+                        ['White','Silver','Black','Grey','Blue','Red','Brown','Green','Yellow','Other']
+                            .map(color=><Option value={color.toLowerCase()} key={color}>{color}</Option>)
+                    }
+                </Select>
             </SelectContainer>
         </GridContainer>
     );
@@ -144,7 +161,9 @@ const mapStateToProps = createStructuredSelector({
     model:modelSelector,
     bodyType:bodyTypeSelector,
     seatCount:seatCountSelector,
-    mileage:mileageSelector
+    mileage:mileageSelector,
+    color:colorSelector,
+    registered:registeredSelector
 })
 const mapDispatchToProps = (dispatch)=>({
     setFieldValue:(name,value)=>dispatch(setFieldValue(name,value))
