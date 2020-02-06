@@ -13,15 +13,19 @@ const CustomPagination = ({setFieldValue,currentPage,pageSize,totalLength})=>{
         <Pagination
             defaultCurrent={currentPage}
             defaultPageSize={pageSize}
-            hideOnSinglePage
-            pageSizeOptions={['10','20','30','40','50']}
+            // hideOnSinglePage
+            pageSizeOptions={['2','10','20','30','40','50']}
             className={'pagination'}
             size="small"
             total={totalLength}
             showSizeChanger
             showQuickJumper
             onChange={(number)=>setFieldValue('currentPage',number)}
-            onShowSizeChange={(current,size)=>setFieldValue('pageSize',size)}
+            onShowSizeChange={(current,size)=>{
+                setFieldValue('currentPage',1)
+                setFieldValue('pageSize',size)
+
+            }}
         />
     )
 }

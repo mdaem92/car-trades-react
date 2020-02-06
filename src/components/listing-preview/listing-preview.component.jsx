@@ -9,7 +9,7 @@ import {
     CollapseContainer,
     CollapseContent,
     Wrapper,
-    ListingPriceContainer,
+    TopLeftPriceButtonsContainer,
     ListingInfoSummaryContainer,
     ListingPreviewFooterPriceContainer,
     ListingPreviewFooter,
@@ -70,10 +70,13 @@ const ListingPreview = (
                 <ListingCondition color={'primary'} >{condition.toUpperCase()}</ListingCondition>
                 <span className={'text'}>{registered} {make} {model.trim()} </span>
             </ListingInfoCell>
-            <ListingPriceContainer>
+            <TopLeftPriceButtonsContainer>
                 <ListingPreviewUserButtons isCompared={isCompared} isParked={isParked} listingId={id}/>
-                <Dollar className={'currency'}>$</Dollar>{price
-            }</ListingPriceContainer>
+                <div className={'price-tag-container'}>
+                    <Dollar className={'currency'}>$</Dollar>
+                    {price}
+                </div>
+            </TopLeftPriceButtonsContainer>
             <ListingInfoSummaryContainer>
                 <ListingInfoSummary {...listingData}/>
             </ListingInfoSummaryContainer>

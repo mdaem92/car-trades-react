@@ -1,18 +1,24 @@
 import React,{useState} from 'react';
+import{connect}from 'react-redux'
 import {ReactComponent as Compare} from "../../assets/car icons/compare.svg";
 import {ReactComponent as Parking} from "../../assets/car icons/parking.svg";
 import {ButtonsContainer} from "./listing-preview-user-buttons.styles";
 import {Tooltip,message} from "antd";
 import {createStructuredSelector} from "reselect";
 import {toggleCompare, toggleParking} from "../../redux/listing/listing.actions";
+import {isComparedListingSelector, isParkedListingSelector} from "../../redux/listing/listing.selectors";
 
-const ListingPreviewUserButtons = ({listingId}) => {
+const ListingPreviewUserButtons = (
+    {
+        listingId,
+
+    }) => {
     const [state, setState] = useState({
         isParked:false,
         isCompared:false
     });
     const{isParked,isCompared}=state
-
+    console.log(`this listing's id: ${listingId} isParked:${isParked} isCompared:${isCompared}`)
     const handleClick = (e)=>{
         (e==='isParked')?
             !state[e]?
@@ -29,6 +35,17 @@ const ListingPreviewUserButtons = ({listingId}) => {
             ...state,
             [e]:!state[e]
         })
+        // if(e==='isParked'){
+        //     !isParked?
+        //         message.success('Listing added to Parking')
+        //         :
+        //         message.success('Listing removed from Parking')
+        // }else{
+        //     !isCompared?
+        //             message.success('Listing added to Compare')
+        //             :
+        //             message.success('Listing removed from Compare')
+        // }
     }
     return (
         <ButtonsContainer isCompared={isCompared} isParked={isParked}>
@@ -57,8 +74,11 @@ const ListingPreviewUserButtons = ({listingId}) => {
 };
 
 
-const mapDispatchToProps = (dispatch)=>({
-    toggleParking:(id)=>dispatch(toggleParking(id)),
-    toggleComparing:(id)=>dispatch(toggleCompare(id))
+const mapStateToProps = (state,{listingId})=>({
+    // isParked:isParkedListingSelector(state,listingId),
+    // isCompared:isComparedListingSelector(state,listingId)
 })
-export default ListingPreviewUserButtons;
+const mapDispatchToProps = (dispatch)=>({
+
+})
+export default connect(mapStateToProps,mapDispatchToProps)(ListingPreviewUserButtons);

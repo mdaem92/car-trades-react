@@ -8,7 +8,7 @@ import React from 'react'
 
 const offGrey = '#f7f7f7'
 const blue = '#0069d9'
-const priceFontSize = '30px'
+const priceFontSize = '28px'
 
 export const ListingContainer = styled.div`
   display: grid;
@@ -99,17 +99,20 @@ export const Wrapper = styled.div`
   
 `
 
-export const ListingPriceContainer = styled.h3`
+export const TopLeftPriceButtonsContainer = styled.h3`
   //border: 1px solid black;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  //justify-content: space-around;
   font-size: ${priceFontSize};
   text-align: center;
   font-weight: bold;
   color:#58575f;
   //padding: 50px 30px;
   margin-bottom: 0;
+  .price-tag-container{
+    margin-top: 35px;
+  }
   //margin-top: 50px;
   .currency{
  
