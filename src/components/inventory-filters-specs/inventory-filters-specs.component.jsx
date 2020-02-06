@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import {Menu,Slider,InputNumber} from 'antd'
+import React from 'react';
 import{connect}from 'react-redux'
 import {CustomSlider} from './inventory-filters-specs.styles'
 import {setFieldValue} from "../../redux/inventory-filters/inventory-filters.actions";
-const {SubMenu} = Menu
+
 
 
 const InventoryFiltersSpecs = ({name,min,max,isHomepage,setFieldValue,...otherProps}) => {

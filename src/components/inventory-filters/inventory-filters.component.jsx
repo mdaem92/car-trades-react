@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {connect}from 'react-redux';
-import {Menu, Icon, Button} from 'antd';
+import {Menu, Icon} from 'antd';
 import {MenuContainer} from "./inventory-filters.styles";
 import InventoryFiltersMakeModel from "../inventory-filters-make-model/inventory-filters-make-model.component";
 import InventoryFiltersSpecs from "../inventory-filters-specs/inventory-filters-specs.component";

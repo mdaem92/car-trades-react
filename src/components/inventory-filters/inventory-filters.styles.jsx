@@ -1,8 +1,7 @@
-import styled,{keyframes,css} from 'styled-components'
+import styled from 'styled-components'
 import {Menu} from 'antd'
-import React from 'react'
 
-const darkBlue = '#10153b'
+// const darkBlue = '#10153b'
 const blue = '#357ae8'
 
 

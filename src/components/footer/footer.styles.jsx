@@ -1,5 +1,4 @@
 import styled,{css} from 'styled-components'
-import {Icon} from "antd";
 
 const toggleHomepageView = props=>{
     if(props.isHomepage){

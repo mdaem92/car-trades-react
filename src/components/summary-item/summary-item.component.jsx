@@ -1,7 +1,7 @@
 import React from 'react'
 import {SummaryItemContainer,TitleContainer,DescriptionContainer,InfoContainer,ImageContainer} from "./summary-item.styles";
 
-const SummaryItem = ({icon,title,isExtended,description,children})=>(
+const SummaryItem = ({title,isExtended,description,children})=>(
     <SummaryItemContainer isExtended={isExtended}>
         {/*<img className={'icon'} src={icon} alt={'icon'}  />*/}
         <ImageContainer isExtended={isExtended}>{children}</ImageContainer>

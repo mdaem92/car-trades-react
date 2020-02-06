@@ -6,7 +6,7 @@ import { SignUpContainer } from './sign-up.styles'
 
 
 
-const SignUp =({dispatch})=>{
+const SignUp =()=>{
     const [state,setState] = useState({
         displayName:'',
         email:'',

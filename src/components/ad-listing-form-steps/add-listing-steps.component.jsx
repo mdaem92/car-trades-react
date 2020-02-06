@@ -11,7 +11,6 @@ import {
     addListingFormSelector, addListingErrorMessageSelector
 } from "../../redux/add-listing-form/add-listing-form.selectors";
 import {setNextStep, setPrevStep,setFieldValue} from "../../redux/add-listing-form/add-listing-form.actions";
-// import {addListing} from "../../redux/listing/listing.actions";
 import {addListingStart} from "../../redux/listing/listing.actions";
 import {currentUserSelector} from "../../redux/auth/auth.selectors";
 

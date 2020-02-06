@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Cascader, InputNumber, Radio, Select,DatePicker} from "antd";
 import {antDCarData} from "../../carData/arrayData";
 import {GridContainer,SelectContainer,LabelContainer} from "./add-listing-make-model.styles";
@@ -11,7 +11,6 @@ import {
     seatCountSelector, colorSelector, registeredSelector
 } from "../../redux/add-listing-form/add-listing-form.selectors";
 import {setFieldValue} from "../../redux/add-listing-form/add-listing-form.actions";
-import moment from "moment";
 
 
 const {Option} = Select

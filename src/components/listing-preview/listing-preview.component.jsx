@@ -14,7 +14,7 @@ import {
     ListingPreviewFooterPriceContainer,
     ListingPreviewFooter,
 } from './listing-preview.styles'
-import {message,Icon} from 'antd'
+import {message} from 'antd'
 import ListingInfoSummary from "../listing-info-summary/listing-info-summary.component";
 import ListingPreviewTabs from "../listing-preview-tabs/listing-preview-tabs.component";
 import ListingPreviewContactModal from "../listing-preview-contact-modal/listing-preview-contact-modal.component";
@@ -39,11 +39,15 @@ const ListingPreview = (
         registered,
         userName,
         id,
+        color,
         isCompared,
         isParked
 
     })=>{
         const listingData = {
+            condition,
+            make,
+            model,
             mileage,
             bodyType,
             seatCount,
@@ -53,7 +57,14 @@ const ListingPreview = (
             enginePower,
             imageFileList,
             transmission,
-            userName
+            price,
+            registered,
+            userName,
+            id,
+            color,
+            isCompared,
+            isParked
+
         }
     const [state,setState] = React.useState({
         isOpen:false,
@@ -61,7 +72,7 @@ const ListingPreview = (
         showConfirm:false
     })
 
-    const {isOpen,showModal,showConfirm} =state
+    const {isOpen,showModal} =state
     return (
         <Wrapper isOpen={isOpen}>
         <ListingContainer >
@@ -71,7 +82,7 @@ const ListingPreview = (
                 <span className={'text'}>{registered} {make} {model.trim()} </span>
             </ListingInfoCell>
             <TopLeftPriceButtonsContainer>
-                <ListingPreviewUserButtons isCompared={isCompared} isParked={isParked} listingId={id}/>
+                <ListingPreviewUserButtons {...listingData}/>
                 <div className={'price-tag-container'}>
                     <Dollar className={'currency'}>$</Dollar>
                     {price}

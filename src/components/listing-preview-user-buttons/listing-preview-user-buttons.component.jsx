@@ -1,51 +1,47 @@
-import React,{useState} from 'react';
+import React from 'react';
 import{connect}from 'react-redux'
 import {ReactComponent as Compare} from "../../assets/car icons/compare.svg";
 import {ReactComponent as Parking} from "../../assets/car icons/parking.svg";
 import {ButtonsContainer} from "./listing-preview-user-buttons.styles";
 import {Tooltip,message} from "antd";
-import {createStructuredSelector} from "reselect";
-import {toggleCompare, toggleParking} from "../../redux/listing/listing.actions";
-import {isComparedListingSelector, isParkedListingSelector} from "../../redux/listing/listing.selectors";
+import {addToCompare, removeFromCompare} from "../../redux/compare/compare.actions";
+import {addToParking, removeFromParking} from "../../redux/parking/parking.actions";
+import {isComparedListingSelector} from "../../redux/compare/compare.selectors";
+import {isParkedListingSelector} from "../../redux/parking/parking.selectors";
 
 const ListingPreviewUserButtons = (
     {
-        listingId,
-
+        addToCompare,
+        removeFromCompare,
+        addToParking,
+        removeFromParking,
+        isParked,
+        isCompared,
+        ...listingData
     }) => {
-    const [state, setState] = useState({
-        isParked:false,
-        isCompared:false
-    });
-    const{isParked,isCompared}=state
-    console.log(`this listing's id: ${listingId} isParked:${isParked} isCompared:${isCompared}`)
+
     const handleClick = (e)=>{
-        (e==='isParked')?
-            !state[e]?
+        if(e==='isParked'){
+            if(!isParked){
+                addToParking(listingData)
                 message.success('Listing added to Parking')
-                :
+
+            }else{
+                removeFromParking(listingData.id)
                 message.success('Listing removed from Parking')
-            :
-            !state[e]?
+            }
+
+        }else{
+            if(!isCompared){
+                addToCompare(listingData)
                 message.success('Listing added to Compare')
-                :
+            }else{
+                removeFromCompare(listingData.id)
                 message.success('Listing removed from Compare')
 
-        setState({
-            ...state,
-            [e]:!state[e]
-        })
-        // if(e==='isParked'){
-        //     !isParked?
-        //         message.success('Listing added to Parking')
-        //         :
-        //         message.success('Listing removed from Parking')
-        // }else{
-        //     !isCompared?
-        //             message.success('Listing added to Compare')
-        //             :
-        //             message.success('Listing removed from Compare')
-        // }
+            }
+
+        }
     }
     return (
         <ButtonsContainer isCompared={isCompared} isParked={isParked}>
@@ -74,11 +70,14 @@ const ListingPreviewUserButtons = (
 };
 
 
-const mapStateToProps = (state,{listingId})=>({
-    // isParked:isParkedListingSelector(state,listingId),
-    // isCompared:isComparedListingSelector(state,listingId)
+const mapStateToProps = (state,{id})=>({
+    isCompared:isComparedListingSelector(state,id),
+    isParked:isParkedListingSelector(state,id)
 })
 const mapDispatchToProps = (dispatch)=>({
-
+    addToCompare:(id)=>dispatch(addToCompare(id)),
+    removeFromCompare:(id)=>dispatch(removeFromCompare(id)),
+    addToParking:(id)=>dispatch(addToParking(id)),
+    removeFromParking:(id)=>dispatch(removeFromParking(id))
 })
 export default connect(mapStateToProps,mapDispatchToProps)(ListingPreviewUserButtons);

@@ -1,5 +1,5 @@
 import styled,{css} from 'styled-components'
-import {Button, InputNumber} from "antd";
+import {Button} from "antd";
 
 export const InventorySearchContainer = styled.div`
  display: flex;

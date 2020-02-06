@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import React from 'react'
 import {Carousel} from "antd";
 
 export const CustomCarousel = styled(Carousel)`

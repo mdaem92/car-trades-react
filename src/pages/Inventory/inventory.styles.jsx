@@ -1,5 +1,4 @@
-import styled,{css} from 'styled-components'
-import {Affix} from 'antd'
+import styled from 'styled-components'
 
 const offGrey = '#f7f7f7'
 const borderColor = '#00000020'

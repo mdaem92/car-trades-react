@@ -1,8 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import {connect} from 'react-redux'
 import { Upload, Icon, Modal,message as AntMessage } from 'antd';
-import firebase,{firestore} from '../../firebase/firebase.utils'
-import shortid from 'shortid'
+import firebase from '../../firebase/firebase.utils'
 import {ImageUploadContainer} from "./image-upload.styles";
 import {createStructuredSelector} from "reselect";
 import {addImage, setFileList} from "../../redux/add-listing-form/add-listing-form.actions";
@@ -88,36 +87,35 @@ const PicturesWall =({uploadedList,addImage,setFileList})=> {
 
         }
 
-        // You can remove this validation if you want
         const isLt5M = file.size / 1024 / 1024 < 5;
         if (!isLt5M) {
             AntMessage.error('Image must be smaller than 5MB!');
         }
         return isImage && isLt5M;
     };
-    const uploadAction = (file) => {
-        return new Promise(async (resolve, reject) => {
-                const storage = firebase.storage()
-                const metadata = {
-                    contentType: 'image/jpeg'
-                }
-                const storageRef = await storage.ref()
-                const imageName = shortid.generate() //a unique name for the image
-                const imgFile = storageRef.child(`images/${imageName}.png`)
-                try {
-
-                    const image = await imgFile.put(file, metadata);
-                    const url = await imgFile.getDownloadURL()
-                    file.url = url
-                    resolve(url);
-
-                } catch (e) {
-                    console.log(e)
-                }
-
-            }
-        );
-    }
+    // const uploadAction = (file) => {
+    //     return new Promise(async (resolve, reject) => {
+    //             const storage = firebase.storage()
+    //             const metadata = {
+    //                 contentType: 'image/jpeg'
+    //             }
+    //             const storageRef = await storage.ref()
+    //             const imageName = shortid.generate() //a unique name for the image
+    //             const imgFile = storageRef.child(`images/${imageName}.png`)
+    //             try {
+    //
+    //                 const image = await imgFile.put(file, metadata);
+    //                 const url = await imgFile.getDownloadURL()
+    //                 file.url = url
+    //                 resolve(url);
+    //
+    //             } catch (e) {
+    //                 console.log(e)
+    //             }
+    //
+    //         }
+    //     );
+    // }
 
     const customUpload = async ({ onError, onSuccess,onProgress, file }) => {
         console.log('uploading',file)

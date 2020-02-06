@@ -1,5 +1,4 @@
 import styled,{keyframes} from 'styled-components'
-import {Carousel} from "antd";
 
 const animateStep = keyframes`
   0%{

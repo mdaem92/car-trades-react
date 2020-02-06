@@ -7,21 +7,14 @@ import {connect} from 'react-redux'
 import {withFormik,Form,Field} from 'formik'
 import * as Yup from "yup";
 import {withRouter} from 'react-router-dom';
-import PicturesWall from "../image-upload/image-upload.component";
 import AddListingProgressBar from "../add-listing-progress-bar/add-listing-progress-bar.component";
 import {addListing} from "../../redux/listing/listing.actions";
 
 
 const AddListingForm = (
     {
-        addListing,
         values,
         setFieldValue,
-        errors,
-        touched,
-        handleChange,
-        handleSubmit,
-        dispatch
     })=>{
     const [state,setState]=useState({carData})
 

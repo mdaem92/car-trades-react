@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Progress} from 'reactstrap'
 import{ProgressBarContainer} from './add-listing-progress-bar.styles'
 

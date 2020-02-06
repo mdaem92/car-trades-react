@@ -1,0 +1,4 @@
+export const ParkingActionTypes = {
+    ADD_TO_PARKING:'ADD_TO_PARKING',
+    REMOVE_FROM_PARKING:'REMOVE_FROM_PARKING'
+}

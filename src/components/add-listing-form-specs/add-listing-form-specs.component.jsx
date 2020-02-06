@@ -36,9 +36,6 @@ const AddListingFormSpecs = ({fuelEconomy,fuelType,engineCapacity,enginePower,tr
         console.log('focus');
     }
 
-    function onSearch(val) {
-        console.log('search:', val);
-    }
 
     const onInputChange = (value)=>{
         if(typeof value==='number'){

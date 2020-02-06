@@ -1,9 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {connect}from 'react-redux'
 import {createStructuredSelector} from "reselect";
 import {
-    filteredListingsSelector,
-    inventoryListingsSelector,
     paginatedFilteredListingsSelector
 } from "../../redux/listing/listing.selectors";
 import ListingPreview from "../listing-preview/listing-preview.component";

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-const blue = `#357ae8`
 export const TagsGroupContainer = styled.div`
  
 //justify-content: space-between;

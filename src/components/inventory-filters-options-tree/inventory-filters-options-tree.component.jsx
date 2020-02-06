@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Tree,TreeSelect} from 'antd'
+import {TreeSelect} from 'antd'
 import {connect}from 'react-redux'
 import {treeData} from "./treeData";
 import {createStructuredSelector} from "reselect";
 import {inventoryFiltersSelector} from "../../redux/inventory-filters/inventory-filters.selectors";
 import {appendOption, removeOption, setFieldValue} from "../../redux/inventory-filters/inventory-filters.actions";
 
-// const {TreeNode} = TreeSelect
 const types = {
     '0-0':'colors',
     '0-1':'fuelTypes',
@@ -27,12 +26,6 @@ const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,rem
     const onSelect = (value,{props:{eventKey}},data)=>{
         console.log('on select', value,eventKey,data)
 
-        // if(value){
-        //     console.log('value: ',value)
-        //     console.log('treeNode',eventKey)
-        //     const listName = types[eventKey.substring(0,3)]
-        //     appendOption(listName,value)
-        // }
         if(value){
             if(value==='color'){
                 setFieldValue('colors',["white", "black", "silver", "red", "blue"])
@@ -86,29 +79,7 @@ const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,rem
         }
     }
 
-    const handleChange = (value,title,data)=>{
-        console.log('on change')
-        console.log('value: ',value)
-        console.log('data: ',data)
-        console.log('title: ',title)
-        setState({
-            ...state,
-            value
-        })
 
-        const {eventKey}=data.triggerNode.props
-
-        // const name = types[eventKey.substring(0,3)]
-        console.log(types[eventKey.substring(0,3)])
-        // setFieldValue(name,value)
-    }
-    const handleSelect = (value,data,title)=>{
-        console.log('on select')
-        console.log('value: ',value)
-        console.log('data: ',data)
-        console.log('title: ',title)
-
-    }
 
     const {colors,fuelTypes,transmissions}=filtersData
     return (

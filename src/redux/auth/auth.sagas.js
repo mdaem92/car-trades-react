@@ -52,7 +52,7 @@ function* emailSignInAsync(email,password){
     }
 }
 function* signUpAsync(credentials){
-    const {email,password,displayName}=credentials
+    const {email,password}=credentials
     try{
         const{user}=yield auth.createUserWithEmailAndPassword(email,password)
         yield put(signUpSuccess(user))

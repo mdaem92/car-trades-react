@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Modal,Input,Button} from "antd";
 
 const ListingPreviewContactModal = ({onCancel,onOk,...otherProps}) => {

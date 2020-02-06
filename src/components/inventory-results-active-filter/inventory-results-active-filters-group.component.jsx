@@ -1,7 +1,6 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
-import { Tag, Input, Icon } from 'antd';
-import { TweenOneGroup } from 'rc-tween-one';
+import { Tag} from 'antd';
 import {TagsGroupContainer} from "./inventory-results-active-filters-group.styles";
 import {createStructuredSelector} from "reselect";
 import {setFieldValue} from "../../redux/inventory-filters/inventory-filters.actions";
@@ -45,46 +44,12 @@ const ActiveFiltersGroup =({tags,setFieldValue})=>{
 
     };
 
-    const forMap = tag => {
-        const tagElem = (
-            <Tag className={'tag'}
-                closable
-                onClose={e => {
-                    e.preventDefault();
-                    handleClose(tag);
-                }}
-            >
-                {tag}
-            </Tag>
-        );
-        return (
-            <span key={tag} style={{ display: 'inline-block' }}>
-        {tagElem}
-      </span>
-        );
-    };
+
         // const { tags } = state;
-        const tagChild = tags.map(forMap);
         return (
             <div>
                 <TagsGroupContainer>
                     {!!tags.length ? <span className={'label'}>Active filters</span>:<span className={'label'}> No active filters</span>}
-                    {/*<TweenOneGroup*/}
-                    {/*    className={'tag-group'}*/}
-                    {/*    enter={{*/}
-                    {/*        scale: 0.8,*/}
-                    {/*        opacity: 0,*/}
-                    {/*        type: 'from',*/}
-                    {/*        duration: 100,*/}
-                    {/*        onComplete: e => {*/}
-                    {/*            e.target.style = '';*/}
-                    {/*        },*/}
-                    {/*    }}*/}
-                    {/*    leave={{ opacity: 0, width: 0, scale: 0, duration: 200 }}*/}
-                    {/*    appear={false}*/}
-                    {/*>*/}
-                    {/*    {tagChild}*/}
-                    {/*</TweenOneGroup>*/}
                     <FlipMove
                         className={'tag-group'}
 

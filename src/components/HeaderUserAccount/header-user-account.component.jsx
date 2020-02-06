@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {connect}from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {
@@ -9,8 +9,7 @@ import {
 import {DropdownContainer,
     DropdownToggleContainer,
 } from "./header-user-account.styles";
-import{auth} from '../../firebase/firebase.utils'
-import {signInWithGoogle} from "../../firebase/firebase.utils";
+
 import {createStructuredSelector} from "reselect";
 import {checkUserSession, googleSignInStart, signOutStart} from "../../redux/auth/auth.actions";
 import {currentUserSelector} from "../../redux/auth/auth.selectors";

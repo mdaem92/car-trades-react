@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect}from 'react-redux';
-import {Cascader, Radio, Select, TreeSelect} from "antd";
-import {antDCarData,treeSelectCarData} from "../../carData/arrayData";
+import {Cascader, Radio} from "antd";
+import {antDCarData} from "../../carData/arrayData";
 import {GroupContainer} from "./inventory-filters-make-model.styles";
 import {createStructuredSelector} from "reselect";
 import {inventoryFiltersSelector} from "../../redux/inventory-filters/inventory-filters.selectors";
