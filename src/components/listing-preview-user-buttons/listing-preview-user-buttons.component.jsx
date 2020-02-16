@@ -1,3 +1,4 @@
+
 import React from 'react';
 import{connect}from 'react-redux'
 import {ReactComponent as Compare} from "../../assets/car icons/compare.svg";
@@ -17,6 +18,7 @@ const ListingPreviewUserButtons = (
         removeFromParking,
         isParked,
         isCompared,
+        isCompareLimitReached,
         ...listingData
     }) => {
 
@@ -32,13 +34,14 @@ const ListingPreviewUserButtons = (
             }
 
         }else{
-            if(!isCompared){
+            if(!isCompared && !isCompareLimitReached){
                 addToCompare(listingData)
                 message.success('Listing added to Compare')
-            }else{
+            }else if(isCompared){
                 removeFromCompare(listingData.id)
                 message.success('Listing removed from Compare')
-
+            }else{
+                message.error('Compare limit reached')
             }
 
         }
@@ -72,7 +75,8 @@ const ListingPreviewUserButtons = (
 
 const mapStateToProps = (state,{id})=>({
     isCompared:isComparedListingSelector(state,id),
-    isParked:isParkedListingSelector(state,id)
+    isParked:isParkedListingSelector(state,id),
+    isCompareLimitReached:(state.compare.length===3)
 })
 const mapDispatchToProps = (dispatch)=>({
     addToCompare:(id)=>dispatch(addToCompare(id)),
