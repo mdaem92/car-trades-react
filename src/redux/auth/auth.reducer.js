@@ -19,7 +19,7 @@ export default (state=defaultAuthReducer,action)=>{
         case AuthActionTypes.SIGN_OUT_FAILURE:
             return {
                 ...state,
-                errorMessage:action.errorMessage
+                errorMessage:action.errorMessage.message
             }
         case AuthActionTypes.SIGN_OUT_SUCCESS:
             return {
@@ -27,6 +27,11 @@ export default (state=defaultAuthReducer,action)=>{
                 currentUser:undefined,
                 errorMessage:undefined
             }
+            case AuthActionTypes.RESET_AUTH_ERROR:
+                return{
+                    ...state,
+                    errorMessage:undefined
+                }
         default:
             return state
     }

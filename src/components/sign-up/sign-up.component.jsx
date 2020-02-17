@@ -3,10 +3,11 @@ import {connect } from 'react-redux'
 import FormInput from '../form-input/form-input.component'
 import CustomButton from '../custom-button/custom-button.component'
 import { SignUpContainer } from './sign-up.styles'
+import{message}from 'antd'
+import{signUpStart}from '../../redux/auth/auth.actions'
 
 
-
-const SignUp =()=>{
+const SignUp =({dispatch})=>{
     const [state,setState] = useState({
         displayName:'',
         email:'',
@@ -25,10 +26,10 @@ const SignUp =()=>{
         console.log('submitting',state);
         const {displayName,email,password,confirmedPassword} = state
         if(password !== confirmedPassword){
-            alert('Passwords dont match')
+            message.error('Passwords dont match')
             return
         }
-        // dispatch(signUpStart({email,password,displayName}))
+        dispatch(signUpStart(email,password,displayName))
         // try{
 
         //   // const {user} = await auth.createUserWithEmailAndPassword(email,password)
@@ -99,4 +100,6 @@ const SignUp =()=>{
     )
 
 }
-export default connect() (SignUp)
+
+
+export default connect()(SignUp)

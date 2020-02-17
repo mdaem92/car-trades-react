@@ -34,7 +34,8 @@ function* getSnapShotFromUserAuth(userAuth,additionalUserData){
     yield put(signInFailure())
     }
 }
-function* emailSignInAsync(email,password){
+function* emailSignInAsync({email,password}){
+    console.log('from email sign in: ',email,password)
     try{
         const {user} = yield auth.signInWithEmailAndPassword(email,password)
         yield call(getSnapShotFromUserAuth,user)
@@ -51,10 +52,11 @@ function* emailSignInAsync(email,password){
         yield put(signInFailure(e))
     }
 }
-function* signUpAsync(credentials){
-    const {email,password}=credentials
+function* signUpAsync({email,password,displayName}){
+    console.log('from signup: ',email,password,displayName)
     try{
         const{user}=yield auth.createUserWithEmailAndPassword(email,password)
+        yield user.updateProfile({displayName})
         yield put(signUpSuccess(user))
     }catch (e) {
         yield put(signUpFailure(e))

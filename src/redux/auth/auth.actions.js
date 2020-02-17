@@ -13,9 +13,10 @@ export const signInFailure  = (errorMessage)=>({
     type:AuthActionTypes.SIGN_IN_FAILURE,
     errorMessage
 })
-export const emailSignInStart = (emailPassword)=>({
+export const emailSignInStart = (email,password)=>({
     type:AuthActionTypes.EMAIL_SIGN_IN_START,
-    emailPassword
+    email,
+    password
 })
 
 export const checkUserSession = ()=>({
@@ -33,9 +34,11 @@ export const signOutFailure = (errorMessage)=>({
     errorMessage
 })
 
-export const signUpStart=(credentials)=>({
+export const signUpStart=(email,password,displayName)=>({
     type:AuthActionTypes.SIGN_UP_START,
-    credentials
+    email,
+    password,
+    displayName
 })
 export const signUpSuccess=(user)=>({
     type:AuthActionTypes.SIGN_UP_SUCCESS,
@@ -44,4 +47,8 @@ export const signUpSuccess=(user)=>({
 export const signUpFailure=(errorMessage)=>({
     type:AuthActionTypes.SIGN_UP_FAILURE,
     errorMessage
+})
+
+export const resetAuthErrorMessage = ()=>({
+    type:AuthActionTypes.RESET_AUTH_ERROR
 })

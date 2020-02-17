@@ -1,8 +1,10 @@
 import React from 'react';
 import {CompareListingContainer, Columns,EmptyImageContainer}from './compare-listing.styles'
 import CompareListingImageCarousel from '../compare-listing-image-carousel/compare-listing-image-carousel.component';
-import {Icon}from 'antd'
+import {Icon,Tooltip}from 'antd'
 import {withRouter}from 'react-router-dom'
+
+
 
 const CompareListing = ({history,empty,make,condition,model,mileage,bodyType,fuelEconomy,id,fuelType,imageFileList,price,registered}) => {
 
@@ -27,7 +29,9 @@ const CompareListing = ({history,empty,make,condition,model,mileage,bodyType,fue
         <CompareListingContainer>
             <div>
             <EmptyImageContainer>
-                <Icon className={'plus-icon'} type="plus" onClick={()=>history.push('/inventory')} />
+                <Tooltip title={'Add to compare'}>
+                    <Icon className={'plus-icon'} type="plus" onClick={()=>history.push('/inventory')} />
+                </Tooltip>
             </EmptyImageContainer>
             </div>
             

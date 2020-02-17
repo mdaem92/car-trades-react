@@ -17,9 +17,10 @@ export const BackgroundImageContainer = styled.div`
   pointer-events: none;
   // background-image: ${({imageUrl}) => `url(${imageUrl})`};
   .carousel{
-    overflow: hidden;
-    vertical-align: top;
-
+    /* overflow: hidden;
+    vertical-align: top; */
+    
+    
   }
  
 `

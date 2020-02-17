@@ -6,3 +6,8 @@ export const currentUserSelector = createSelector(
     authSelector,
     (auth)=>auth.currentUser
 )
+
+export const authErrorMessageSelector = createSelector(
+    authSelector,
+    auth=>auth.errorMessage
+)
