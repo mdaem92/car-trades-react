@@ -27,7 +27,7 @@ const HeaderUserAccount = (
         signOut
     })=>{
     useEffect(()=>{
-        checkUserSession()
+        // checkUserSession()
     },[checkUserSession])
 
     const handleClick = ({target:{value :path}})=>{

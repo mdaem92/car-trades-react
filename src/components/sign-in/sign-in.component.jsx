@@ -19,12 +19,7 @@ const SignIn = ({emailSignIn,googleSignIn,errorMessage,resetErrorMessage,checkUs
         email:'',
         password:'',
     })
-    useEffect(()=>{
-        // checkUserSession()
-        console.log('error message:',state)
-        // resetErrorMessage()
-        
-    },[state])
+    
     const handleSubmit= async(event)=>{
 
         event.preventDefault()

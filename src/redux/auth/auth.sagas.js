@@ -31,7 +31,7 @@ function* getSnapShotFromUserAuth(userAuth,additionalUserData){
       const {user} = yield auth.signInWithPopup(googleAuthProvider)
       yield getSnapShotFromUserAuth(user)
     }catch(e){
-    yield put(signInFailure())
+        yield put(signInFailure(e))
     }
 }
 function* emailSignInAsync({email,password}){
@@ -46,6 +46,7 @@ function* emailSignInAsync({email,password}){
  function* checkUserAuth(){
     try{
         const userAuth = yield getUserAuth()
+        yield console.log('checkuserauth:',userAuth)
         if(!userAuth)return
         yield getSnapShotFromUserAuth(userAuth)
     }catch (e) {

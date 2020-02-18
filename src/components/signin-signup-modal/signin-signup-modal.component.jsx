@@ -8,37 +8,45 @@ import { resetAuthErrorMessage } from '../../redux/auth/auth.actions';
 
 const SigninSignupModal = ({errorMessage,resetErrorMessage}) => {
     const [state,setState]=React.useState({
-        visible:false
+        visible:''
     })
 
 
     useEffect(()=>{
-        // checkUserSession()
         resetErrorMessage()
-        
+        return ()=>{
+            setState({visible:errorMessage})
+        }
+    },[errorMessage])
+    useEffect(()=>{
+        console.log('state: ',state)
     },[state])
     const handleOk = e => {
         setState({
             ...state,
-            visible:false
+            visible:''
         })        
       };
       
     const handleCancel = e => {
         setState({
             ...state,
-            visible:false
+            visible:''
         })       
     };
     return (
+        
         <Modal 
             title="Error"
-            visible={!!errorMessage || state.visible}
+            visible={!!state.visible }
             onOk={handleOk}
             onCancel={handleCancel}
         >
-            <p>{errorMessage}</p>
+            <p>{state.visible}</p>
         </Modal>
+        
+        
+        
     );
 };
 
