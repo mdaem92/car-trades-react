@@ -46,7 +46,7 @@ const SignIn = ({emailSignIn,googleSignIn,errorMessage,resetErrorMessage,checkUs
       console.log('error message:',errorMessage,state.visible,typeof errorMessage==='string',!!errorMessage)
     return !!currentUser? 
         (
-            <Redirect to={`${history.location.state.url}`}/>
+            history.location.state?  <Redirect to={`${history.location.state.url}`}/>:<Redirect to={`/`}/>
         )
         :
         (

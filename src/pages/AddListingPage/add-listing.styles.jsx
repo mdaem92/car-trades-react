@@ -2,6 +2,7 @@ import styled,{keyframes} from 'styled-components'
 
 
 const offGrey = '#fcfcfc'
+const blue = '#357ae8'
 
 const fadeKeyFrame = keyframes`
   0% {
@@ -26,11 +27,14 @@ export const BackgroundContainer = styled.div`
   width: 100%;
 `
 
-export const PageTitleContainer = styled.div`
-  font-size: 50px;
+export const PageTitleContainer = styled.h3`
+  /* font-size: 20px; */
   padding: 20px 0;
+  color:${blue};
+  /* display:flex; */
+  /* justify-content:center; */
   margin: 10px;
   font-weight: bold;
-  animation: ${fadeKeyFrame} 2s ease-in-out 0s ;
+  animation: ${fadeKeyFrame} 1s linear  ;
 `
 

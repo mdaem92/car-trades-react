@@ -3,27 +3,31 @@ import styled,{css} from 'styled-components'
 
 const iconStyles = css`
     opacity:0;
-        position:relative;
-        top:92px;
-        left:117px;
-        z-index:998; 
+    position:relative;
+    top:92px;
+    left:117px;
+    z-index:998; 
+    svg{
+        height:25px;
+        width:auto;
+        fill:white;
+    }
+    &:hover{
         svg{
-            height:25px;
-            width:auto;
-            fill:white;
+            fill:red;
         }
-        &:hover{
-            svg{
-                fill:red;
-            }
-        }
-        transition:opacity 300ms ease-in-out;
+    }
+    transition:opacity 300ms ease-in-out;
 `
 export const CompareListingContainer = styled.div`
 
     /* border:1px dashed grey; */
+    position:relative;
+    bottom:30px;
+
     display:grid;
     grid-template-rows:3fr 4fr;
+    margin:0 10px;
     .anticon-close{
         /* display:none; */
         ${iconStyles}
@@ -44,10 +48,10 @@ const grey = '#7f7f7f'
 
 export const Columns=styled.div`
     /* background-color:${offGrey}; */
+    margin-top:12px;
     display:flex;
     flex-direction:column;
     justify-content:space-around;
-
 
     .column-item{
         text-align:center;

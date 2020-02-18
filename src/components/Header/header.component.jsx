@@ -30,8 +30,8 @@ const Header = ()=>{
                 <Logo className='logo'/>
             </LogoContainer>
             <OptionsContainer scrolled={scrolled}>
+                <OptionLink exact activeClassName={'active'} className={'anchor'} to='/'>Homepage</OptionLink>
                 <OptionLink activeClassName={'active'} className={'anchor'} to='/inventory'>Inventory</OptionLink>
-                <OptionLink activeClassName={'active'} className={'anchor'} to='/information'>Information</OptionLink>
                 <OptionLink activeClassName={'active'} className={'anchor'} to='/add-listing'>Add Listing</OptionLink>
                 <OptionLink activeClassName={'active'} className={'anchor'} to='/compare'>Compare</OptionLink>
                 {/*<OptionLink activeClassName={'active'} className={'anchor-signup'} to='/signin-signup'>LOGIN or REGISTER</OptionLink>*/}

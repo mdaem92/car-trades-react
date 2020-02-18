@@ -9,7 +9,7 @@ import {withRouter}from 'react-router-dom'
 const CompareListing = ({history,empty,make,condition,model,mileage,bodyType,fuelEconomy,id,fuelType,imageFileList,price,registered}) => {
 
     return !empty? (
-        <CompareListingContainer>
+        <CompareListingContainer >
             <CompareListingImageCarousel images={imageFileList} id={id} />
             <Columns>
                 <div className={'column-item'}> {condition[0].toUpperCase()+condition.slice(1)}</div>

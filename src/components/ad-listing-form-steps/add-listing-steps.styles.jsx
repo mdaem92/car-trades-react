@@ -10,7 +10,7 @@ const animateStep = keyframes`
 `
 
 export const StepsContentContainer = styled.div`
-margin-top: 24px;
+margin-top: 35px;
   padding-top: 8px;
   padding-left: 8px;
   height: auto;
@@ -31,7 +31,7 @@ margin-top: 24px;
 `
 
 export const StepsActionContainer = styled.div`
-    margin-top: 24px;
+    margin-top: 35px;
     .ant-btn{
       border-radius: 0;
     }

@@ -12,11 +12,18 @@ const ComparePage = ({ comparedListings }) => {
     return (
         <CompareTableContainer>
             <CompareTable>
-                <CompareTableVerticalHeader/>
+                <CompareTableVerticalHeader />
+                <FlipMove 
+                    className={'compare-group'}
+                    enterAnimation={'accordionHorizontal'}
+                    leaveAnimation={'fade'}
+                >
                 {
                     comparedListings.length>0 &&
-                    (comparedListings.map((listingData)=><CompareListing key={listingData.id} {...listingData}/>))
+                    (comparedListings.map((listingData)=><div key={listingData.id} ><CompareListing {...listingData}/></div>))
                 }
+                </FlipMove>
+                
                 
                 {
                     comparedListings.length<3 && <CompareListing empty/>

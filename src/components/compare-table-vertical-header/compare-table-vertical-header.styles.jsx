@@ -1,18 +1,24 @@
-import styled from 'styled-components'
+import styled,{keyframes} from 'styled-components'
 
 
 const blue ='#357ae8';
 const offGrey = '#f7f7f7'
 const grey = '#7f7f7f'
 export const TableVerticalHeader = styled.div`
-    grid-column:1/span 1;
-    grid-row:1/span 1;
-    /* border: 1px solid red; */
+    /* grid-column:1/span 1;
+    grid-row:1/span 1; */
     display:grid;
     grid-template-rows:3fr 4fr;
 
 `
-
+const fadeKeyFrame = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
 export const HeaderLabel = styled.div`
     /* background:${({imageUrl})=>`url(${imageUrl})`} */
     grid-column:1/span 1;
@@ -25,6 +31,8 @@ export const HeaderLabel = styled.div`
     align-items:center;
     height:160px;
     width:250px;
+    border:1px solid blue;
+    animation:${fadeKeyFrame} 1s ease-in-out;
     /* border:1px solid green; */
 `
 

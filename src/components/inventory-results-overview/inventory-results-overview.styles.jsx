@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled,{keyframes} from "styled-components";
 
 
 const blue = `#357ae8`
@@ -18,19 +18,29 @@ export const ListingContainer = styled.div`
   //height: 144px;
   transition: all 3000ms ease ;
  `
+
+const fadeKeyFrame = keyframes`
+0% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+`
 export const Results = styled.div`
 grid-area:results;
 display: flex;
 align-items:center;
-  .text{
-    height:max-content;
-    margin: 0 10px;
-    padding: 0;
-    color: ${blue};
-    font-weight: bolder;
-    
+.text{
+  height:max-content;
+  margin: 0 10px;
+  padding: 0;
+  color: ${blue};
+  font-weight: bolder;
+  animation:${fadeKeyFrame} 1s ease-in-out;
   }
-    transition: all 3000ms ease ;
+transition: all 3000ms ease ;
+
 
 `
 export const ActiveFilters = styled.div`

@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImageCarouselContainer,ImageContainer,CarouselContainer} from './compare-listing-image-carousel.styles'
+import {CarouselContainer} from './compare-listing-image-carousel.styles'
 import {Icon, Tooltip} from 'antd'
 import{connect} from 'react-redux'
 import { removeFromCompare } from '../../redux/compare/compare.actions';

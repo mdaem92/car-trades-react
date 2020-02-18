@@ -61,7 +61,7 @@ const HeaderUserAccount = (
                 </div>
             ):(
                 <div>
-                    <Button variant="outline-success" onClick={()=>googleSignIn()}>Login</Button>
+                    <Button variant="outline-success" onClick={()=>history.push('/signin-signup')}>Login</Button>
                 </div>
             )}
         </div>
