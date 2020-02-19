@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import {connect } from 'react-redux'
-import FormInput from '../form-input/form-input.component'
-import CustomButton from '../custom-button/custom-button.component'
+import {Input,Icon,Button} from 'antd'
 import { SignUpContainer } from './sign-up.styles'
 import{message}from 'antd'
 import{signUpStart}from '../../redux/auth/auth.actions'
@@ -51,46 +50,63 @@ const SignUp =({dispatch})=>{
     }
     return (
         <SignUpContainer>
-            <h2>I do not have an account</h2>
-            <span>Sign up with email and password</span>
-            <form className='sign-up-form'  onSubmit={handleSubmit}>
-                <FormInput
+            <h2 className={'signup-title'}>I do not have an account</h2>
+            <span className={'description'}>Sign up with email and password</span>
+            <form  onSubmit={handleSubmit}>
+                <Input
                     name='displayName'
                     type='text'
-                    label='Display name'
-                    value={state.displayName}
+                    placeholder='Display name'
+                    defaultValue={state.displayName}
+                    className={'input'}
                     required
-                    handleChange={handleChange}
+                    onChange={handleChange}
+                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }}/>}
                 />
-                <FormInput
+                <Input
                     name='email'
+                    className={'input'}
+                    placeholder={'Email'}
                     type='email'
-                    label='email'
-                    value={state.email}
+                    defaultValue={state.email}
                     required
-                    handleChange={handleChange}
+                    onChange={handleChange}
+                    prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }}/>}
+
                 />
-                <FormInput
+                <Input
                     name='password'
+                    className={'input'}
+                    placeholder={'Password'}
                     type='password'
-                    label='password'
-                    value={state.password}
+                    defaultValue={state.password}
                     required
-                    handleChange={handleChange}
+                    onChange={handleChange}
+                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }}/>}
+
                 />
-                <FormInput
+                <Input
                     name='confirmedPassword'
+                    className={'input'}
                     type='password'
-                    label='Confirm Password'
-                    value={state.confirmedPassword}
+                    placeholder='Confirm Password'
+                    defaultValue={state.confirmedPassword}
                     required
-                    handleChange={handleChange}
+                    onChange={handleChange}
+                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }}/>}
+
                 />
 
 
-                <CustomButton type='submit' onClick={handleSignUp}>
+                <Button 
+                    type='primary'
+                    htmlType={'submit'}
+                    onClick={handleSignUp}
+                    className={'button'}
+                    icon={'rocket'}
+                >
                     Sign Up
-                </CustomButton>
+                </Button>
 
 
             </form>

@@ -13,6 +13,10 @@ export const DropdownContainer = styled(UncontrolledDropdown)`
     border-radius: 0;
     .dropdown-item{
       color: grey;
+      display:flex;
+      justify-content:space-between;
+      .ant-badge{
+      }
     }
    }
    
@@ -44,5 +48,22 @@ export const UserAccountImage =styled.div`
   background-position: center;
   background-size: cover;
   border: 1px solid black;
+`
+export const ButtonContainer = styled.div`
+  .button{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    align-items:center;
+    font-size:15px;
+    ${props=>props.isScrolled && css`
+      color: white;
+      &:hover{
+      color: grey;
+    
+      }
+    `}
+  }
+
 `
 

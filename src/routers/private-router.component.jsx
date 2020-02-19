@@ -4,7 +4,7 @@ import {Route,Redirect} from 'react-router-dom'
 import { createStructuredSelector } from 'reselect'
 import { currentUserSelector } from '../redux/auth/auth.selectors'
 
-const PrivateRouter = ({
+const PrivateRoute = ({
     isAuthenticated,
     component:Component,
     path,
@@ -26,4 +26,4 @@ const PrivateRouter = ({
 const mapStateToProps = createStructuredSelector({
     isAuthenticated:currentUserSelector
 })
-export default connect(mapStateToProps)(PrivateRouter)
+export default connect(mapStateToProps)(PrivateRoute)

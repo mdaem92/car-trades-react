@@ -49,6 +49,7 @@ export const OptionsContainer = styled.div`
   justify-content: space-evenly;
   .anchor{
     text-decoration: none;
+    font-size:15px;
     color: grey;
     ${props => props.scrolled && css`
     color:white;  
@@ -74,6 +75,8 @@ export const OptionsContainer = styled.div`
     font-weight: bold;
     color: darken(40%);
   }
+
+  
   @media and screen (max-width:800px){
    width:80%;
     

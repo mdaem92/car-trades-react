@@ -31,7 +31,6 @@ export const HeaderLabel = styled.div`
     align-items:center;
     height:160px;
     width:250px;
-    border:1px solid blue;
     animation:${fadeKeyFrame} 1s ease-in-out;
     /* border:1px solid green; */
 `

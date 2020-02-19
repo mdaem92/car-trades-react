@@ -18,7 +18,7 @@ export const transformCircular = createTransform(
 )
 
 const persistConfig = {
-    key:'root',
+    key:'MIGLOS::root',
     storage,
     transforms: [transformCircular],
     blacklist:['listings']

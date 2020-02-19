@@ -7,3 +7,8 @@ export const isComparedListingSelector =(state,id) => createSelector(
     (compare)=>compare.findIndex(comparedListing=>comparedListing.id===id)>=0
 )(state)
 
+export const comparedCountSelector = createSelector(
+    comparedListingsSelector,
+    compare=>compare.length
+)
+

@@ -1,6 +1,6 @@
 import {createSelector}from 'reselect'
 
- const listingsSelector =state=>state.listings
+const listingsSelector =state=>state.listings
 const filtersSelector = state=>state.inventoryFilters
 
 export const inventoryListingsSelector = createSelector(
@@ -83,25 +83,23 @@ export const paginatedFilteredListingsSelector = createSelector(
         return listings.slice(from,to)
     }
 )
-// export const isParkedListingSelector=(state,id)=> createSelector(
-//     paginatedFilteredListingsSelector,
-//     (filteredListings)=>{
-//         console.log('filtered listings',filteredListings, id)
-//         const foundAt = filteredListings.findIndex(listing=>listing.id===id)
-//         console.log('filtered listings found at ', foundAt)
-//         return filteredListings[foundAt].isParked===true
-//     }
-// )(state)
-//
-// export const isComparedListingSelector=(state,id)=> createSelector(
-//     paginatedFilteredListingsSelector,
-//     (filteredListings)=>{
-//         console.log('state,id:', state,',',id)
-//         const foundAt = filteredListings.findIndex(listing=>listing.id===id)
-//         return (filteredListings[foundAt].isCompared===true)
-//     }
-// )(state)
+
+export const myListingsSelector = (state,userName)=>createSelector(
+    inventoryListingsSelector,
+    listings=>{
+
+        const res = listings.filter(listing=>{
+            console.log(`from selector ${listing.userName} ===`,userName)
+            return listing.userName===userName
+        })
+        return res
+    }
+)(state)
 
 export const selectListingById = (state,id)=>createSelector(
 
 )(state)
+export const myListingsCountSelector = createSelector(
+    myListingsSelector,
+    myListings=>myListings.length
+)

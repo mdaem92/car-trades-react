@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from 'react'
+import{connect}from 'react-redux'
 import {HeaderContainer , LogoContainer , OptionLink , OptionsContainer  } from './header.styles'
 import {ReactComponent as Logo} from '../../assets/crown.svg'
 import HeaderUserAccount from "../HeaderUserAccount/header-user-account.component";
+import {Badge} from 'antd'
+import{createStructuredSelector}from 'reselect'
+import { comparedListingsSelector, comparedCountSelector } from '../../redux/compare/compare.selectors';
 
-
-const Header = ()=>{
+const Header = ({compareCount})=>{
 
     const [scrolled,setScrolled] = useState(false)
 
@@ -33,8 +36,9 @@ const Header = ()=>{
                 <OptionLink exact activeClassName={'active'} className={'anchor'} to='/'>Homepage</OptionLink>
                 <OptionLink activeClassName={'active'} className={'anchor'} to='/inventory'>Inventory</OptionLink>
                 <OptionLink activeClassName={'active'} className={'anchor'} to='/add-listing'>Add Listing</OptionLink>
-                <OptionLink activeClassName={'active'} className={'anchor'} to='/compare'>Compare</OptionLink>
-                {/*<OptionLink activeClassName={'active'} className={'anchor-signup'} to='/signin-signup'>LOGIN or REGISTER</OptionLink>*/}
+                <Badge count={compareCount} style={scrolled?{backgroundColor:'white',color:'#357ae8'}:{backgroundColor:'#357ae8'}}>
+                    <OptionLink activeClassName={'active'} className={'anchor'} to='/compare'>Compare</OptionLink>
+                </Badge>
                 <HeaderUserAccount scrolled={scrolled}/>
             </OptionsContainer>
         </HeaderContainer>
@@ -42,6 +46,8 @@ const Header = ()=>{
 }
 
 
+const mapStateToProps = createStructuredSelector({
+    compareCount:comparedCountSelector
+})
 
-
-export default Header
+export default connect(mapStateToProps)(Header)
