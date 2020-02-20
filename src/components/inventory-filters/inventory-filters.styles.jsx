@@ -5,8 +5,8 @@ import {Menu} from 'antd'
 const blue = '#357ae8'
 
 
-export const MenuContainer = styled(Menu)`
 
+export const MenuContainer = styled(Menu)`
    .reset-form-submenu{
     .ant-menu-submenu-arrow{
       display: none;
@@ -54,13 +54,10 @@ export const MenuContainer = styled(Menu)`
  
  }
  .groupContainer{
-
   .item{
     margin: 5px 30px ;
   }
-
  }
-
  
  .search-icon{
   //display: none;
@@ -74,6 +71,7 @@ export const MenuContainer = styled(Menu)`
  }
  
 `
+
 export const MakeModelContainer = styled.div`
 
   .item{

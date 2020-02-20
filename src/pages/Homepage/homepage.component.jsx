@@ -18,17 +18,11 @@ const Homepage = ({fetchListings,isListingsCollected})=>{
         }
 
     },[fetchListings,isListingsCollected])
-    const [isOpen,setisOpen]=React.useState(false)
 
-    const showDrawer = ()=>{
-        setisOpen(true)
-    }
-    const onClose = ()=>{
-        setisOpen(false)
-    }
+    
     return (
         <GridContainer>
-            <BackgroundImageContainer onClick={showDrawer}>
+            <BackgroundImageContainer>
                 <HomepageImageCarousel/>
             </BackgroundImageContainer>
             <SearchLabelContainer >

@@ -4,7 +4,7 @@ import {ListingContainer,Results,Sort,ActiveFilters} from "./inventory-results-o
 import ActiveFiltersGroup from '../inventory-results-active-filter/inventory-results-active-filters-group.component'
 import InventorySortOptions from '../inventory-sort-options/inventory-sort-options.component'
 import {createStructuredSelector} from "reselect";
-import {filteredListingsLengthSelector, isListingsLoadingSelector} from "../../redux/listing/listing.selectors";
+import {filteredListingsLengthSelector} from "../../redux/listing/listing.selectors";
 
 const InventoryResultsOverview = ({visibleListingsCount}) => {
     return (

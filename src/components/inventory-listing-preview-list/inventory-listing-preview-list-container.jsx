@@ -1,4 +1,3 @@
-import React from 'react'
 import {createStructuredSelector} from "reselect";
 import {isListingsLoadingSelector} from "../../redux/listing/listing.selectors";
 import InventoryListingPreviewList from './inventory-listing-preview-list.component'

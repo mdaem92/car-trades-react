@@ -4,7 +4,6 @@ const NavigationBar = ({title})=>{
     return (
         <NavigationContainer>
             <TitleContainer>{title}</TitleContainer>
-
         </NavigationContainer>
     )
 }

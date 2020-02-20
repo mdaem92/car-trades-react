@@ -5,7 +5,7 @@ import {ReactComponent as Logo} from '../../assets/crown.svg'
 import HeaderUserAccount from "../HeaderUserAccount/header-user-account.component";
 import {Badge} from 'antd'
 import{createStructuredSelector}from 'reselect'
-import { comparedListingsSelector, comparedCountSelector } from '../../redux/compare/compare.selectors';
+import { comparedCountSelector } from '../../redux/compare/compare.selectors';
 
 const Header = ({compareCount})=>{
 

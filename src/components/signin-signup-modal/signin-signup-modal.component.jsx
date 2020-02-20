@@ -17,7 +17,7 @@ const SigninSignupModal = ({errorMessage,resetErrorMessage}) => {
         return ()=>{
             setState({visible:errorMessage})
         }
-    },[errorMessage])
+    },[errorMessage,resetErrorMessage])
     useEffect(()=>{
         console.log('state: ',state)
     },[state])

@@ -4,7 +4,9 @@ import {editListing, removeListing} from "./listing.utils";
 const listingReducerDefault = {
     listings:[],
     isListingsLoading:false,
-    errorMessage:undefined
+    isOwnListingsLoading:false,
+    errorMessage:undefined,
+    myListings:[]
 }
 export default (state=listingReducerDefault,action)=>{
     switch (action.type) {
@@ -31,16 +33,31 @@ export default (state=listingReducerDefault,action)=>{
                 ...state,
                 isListingsLoading:true
             }
+        case ListingsActionTypes.FETCH_OWN_LISTING_START:
+            return{
+                ...state,
+                isOwnListingsLoading:true
+            }
+
         case ListingsActionTypes.FETCH_LISTINGS_SUCCESS:
             return{
                 ...state,
                 listings:action.listings,
                 isListingsLoading:false
             }
+        case ListingsActionTypes.FETCH_OWN_LISTING_SUCCESS:
+            return {
+                ...state,
+                myListings:action.listings,
+                isOwnListingsLoading:false,
+            }
+
         case ListingsActionTypes.FETCH_LISTINGS_FAILURE:
+        case ListingsActionTypes.FETCH_OWN_LISTINGS_FAILURE:
             return{
                 ...state,
                 isListingsLoading:false,
+                isOwnListingsLoading:false,
                 errorMessage:action.errorMessage
             }
         case ListingsActionTypes.ADD_LISTING_SUCCESS:

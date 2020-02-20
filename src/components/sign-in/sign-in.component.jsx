@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import FormInput from '../form-input/form-input.component'
-import CustomButton from '../custom-button/custom-button.component'
 import { SignInContainer, ButtonsContainer } from './sign-in.styles'
 import { emailSignInStart, googleSignInStart, checkUserSession } from '../../redux/auth/auth.actions'
 import { authErrorMessageSelector, currentUserSelector } from '../../redux/auth/auth.selectors'

@@ -20,7 +20,7 @@ const CompareListingImageCarousel = ({images,id,remove}) => {
                 {
                     images.map(({url,uid})=>
                     <div key={uid}>
-                        <img className={'single-image'} alt={'image'} src={url}/>
+                        <img className={'single-image'} alt={''} src={url}/>
                     </div>)
                 }
             </CarouselContainer>

@@ -26,12 +26,18 @@ export const ListingContainer = styled.div`
  
   //margin-bottom: 20px;
 
+  overflow:hidden;
+  position: relative;
   
   .text{
     color: #58575f;
     font-size: 25px;
     font-weight: bolder;
     margin-top: 35px;
+  }
+  .drawer{
+    position:absolute;
+    z-index:998;
   }
   
 `

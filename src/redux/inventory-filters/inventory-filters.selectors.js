@@ -13,13 +13,8 @@ export const sortSelector = createSelector(
 export const inventoryActiveFiltersTagSelector = createSelector(
     inventoryFiltersSelector,
     inventoryFilters=>{
-        // const values = Object.values(inventoryFilters)
-        //         // const keys = Object.keys(inventoryFilters)
-        //         // return {values,keys}
-        // const result = Object.keys(inventoryFilters).map(filter=>inventoryFilters[filter])
+  
         const {isFixed,openKeys,sortBy,sortType,...filters} = inventoryFilters
-        // console.log('active filters: ', inventoryFilters)
-        const keys = Object.keys(filters)
         const values = Object.values(filters)
         console.log(`values: ${values}`)
         console.log('filters: ',filters)

@@ -27,7 +27,7 @@ export const addListingFailure = (errorMessage)=>({
 })
 
 export const fetchListingsStart = ()=>({
-    type:ListingsActionTypes.FETCH_LISTINGS_START,
+    type:ListingsActionTypes.FETCH_LISTINGS_START
 })
 export const fetchListingsSuccess = (listings)=>({
     type:ListingsActionTypes.FETCH_LISTINGS_SUCCESS,
@@ -35,5 +35,18 @@ export const fetchListingsSuccess = (listings)=>({
 })
 export const fetchListingsFailure = (errorMessage)=>({
     type:ListingsActionTypes.FETCH_LISTINGS_FAILURE,
+    errorMessage
+})
+
+export const fetchOwnListingsStart = (id)=>({
+    type:ListingsActionTypes.FETCH_OWN_LISTING_START,
+    id
+})
+export const fetchOwnListingsSuccess = (listings)=>({
+    type:ListingsActionTypes.FETCH_OWN_LISTING_SUCCESS,
+    listings
+})
+export const fetchOwnListingsFailure = (errorMessage)=>({
+    type:ListingsActionTypes.FETCH_OWN_LISTING_FAILURE,
     errorMessage
 })

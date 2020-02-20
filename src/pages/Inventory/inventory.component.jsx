@@ -23,7 +23,7 @@ const InventoryPage = ({affixed,fetchListings,isListingsCollected})=>{
         if(!isListingsCollected){
             fetchListings()
         }
-    },[fetchListings])
+    },[fetchListings,isListingsCollected])
     return(
         <BackgroundContainer >
             <InventoryContainer body>

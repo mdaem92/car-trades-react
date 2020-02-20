@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {TreeSelect} from 'antd'
 import {connect}from 'react-redux'
 import {treeData} from "./treeData";
@@ -13,15 +13,7 @@ const types = {
     '0-3':'prevOwners'
 }
 const InventoryFiltersOptionsTree = ({setFieldValue,filtersData,appendOption,removeOption}) => {
-    const [state,setState] = useState({
-        value:undefined,
-        searchValue:undefined
-    })
-
-    useEffect(()=>{
-        console.log('current state: ',state.value)
-    },[state])
-
+   
 
     const onSelect = (value,{props:{eventKey}},data)=>{
         console.log('on select', value,eventKey,data)

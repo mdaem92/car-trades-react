@@ -1,14 +1,10 @@
-import React, {useState} from 'react'
-import {connect}from 'react-redux'
+import React from 'react'
 import {
     AddListingContainer,
     BackgroundContainer,
     PageTitleContainer
 } from './add-listing.styles'
-import {Modal} from 'antd'
-import {currentUserSelector} from '../../redux/auth/auth.selectors'
-import AddListingSteps from "../../components/ad-listing-form-steps/add-listing-steps.component";
-import {createStructuredSelector} from 'reselect'
+import AddListingSteps from "../../components/add-listing-form-steps/add-listing-steps.component";
 
 const AddListingPage = ({currentUser})=>{
     

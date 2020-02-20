@@ -1,5 +1,4 @@
-import styled,{css} from 'styled-components'
-import {Carousel} from "antd";
+import styled from 'styled-components'
 
 
 export const GridContainer = styled.div`

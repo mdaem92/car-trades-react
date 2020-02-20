@@ -1,18 +1,18 @@
-import React, {useState} from 'react'
-import {connect}from 'react-redux'
-import { StepsActionContainer, StepsContentContainer} from './add-listing-steps.styles'
+import React from 'react'
+import { connect } from 'react-redux'
+import { StepsActionContainer, StepsContentContainer } from './add-listing-steps.styles'
 import { Steps, Button, message } from 'antd';
 import NewAddListing from "../new-add-listing-form/new-add-listing-form.component";
-import {withRouter} from 'react-router-dom'
-import {createStructuredSelector} from "reselect";
+import { withRouter } from 'react-router-dom'
+import { createStructuredSelector } from "reselect";
 import {
     stepSelector,
     loadingSelector,
     addListingFormSelector, addListingErrorMessageSelector
 } from "../../redux/add-listing-form/add-listing-form.selectors";
-import {setNextStep, setPrevStep,setFieldValue} from "../../redux/add-listing-form/add-listing-form.actions";
-import {addListingStart} from "../../redux/listing/listing.actions";
-import {currentUserSelector} from "../../redux/auth/auth.selectors";
+import { setNextStep, setPrevStep, setFieldValue } from "../../redux/add-listing-form/add-listing-form.actions";
+import { addListingStart } from "../../redux/listing/listing.actions";
+import { currentUserSelector } from "../../redux/auth/auth.selectors";
 
 const { Step } = Steps;
 
@@ -28,7 +28,7 @@ const steps = [
         title: 'Upload Images',
     },
     {
-        title:'Choose Price'
+        title: 'Choose Price'
     }
 ];
 const AddListingSteps = (
@@ -41,19 +41,20 @@ const AddListingSteps = (
         formData,
         addListingStart,
         errorMessage,
-        currentUser
-    })=>{
-    const isNextStepAllowed = ()=>{
-        switch (current){
-            case 0:{
-                const {condition,make,model,bodyType,seatCount,mileage,registered} = formData
-                const firstStepData = {condition,make,model,bodyType,seatCount,mileage,registered}
+        currentUser,
+        showSteps
+    }) => {
+    const isNextStepAllowed = () => {
+        switch (current) {
+            case 0: {
+                const { condition, make, model, bodyType, seatCount, mileage, registered } = formData
+                const firstStepData = { condition, make, model, bodyType, seatCount, mileage, registered }
                 console.log(Object.values(firstStepData))
                 return Object.values(firstStepData).includes(undefined)
             }
-            case 1:{
-                const {fuelEconomy,fuelType,engineCapacity,enginePower,transmission} =formData
-                const secondStepData = {fuelEconomy,fuelType,engineCapacity,enginePower,transmission}
+            case 1: {
+                const { fuelEconomy, fuelType, engineCapacity, enginePower, transmission } = formData
+                const secondStepData = { fuelEconomy, fuelType, engineCapacity, enginePower, transmission }
                 console.log(Object.values(secondStepData))
                 return Object.values(secondStepData).includes(undefined)
             }
@@ -64,13 +65,16 @@ const AddListingSteps = (
     return (
 
         <div>
+
+
             <Steps progressDot current={current}>
                 {steps.map(item => (
                     <Step key={item.title} title={item.title} />
                 ))}
             </Steps>
+
             <StepsContentContainer>
-                <NewAddListing step={current}/>
+                <NewAddListing step={current} />
             </StepsContentContainer>
             <StepsActionContainer>
                 {current < steps.length - 1 && (
@@ -82,13 +86,14 @@ const AddListingSteps = (
                     <Button
                         type="primary"
                         loading={loading}
-                        onClick={()=>{
-                            console.log('clicking',formData)
-                            addListingStart({...formData,userName:currentUser.displayName})
-                            if(!errorMessage){
+                        onClick={() => {
+                            console.log('clicking', formData)
+                            const { displayName, id } = currentUser
+                            addListingStart({ ...formData, userName: displayName, userId: id })
+                            if (!errorMessage) {
                                 message.success('Listing successfully added')
                                 history.push('/inventory')
-                            }else{
+                            } else {
                                 message.error('Something went wrong')
                             }
 
@@ -98,7 +103,7 @@ const AddListingSteps = (
                     </Button>
                 )}
                 {current > 0 && (
-                    <Button style={{ marginLeft: 8}} onClick={() => prev()}>
+                    <Button style={{ marginLeft: 8 }} onClick={() => prev()}>
                         Previous
                     </Button>
                 )}
@@ -109,18 +114,18 @@ const AddListingSteps = (
 }
 
 const mapStateToProps = createStructuredSelector({
-    current:stepSelector,
-    loading:loadingSelector,
-    formData:addListingFormSelector,
-    errorMessage:addListingErrorMessageSelector,
-    currentUser:currentUserSelector
+    current: stepSelector,
+    loading: loadingSelector,
+    formData: addListingFormSelector,
+    errorMessage: addListingErrorMessageSelector,
+    currentUser: currentUserSelector
 })
 
-const mapDispatchToProps = (dispatch)=>({
-    next:()=>dispatch(setNextStep()),
-    prev:()=>dispatch(setPrevStep()),
-    setFieldValue:(name,value)=>dispatch(setFieldValue(name,value)),
-    addListingStart:(formData)=>dispatch(addListingStart(formData))
+const mapDispatchToProps = (dispatch) => ({
+    next: () => dispatch(setNextStep()),
+    prev: () => dispatch(setPrevStep()),
+    setFieldValue: (name, value) => dispatch(setFieldValue(name, value)),
+    addListingStart: (formData) => dispatch(addListingStart(formData)),
 })
-const ConnectedAddListingSteps = connect(mapStateToProps,mapDispatchToProps)(AddListingSteps)
-export default withRouter(ConnectedAddListingSteps)
+const ConnectedAddListingSteps = connect(mapStateToProps, mapDispatchToProps)(AddListingSteps)
+export default withRouter(ConnectedAddListingSteps) 
