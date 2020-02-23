@@ -1,21 +1,9 @@
-import React from 'react';
-import {Cascader, InputNumber, Radio, Select,DatePicker} from "antd";
-import {antDCarData} from "../../carData/arrayData";
-import {GridContainer,SelectContainer,LabelContainer} from "./add-listing-make-model.styles";
-import {connect} from "react-redux";
-import {createStructuredSelector} from "reselect";
-import {
-    bodyTypeSelector,
-    conditionSelector, makeSelector, modelSelector,
-    mileageSelector,
-    seatCountSelector, colorSelector, registeredSelector
-} from "../../redux/add-listing-form/add-listing-form.selectors";
-import {setFieldValue} from "../../redux/add-listing-form/add-listing-form.actions";
-import moment from 'moment'
+import React, { useState, useEffect } from 'react';
+import {GridContainer,SelectContainer}from './edit-listing-make-model.styles'
+import {DatePicker,Radio,Cascader,Select,InputNumber}from 'antd'
+import { antDCarData } from '../../carData/arrayData';
 
-const {Option} = Select
-
-const AddListingMakeModel = (
+const EditListingMakeModel = (
     {
         condition,
         make,
@@ -23,64 +11,78 @@ const AddListingMakeModel = (
         bodyType,
         seatCount,
         mileage,
-        setFieldValue,
         color,
         registered
     }) => {
 
-    const onChange = (e)=>{
+    const {Option} = Select
 
-        if(e.target){
-            const{name,value} = e.target
-            console.log(`{${name},${value}} = ${e.target}`)
-            setFieldValue(name,value)
-        }
+    const [state,setState]=useState({
+        make:undefined,
+        condition:undefined,
+        model:undefined,
+        bodyType:undefined,
+        seatCount:undefined,
+        mileage:undefined,
+        color:undefined
+    })
+
+    const onRadioChange = (e)=>{
+        console.log(e.target.value)
+        setState({
+            ...state,
+            condition:e.target.value
+        })
+    }
+    const onCascaderChange = (values)=>{
+        console.log(values)
+        setState({
+            ...state,
+            make:values[0],
+            model:values[1]
+        })
     }
     const onSelectChange = (value,name)=>{
         console.log(name,value)
-        setFieldValue(name,value)
+        // setFieldValue(name,value)
+        setState({
+            ...state,
+            [name]:value
+        })
     }
-
-
-    const onCascaderChange = (value)=>{
-        console.log(value)
-        const [make,model]=value
-        setFieldValue('make',make)
-        setFieldValue('model',model)
-       
-    }
-
     const filter = (inputValue, path) =>{
 
         return path.some(option => option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1);
     }
+
+    useEffect(()=>{
+        console.log(state)
+    },[state])
     return (
         <GridContainer>
-            <LabelContainer>Condition & Title</LabelContainer>
+            {/* <LabelContainer>Condition & Title</LabelContainer> */}
             <SelectContainer>
                 <Radio.Group
                     style={{width:'110px'}}
                     name={'condition'}
-                    onChange={onChange}
+                    onChange={onRadioChange}
                     defaultValue={condition}
                 >
                     <Radio.Button style={{borderRadius:0,width:'55px'}} value="new">New</Radio.Button>
                     <Radio.Button style={{borderRadius:0,width:'55px'}} value="used">Used</Radio.Button>
                 </Radio.Group>
                 <DatePicker
-                    // onChange={(value)=>console.log(value.format('DD-MM-YYYY'))}
-                    // onChange={(value)=>value?setFieldValue('registered',parseInt(value.format('DD-MM-YYYY'))):setFieldValue('registered',undefined)}
-                    onChange={(value)=>value?setFieldValue('registered',value.format('YYYY-MM-DD')):setFieldValue('registered',undefined)}
-
+                    // onChange={(value)=>console.log(value.format('YYYY-MM-DD'))}
+                    onChange={()=>console.log('changing date')}
                     placeholder={'Select registered'}
                     onSearch={(value)=>console.log(value)}
-                    defaultValue={moment(registered,'YYYY-MM-DD')}
+                    defaultValue={registered}
 
                 />
                 <Cascader
                     style={{borderRadius:0}}
                     options={antDCarData}
-                    defaultValue={(make && model )?[make,model]:null}
+                    defaultValue={[make,model]}
                     name={'make'}
                     onChange={onCascaderChange}
                     changeOnSelect
@@ -89,7 +91,7 @@ const AddListingMakeModel = (
                     showSearch={{filter}}
                 />
             </SelectContainer>
-            <LabelContainer>Body & Mileage</LabelContainer>
+            {/* <LabelContainer>Body & Mileage</LabelContainer> */}
             <SelectContainer>
                 <Select
                     // labelInValue
@@ -142,7 +144,7 @@ const AddListingMakeModel = (
                     defaultValue={color}
                     placeholder="Select Color"
                     optionFilterProp="children"
-                    onChange={(value)=>setFieldValue('color',value)}
+                    onChange={(value)=>onSelectChange('color',value)}
                     onSearch={(val)=>console.log(val)}
                     filterOption={(input, option) =>
                         option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
@@ -157,18 +159,5 @@ const AddListingMakeModel = (
         </GridContainer>
     );
 };
-const mapStateToProps = createStructuredSelector({
-    condition: conditionSelector,
-    make:makeSelector,
-    model:modelSelector,
-    bodyType:bodyTypeSelector,
-    seatCount:seatCountSelector,
-    mileage:mileageSelector,
-    color:colorSelector,
-    registered:registeredSelector
-})
-const mapDispatchToProps = (dispatch)=>({
-    setFieldValue:(name,value)=>dispatch(setFieldValue(name,value))
-})
 
-export default connect(mapStateToProps,mapDispatchToProps)(AddListingMakeModel) ;
+export default EditListingMakeModel;

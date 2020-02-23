@@ -1,4 +1,5 @@
 import React from 'react'
+import{connect}from 'react-redux'
 import { ReactComponent as Dollar } from "../../assets/dollar-currency-sign.svg";
 import {
     ListingContainer,
@@ -19,6 +20,9 @@ import ListingInfoSummary from "../listing-info-summary/listing-info-summary.com
 import ListingPreviewTabs from "../listing-preview-tabs/listing-preview-tabs.component";
 import ListingPreviewContactModal from "../listing-preview-contact-modal/listing-preview-contact-modal.component";
 import ListingPreviewUserButtons from "../listing-preview-user-buttons/listing-preview-user-buttons.component";
+import EditListingForm from '../edit-listing-form/edit-listing-form.component'
+import { currentUserSelector } from '../../redux/auth/auth.selectors';
+import {createStructuredSelector} from 'reselect'
 
 
 const ListingPreview = (
@@ -42,7 +46,8 @@ const ListingPreview = (
         color,
         isCompared,
         isParked,
-        isOwnListing
+        isOwnListing,
+        currentUser
 
     }) => {
     const listingData = {
@@ -71,7 +76,8 @@ const ListingPreview = (
         isOpen: false,
         showModal: false,
         showConfirm: false,
-        drawerVisible: false
+        drawerVisible: false,
+        deleteModalVisible:false
     })
 
 
@@ -85,23 +91,24 @@ const ListingPreview = (
 
     };
     const { isOpen, showModal, drawerVisible } = state
+    console.log('current username: ',currentUser.displayName ,' === ',userName , 'result: ',currentUser.displayName===userName)
     return (
         <Wrapper isOpen={isOpen}>
             <ListingContainer id={`listing-${id}`} >
                 <ListingImage className='image' imageUrl={imageFileList ? imageFileList[0].url : imageFileList} />
                 <ListingInfoCell>
                     <ListingCondition color={'primary'} >{condition.toUpperCase()}</ListingCondition>
-                    <span className={'text'}>{registered} {make} {model.trim()} </span>
+                    <span className={'text'}>{registered.slice(0,4)} {make} {model.trim()} </span>
                 </ListingInfoCell>
                 <TopLeftPriceButtonsContainer >
                     {
-                        !isOwnListing ?
+                         currentUser.displayName!==userName ?
                             <ListingPreviewUserButtons {...listingData} />
                             :
                             (
                                 <div>
                                     <Drawer
-                                        title="Edit listing"
+                                        // title="Edit listing"
                                         placement="right"
                                         className={'drawer'}
                                         closable
@@ -112,9 +119,12 @@ const ListingPreview = (
                                         width={848}
                                     // style={{ position: 'absolute'}}
                                     >
+                                        <EditListingForm listing={listingData}/>
                                     </Drawer>
 
                                     <Button type={'link'} onClick={()=>setState({...state,drawerVisible:!state.drawerVisible})}>Edit</Button>
+                                    <Button type={'link'} onClick={()=>setState({...state,deleteModalVisible:!state.deleteModalVisible})}>Delete</Button>
+
                                 </div>
                             )
 
@@ -185,4 +195,7 @@ const ListingPreview = (
 
     )
 }
-export default React.memo(ListingPreview)
+const mapStateToProps = createStructuredSelector({
+    currentUser:currentUserSelector
+})
+export default React.memo(connect(mapStateToProps)(ListingPreview))

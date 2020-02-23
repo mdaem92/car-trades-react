@@ -6,6 +6,8 @@ const listingReducerDefault = {
     isListingsLoading:false,
     isOwnListingsLoading:false,
     errorMessage:undefined,
+    isEditting:false,
+    isDeleting:false,
     myListings:[]
 }
 export default (state=listingReducerDefault,action)=>{

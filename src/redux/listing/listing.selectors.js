@@ -1,4 +1,5 @@
 import {createSelector}from 'reselect'
+import moment from 'moment'
 
 const listingsSelector =state=>state.listings
 const filtersSelector = state=>state.inventoryFilters
@@ -28,7 +29,9 @@ export const filteredListingsSelector = createSelector(
             const modelMatch = model? (model.trim().toLowerCase()===listing.model.trim().toLowerCase()||(/(\b[1-9]|[A-Z]) ([^\s]+)\b/.test(model.trim().toLowerCase()) && model.startsWith(listing.model.trim().toLowerCase()[0]))):true
             const mileageMatch = !!mileage[1]?(listing.mileage >= mileage[0] && (listing.mileage <= mileage[1] || mileage[1]>=200000 )):(listing.mileage>=mileage[0])
             const priceMatch = !!price[1]?(listing.price >= price[0] && (listing.price <= price[1] || price[1]>=150000)):(listing.price>=price[0])
-            const yearMatch = !!year[1]?(listing.registered>=year[0] && listing.registered<=year[1]):(listing.registered>=year[0])
+            const convertedRegistered = parseInt(listing.registered.slice(0,4))
+            console.log('from selector: ',typeof listing.registered, listing.registered)
+            const yearMatch = !!year[1]?(convertedRegistered>=year[0] && convertedRegistered<=year[1]):(convertedRegistered>=year[0])
             const colorsMatch = !!colors.length?colors.includes(listing.color.toLowerCase())||colors[0]==='color':true
             const transmissionsMatch = !!transmissions.length?transmissions.includes(listing.transmission.toLowerCase())||transmissions[0]==='transmission':true
             const fuelTypesMatch = !!fuelTypes.length?fuelTypes.includes(listing.fuelType.toLowerCase())||fuelTypes[0]==='fuel':true
@@ -82,17 +85,6 @@ export const paginatedFilteredListingsSelector = createSelector(
     }
 )
 
-// export const myListingsSelector = (state,userName)=>createSelector(
-//     inventoryListingsSelector,
-//     listings=>{
-
-//         const res = listings.filter(listing=>{
-//             console.log(`from selector ${listing.userName} ===`,userName)
-//             return listing.userName===userName
-//         })
-//         return res
-//     }
-// )(state)
 export const myListingsSelector = createSelector(
     listingsSelector,
     listings=>listings.myListings

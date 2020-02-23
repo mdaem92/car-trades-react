@@ -18,7 +18,8 @@ import { createStructuredSelector } from "reselect";
 import { checkUserSession, googleSignInStart, signOutStart } from "../../redux/auth/auth.actions";
 import { currentUserSelector } from "../../redux/auth/auth.selectors";
 import { parkingCountSelector } from '../../redux/parking/parking.selectors'
-import { myListingsCountSelector } from '../../redux/listing/listing.selectors'
+import { myListingsCountSelector, isOwnListingsCollectedSelector } from '../../redux/listing/listing.selectors'
+import { fetchOwnListingsStart } from '../../redux/listing/listing.actions'
 
 
 const HeaderUserAccount = (
@@ -32,11 +33,16 @@ const HeaderUserAccount = (
         googleSignIn,
         signOut,
         parkingCount,
-        myListingsCount
+        myListingsCount,
+        fetchOwnListings,
+        isOwnListingsCollected
     }) => {
     useEffect(() => {
         // checkUserSession()
-    }, [checkUserSession])
+        if(!isOwnListingsCollected){
+            fetchOwnListings(currentUser.id)
+        }
+    }, [fetchOwnListings,currentUser,isOwnListingsCollected])
 
     const handleClick = ({ target: { value: path } }) => {
         history.push(`${match.url}${currentUser.displayName}/${path}`)
@@ -94,12 +100,15 @@ const HeaderUserAccount = (
 const mapStateToProps = createStructuredSelector({
     currentUser: currentUserSelector,
     parkingCount: parkingCountSelector,
-    myListingsCount:myListingsCountSelector
+    myListingsCount:myListingsCountSelector,
+    isOwnListingsCollected: isOwnListingsCollectedSelector,
+
 })
 const mapDispatchToProps = (dispatch) => ({
     checkUserSession: () => dispatch(checkUserSession()),
     googleSignIn: () => dispatch(googleSignInStart()),
-    signOut: () => dispatch(signOutStart())
+    signOut: () => dispatch(signOutStart()),
+    fetchOwnListings:(id)=>dispatch(fetchOwnListingsStart(id))
 })
 const WithRouterUserAccount = withRouter(HeaderUserAccount)
 export default connect(mapStateToProps, mapDispatchToProps)(WithRouterUserAccount)

@@ -35,10 +35,17 @@ export const ListingContainer = styled.div`
     font-weight: bolder;
     margin-top: 35px;
   }
-  .drawer{
+  .ant-drawer{
     position:absolute;
     z-index:998;
+    .ant-drawer-body{
+      margin-top:20px;
+      display:grid;
+      grid-template-columns:1fr 6fr 1fr;
+      grid-template-rows:1fr 6fr 1fr;
+    }
   }
+  
   
 `
 
