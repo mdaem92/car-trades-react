@@ -43,6 +43,13 @@ export const ListingContainer = styled.div`
       display:grid;
       grid-template-columns:1fr 6fr 1fr;
       grid-template-rows:1fr 6fr 1fr;
+      padding:unset;
+
+      /* display:flex;
+      justify-content:space-around;
+      border:1px solid red;
+      height:235px;
+      align-items:center; */
     }
   }
   

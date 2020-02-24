@@ -40,7 +40,9 @@ const HeaderUserAccount = (
     useEffect(() => {
         // checkUserSession()
         if(!isOwnListingsCollected){
-            fetchOwnListings(currentUser.id)
+            if(currentUser){
+                fetchOwnListings(currentUser.id)
+            }
         }
     }, [fetchOwnListings,currentUser,isOwnListingsCollected])
 

@@ -1,5 +1,4 @@
 import {createSelector}from 'reselect'
-import moment from 'moment'
 
 const listingsSelector =state=>state.listings
 const filtersSelector = state=>state.inventoryFilters
@@ -30,7 +29,7 @@ export const filteredListingsSelector = createSelector(
             const mileageMatch = !!mileage[1]?(listing.mileage >= mileage[0] && (listing.mileage <= mileage[1] || mileage[1]>=200000 )):(listing.mileage>=mileage[0])
             const priceMatch = !!price[1]?(listing.price >= price[0] && (listing.price <= price[1] || price[1]>=150000)):(listing.price>=price[0])
             const convertedRegistered = parseInt(listing.registered.slice(0,4))
-            console.log('from selector: ',typeof listing.registered, listing.registered)
+            // console.log('from selector: ',typeof listing.registered, listing.registered)
             const yearMatch = !!year[1]?(convertedRegistered>=year[0] && convertedRegistered<=year[1]):(convertedRegistered>=year[0])
             const colorsMatch = !!colors.length?colors.includes(listing.color.toLowerCase())||colors[0]==='color':true
             const transmissionsMatch = !!transmissions.length?transmissions.includes(listing.transmission.toLowerCase())||transmissions[0]==='transmission':true
@@ -80,7 +79,7 @@ export const paginatedFilteredListingsSelector = createSelector(
     (listings,{currentPage,pageSize})=>{
         const from = (currentPage-1)*pageSize
         const to = from +pageSize
-        console.log(`from:${from} to:${to} length:${listings.length}`,listings.slice(from,to))
+        // console.log(`from:${from} to:${to} length:${listings.length}`,listings.slice(from,to))
         return listings.slice(from,to)
     }
 )
@@ -108,4 +107,9 @@ export const isOwnListingsCollectedSelector = createSelector(
 export const isOwnListingsLoadingSelector = createSelector(
     listingsSelector,
     listings=>listings.isOwnListingsLoading
+)
+
+export const isEdittingSelector = createSelector(
+    listingsSelector,
+    listings=>listings.isEditting
 )

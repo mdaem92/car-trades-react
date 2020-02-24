@@ -1,10 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
+import{connect} from 'react-redux'
 import {GridContainer,SelectContainer}from './edit-listing-make-model.styles'
 import {DatePicker,Radio,Cascader,Select,InputNumber}from 'antd'
 import { antDCarData } from '../../carData/arrayData';
+import { createStructuredSelector } from 'reselect';
+import { editListingFormFirstStepDataSelector } from '../../redux/edit-listing-form/edit-listing-form.selectors';
+import { setEditListingFieldValue } from '../../redux/edit-listing-form/edit-listing-form.actions';
+import moment from 'moment';
 
-const EditListingMakeModel = (
-    {
+const EditListingMakeModel = ({formData,setFieldValue}) => {
+
+    const {Option} = Select
+    const {
         condition,
         make,
         model,
@@ -13,42 +20,28 @@ const EditListingMakeModel = (
         mileage,
         color,
         registered
-    }) => {
+    }= formData
 
-    const {Option} = Select
-
-    const [state,setState]=useState({
-        make:undefined,
-        condition:undefined,
-        model:undefined,
-        bodyType:undefined,
-        seatCount:undefined,
-        mileage:undefined,
-        color:undefined
-    })
-
+    const onDateChange = (value)=>{
+        const convertedDate = value? value.format("YYYY-MM-DD"):value
+        setFieldValue('registered',convertedDate)
+    }
     const onRadioChange = (e)=>{
+        const {value}=e.target
         console.log(e.target.value)
-        setState({
-            ...state,
-            condition:e.target.value
-        })
+        setFieldValue('condition',value)
     }
     const onCascaderChange = (values)=>{
-        console.log(values)
-        setState({
-            ...state,
-            make:values[0],
-            model:values[1]
-        })
+        
+        const[make,model]=values
+        console.log(make,' , ',model)
+        
+        setFieldValue('make',make)
+        setFieldValue('model',model)
     }
     const onSelectChange = (value,name)=>{
         console.log(name,value)
-        // setFieldValue(name,value)
-        setState({
-            ...state,
-            [name]:value
-        })
+        setFieldValue(name,value)
     }
     const filter = (inputValue, path) =>{
 
@@ -56,8 +49,8 @@ const EditListingMakeModel = (
     }
 
     useEffect(()=>{
-        console.log(state)
-    },[state])
+        console.log(formData)
+    },[formData])
     return (
         <GridContainer>
             {/* <LabelContainer>Condition & Title</LabelContainer> */}
@@ -73,10 +66,10 @@ const EditListingMakeModel = (
                 </Radio.Group>
                 <DatePicker
                     // onChange={(value)=>console.log(value.format('YYYY-MM-DD'))}
-                    onChange={()=>console.log('changing date')}
+                    onChange={onDateChange}
                     placeholder={'Select registered'}
                     onSearch={(value)=>console.log(value)}
-                    defaultValue={registered}
+                    defaultValue={registered?moment(registered,"YYYY-MM-DD"):null}
 
                 />
                 <Cascader
@@ -160,4 +153,11 @@ const EditListingMakeModel = (
     );
 };
 
-export default EditListingMakeModel;
+const mapStateToProps = createStructuredSelector({
+    formData:editListingFormFirstStepDataSelector
+})
+
+const mapDispatchToProps = (dispatch)=>({
+    setFieldValue:(name,value)=>dispatch(setEditListingFieldValue(name,value))
+})
+export default connect(mapStateToProps,mapDispatchToProps)(EditListingMakeModel);

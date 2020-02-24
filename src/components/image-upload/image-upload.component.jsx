@@ -19,7 +19,7 @@ function getBase64(file) {
 const PicturesWall =({uploadedList,addImage,setFileList})=> {
     const [state,setState] = useState({
         previewVisible: false,
-        previewImage: '',
+        previewImage: ''
         // fileList: [
         //     // {
         //     //     uid: '-1',

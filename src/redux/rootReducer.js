@@ -5,7 +5,7 @@ import addListingFormReducer from './add-listing-form/add-listing-form.reducer'
 import authReducer from './auth/auth.reducer'
 import compareReducer from './compare/compare.reducer'
 import parkingReducer from './parking/parking.reducer'
-
+import editListingFormReducer from './edit-listing-form/edit-listing-form.reducer'
 
 export default combineReducers({
     listings:listingsReducer,
@@ -13,5 +13,6 @@ export default combineReducers({
     addListingForm:addListingFormReducer,
     auth:authReducer,
     compare:compareReducer,
-    parking:parkingReducer
+    parking:parkingReducer,
+    editListingForm:editListingFormReducer
 })

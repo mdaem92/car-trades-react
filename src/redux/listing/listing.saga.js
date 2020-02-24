@@ -1,7 +1,16 @@
 import {takeLatest,call,all,put} from 'redux-saga/effects'
 import ListingsActionTypes from './listing.types'
 import {firestore} from "../../firebase/firebase.utils";
-import {addListingFailure, addListingSuccess, fetchListingsFailure, fetchListingsSuccess, fetchOwnListingsSuccess, fetchOwnListingsFailure} from "./listing.actions";
+import {
+    addListingFailure,
+    addListingSuccess,
+    fetchListingsFailure,
+    fetchListingsSuccess,
+    fetchOwnListingsSuccess,
+    fetchOwnListingsFailure,
+    editListingSuccess,
+    editListingFailure
+        } from "./listing.actions";
 import {setFieldValue} from "../add-listing-form/add-listing-form.actions";
 import {resetForm} from "../add-listing-form/add-listing-form.actions";
 
@@ -13,7 +22,11 @@ export function* addListingAsync({listingData}){
         yield put(setFieldValue('loading',true))
         const document = yield firestore.collection('listings').add({...otherProps,imageFileList:convertedImageList})
         const {id}=document
-        yield firestore.collection(`users/${userId}/own-listings`).add({...otherProps,imageFileList:convertedImageList})
+        // yield firestore.collection(`users/${userId}/own-listings`).add({...otherProps,imageFileList:convertedImageList})
+        // this will set the id of each own listing to the id of each public listing
+        // recall that currently they are different in the database
+        yield firestore.doc(`users/${userId}/own-listings/${id}`).set({...otherProps,imageFileList:convertedImageList})
+
         yield put(addListingSuccess({...otherProps,id,imageFileList:convertedImageList}))
         yield put(resetForm())
         // yield put(setFieldValue('loading',false))
@@ -38,10 +51,24 @@ export function* fetchListingsAsync(){
         const listingsRef =firestore.collection('listings')
         const snapshot = yield listingsRef.get()
         const listings = getListingsFromSnapshot(snapshot)
-        yield console.log('received:',listings)
         yield put(fetchListingsSuccess(listings))
     }catch(e){
         yield put(fetchListingsFailure(e))
+    }
+}
+
+export function* editListingAsync({id,userId,updates}){
+    
+    try{
+        // const ownListingRef = firestore.doc(`users/${userId}/own-listings/${id}`)
+        const publicListingRef = firestore.doc(`listings/${id}`)
+        yield console.log('public ref:',publicListingRef);
+        // const ownSpanshot = yield ownListingRef.get()
+        const publicSnapshot = yield publicListingRef.update(updates)
+        yield console.log('public snapshot:',publicSnapshot);        
+        yield put(editListingSuccess(id,updates))
+    }catch(e){
+        yield put(editListingFailure(e))
     }
 }
 
@@ -54,15 +81,7 @@ export function* fetchOwnListingsAsync({id}){
     }catch(e){
         yield put(fetchOwnListingsFailure(e))
     }
-    // try{
-    //     const ownListingsRef = firestore.collection(`users/${id}/my-listings`)
-    //     const snapshot = yield ownListingsRef.get()
-    //     const ownListings = yield getListingsFromSnapshot(snapshot)
-    //     yield console.log('received own listings: ',ownListings)
-    //     yield put(fetchOwnListingsSuccess(ownListings))
-    // }catch(error){
-    //     yield put(fetchOwnListingsFailure(error))
-    // }
+
 }
 
 export function* onFetchListingsStart(){
@@ -88,10 +107,17 @@ export function* onAddListingStart(){
         addListingAsync
         )
 }
+export function* onEditListingStart(){
+    yield takeLatest(
+        ListingsActionTypes.EDIT_LISTING_START,
+        editListingAsync
+    )
+}
 export function* listingSagas (){
     yield all([
         call(onAddListingStart),
         call(onFetchListingsStart),
-        call(onFetchOwnListingsStart)
+        call(onFetchOwnListingsStart),
+        call(onEditListingStart)
     ])
 }

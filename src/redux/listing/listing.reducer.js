@@ -20,10 +20,24 @@ export default (state=listingReducerDefault,action)=>{
                     action.listing
                 ]
             }
-        case ListingsActionTypes.EDIT_LISTING:
+        case ListingsActionTypes.EDIT_LISTING_START:
             return {
                 ...state,
-                listings: editListing(state.listings, action.id, action.updates)
+                // listings: editListing(state.listings, action.id, action.updates),
+                isEditting:true
+            }
+        case ListingsActionTypes.EDIT_LISTING_SUCCESS:
+            return{
+                ...state,
+                isEditting:false,
+                listings: editListing(state.listings, action.id, action.updates),
+
+            }
+        case ListingsActionTypes.EDIT_LISTING_FAILURE:
+            return{
+                ...state,
+                isEditting:false,
+                errorMessage:action.errorMessage
             }
         case ListingsActionTypes.REMOVE_LISTING:
             return{

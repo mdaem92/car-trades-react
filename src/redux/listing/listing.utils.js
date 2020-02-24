@@ -1,15 +1,18 @@
 export const editListing =(listings,idToEdit,updates)=>{
-    return listings.map(listing =>{
-        if(listing.id===idToEdit){
-            return {
-                ...listing,
-                ...updates
 
-            }
-        }
-        return null
+    const index = listings.findIndex((listing)=>listing.id===idToEdit)
+    const edittedItem = {
+        ...listings[index],
+        ...updates
+    }
 
-    })
+    return [
+        ...listings.slice(0,index),
+        edittedItem,
+        ...listings.slice(index+1)
+
+    ]
+    
 }
 
 export const removeListing =(listings,idToRemove)=>{

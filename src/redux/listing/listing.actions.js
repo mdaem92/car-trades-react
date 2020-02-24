@@ -8,10 +8,20 @@ export const removeListing = (id)=>({
     type:ListingsActionTypes.REMOVE_LISTING,
     id
 })
-export const editListing = (id,updates)=>({
-    type:ListingsActionTypes.EDIT_LISTING,
+export const editListingStart = (id,userId,updates)=>({
+    type:ListingsActionTypes.EDIT_LISTING_START,
+    id,
+    userId,
+    updates
+})
+export const editListingSuccess = (id,updates)=>({
+    type:ListingsActionTypes.EDIT_LISTING_SUCCESS,
     id,
     updates
+})
+export const editListingFailure = (errorMessage)=>({
+    type:ListingsActionTypes.EDIT_LISTING_FAILURE,
+    errorMessage
 })
 export const addListingStart = (listingData)=>({
     type:ListingsActionTypes.ADD_LISTING_START,

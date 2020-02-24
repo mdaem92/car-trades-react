@@ -6,7 +6,8 @@ export const GridContainer = styled.div`
         font-size: 12px;
     }
     display: grid;
-    grid-row-gap: 10px;
+    grid-row-gap: 30px;
+    margin-bottom: 32px;
 
 
     
@@ -44,5 +45,6 @@ export const GridContainer = styled.div`
 export const SelectContainer = styled.div`
     display: flex;
     flex-direction: row;
+
 
 `

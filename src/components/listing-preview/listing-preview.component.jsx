@@ -23,6 +23,7 @@ import ListingPreviewUserButtons from "../listing-preview-user-buttons/listing-p
 import EditListingForm from '../edit-listing-form/edit-listing-form.component'
 import { currentUserSelector } from '../../redux/auth/auth.selectors';
 import {createStructuredSelector} from 'reselect'
+import { setInitialValues } from '../../redux/edit-listing-form/edit-listing-form.actions';
 
 
 const ListingPreview = (
@@ -47,7 +48,10 @@ const ListingPreview = (
         isCompared,
         isParked,
         isOwnListing,
-        currentUser
+        currentUser,
+        setInitialValues,
+        
+        
 
     }) => {
     const listingData = {
@@ -90,8 +94,18 @@ const ListingPreview = (
         })
 
     };
-    const { isOpen, showModal, drawerVisible } = state
-    console.log('current username: ',currentUser.displayName ,' === ',userName , 'result: ',currentUser.displayName===userName)
+    const handleEdit = ()=>{
+        const {isCompared,isParked,...formProps} = listingData
+        setInitialValues(formProps)
+        setState({
+            ...state,
+            drawerVisible:!state.drawerVisible
+        })
+        // setDrawerVisibility(true)
+
+    }
+    const { isOpen, showModal,drawerVisible } = state
+    // console.log('current username: ',currentUser.displayName ,' === ',userName , 'result: ',currentUser.displayName===userName)
     return (
         <Wrapper isOpen={isOpen}>
             <ListingContainer id={`listing-${id}`} >
@@ -102,7 +116,7 @@ const ListingPreview = (
                 </ListingInfoCell>
                 <TopLeftPriceButtonsContainer >
                     {
-                         currentUser.displayName!==userName ?
+                         (currentUser && currentUser.displayName!==userName) || !currentUser ?
                             <ListingPreviewUserButtons {...listingData} />
                             :
                             (
@@ -122,7 +136,7 @@ const ListingPreview = (
                                         <EditListingForm listing={listingData}/>
                                     </Drawer>
 
-                                    <Button type={'link'} onClick={()=>setState({...state,drawerVisible:!state.drawerVisible})}>Edit</Button>
+                                    <Button type={'link'} onClick={handleEdit}>Edit</Button>
                                     <Button type={'link'} onClick={()=>setState({...state,deleteModalVisible:!state.deleteModalVisible})}>Delete</Button>
 
                                 </div>
@@ -196,6 +210,9 @@ const ListingPreview = (
     )
 }
 const mapStateToProps = createStructuredSelector({
-    currentUser:currentUserSelector
+    currentUser:currentUserSelector,
 })
-export default React.memo(connect(mapStateToProps)(ListingPreview))
+const mapDispatchToProps = (dispatch)=>({
+    setInitialValues:(values)=>dispatch(setInitialValues(values)),
+})
+export default React.memo(connect(mapStateToProps,mapDispatchToProps)(ListingPreview))
