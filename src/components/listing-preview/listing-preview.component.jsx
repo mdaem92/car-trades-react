@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import{connect}from 'react-redux'
 import { ReactComponent as Dollar } from "../../assets/dollar-currency-sign.svg";
 import {
@@ -24,6 +24,7 @@ import EditListingForm from '../edit-listing-form/edit-listing-form.component'
 import { currentUserSelector } from '../../redux/auth/auth.selectors';
 import {createStructuredSelector} from 'reselect'
 import { setInitialValues } from '../../redux/edit-listing-form/edit-listing-form.actions';
+import { doneEdittingSelector } from '../../redux/edit-listing-form/edit-listing-form.selectors';
 
 
 const ListingPreview = (
@@ -50,6 +51,7 @@ const ListingPreview = (
         isOwnListing,
         currentUser,
         setInitialValues,
+        doneEditting
         
         
 
@@ -85,7 +87,6 @@ const ListingPreview = (
     })
 
 
-
     const onDrawerClose = () => {
         console.log('closing')
         setState({
@@ -96,10 +97,10 @@ const ListingPreview = (
     };
     const handleEdit = ()=>{
         const {isCompared,isParked,...formProps} = listingData
-        setInitialValues(formProps)
+        setInitialValues({...formProps,doneEditting:false})
         setState({
             ...state,
-            drawerVisible:!state.drawerVisible
+            drawerVisible:true
         })
         // setDrawerVisibility(true)
 
@@ -126,8 +127,8 @@ const ListingPreview = (
                                         placement="right"
                                         className={'drawer'}
                                         closable
-                                        onClose={() => onDrawerClose()}
-                                        visible={drawerVisible}
+                                        onClose={onDrawerClose}
+                                        visible={drawerVisible && !doneEditting}
                                         getContainer={() => document.getElementById(`listing-${id}`)}
                                         afterVisibleChange={()=>console.log('after visibility change')}
                                         width={848}
@@ -211,6 +212,7 @@ const ListingPreview = (
 }
 const mapStateToProps = createStructuredSelector({
     currentUser:currentUserSelector,
+    doneEditting:doneEdittingSelector
 })
 const mapDispatchToProps = (dispatch)=>({
     setInitialValues:(values)=>dispatch(setInitialValues(values)),

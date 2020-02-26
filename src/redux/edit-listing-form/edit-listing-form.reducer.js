@@ -19,7 +19,7 @@ const editListingFormDefaultState = {
     engineCapacity:undefined,
     transmission:undefined,
     price:undefined,
-    drawerVisible:false
+    doneEditting:false
 }
 
 export default (state = editListingFormDefaultState,action)=>{
@@ -44,10 +44,10 @@ export default (state = editListingFormDefaultState,action)=>{
                     ...state,
                     imageFileList:action.fileList
                 }
-            case EditListingFormActionTypes.SET_DRAWER_VISIBILITY:
+            case EditListingFormActionTypes.EDITTING_SUCCESS:
                 return{
                     ...state,
-                    drawerVisible:action.visibility
+                    doneEditting:action.doneEditting
                 }
             default:
                 return state

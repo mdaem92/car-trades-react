@@ -9,6 +9,7 @@ import MyListingsPreviewList from '../../components/my-listings-preview-list/my-
 import{BackgroundContainer ,InventoryContainer,InventoryFiltersContainer}from './my-listings.styles'
 import { isFixedSelector } from '../../redux/inventory-filters/inventory-filters.selectors';
 import MyListingsSidebar from '../../components/my-listings-sidebar/my-listings-sidebar.component';
+import Footer from '../../components/footer/footer.component'
 
 const MyListingsPage = ({ fetchOwnListings, currentUser, isListingsCollected }) => {
 
@@ -22,6 +23,7 @@ const MyListingsPage = ({ fetchOwnListings, currentUser, isListingsCollected }) 
     }, [isListingsCollected,fetchOwnListings,currentUser])
 
     return (
+        <>
         <BackgroundContainer>
             <InventoryContainer>
                 <InventoryFiltersContainer >
@@ -31,7 +33,10 @@ const MyListingsPage = ({ fetchOwnListings, currentUser, isListingsCollected }) 
                     <MyListingsPreviewList />
                 </MyListingsContainer>
             </InventoryContainer>
+            <Footer/>
         </BackgroundContainer>
+        </>
+        
 
     );
 };

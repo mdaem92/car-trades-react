@@ -60,12 +60,13 @@ export function* fetchListingsAsync(){
 export function* editListingAsync({id,userId,updates}){
     
     try{
-        // const ownListingRef = firestore.doc(`users/${userId}/own-listings/${id}`)
+        const ownListingRef = firestore.doc(`users/${userId}/own-listings/${id}`)
         const publicListingRef = firestore.doc(`listings/${id}`)
         yield console.log('public ref:',publicListingRef);
-        // const ownSpanshot = yield ownListingRef.get()
+        const ownSnapshot = yield ownListingRef.update(updates)
         const publicSnapshot = yield publicListingRef.update(updates)
-        yield console.log('public snapshot:',publicSnapshot);        
+        yield console.log('public snapshot:',publicSnapshot); 
+        yield console.log('own snapshot:',ownSnapshot);       
         yield put(editListingSuccess(id,updates))
     }catch(e){
         yield put(editListingFailure(e))

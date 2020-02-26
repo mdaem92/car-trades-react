@@ -20,7 +20,7 @@ export const editListingSetFileList = (fileList)=>({
     type:EditListingFormActionTypes.SET_FILE_LIST,
     fileList
 })
-export const setDrawerVisibility = (visibility)=>({
-    type:EditListingFormActionTypes.SET_DRAWER_VISIBILITY,
-    visibility
+export const doneEditting = (doneEditting)=>({
+    type:EditListingFormActionTypes.EDITTING_SUCCESS,
+    doneEditting
 })

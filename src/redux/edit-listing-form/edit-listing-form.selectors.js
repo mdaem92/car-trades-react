@@ -63,7 +63,7 @@ export const editListingFormPriceSelector = createSelector(
     editListingFormSelector,
     form=>form.price
 )
-export const drawerVisibleSelector = createSelector(
+export const doneEdittingSelector = createSelector(
     editListingFormSelector,
-    form=>form.drawerVisible
+    form=>form.doneEditting
 )

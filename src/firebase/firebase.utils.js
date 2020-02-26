@@ -38,6 +38,33 @@ export const createUserProfile = async(userAuth,additionalData)=>{
     }
     return userRef
 }
+
+
+export async function uploadTaskPromise(storagePath,file) {
+    return new Promise(function(resolve, reject) {
+        const metadata = {
+            contentType: 'image/jpeg'
+        }
+        const storage = firebase.storage()
+      const storageRef = storage.ref(storagePath)
+      const uploadTask = storageRef.put(file,metadata)
+      uploadTask.on('state_changed',
+        function(snapshot) {
+          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          console.log('Upload is ' + progress + '% done')
+        },
+        function error(err) {
+          console.log('error', err)
+          reject()
+        },
+        function complete() {
+          uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+            resolve(downloadURL)
+          })
+        }
+      )
+    })
+  }
 export const getUserAuth = ()=>{
     return new Promise((resolve,reject)=>{
         const unsubscribe = auth.onAuthStateChanged((userAuth)=>{

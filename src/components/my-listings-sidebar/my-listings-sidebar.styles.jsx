@@ -40,5 +40,10 @@ export const MenuContainer = styled(Menu)`
  .ant-menu-item-group-title{
     color:white
  }
+ .arrow-disabled{
+  .ant-menu-submenu-arrow{
+      display: none;
+    }
+ }
 
 `

@@ -74,7 +74,7 @@ const AddListingMakeModel = (
 
                     placeholder={'Select registered'}
                     onSearch={(value)=>console.log(value)}
-                    defaultValue={moment(registered,'YYYY-MM-DD')}
+                    defaultValue={registered?moment(registered,'YYYY-MM-DD'):null}
 
                 />
                 <Cascader

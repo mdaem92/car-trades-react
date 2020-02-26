@@ -8,6 +8,8 @@ import{isSubmittingAllowedSelector,editListingFormSelector} from '../../redux/ed
 import{currentUserSelector}from '../../redux/auth/auth.selectors'
 import { editListingStart } from '../../redux/listing/listing.actions';
 import { isEdittingSelector } from '../../redux/listing/listing.selectors';
+import { doneEditting } from '../../redux/edit-listing-form/edit-listing-form.actions';
+import { useEffect } from 'react';
 
 const EditListingForm = (
     { 
@@ -16,18 +18,21 @@ const EditListingForm = (
         formData,
         currentUser:{id:userId},
         editListingStart,
-        isEditting
+        isEditting,
+        doneEditting
     }) => {
     const [state, setState] = useState({
         step: 0,
         loading: false
     })
-
-    const handleSubmit = ()=>{
+    
+    const handleSubmit = async ()=>{
         console.log('going to submit: ',formData)
         const {id,imageFileList,...updates}=formData
         const convertedImageList = imageFileList.map((image)=>Object.assign({}, image));
-        editListingStart(id,userId,{...updates,imageFileList:convertedImageList})
+        await editListingStart(id,userId,{...updates,imageFileList:convertedImageList})
+        await doneEditting(true)
+       
     }
     const { step } = state
     
@@ -70,6 +75,7 @@ const mapStateToProps = createStructuredSelector({
     isEditting:isEdittingSelector
 })
 const mapDispatchToProps = (dispatch)=>({
-    editListingStart:(id,userId,updates)=>dispatch(editListingStart(id,userId,updates))
+    editListingStart:(id,userId,updates)=>dispatch(editListingStart(id,userId,updates)),
+    doneEditting:(payload)=>dispatch(doneEditting(payload))
 })
 export default connect(mapStateToProps,mapDispatchToProps)(EditListingForm);

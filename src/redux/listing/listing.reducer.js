@@ -31,6 +31,7 @@ export default (state=listingReducerDefault,action)=>{
                 ...state,
                 isEditting:false,
                 listings: editListing(state.listings, action.id, action.updates),
+                myListings:editListing(state.myListings,action.id,action.updates)
 
             }
         case ListingsActionTypes.EDIT_LISTING_FAILURE:
