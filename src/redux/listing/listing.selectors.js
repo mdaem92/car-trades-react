@@ -60,7 +60,7 @@ export const filteredListingsSelector = createSelector(
 
             }
         })
-        // console.log('visbile listings: ',results,{make,model,mileage,price,year,colors,transmissions,fuelTypes,condition,sortBy,sortType})
+        console.log('visbile listings: ',results,{make,model,mileage,price,year,colors,transmissions,fuelTypes,condition,sortBy,sortType})
         return results
     }
 )
@@ -79,7 +79,7 @@ export const paginatedFilteredListingsSelector = createSelector(
     (listings,{currentPage,pageSize})=>{
         const from = (currentPage-1)*pageSize
         const to = from +pageSize
-        // console.log(`from:${from} to:${to} length:${listings.length}`,listings.slice(from,to))
+        console.log(`from:${from} to:${to} length:${listings.length}`,listings.slice(from,to))
         return listings.slice(from,to)
     }
 )

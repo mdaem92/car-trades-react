@@ -6,8 +6,8 @@ import { authErrorMessageSelector, currentUserSelector } from '../../redux/auth/
 import { createStructuredSelector } from 'reselect'
 import SigninSignupModal from '../signin-signup-modal/signin-signup-modal.component'
 import { Redirect, withRouter } from 'react-router-dom'
-import { Input, Button, Divider, Icon } from 'antd'
-
+import { Input, Button, Divider } from 'antd'
+import Icon from 'antd/lib/icon';
 
 const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history }) => {
 

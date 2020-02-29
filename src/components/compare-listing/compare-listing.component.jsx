@@ -1,7 +1,8 @@
 import React from 'react';
 import {CompareListingContainer, Columns,EmptyImageContainer}from './compare-listing.styles'
 import CompareListingImageCarousel from '../compare-listing-image-carousel/compare-listing-image-carousel.component';
-import {Icon,Tooltip}from 'antd'
+import {Tooltip}from 'antd'
+import Icon from 'antd/lib/icon';
 import {withRouter}from 'react-router-dom'
 
 

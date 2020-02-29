@@ -34,11 +34,12 @@ export const signOutFailure = (errorMessage)=>({
     errorMessage
 })
 
-export const signUpStart=(email,password,displayName)=>({
+export const signUpStart=(email,password,displayName,photoURL=null)=>({
     type:AuthActionTypes.SIGN_UP_START,
     email,
     password,
-    displayName
+    displayName,
+    photoURL
 })
 export const signUpSuccess=(user)=>({
     type:AuthActionTypes.SIGN_UP_SUCCESS,

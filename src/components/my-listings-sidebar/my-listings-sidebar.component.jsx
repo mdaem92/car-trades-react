@@ -1,8 +1,10 @@
 import React from 'react';
-import { Menu, Icon } from 'antd'
+import { Menu } from 'antd'
 import { MenuContainer } from './my-listings-sidebar.styles'
 import SidebarUserAccount from '../sidebar-user-account/sidebar-user-account.component';
 import SidebarAccountEditForm from '../sidebar-account-edit-form/sidebar-account-edit-form.component';
+import Icon from 'antd/lib/icon';
+
 const { SubMenu } = Menu
 
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import {CarouselContainer} from './compare-listing-image-carousel.styles'
-import {Icon, Tooltip} from 'antd'
+import { Tooltip} from 'antd'
 import{connect} from 'react-redux'
 import { removeFromCompare } from '../../redux/compare/compare.actions';
+import Icon from 'antd/lib/icon';
 
 const CompareListingImageCarousel = ({images,id,remove}) => {
     console.log('from carousel: ', images)

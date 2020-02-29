@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Upload, Icon, Modal, message as AntMessage } from 'antd';
+import { Upload, Modal, message as AntMessage } from 'antd';
 import firebase from '../../firebase/firebase.utils'
 import { ImageUploadContainer } from "./image-upload.styles";
 import { createStructuredSelector } from "reselect";
 import { addImage, setFileList } from "../../redux/add-listing-form/add-listing-form.actions";
 import { fileListSelector } from "../../redux/add-listing-form/add-listing-form.selectors";
+import Icon from 'antd/lib/icon';
 
 function getBase64(file) {
     return new Promise((resolve, reject) => {
