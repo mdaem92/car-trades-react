@@ -6,7 +6,7 @@ import{message }from 'antd'
 import{signUpStart}from '../../redux/auth/auth.actions'
 import SignupAvatarUpload from '../signup-avatar-upload/signup-avatar-upload.component'
 import Icon from 'antd/lib/icon';
-import firebase,{ firestore } from '../../firebase/firebase.utils'
+import firebase from '../../firebase/firebase.utils'
 
 const SignUp =({dispatch})=>{
     const [state,setState] = useState({

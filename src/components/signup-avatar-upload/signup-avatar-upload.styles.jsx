@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const grey = '#7f7f7f'
+// const grey = '#7f7f7f'
 
 export const UploadContainer = styled.div`
 *{

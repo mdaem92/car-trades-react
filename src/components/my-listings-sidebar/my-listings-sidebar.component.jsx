@@ -1,67 +1,54 @@
 import React from 'react';
+import {connect} from 'react-redux'
 import { Menu } from 'antd'
 import { MenuContainer } from './my-listings-sidebar.styles'
 import SidebarUserAccount from '../sidebar-user-account/sidebar-user-account.component';
-import SidebarAccountEditForm from '../sidebar-account-edit-form/sidebar-account-edit-form.component';
-import Icon from 'antd/lib/icon';
+// import {Icon} from 'antd';
+import { createStructuredSelector } from 'reselect';
+import { userAccountCurrentPageSelector } from '../../redux/user-account/user-account.selectors';
+import {setCurrent} from '../../redux/user-account/user-account-actions'
+import {ReactComponent as ParkingIcon} from '../../assets/car-icons/parking.svg'
+import {ReactComponent as CarIcon} from '../../assets/car-icons/car.svg'
+// import {PhoneOutlined} from '@ant-design/icons' 
+// const { SubMenu } = Menu
 
-const { SubMenu } = Menu
 
+const MyListingsSidebar = ({current,setCurrent}) => {
 
-const MyListingsSidebar = () => {
-
-    const handleClick = (e) => {
-        console.log('clicking', e)
+    const handleClick = ({key})=>{
+        setCurrent(key)
     }
+
     return (
         <MenuContainer
             onClick={handleClick}
             style={{ width: 256 }}
-            // defaultSelectedKeys={['1']}
-            // defaultOpenKeys={['sub1']}
+            defaultSelectedKeys={[current]}
+            // defaultOpenKeys={[current]}
             mode="inline"
         >
             <SidebarUserAccount/>
-            <SubMenu
-                key="sub1"
-                title={
-                    <span>
-                        <Icon type="setting" />
-                        <span>Account Settings</span>
-                    </span>
-                }
-            >
-                <SidebarAccountEditForm/>
-            </SubMenu>
-            <SubMenu
-                key="sub2"
-                title={
-                    <span>
-                        {/* <Icon type="appstore" /> */}
-                        <Icon type="unordered-list" />
-                        <span>Listings Settings</span>
-                    </span>
-                }
-            >
-                <Menu.Item key="5">Option 5</Menu.Item>
-                <Menu.Item key="6">Option 6</Menu.Item>
-                <SubMenu key="sub3" title="Submenu">
-                    <Menu.Item key="7">Option 7</Menu.Item>
-                    <Menu.Item key="8">Option 8</Menu.Item>
-                </SubMenu>
-            </SubMenu>
-            <SubMenu
-                className={'arrow-disabled'}
-                key="sub4"
-                title={
-                    <span>
-                        <Icon type="phone" />
-                        <span>Contact Support</span>
-                    </span>
-                }
-            />
+            {/* <Menu.Item key="settings">
+                <Icon type={'setting'}/>
+                Account Settings
+            </Menu.Item> */}
+            <Menu.Item key="listings">
+                <CarIcon className='icon'/>
+                My Listings
+            </Menu.Item>
+            <Menu.Item key="parking">
+                <ParkingIcon className='icon'/>
+                My Parking
+            </Menu.Item>
+        
         </MenuContainer>
     );
 };
 
-export default MyListingsSidebar;
+const mapStateToProps = createStructuredSelector({
+    current:userAccountCurrentPageSelector
+})
+const mapDispatchToProps = (dispatch)=>({
+    setCurrent:(current)=>dispatch(setCurrent(current))
+})
+export default connect(mapStateToProps,mapDispatchToProps)(MyListingsSidebar);

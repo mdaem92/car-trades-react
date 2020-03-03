@@ -3,15 +3,15 @@ import {Router, Route , Switch} from 'react-router-dom'
 import {createBrowserHistory} from 'history'
 import Homepage from "../pages/Homepage/homepage.component";
 import InformationPage from "../pages/Information/information.component";
-import UserAccountPage from "../pages/UserAccount/userAccount.component";
+import UserAccountPage from "../pages/user-account/user-account.component";
 import ComparePage from "../pages/Compare/compare.component";
 import InventoryPage from "../pages/Inventory/inventory.component";
 import Header from "../components/Header/header.component";
 import AddListingPage from "../pages/AddListingPage/add-listing.component";
 import SigninSignupPage from "../pages/signup-signin-page/signup-signin-page.component";
-import MyListingsPage from '../pages/my-listings/my-listings.component'
-import MyParkingPage from '../pages/my-parking/my-parking.component'
-import PrivateRoute from './private-router.component'
+// import MyParkingPage from '../pages/my-parking/my-parking.component'
+import PrivateRoute from './private-router.component';
+
 export const history = createBrowserHistory()
 const AppRouter = ()=>{
 
@@ -22,10 +22,10 @@ const AppRouter = ()=>{
                 <Route exact path='/' component={Homepage}/>
                 <Route exact path='/inventory' component={InventoryPage}/>
                 <Route exact path='/information' component={InformationPage}/>
-                <Route exact path='/users/:userName' component={UserAccountPage}/>
+                <PrivateRoute exact path='/:username/my-account' component={UserAccountPage}/>
                 <Route exact path='/compare' component={ComparePage}/>
-                <PrivateRoute exact path='/:username/my-listings' component={MyListingsPage}/>
-                <PrivateRoute exact path='/:username/my-parking' component={MyParkingPage}/>
+                {/* <PrivateRoute exact path='/:username/my-listings' component={MyListingsPage}/> */}
+                {/* <PrivateRoute exact path='/:username/my-parking' component={MyParkingPage}/> */}
                 <PrivateRoute exact path='/add-listing' component={AddListingPage}/>
                 <Route exact path='/signin-signup' component={SigninSignupPage}/>
             </Switch>

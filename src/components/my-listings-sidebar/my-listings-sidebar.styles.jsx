@@ -46,4 +46,27 @@ export const MenuContainer = styled(Menu)`
     }
  }
 
+   svg{
+     width:20px;
+     height:20px;
+     margin-right:10px;
+     path{
+       fill:white;
+       
+     }
+   }
+   .ant-menu-item-selected{
+    svg{
+     width:20px;
+     height:20px;
+     margin-right:10px;
+     path{
+       fill:${blue};
+     }
+   }
+   }
+ .anticon{
+   margin-right:unset;
+ }
+
 `

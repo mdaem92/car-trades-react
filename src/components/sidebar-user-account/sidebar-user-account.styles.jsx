@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const blue = `#357ae8`
+// const blue = `#357ae8`
 export const SidebarAccountContainer = styled.div`
     height:263px;
     display:flex;

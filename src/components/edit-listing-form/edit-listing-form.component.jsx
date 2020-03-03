@@ -9,7 +9,6 @@ import{currentUserSelector}from '../../redux/auth/auth.selectors'
 import { editListingStart } from '../../redux/listing/listing.actions';
 import { isEdittingSelector } from '../../redux/listing/listing.selectors';
 import { doneEditting } from '../../redux/edit-listing-form/edit-listing-form.actions';
-import { useEffect } from 'react';
 
 const EditListingForm = (
     { 

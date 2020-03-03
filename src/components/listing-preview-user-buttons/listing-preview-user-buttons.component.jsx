@@ -1,8 +1,8 @@
 
 import React from 'react';
 import{connect}from 'react-redux'
-import {ReactComponent as Compare} from "../../assets/car icons/compare.svg";
-import {ReactComponent as Parking} from "../../assets/car icons/parking.svg";
+import {ReactComponent as Compare} from "../../assets/car-icons/compare.svg";
+import {ReactComponent as Parking} from "../../assets/car-icons/parking.svg";
 import {ButtonsContainer} from "./listing-preview-user-buttons.styles";
 import {Tooltip,message} from "antd";
 import {addToCompare, removeFromCompare} from "../../redux/compare/compare.actions";

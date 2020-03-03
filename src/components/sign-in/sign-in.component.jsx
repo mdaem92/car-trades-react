@@ -30,8 +30,6 @@ const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history 
     const handleChange = (event) => {
         const { value, name } = event.target
         console.log(`[${name}]:${value}`);
-
-
         setState({
             ...state,
             [name]: value

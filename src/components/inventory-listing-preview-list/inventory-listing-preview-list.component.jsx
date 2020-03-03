@@ -30,8 +30,7 @@ const InventoryListingPreviewList = ({listings}) =>{
 
 
 const mapStateToProps= createStructuredSelector({
-    // listings:inventoryListingsSelector
-    // listings:filteredListingsSelector
+
     listings:paginatedFilteredListingsSelector
 
 })

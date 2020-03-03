@@ -7,7 +7,7 @@ import {
 
 } from 'reactstrap'
 
-import { Button, Badge } from 'antd'
+import { Button } from 'antd'
 import {
     DropdownContainer,
     DropdownToggleContainer,
@@ -59,24 +59,27 @@ const HeaderUserAccount = (
                             Hi {currentUser.displayName}
                         </DropdownToggleContainer>
                         <DropdownMenu right>
-                            <DropdownItem value={'my-listings'} onClick={handleClick}>
+                            <DropdownItem value={'my-account'} onClick={handleClick}>
+                                View Account
+                            </DropdownItem>
+                            {/* <DropdownItem value={'my-listings'} onClick={handleClick}>
                                 My listings
                                 <Badge
                                     count={myListingsCount}
                                     style={{ backgroundColor: '#357ae8' }}
                                 />
-                            </DropdownItem>
+                            </DropdownItem> */}
                             
-                            <DropdownItem value={'my-parking'} onClick={handleClick}>
+                            {/* <DropdownItem value={'my-parking'} onClick={handleClick}>
                                 My parking
                                 <Badge
                                     count={parkingCount}
                                     style={{ backgroundColor: '#357ae8' }}
                                 />
-                            </DropdownItem>
-                            <DropdownItem value={'my-settings'} onClick={handleClick}>
+                            </DropdownItem> */}
+                            {/* <DropdownItem value={'my-settings'} onClick={handleClick}>
                                 Account settings
-                            </DropdownItem>
+                            </DropdownItem> */}
                             <DropdownItem divider />
                             <DropdownItem onClick={() => signOut()}>
                                 Sign out

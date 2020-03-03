@@ -17,7 +17,6 @@ export const FooterContainer = styled.div`
   
 `
 const SimpleStyles = css`
-  //position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -25,7 +24,6 @@ const SimpleStyles = css`
   color: whitesmoke;
   background-color: #357ae8;
   margin-top: 50px;
-  //margin-bottom: 20px;
 `
 
 const HomepageStyles = css`
