@@ -1,4 +1,5 @@
 import {InventoryFiltersActionTypes} from "./inventory-filters.types";
+import {AuthActionTypes} from '../auth/auth.types'
 import moment from 'moment'
 const thisYear = parseInt(moment().format('YYYY'))
 const inventoryFiltersDefaultState = {
@@ -58,6 +59,9 @@ export default (state=inventoryFiltersDefaultState,action)=>{
                 ...state,
                 openKeys:action.keys
             }
+        case AuthActionTypes.RESET_PERSIST_DATA:
+            return inventoryFiltersDefaultState
+            
         default:
             return state
 

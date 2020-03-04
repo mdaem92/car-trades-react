@@ -40,9 +40,18 @@ const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history 
 
 
     console.log('error message:', errorMessage, state.visible, typeof errorMessage === 'string', !!errorMessage)
+    const setPath = ()=>{
+        if(history.location.state.url.includes('/:username')){
+            history.location.state.url.replace()
+        }
+    }
+    // console.log('state url: ',history.location.state.url)
     return !!currentUser ?
         (
-            history.location.state ? <Redirect to={`${history.location.state.url}`} /> : <Redirect to={`/`} />
+            history.location.state ?
+            <Redirect to={`${history.location.state.url.includes('/:username')?history.location.state.url.replace('/:username',currentUser.displayName):history.location.state.url}`} />
+            : 
+            <Redirect to={`/`} />
         )
         :
         (

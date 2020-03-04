@@ -53,3 +53,7 @@ export const signUpFailure=(errorMessage)=>({
 export const resetAuthErrorMessage = ()=>({
     type:AuthActionTypes.RESET_AUTH_ERROR
 })
+
+export const resetPersistData = ()=>({
+    type:AuthActionTypes.RESET_PERSIST_DATA
+})

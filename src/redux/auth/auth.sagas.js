@@ -7,7 +7,8 @@ import {
     signOutFailure,
     signOutSuccess,
     signUpFailure,
-    signUpSuccess
+    signUpSuccess,
+    resetPersistData
 } from "./auth.actions";
 
 function* getSnapShotFromUserAuth(userAuth,additionalUserData){
@@ -19,6 +20,7 @@ function* getSnapShotFromUserAuth(userAuth,additionalUserData){
             id:userSnapshot.id,
             ...userSnapshot.data()
         }))
+        yield put(resetPersistData())
     }catch(errorMessage){
         yield put(signInFailure(errorMessage))
     }

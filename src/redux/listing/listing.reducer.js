@@ -1,5 +1,6 @@
 import ListingsActionTypes from "./listing.types";
 import {editListing, removeListing} from "./listing.utils";
+import {AuthActionTypes}from '../auth/auth.types'
 
 const listingReducerDefault = {
     listings:[],
@@ -91,14 +92,16 @@ export default (state=listingReducerDefault,action)=>{
                 ...state,
                 errorMessage:action.errorMessage
             }
-        // case ListingsActionTypes.TOGGLE_COMPARE:
-        //     const comparedListingId = state.listings.findIndex(listing=>listing.id === action.id)
-        //     const comparedListing = {...state.listings[comparedListingId],isCompared:!state.listings[comparedListingId].isCompared}
-        //     return{
-        //         ...state,
-        //         listings:
-        //             [...state.listings.slice(0,comparedListingId), comparedListing, ...state.listings.slice(comparedListingId+1)]
-        //     }
+        case AuthActionTypes.RESET_PERSIST_DATA:
+            return{
+                ...state,
+                isListingsLoading:false,
+                isOwnListingsLoading:false,
+                errorMessage:undefined,
+                isEditting:false,
+                isDeleting:false,
+                myListings:[]
+            }
 
         default:
             return state

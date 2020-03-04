@@ -57,17 +57,20 @@ export function* fetchListingsAsync(){
     }
 }
 
-export function* editListingAsync({id,userId,updates}){
+export function* editListingAsync({id,userId,updates:{imageFileList,...otherProps}}){
+    const ownListingRef = firestore.doc(`users/${userId}/own-listings/${id}`)
+    const publicListingRef = firestore.doc(`listings/${id}`)
+    const convertedImageList = imageFileList.map((obj)=> Object.assign({}, obj));
+
     
     try{
-        const ownListingRef = firestore.doc(`users/${userId}/own-listings/${id}`)
-        const publicListingRef = firestore.doc(`listings/${id}`)
-        yield console.log('public ref:',publicListingRef);
-        const ownSnapshot = yield ownListingRef.update(updates)
-        const publicSnapshot = yield publicListingRef.update(updates)
+
+        // yield console.log('public ref:',publicListingRef);
+        const ownSnapshot = yield ownListingRef.update({imageFileList:convertedImageList,...otherProps})
+        const publicSnapshot = yield publicListingRef.update({imageFileList:convertedImageList,...otherProps})
         yield console.log('public snapshot:',publicSnapshot); 
         yield console.log('own snapshot:',ownSnapshot);       
-        yield put(editListingSuccess(id,updates))
+        yield put(editListingSuccess(id,{imageFileList:convertedImageList,...otherProps}))
     }catch(e){
         yield put(editListingFailure(e))
     }
