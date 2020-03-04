@@ -10,11 +10,20 @@ export const MyListingsContainer = styled.div`
   .pagination{
     justify-content: center;
   }
+  @media screen and (max-width: 800px){
+
+    width: 100%;
+    margin: 10px 0 ;
+    padding: 10px;
+  }
+  
 `
 
 export const BackgroundContainer = styled.div`
     background-color: ${offGrey};
-
+    width: 100%;
+    left: 0;
+    min-height: calc(100vh - 150px);
 `
 export const InventoryContainer = styled.div`
   display: flex;

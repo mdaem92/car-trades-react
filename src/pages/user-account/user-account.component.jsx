@@ -17,7 +17,7 @@ const UserAccountPage = ()=>{
                     <UserAccountPageSwitch />
                 </MyListingsContainer>
             </InventoryContainer>
-            <Footer/>
+            {/* <Footer/> */}
         </BackgroundContainer>
     )
 }

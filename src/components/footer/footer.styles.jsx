@@ -14,7 +14,7 @@ export const FooterContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  
+  /* margin-top:auto */
 `
 const SimpleStyles = css`
   left: 0;
@@ -23,7 +23,9 @@ const SimpleStyles = css`
   height: 80px;
   color: whitesmoke;
   background-color: #357ae8;
-  margin-top: 50px;
+  /* margin-top: 50px; */
+  display:flex;
+  justify-content:flex-end;
 `
 
 const HomepageStyles = css`

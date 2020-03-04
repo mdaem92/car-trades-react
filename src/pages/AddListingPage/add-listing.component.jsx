@@ -14,7 +14,6 @@ const AddListingPage = ({currentUser})=>{
                 <PageTitleContainer>Add your Listing</PageTitleContainer>
                 <AddListingSteps/>
             </AddListingContainer>
-            {/*<Footer/>*/}
         </BackgroundContainer>
 
     )

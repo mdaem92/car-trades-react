@@ -34,7 +34,7 @@ const Homepage = ({fetchListings,isListingsCollected})=>{
                 <HomepageInventorySearch/>
             </SearchContainer>
 
-            <Footer isHomepage/>
+            {/* <Footer isHomepage/> */}
 
         </GridContainer>
     )

@@ -1,13 +1,14 @@
 import React from 'react'
 import {FooterContainer,SocialsContainer} from "./footer.styles";
+import {withRouter}from 'react-router-dom'
 // import {Icon}from 'antd'
 import Icon from 'antd/lib/icon';
 
 
-const Footer = ({isHomepage})=>{
-
+const Footer = ({history:{location:{pathname}}})=>{
+    console.log('footer history pathname: ',pathname)
     return (
-        <FooterContainer isHomepage={isHomepage}>
+        <FooterContainer isHomepage={pathname==='/'}>
             <SocialsContainer>
                 <Icon type="twitter" />
                 <Icon type="facebook" />
@@ -23,4 +24,4 @@ const Footer = ({isHomepage})=>{
 
 
 
-export default Footer
+export default withRouter(Footer)

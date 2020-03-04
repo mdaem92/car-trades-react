@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export const CompareTableContainer = styled.div`
     display:grid;
     grid-template-columns: 1fr 7fr 1fr;
-    grid-template-rows:1fr 5fr 1fr;
+    grid-template-rows:1fr 7fr 1fr;
+    min-height: calc(100vh - 150px)
 
    
 `

@@ -25,6 +25,7 @@ export const AddListingContainer = styled.div`
 export const BackgroundContainer = styled.div`
   background-color: ${offGrey};
   width: 100%;
+  min-height: calc(100vh - 150px)
 `
 
 export const PageTitleContainer = styled.h3`

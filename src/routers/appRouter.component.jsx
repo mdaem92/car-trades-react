@@ -10,6 +10,7 @@ import Header from "../components/Header/header.component";
 import AddListingPage from "../pages/AddListingPage/add-listing.component";
 import SigninSignupPage from "../pages/signup-signin-page/signup-signin-page.component";
 // import MyParkingPage from '../pages/my-parking/my-parking.component'
+import Footer from '../components/footer/footer.component'
 import PrivateRoute from './private-router.component';
 
 export const history = createBrowserHistory()
@@ -29,7 +30,7 @@ const AppRouter = ()=>{
                 <PrivateRoute exact path='/add-listing' component={AddListingPage}/>
                 <Route exact path='/signin-signup' component={SigninSignupPage}/>
             </Switch>
-            {/*<Footer isHomepage/>*/}
+            <Footer/>
         </Router>
 
     )

@@ -8,6 +8,7 @@ export const BackgroundContainer = styled.div`
   background-color: ${offGrey};
   width: 100%;
   left: 0;
+  min-height: calc(100vh - 150px);
 `
 
 export const InventoryContainer = styled.div`

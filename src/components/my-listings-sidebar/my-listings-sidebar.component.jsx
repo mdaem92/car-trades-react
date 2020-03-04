@@ -3,14 +3,12 @@ import {connect} from 'react-redux'
 import { Menu } from 'antd'
 import { MenuContainer } from './my-listings-sidebar.styles'
 import SidebarUserAccount from '../sidebar-user-account/sidebar-user-account.component';
-// import {Icon} from 'antd';
 import { createStructuredSelector } from 'reselect';
 import { userAccountCurrentPageSelector } from '../../redux/user-account/user-account.selectors';
 import {setCurrent} from '../../redux/user-account/user-account-actions'
 import {ReactComponent as ParkingIcon} from '../../assets/car-icons/parking.svg'
 import {ReactComponent as CarIcon} from '../../assets/car-icons/car.svg'
-// import {PhoneOutlined} from '@ant-design/icons' 
-// const { SubMenu } = Menu
+
 
 
 const MyListingsSidebar = ({current,setCurrent}) => {
@@ -22,16 +20,10 @@ const MyListingsSidebar = ({current,setCurrent}) => {
     return (
         <MenuContainer
             onClick={handleClick}
-            style={{ width: 256 }}
             defaultSelectedKeys={[current]}
-            // defaultOpenKeys={[current]}
             mode="inline"
         >
             <SidebarUserAccount/>
-            {/* <Menu.Item key="settings">
-                <Icon type={'setting'}/>
-                Account Settings
-            </Menu.Item> */}
             <Menu.Item key="listings">
                 <CarIcon className='icon'/>
                 My Listings

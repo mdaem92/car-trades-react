@@ -54,7 +54,7 @@ const InventoryPage = ({affixed,fetchListings,isListingsCollected})=>{
                 </InventoryListingsContainer>
 
             </InventoryContainer>
-            <Footer/>
+            {/* <Footer/> */}
         </BackgroundContainer>
     )
 }

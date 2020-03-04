@@ -6,21 +6,26 @@ import { createStructuredSelector } from 'reselect'
 import { isOwnListingsLoadingSelector, myListingsSelector } from '../../redux/listing/listing.selectors';
 import ListingPreview from '../listing-preview/listing-preview.component';
 import WithSpinner from '../spinner/with-spinner.component';
+import InventoryResultsOverview from '../inventory-results-overview/inventory-results-overview.component';
 
 
 
 const MyListingsPreviewList = ({ myListings }) => {
-    console.log('my own listings: ', myListings) 
+    console.log('my own listings: ', myListings)
     return (
-        <FlipMove>
-            {
-                myListings.map((listing) =>
-                    <div key={listing.id} >
-                        <ListingPreview isOwnListing {...listing} />
-                    </div>)
-            }
+        <>
+            <InventoryResultsOverview/>
+            <FlipMove>
+                {
+                    myListings.map((listing) =>
+                        <div key={listing.id} >
+                            <ListingPreview isOwnListing {...listing} />
+                        </div>)
+                }
 
-        </FlipMove>
+            </FlipMove>
+        </>
+
     );
 };
 
