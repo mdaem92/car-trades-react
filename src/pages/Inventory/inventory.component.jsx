@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
-import Footer from "../../components/footer/footer.component";
 import {BackgroundContainer,
     InventoryContainer,
     InventoryFiltersContainer,
@@ -48,13 +47,11 @@ const InventoryPage = ({affixed,fetchListings,isListingsCollected})=>{
                 </InventoryFiltersContainer>
                 <InventoryListingsContainer>
                     <InventoryResultsOverview/>
-                    {/*<InventoryListingPreviewList/>*/}
                     <InventoryListingPreviewListContainer/>
                     <CustomPagination/>
                 </InventoryListingsContainer>
 
             </InventoryContainer>
-            {/* <Footer/> */}
         </BackgroundContainer>
     )
 }

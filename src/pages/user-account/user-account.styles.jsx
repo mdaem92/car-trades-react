@@ -7,6 +7,7 @@ export const MyListingsContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin:10px 100px 10px 5px ;
+ 
   .pagination{
     justify-content: center;
   }

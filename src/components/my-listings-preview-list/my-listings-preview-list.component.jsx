@@ -6,15 +6,15 @@ import { createStructuredSelector } from 'reselect'
 import { isOwnListingsLoadingSelector, myListingsSelector } from '../../redux/listing/listing.selectors';
 import ListingPreview from '../listing-preview/listing-preview.component';
 import WithSpinner from '../spinner/with-spinner.component';
-import InventoryResultsOverview from '../inventory-results-overview/inventory-results-overview.component';
+import EmptyListBox from '../empty-list-box/empty-list-box.component';
 
 
 
 const MyListingsPreviewList = ({ myListings }) => {
     console.log('my own listings: ', myListings)
-    return (
-        <>
-            <InventoryResultsOverview/>
+
+    return myListings.length > 0 ?
+        (
             <FlipMove>
                 {
                     myListings.map((listing) =>
@@ -24,9 +24,11 @@ const MyListingsPreviewList = ({ myListings }) => {
                 }
 
             </FlipMove>
-        </>
-
-    );
+        )
+        :
+        (
+            <EmptyListBox className={'emptyBox'} message={'No listings'} to={'/add-listing'} linkTitle={'Add your first listing'} />
+        )
 };
 
 const mapStateToProps = createStructuredSelector({

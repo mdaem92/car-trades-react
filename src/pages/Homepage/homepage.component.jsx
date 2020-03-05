@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import {connect}from 'react-redux'
-import Footer from "../../components/footer/footer.component";
 import {GridContainer,BackgroundImageContainer,SearchContainer,SearchLabelContainer} from "./homepage.styles";
 import HomepageImageCarousel from "../../components/homepage-image-carousel/homepage-image-carousel.component";
 import HomepageInventorySearch from "../../components/homepage-inventory-search/hompage-inventory-search.component";
