@@ -2,29 +2,32 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { SignInContainer, ButtonsContainer } from './sign-in.styles'
 import { emailSignInStart, googleSignInStart, checkUserSession } from '../../redux/auth/auth.actions'
-import { authErrorMessageSelector, currentUserSelector } from '../../redux/auth/auth.selectors'
+import { authErrorMessageSelector, currentUserSelector, isAuthLoadingSelector } from '../../redux/auth/auth.selectors'
 import { createStructuredSelector } from 'reselect'
 import SigninSignupModal from '../signin-signup-modal/signin-signup-modal.component'
 import { Redirect, withRouter } from 'react-router-dom'
 import { Input, Button, Divider } from 'antd'
 import Icon from 'antd/lib/icon';
 
-const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history }) => {
+const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history ,isAuthLoading }) => {
 
 
 
     const [state, setState] = React.useState({
+
         email: '',
-        password: ''
+        password: '',
     })
 
     const handleSubmit = async (event) => {
-
+        
+        // setAuthLoading(true)
         event.preventDefault()
         const { email, password } = state
         console.log(email, password)
         await emailSignIn(email, password)
         console.log('error message from submit: ', errorMessage)
+        
     }
 
     const handleChange = (event) => {
@@ -40,7 +43,9 @@ const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history 
 
 
     console.log('error message:', errorMessage, state.visible, typeof errorMessage === 'string', !!errorMessage)
-    
+    // useEffect(()=>{
+    //     setAuthLoading(false)
+    // },[])
     // console.log('state url: ',history.location.state.url)
     return !!currentUser ?
         (
@@ -84,7 +89,7 @@ const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history 
                                 htmlType={'submit'}
                                 icon="login"
                                 className={'button'}
-                                // loading={this.state.iconLoading}
+                                loading={isAuthLoading}
                             >
                                 Log in
                             </Button>
@@ -124,11 +129,11 @@ const mapDispatchToProps = (dispatch) => ({
     emailSignIn: (email, password) => dispatch(emailSignInStart(email, password)),
     checkUserSession: () => dispatch(checkUserSession()),
     googleSignIn: () => dispatch(googleSignInStart()),
-    // resetErrorMessage:()=>dispatch(resetAuthErrorMessage())
 })
 
 const mapStateToProps = createStructuredSelector({
     errorMessage: authErrorMessageSelector,
-    currentUser: currentUserSelector
+    currentUser: currentUserSelector,
+    isAuthLoading:isAuthLoadingSelector
 })
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignIn))

@@ -38,7 +38,6 @@ const InventoryResultsSortCascader=({sortData,setFieldValue})=> {
                     defaultValue={[sortBy,sortType]}
                 >
                     <a href="cascader">Edit</a>
-                    {/*<button type={'link'}>Edit</button>*/}
                 </Cascader>
             </CascaderContainer>
             );

@@ -1,10 +1,11 @@
-import styled, {css} from 'styled-components'
-import {NavLink,Link} from 'react-router-dom'
+import styled, { css } from 'styled-components'
+import React from 'react'
+import { NavLink, Link } from 'react-router-dom'
 
-const blue =' #357ae8';
+const blue = ' #357ae8';
 
-export const HeaderContainer = styled.div`
 
+const webHeaderContainer = css`
   position: fixed;
   z-index: 999;
   top: 0;
@@ -21,28 +22,73 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   //margin-bottom: 25px;
   
-  @media and screen (max-width:800px){
-    height:60px;
-    padding:10px;
-    margin-bottom:20px;
-    overflow-x: hidden;
-  }
+
 `
 
-export const LogoContainer = styled(Link)`
+const mobileHeaderContainer = css`
+
+  display:grid;
+  grid-template-columns : 2fr 1fr 2fr;
+  align-items:center;
+  height:60px;
+  background-color:white;
+ 
+`
+
+
+export const HeaderContainer = styled.div`
+  ${props => !!props.isMobile ? mobileHeaderContainer : webHeaderContainer};
+`
+
+const mobileLogoContainer = css`
+  grid-column: 2/span 1;
+  display:flex;
+  justify-content:center;
+  
+  
+`
+const webLogoContainer = css`
   height: 100%;
   width: 70px;
   padding: 15px 10px;
   margin-left: 50px;
   align-items: center;
-  
-  @media and screen (max-width:800px){
-    width:50px;
-    padding: 0;
-  }
 `
-export const OptionsContainer = styled.div`
-  width: 50%;
+
+export const LogoContainer = styled(({ isMobile, ...otherProps }) => <Link {...otherProps} />)`
+  ${props => !!props.isMobile ? mobileLogoContainer : webLogoContainer};
+  
+`
+
+const mobileOptionsContainer = css`
+  grid-column:3/ span 1;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  .dropdown{
+    width:100%;
+    .anchor{
+      text-decoration: none;
+      font-size:12px;
+      color: grey;
+      &:hover{
+        color:${blue}
+      }
+    }
+    .active{
+    font-weight: bold;
+    color: #357ae8;
+  }
+  }
+  .dropdown-toggle{
+    padding: 5px 12px;
+    font-size:12px;
+  }
+
+`
+const webOptionsContainer = css`
+width: 50%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -55,7 +101,7 @@ export const OptionsContainer = styled.div`
     color:white;  
   `}
     &:hover{
-      color:${props => props.scrolled ? 'grey':blue}
+      color:${props => props.scrolled ? 'grey' : blue}
     }
   }
   .anchor-signup{
@@ -68,7 +114,7 @@ export const OptionsContainer = styled.div`
     border-color: white; 
   `}
     &:hover{
-      color:${props => props.scrolled ? 'grey':blue};
+      color:${props => props.scrolled ? 'grey' : blue};
     }
   }
   .active{
@@ -76,15 +122,16 @@ export const OptionsContainer = styled.div`
     color: darken(40%);
   }
 
+`
+
+export const OptionsContainer = styled.div`
+  ${props => !!props.isMobile ? mobileOptionsContainer : webOptionsContainer}
   
-  @media and screen (max-width:800px){
-   width:80%;
-    
-  }
 `
 export const OptionLink = styled(NavLink)`
   padding: 10px 15px;
   cursor: pointer;
+
   
   //text-decoration: none;
   

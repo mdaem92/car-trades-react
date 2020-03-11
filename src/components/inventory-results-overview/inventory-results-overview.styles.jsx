@@ -15,8 +15,14 @@ export const ListingContainer = styled.div`
   padding: 10px;
   margin-bottom: 20px;
   height:192px;
-  //height: 144px;
   transition: all 3000ms ease ;
+
+  @media screen and (max-width:800px) {
+    grid-template-areas: 
+    "results results"
+    "active sort"
+  ;
+  }
  `
 
 const fadeKeyFrame = keyframes`
@@ -57,5 +63,9 @@ export const Sort = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   transition: all 3000ms ease ;
+  @media screen and (max-width:800px){
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 
 `

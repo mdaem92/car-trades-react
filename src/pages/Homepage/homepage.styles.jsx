@@ -6,21 +6,27 @@ export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 4fr 1fr 0.5fr 5fr 0.5fr;
   grid-template-rows:  3fr auto 3fr;
- 
+  height:100%;
+  @media screen and (max-width:800px){
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows:  3fr 3fr;
+  }
+
+
 `
 
 export const BackgroundImageContainer = styled.div`
   grid-column: 1 /span 2 ;
   grid-row: 1/span 3;
-  vertical-align: top;
   pointer-events: none;
+  background-position:center;
+  background-size:cover;
   // background-image: ${({imageUrl}) => `url(${imageUrl})`};
-  .carousel{
-    /* overflow: hidden;
-    vertical-align: top; */
-    
-    
+  @media screen and (max-width:800px){
+    grid-column: 1 /span 3 ;
+    grid-row: 1/span 3;
   }
+
  
 `
 export const SearchContainer = styled.div`
@@ -32,6 +38,13 @@ export const SearchContainer = styled.div`
   grid-column: 4 /span 1;
   grid-row: 2 / span 1;
   //z-index: 999;
+
+  @media screen and (max-width:800px){
+    grid-column: 2 /span 1 ;
+    grid-row: 2/span 1;
+    z-index:999;
+    background-color:unset;
+  }
 `
 export const SearchLabelContainer = styled.div`
   grid-column: 4 /span 1;
@@ -43,6 +56,12 @@ export const SearchLabelContainer = styled.div`
   font-weight: bold;
   color: grey;
   margin-bottom: 20px;
+  @media screen and (max-width:800px){
+    grid-column: 2 /span 1 ;
+    grid-row: 1/span 1;
+    z-index:999;
+    color:white;
+  }
   
 `
 

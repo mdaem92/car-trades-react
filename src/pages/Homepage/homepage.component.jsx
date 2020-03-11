@@ -29,7 +29,6 @@ const Homepage = ({fetchListings,isListingsCollected})=>{
             </SearchLabelContainer>
 
             <SearchContainer>
-                {/*<InventoryFilters isHomepage/>*/}
                 <HomepageInventorySearch/>
             </SearchContainer>
 

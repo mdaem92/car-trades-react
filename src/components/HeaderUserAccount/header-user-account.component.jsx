@@ -7,7 +7,7 @@ import {
 
 } from 'reactstrap'
 
-import { Button } from 'antd'
+import { Button, Menu } from 'antd'
 import {
     DropdownContainer,
     DropdownToggleContainer,
@@ -21,6 +21,7 @@ import { parkingCountSelector } from '../../redux/parking/parking.selectors'
 import { myListingsCountSelector, isOwnListingsCollectedSelector } from '../../redux/listing/listing.selectors'
 import { fetchOwnListingsStart } from '../../redux/listing/listing.actions'
 
+const { SubMenu } = Menu
 
 const HeaderUserAccount = (
     {
@@ -35,16 +36,17 @@ const HeaderUserAccount = (
         parkingCount,
         myListingsCount,
         fetchOwnListings,
-        isOwnListingsCollected
+        isOwnListingsCollected,
+        isMobile
     }) => {
     useEffect(() => {
         // checkUserSession()
-        if(!isOwnListingsCollected){
-            if(currentUser){
+        if (!isOwnListingsCollected) {
+            if (currentUser) {
                 fetchOwnListings(currentUser.id)
             }
         }
-    }, [fetchOwnListings,currentUser,isOwnListingsCollected])
+    }, [fetchOwnListings, currentUser, isOwnListingsCollected])
 
     const handleClick = ({ target: { value: path } }) => {
         history.push(`${match.url}${currentUser.displayName}/${path}`)
@@ -58,28 +60,11 @@ const HeaderUserAccount = (
                         <DropdownToggleContainer isScrolled={scrolled} nav caret>
                             Hi {currentUser.displayName}
                         </DropdownToggleContainer>
-                        <DropdownMenu right>
+                        
+                        <DropdownMenu right className='menu'>
                             <DropdownItem value={'my-account'} onClick={handleClick}>
                                 View Account
                             </DropdownItem>
-                            {/* <DropdownItem value={'my-listings'} onClick={handleClick}>
-                                My listings
-                                <Badge
-                                    count={myListingsCount}
-                                    style={{ backgroundColor: '#357ae8' }}
-                                />
-                            </DropdownItem> */}
-                            
-                            {/* <DropdownItem value={'my-parking'} onClick={handleClick}>
-                                My parking
-                                <Badge
-                                    count={parkingCount}
-                                    style={{ backgroundColor: '#357ae8' }}
-                                />
-                            </DropdownItem> */}
-                            {/* <DropdownItem value={'my-settings'} onClick={handleClick}>
-                                Account settings
-                            </DropdownItem> */}
                             <DropdownItem divider />
                             <DropdownItem onClick={() => signOut()}>
                                 Sign out
@@ -105,7 +90,7 @@ const HeaderUserAccount = (
 const mapStateToProps = createStructuredSelector({
     currentUser: currentUserSelector,
     parkingCount: parkingCountSelector,
-    myListingsCount:myListingsCountSelector,
+    myListingsCount: myListingsCountSelector,
     isOwnListingsCollected: isOwnListingsCollectedSelector,
 
 })
@@ -113,7 +98,7 @@ const mapDispatchToProps = (dispatch) => ({
     checkUserSession: () => dispatch(checkUserSession()),
     googleSignIn: () => dispatch(googleSignInStart()),
     signOut: () => dispatch(signOutStart()),
-    fetchOwnListings:(id)=>dispatch(fetchOwnListingsStart(id))
+    fetchOwnListings: (id) => dispatch(fetchOwnListingsStart(id))
 })
 const WithRouterUserAccount = withRouter(HeaderUserAccount)
 export default connect(mapStateToProps, mapDispatchToProps)(WithRouterUserAccount)

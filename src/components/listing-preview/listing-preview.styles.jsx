@@ -19,8 +19,7 @@ export const ListingContainer = styled.div`
     "image name price"
     "summary summary button"
   ;
-  //grid-template-rows: repeat(2, 1fr);;
-  //margin: 15px;
+  
   padding: 10px;
   background-color: white;
  
@@ -34,6 +33,11 @@ export const ListingContainer = styled.div`
     font-size: 25px;
     font-weight: bolder;
     margin-top: 35px;
+    @media screen and (max-width:800px){
+      margin-top: 10px;
+      font-size:15px;
+      margin-top:unset;
+    }
   }
   .ant-drawer{
     position:absolute;
@@ -44,48 +48,64 @@ export const ListingContainer = styled.div`
       grid-template-columns:1fr 6fr 1fr;
       grid-template-rows:1fr 6fr 1fr;
       padding:unset;
-
-      /* display:flex;
-      justify-content:space-around;
-      border:1px solid red;
-      height:235px;
-      align-items:center; */
+    }
+    @media screen and (max-width:800px){
+      
     }
   }
-  
+  @media screen and (max-width:800px){
+
+grid-template-columns: 3fr 2fr ;
+grid-template-rows: auto auto 1fr ;
+grid-template-areas: 
+  "image image "
+  "name price"
+  "summary button "
+; 
+}
   
 `
 
 export const ListingImage = styled.div`
   width: 100%;
   height: 150px;
+  grid-area:image;
   //background-size: cover;
   background-size: cover;
   background-position: center;
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
   overflow: hidden;
   padding: 5px;
+   
 `
 export const ListingCondition = styled(Badge)`
   width: 100px;
-  border-radius: 1px;
+  border-radius: 0;
+  opacity:1;
+  display:block;
+  @media screen and (max-width:800px){
+    opacity:0;
+  }
 `
 export const ListingInfoCell = styled.div`
   width: 100%;
-  // for the pill border
-  //border-radius: 20%/50%;
+  grid-area:name;
   display: flex;
   flex-direction: column;
   padding-left: 20px;
+  @media screen and (max-width:800px){
+    height:max-content;
+    padding-left:10px;
+    
+  }
 `
 
 
 // export const ToggleDetailsButton = styled(Button)`
 export const ToggleDetailsButton = styled(({ isFooter, ...rest }) => <Button {...rest} />)`
-
-  //max-width: 150px;
-  //height: 50px ;
+  height: max-content;
   margin: auto;
+  grid-area:button;
   ${props=>props.isFooter && FooterButtonStyles};
   @media (max-width:800px){
     display: none;
@@ -101,7 +121,6 @@ export const CollapseContent = styled.div`
   width: 100%;
   display: inline-block;
   grid-row: span 3 / 1;
-  //border: 1px solid black;
   
 `
 
@@ -119,11 +138,10 @@ export const Wrapper = styled.div`
   
 `
 
-export const TopLeftPriceButtonsContainer = styled.h3`
-  //border: 1px solid black;
+export const TopRightPriceButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  //justify-content: space-around;
+  grid-area:price;
   font-size: ${priceFontSize};
   text-align: center;
   font-weight: bold;
@@ -149,6 +167,10 @@ export const TopLeftPriceButtonsContainer = styled.h3`
   @media screen and (max-width: 800px){
     font-size: 15px;
     margin: 10px;
+    grid-area:unset;
+    grid-column:1/span 1;
+    grid-row:1/span 1;
+    z-index:999;
   }
 `
 

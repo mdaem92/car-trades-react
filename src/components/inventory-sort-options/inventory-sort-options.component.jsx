@@ -12,7 +12,7 @@ const InventorySortOptions = ({isFixed,toggleFixed}) => {
         <SortOptionsContainer>
             {/*<span className={'label'}>Search options</span>*/}
             <div className={'options'}>
-                <div>
+                <div className={'affix-switch'}>
                     <span className={'label'}>Fixed Sidebar</span>
                     <Switch
                         className={'select'}

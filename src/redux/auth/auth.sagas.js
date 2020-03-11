@@ -8,7 +8,8 @@ import {
     signOutSuccess,
     signUpFailure,
     signUpSuccess,
-    resetPersistData
+    resetPersistData,
+    setLoading
 } from "./auth.actions";
 
 function* getSnapShotFromUserAuth(userAuth,additionalUserData){
@@ -20,9 +21,11 @@ function* getSnapShotFromUserAuth(userAuth,additionalUserData){
             id:userSnapshot.id,
             ...userSnapshot.data()
         }))
+        yield put(setLoading(false))
         yield put(resetPersistData())
     }catch(errorMessage){
         yield put(signInFailure(errorMessage))
+        yield put(setLoading(false))
     }
 
 
@@ -39,10 +42,13 @@ function* getSnapShotFromUserAuth(userAuth,additionalUserData){
 function* emailSignInAsync({email,password}){
     console.log('from email sign in: ',email,password)
     try{
+        yield put(setLoading(true))
         const {user} = yield auth.signInWithEmailAndPassword(email,password)
         yield call(getSnapShotFromUserAuth,user)
     }catch (e) {
+        // yield out(setAuthLoading(false))
         yield put(signInFailure(e))
+        
     }
 }
  function* checkUserAuth(){

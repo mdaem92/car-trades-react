@@ -1,6 +1,7 @@
 import {AuthActionTypes} from './auth.types'
 const defaultAuthReducer = {
     currentUser:undefined,
+    loading:false,
     errorMessage:undefined
 }
 
@@ -31,6 +32,11 @@ export default (state=defaultAuthReducer,action)=>{
                 return{
                     ...state,
                     errorMessage:undefined
+                }
+            case AuthActionTypes.SET_LOADING:
+                return{
+                    ...state,
+                    loading:action.loading
                 }
         default:
             return state

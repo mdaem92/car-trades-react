@@ -57,3 +57,7 @@ export const resetAuthErrorMessage = ()=>({
 export const resetPersistData = ()=>({
     type:AuthActionTypes.RESET_PERSIST_DATA
 })
+export const setLoading = (loading)=>({
+    type:AuthActionTypes.SET_LOADING,
+    loading
+})

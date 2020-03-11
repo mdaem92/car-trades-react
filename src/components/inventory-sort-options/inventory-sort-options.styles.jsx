@@ -18,4 +18,13 @@ flex-direction: column;
     margin-right: 10px;
   }
 
+  @media screen and (max-width:800px){
+    .affix-switch{
+      display:none;
+    }
+    .options{
+    margin-top: unset;
+  }
+  }
+
 `

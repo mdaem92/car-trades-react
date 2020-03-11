@@ -10,7 +10,7 @@ import {
     CollapseContainer,
     CollapseContent,
     Wrapper,
-    TopLeftPriceButtonsContainer,
+    TopRightPriceButtonsContainer,
     ListingInfoSummaryContainer,
     ListingPreviewFooterPriceContainer,
     ListingPreviewFooter,
@@ -102,11 +102,9 @@ const ListingPreview = (
             ...state,
             drawerVisible:true
         })
-        // setDrawerVisibility(true)
 
     }
     const { isOpen, showModal,drawerVisible } = state
-    // console.log('current username: ',currentUser.displayName ,' === ',userName , 'result: ',currentUser.displayName===userName)
     return (
         <Wrapper isOpen={isOpen}>
             <ListingContainer id={`listing-${id}`} >
@@ -115,7 +113,7 @@ const ListingPreview = (
                     <ListingCondition color={'primary'} >{condition.toUpperCase()}</ListingCondition>
                     <span className={'text'}>{registered.slice(0,4)} {make} {model.trim()} </span>
                 </ListingInfoCell>
-                <TopLeftPriceButtonsContainer >
+                <TopRightPriceButtonsContainer >
                     {
                          (currentUser && currentUser.displayName!==userName) || !currentUser ?
                             <ListingPreviewUserButtons {...listingData} />
@@ -149,7 +147,7 @@ const ListingPreview = (
                 <Dollar className={'currency'}>$</Dollar>
                 {price}
             </div>
-            </TopLeftPriceButtonsContainer>
+            </TopRightPriceButtonsContainer>
         <ListingInfoSummaryContainer>
             <ListingInfoSummary {...listingData} />
         </ListingInfoSummaryContainer>

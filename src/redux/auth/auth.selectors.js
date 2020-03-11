@@ -11,3 +11,8 @@ export const authErrorMessageSelector = createSelector(
     authSelector,
     auth=>auth.errorMessage
 )
+
+export const isAuthLoadingSelector = createSelector(
+    authSelector,
+    auth=>auth.loading
+)

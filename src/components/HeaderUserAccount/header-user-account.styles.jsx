@@ -18,6 +18,10 @@ export const DropdownContainer = styled(UncontrolledDropdown)`
       .ant-badge{
       }
     }
+
+    @media screen and (max-width:800){
+      flex-direction:row;
+    }
    }
    
 `

@@ -15,7 +15,8 @@ const SignUp =({dispatch})=>{
         password:'',
         confirmedPassword:'',
         photoURL:'',
-        avatarLoading:false
+        avatarLoading:false,
+        signupLoading:false
     })
     const handleChange = (event)=>{
         const {value,name} = event.target
@@ -26,10 +27,18 @@ const SignUp =({dispatch})=>{
     }
     const handleSubmit = async (event)=>{
         event.preventDefault()
+        setState({
+            ...state,
+            signupLoading:true
+        })
         console.log('submitting',state);
         const {displayName,email,password,confirmedPassword,photoURL} = state
         if(password !== confirmedPassword){
             message.error('Passwords dont match')
+            setState({
+                ...state,
+                signupLoading:false
+            })
             return
         }
         dispatch(signUpStart(email,password,displayName,photoURL))
@@ -95,10 +104,11 @@ const SignUp =({dispatch})=>{
             email:'',
             password:'',
             confirmedPassword:'',
-            photoURL:''
+            photoURL:'',
+            signupLoading:false
         })
     },[])
-    const {photoURL,avatarLoading}=state
+    const {photoURL,avatarLoading,signupLoading}=state
     return (
         <SignUpContainer>
             <h2 className={'signup-title'}>I do not have an account</h2>
@@ -167,6 +177,7 @@ const SignUp =({dispatch})=>{
                     onClick={handleSignUp}
                     className={'button'}
                     icon={'rocket'}
+                    loading={signupLoading}
                 >
                     Sign Up
                 </Button>
