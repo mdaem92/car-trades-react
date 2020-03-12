@@ -13,12 +13,16 @@ body {
 @media screen and (max-width: 800px) {
   body {
     padding-top: unset;
+    -webkit-text-size-adjust: 100%;
+
   }
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+
 }
 a {
   text-decoration: none;
@@ -28,9 +32,10 @@ a {
 *{
   box-sizing: border-box;
 
+
 }
 html{
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   /* height: 100%; */
 }
 

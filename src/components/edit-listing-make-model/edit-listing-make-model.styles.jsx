@@ -34,17 +34,18 @@ export const GridContainer = styled.div`
     .ant-calendar-picker{
         width:175px;
     }
+    @media screen and (max-width:800px){
+        grid-row-gap:5px;
+        margin-bottom:auto;
+        height:230px;
+    }
 `
-// export const LabelContainer = styled.div`
-//     align-content: center;
-//     color:grey;
-//     font-size: 18px;
-//     margin-bottom: 0;
-//     margin-top: 5px;
-// `
+
 export const SelectContainer = styled.div`
     display: flex;
     flex-direction: row;
-
+    @media screen and (max-width:800px){
+        flex-direction:column;
+    }
 
 `

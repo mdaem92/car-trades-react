@@ -4,20 +4,22 @@ import {Button} from "antd";
 export const InventorySearchContainer = styled.div`
  display: flex;
  flex-direction: row;
-  /* justify-content: flex-start; */
+ .mobile-group{
+      display:flex;
+      flex-direction:row;
+    }
   @media screen and (max-width:800px){
     flex-direction: column;
-
-  }
-  .mobile-group{
-    display:none;
-    flex-direction:row;
-    justify-content:space-between;
-    width:100%;
-    .input{
-      width:150px;
+    .mobile-group{
+      display:none;
+      justify-content:space-between;
+      width:100%;
+      .input{
+        width:150px;
+      }
     }
   }
+  
 `
 
 export const InputContainer = styled.div`

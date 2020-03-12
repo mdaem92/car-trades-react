@@ -11,7 +11,7 @@ import {filteredListingsLengthSelector} from "../../redux/listing/listing.select
 const CustomPagination = ({setFieldValue,currentPage,pageSize,totalLength})=>{
     return (
         <Pagination
-            defaultCurrent={currentPage}
+            current={currentPage}
             defaultPageSize={pageSize}
             hideOnSinglePage
             pageSizeOptions={['2','10','20','30','40','50']}

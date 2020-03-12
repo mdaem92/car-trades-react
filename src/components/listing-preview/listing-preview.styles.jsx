@@ -1,6 +1,7 @@
 import styled, {css} from 'styled-components'
 import Badge from 'reactstrap/lib/Badge'
-import Button from 'reactstrap/lib/Button'
+// import Button from 'reactstrap/lib/Button'
+import {Button} from 'antd'
 import Collapse from 'reactstrap/lib/Collapse'
 import React from 'react'
 
@@ -42,27 +43,59 @@ export const ListingContainer = styled.div`
   .ant-drawer{
     position:absolute;
     z-index:998;
+
     .ant-drawer-body{
       margin-top:20px;
       display:grid;
       grid-template-columns:1fr 6fr 1fr;
       grid-template-rows:1fr 6fr 1fr;
       padding:unset;
+      @media screen and (max-width:800px){
+        margin-top:auto;
+        grid-template-rows:1fr 12fr 1fr;
+
+      }
     }
+
     @media screen and (max-width:800px){
-      
+      /* position:unset; */
+      /* margin-top:-40px; */
     }
+  }
+  .mobile-price-tag-container{
+    display:none;
   }
   @media screen and (max-width:800px){
 
-grid-template-columns: 3fr 2fr ;
-grid-template-rows: auto auto 1fr ;
-grid-template-areas: 
-  "image image "
-  "name price"
-  "summary button "
-; 
-}
+    grid-template-columns: 3fr 2fr ;
+    grid-template-rows: auto auto 1fr auto ;
+    grid-template-areas: 
+      "image image "
+      "name price"
+      "summary summary "
+      "button button"
+    ;
+    padding:unset;
+    .mobile-price-tag-container{
+      grid-column:1/span 2;
+      grid-row:2/span 1;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      padding-top:15px;
+      font-weight:bold;
+      color:${blue};
+      padding-right:5px;
+      .currency{
+        fill: #58575f;
+        height: 15px;
+        width: auto;
+
+        }
+    } 
+  }
+  
+
   
 `
 
@@ -93,6 +126,9 @@ export const ListingInfoCell = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 20px;
+  .mobile-price-tag-container{
+    display:none;
+  }
   @media screen and (max-width:800px){
     height:max-content;
     padding-left:10px;
@@ -102,20 +138,34 @@ export const ListingInfoCell = styled.div`
 
 
 // export const ToggleDetailsButton = styled(Button)`
-export const ToggleDetailsButton = styled(({ isFooter, ...rest }) => <Button {...rest} />)`
+export const ToggleDetailsButton = styled(({ isFooter, ...rest }) => <Button {...rest} />) `
   height: max-content;
-  margin: auto;
+  margin:auto;
   grid-area:button;
   ${props=>props.isFooter && FooterButtonStyles};
-  @media (max-width:800px){
-    display: none;
+  @media screen and (max-width:800px){
+    // display: none;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    .anticon{
+      svg{
+        :active{
+          // transform:rotate(180deg);
+          display:none;
+        }
+      }
+    }
   }
-  //grid-area: toggle;
   
 `
 
+
+
 export const CollapseContainer = styled(Collapse)`
   //grid-row-start: span;
+  
+  
 `
 export const CollapseContent = styled.div`
   width: 100%;
@@ -132,8 +182,12 @@ export const Wrapper = styled.div`
   margin-bottom: 20px;
   ${props =>props.isOpen && css`
     border: 2px solid #357ae8;
-    transition: border 100ms linear;  
+    transition: border 100ms linear;
+    padding-bottom: 0;  
   `}
+  @media screen and (max-width:800px){
+    padding: 10px 10px 2px 10px;
+  }
 
   
 `
@@ -146,7 +200,6 @@ export const TopRightPriceButtonsContainer = styled.div`
   text-align: center;
   font-weight: bold;
   color:#58575f;
-  //padding: 50px 30px;
   margin-bottom: 0;
   .price-tag-container{
     margin-top: 35px;
@@ -163,22 +216,38 @@ export const TopRightPriceButtonsContainer = styled.div`
     
     
   }
+  .drawer{
+    border: 1px solid red;
+  }
+  
   //background-image: linear-gradient(rgba(0, 123, 255, 0.6), white);
   @media screen and (max-width: 800px){
     font-size: 15px;
     margin: 10px;
     grid-area:unset;
-    grid-column:1/span 1;
+    grid-column:1/span 2;
     grid-row:1/span 1;
-    z-index:999;
+    z-index:998;
+    .buttons-container{
+      display:flex;
+      justify-content:flex-end;
+      span{
+
+        color:white;
+      }
+      
+    }
+    .price-tag-container{
+      display:none;
+    }
+    /* display:flex; */
+    /* justify-content:flex-end; */
   }
 `
 
 
 export const ListingInfoSummaryContainer = styled.div`
   grid-area: summary;
-  //margin: 5px 10px;
-  //padding-top: inherit;
   margin: 10px 10px 0 10px;
   background-color: ${offGrey};
 `

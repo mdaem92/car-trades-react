@@ -27,11 +27,7 @@ const EditListingForm = (
     
     const handleSubmit = async ()=>{
         console.log('going to submit: ',formData)
-        // const {id,imageFileList,...updates}=formData
         const {id,...updates}=formData
-
-        // const convertedImageList = imageFileList.map((image)=>Object.assign({}, image));
-        // await editListingStart(id,userId,{...updates,imageFileList:convertedImageList})
         await editListingStart(id,userId,{...updates})
         await doneEditting(true)
        

@@ -5,7 +5,7 @@ import {ImageContainer} from "./homepage-image-carousel.styles";
 const  HomepageImageCarousel = () => {
     return (
         <Carousel
-            // className={'carousel'}
+            className={'carousel'}
             // autoplay
             // effect={'fade'}
             // autoplaySpeed={5000}

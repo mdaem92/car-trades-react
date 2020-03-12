@@ -23,6 +23,8 @@ vertical-align: top;
   background-size: cover;
   background-image: ${({imageUrl}) => `url(${imageUrl})`};
   overflow: hidden;
-  
+  @media screen and (max-width:800px){
+    height: calc(100vh - 60px);
+  }
   
 `

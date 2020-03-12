@@ -10,6 +10,9 @@ grid-template-rows: 1fr 1fr;
 *{
     border-radius:0;
 }
+@media screen and (max-width:800){
+    height:465px
+}
 `
 export const LabelContainer = styled.h4`
 align-content: center;
@@ -18,6 +21,8 @@ font-size: 18px;
 //font-weight: bolder;
 margin-bottom: 0;
 margin-top: 5px;
+
+
 `
 export const AppraisalButton = styled(Button)`
 max-width: 100px;

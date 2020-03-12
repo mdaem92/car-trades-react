@@ -21,9 +21,7 @@ export const ButtonsContainer = styled.div`
     ${iconStyles};
     path{
     ${props => props.isCompared && css`
-
       fill: red !important;
-      //display: none;
     `}
     }
     
@@ -37,6 +35,38 @@ export const ButtonsContainer = styled.div`
     }
    
   }
+  @media screen and (max-width:800px){
+    justify-content:flex-end;
+    .compare-icon{
+      path{
+        ${props => props.isCompared ? css`
+          fill: red !important;
+        `
+        :
+        css`
+          fill:white !important;
+        `
+    
+        }
+      }
+    }
+    .parking-icon{
+      path{
+        ${props => props.isParked ? css`
+          fill: red !important;
+        `
+        :
+        css`
+          fill:white !important;
+        `
+    
+        }
+      }
+    }
 
+
+  }
+    
+    
 
 `

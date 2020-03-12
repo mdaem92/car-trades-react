@@ -7,7 +7,7 @@ import {
 
 } from 'reactstrap'
 
-import { Button, Menu } from 'antd'
+import { Button } from 'antd'
 import {
     DropdownContainer,
     DropdownToggleContainer,
@@ -21,7 +21,7 @@ import { parkingCountSelector } from '../../redux/parking/parking.selectors'
 import { myListingsCountSelector, isOwnListingsCollectedSelector } from '../../redux/listing/listing.selectors'
 import { fetchOwnListingsStart } from '../../redux/listing/listing.actions'
 
-const { SubMenu } = Menu
+
 
 const HeaderUserAccount = (
     {

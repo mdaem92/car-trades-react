@@ -34,6 +34,8 @@ const Header = ({ compareCount ,currentUser,signOut ,match}) => {
     }, [scrolled])
 
     const useWindowSize = () => {
+        console.log('custom hook calling');
+        
         const [innerWidth, setInnerWidth] = useState(window.innerWidth)
         useLayoutEffect(() => {
             function updateWidth(){
@@ -48,7 +50,7 @@ const Header = ({ compareCount ,currentUser,signOut ,match}) => {
 
     const width = useWindowSize()
     // just here as a remind that there is unnecessary rerendering
-    console.log('width: ', width)
+    // console.log('width: ', width)
 
 
     const menu = (
@@ -142,4 +144,4 @@ const mapDispatchToProps = (dispatch)=>({
 })
 
 const WithRouterHeader = withRouter(Header)
-export default connect(mapStateToProps,mapDispatchToProps)(WithRouterHeader)
+export default React.memo(connect(mapStateToProps,mapDispatchToProps)(WithRouterHeader))
