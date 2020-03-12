@@ -8,5 +8,10 @@ export const ListingPreviewSpecificationsGrid = styled.div`
   grid-auto-rows: auto;
   grid-gap: 1px 20px;
   padding: 25px;
+
+  @media screen and (max-width:800px){
+    grid-template-columns: 1fr;
+    
+  }
 `
 

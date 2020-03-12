@@ -50,7 +50,7 @@ const ListingPreviewSpecifications = (
             <SummaryItem description={`AC`} title={`Dual Auto`} isExtended>
                 <AC className={'summary-icon'}/>
             </SummaryItem>
-            <SummaryItem description={'Engine Power'} title={`${enginePower} Hp`} isExtended>
+            <SummaryItem description={'Power'} title={`${enginePower} Hp`} isExtended>
                 <Power className={'summary-icon'}/>
             </SummaryItem>
             <SummaryItem description={'Mileage'} title={`${mileage} Km`} isExtended>
@@ -58,7 +58,7 @@ const ListingPreviewSpecifications = (
             </SummaryItem>
             {userName &&
             <SummaryItem
-                description={'Uploaded by'}
+                description={'Uploader'}
                 title={
                     <OptionLink
                         className={'anchor'}

@@ -8,7 +8,7 @@ import React from 'react'
 
 
 const offGrey = '#f7f7f7'
-const blue = '#0069d9'
+const blue = '#357ae8'
 const priceFontSize = '28px'
 
 export const ListingContainer = styled.div`
@@ -43,6 +43,7 @@ export const ListingContainer = styled.div`
   .ant-drawer{
     position:absolute;
     z-index:998;
+    pointer-events:stroke;
 
     .ant-drawer-body{
       margin-top:20px;
@@ -52,7 +53,8 @@ export const ListingContainer = styled.div`
       padding:unset;
       @media screen and (max-width:800px){
         margin-top:auto;
-        grid-template-rows:1fr 12fr 1fr;
+        grid-template-rows:1fr 20fr 1fr;
+        overflow:hidden;
 
       }
     }
@@ -123,6 +125,7 @@ export const ListingCondition = styled(Badge)`
 export const ListingInfoCell = styled.div`
   width: 100%;
   grid-area:name;
+  /* min-height:62px; */
   display: flex;
   flex-direction: column;
   padding-left: 20px;
@@ -137,11 +140,11 @@ export const ListingInfoCell = styled.div`
 `
 
 
-// export const ToggleDetailsButton = styled(Button)`
-export const ToggleDetailsButton = styled(({ isFooter, ...rest }) => <Button {...rest} />) `
+export const ToggleDetailsButton = styled(({ isFooter, ...rest }) =><Button {...rest} />)`
   height: max-content;
   margin:auto;
   grid-area:button;
+  border-radius:0;
   ${props=>props.isFooter && FooterButtonStyles};
   @media screen and (max-width:800px){
     // display: none;
@@ -216,9 +219,7 @@ export const TopRightPriceButtonsContainer = styled.div`
     
     
   }
-  .drawer{
-    border: 1px solid red;
-  }
+
   
   //background-image: linear-gradient(rgba(0, 123, 255, 0.6), white);
   @media screen and (max-width: 800px){
@@ -231,8 +232,11 @@ export const TopRightPriceButtonsContainer = styled.div`
     .buttons-container{
       display:flex;
       justify-content:flex-end;
+      .ant-btn{
+        color:white;
+        
+      }
       span{
-
         color:white;
       }
       
@@ -248,7 +252,7 @@ export const TopRightPriceButtonsContainer = styled.div`
 
 export const ListingInfoSummaryContainer = styled.div`
   grid-area: summary;
-  margin: 10px 10px 0 10px;
+  margin-top: 10px ;
   background-color: ${offGrey};
 `
 
@@ -256,37 +260,55 @@ export const ListingInfoSummaryContainer = styled.div`
 
 export const ListingPreviewFooter = styled.div`
   display: grid;
-  grid-template-columns: 60% auto auto;
+  grid-template-columns: 60% auto;
   grid-template-rows: auto;
   grid-template-areas: 
-    "empty footer-price footer-button"
+    "footer-price footer-button"
   ;
   grid-column-gap: 15px;
   align-items: center;
+  padding-bottom:20px;
+
+
+  @media screen and (max-width:800px){
+    grid-template-columns: 1fr 1fr;
+
+  }
 `
 
 const FooterButtonStyles = css`
   grid-area: footer-button;
-  //margin-right:15px;
+  /* background-color:${blue}; */
+  color:${blue};
+  font-weight:bold;
+  height:50px;
+  margin: 0 20px 0 auto;
+
 `
 export const ListingPreviewFooterPriceContainer=styled.h2`
   grid-area: footer-price;
+  display:flex;
+  justify-content:flex-start;
   color: ${blue};
   font-weight: bold;
   font-size: ${priceFontSize};
   margin-bottom: 0;
+  padding-left:20px;
+  align-items:center;
   .currency{
  
     fill: ${blue};
 
     height: 25px;
     width: auto;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     margin-right: -5px;
     
   }
   
-  //margin-top: 10px;
+  @media screen and (max-width:800px){
+    padding-left:5px;
+  }
   
 `
 

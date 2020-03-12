@@ -12,6 +12,9 @@ export const ImageGalleryGridContainer = styled.div`
   ;
   grid-gap: 5px 10px;
   grid-auto-rows: auto;
+  @media screen and (max-width:800px){
+    padding: 25px 0;
+  }
 
 `
 

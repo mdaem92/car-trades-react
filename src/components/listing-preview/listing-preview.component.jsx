@@ -132,13 +132,15 @@ const ListingPreview = (
                                         visible={drawerVisible && !doneEditting}
                                         getContainer={() => document.getElementById(`listing-${id}`)}
                                         afterVisibleChange={() => console.log('after visibility change')}
-                                        width={window.innerWidth>800? 848 : 276}
+                                        width={window.innerWidth>800? 848 : 277}
+                                        // width={window.innerWidth}
+
                                     >
                                         <EditListingForm listing={listingData} />
                                     </Drawer>
 
-                                    <Button type={'link'} onClick={handleEdit}>Edit</Button>
-                                    <Button type={'link'} onClick={() => setState({ ...state, deleteModalVisible: !state.deleteModalVisible })}>Delete</Button>
+                                    <Button type={'link'} icon={'edit'} onClick={handleEdit}/>
+                                    <Button type={'link'} icon={'delete'} onClick={() => setState({ ...state, deleteModalVisible: !state.deleteModalVisible })}/>
 
                                 </div>
                             )

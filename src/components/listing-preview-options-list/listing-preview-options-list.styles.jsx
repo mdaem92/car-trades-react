@@ -9,6 +9,10 @@ export const OptionsListGridContainer = styled.div`
   padding: 25px;
   grid-row-gap: 5px;
   grid-column-gap: 20px;
+  @media screen and (max-width:800px){
+    grid-template-columns:1fr;
+    padding:25px 5px;
+  }
 `
 
 export const ListingOptionContainer = styled.div`
