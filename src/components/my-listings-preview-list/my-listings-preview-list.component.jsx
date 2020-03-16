@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux'
 import FlipMove from 'react-flip-move'
 import { createStructuredSelector } from 'reselect'
-
 import { isOwnListingsLoadingSelector, myListingsSelector } from '../../redux/listing/listing.selectors';
 import ListingPreview from '../listing-preview/listing-preview.component';
 import WithSpinner from '../spinner/with-spinner.component';

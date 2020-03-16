@@ -145,12 +145,23 @@ export const ToggleDetailsButton = styled(({ isFooter, ...rest }) =><Button {...
   margin:auto;
   grid-area:button;
   border-radius:0;
-  ${props=>props.isFooter && FooterButtonStyles};
+  height:50px;
+  color:${blue};
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  
   @media screen and (max-width:800px){
     // display: none;
     display:flex;
     align-items:center;
+    border:unset;
+    height:fit-content;
+    font-weight:unset;
     justify-content:space-around;
+    :focus{
+      outline:0 !important;
+    }
     .anticon{
       svg{
         :active{
@@ -160,7 +171,7 @@ export const ToggleDetailsButton = styled(({ isFooter, ...rest }) =><Button {...
       }
     }
   }
-  
+  ${props=>!!props.isFooter && FooterButtonStyles};
 `
 
 
@@ -198,14 +209,16 @@ export const Wrapper = styled.div`
 export const TopRightPriceButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content:space-between;
   grid-area:price;
   font-size: ${priceFontSize};
   text-align: center;
   font-weight: bold;
   color:#58575f;
   margin-bottom: 0;
+  background-color:aliceblue;
   .price-tag-container{
-    margin-top: 35px;
+    margin:auto ;
   }
   //margin-top: 50px;
   .currency{
@@ -219,6 +232,27 @@ export const TopRightPriceButtonsContainer = styled.div`
     
     
   }
+  .buttons-container{
+      .ant-btn{
+        color:${blue};
+        &:hover{
+            svg{
+              width:22px;
+              height:auto;
+            }
+          }
+        svg{
+          width:20px;
+          height:20px;
+          
+        }
+        
+      }
+      span{
+        color:white;
+      }
+      
+    }
 
   
   //background-image: linear-gradient(rgba(0, 123, 255, 0.6), white);
@@ -229,11 +263,21 @@ export const TopRightPriceButtonsContainer = styled.div`
     grid-column:1/span 2;
     grid-row:1/span 1;
     z-index:998;
+    background-color:unset;
     .buttons-container{
       display:flex;
       justify-content:flex-end;
       .ant-btn{
         color:white;
+        svg{
+          width:20px;
+          height:20px;
+          &:hover{
+            width:22px;
+            height:22px;
+
+          }
+        }
         
       }
       span{
@@ -252,7 +296,7 @@ export const TopRightPriceButtonsContainer = styled.div`
 
 export const ListingInfoSummaryContainer = styled.div`
   grid-area: summary;
-  margin-top: 10px ;
+  margin: 10px 0 5px 0;
   background-color: ${offGrey};
 `
 
@@ -269,9 +313,16 @@ export const ListingPreviewFooter = styled.div`
   align-items: center;
   padding-bottom:20px;
 
-
+    .ant-modal{
+      *{
+        border-radius:0;
+      }
+    }
   @media screen and (max-width:800px){
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
 
   }
 `
@@ -280,9 +331,17 @@ const FooterButtonStyles = css`
   grid-area: footer-button;
   /* background-color:${blue}; */
   color:${blue};
-  font-weight:bold;
-  height:50px;
+  /* font-weight:bold; */
+  /* height:50px; */
+  /* display:none; */
   margin: 0 20px 0 auto;
+  @media screen and (max-width:800px){
+    border: 1px solid #0e0b0b29;
+    height:50px;
+  }
+
+  
+
 
 `
 export const ListingPreviewFooterPriceContainer=styled.h2`
@@ -307,7 +366,8 @@ export const ListingPreviewFooterPriceContainer=styled.h2`
   }
   
   @media screen and (max-width:800px){
-    padding-left:5px;
+    /* padding-left:5px; */
+    padding-left:10px;
   }
   
 `

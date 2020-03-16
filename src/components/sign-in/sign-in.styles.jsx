@@ -12,7 +12,7 @@ const buttonStyles = css`
     
 `
 export const SignInContainer = styled.div`
-  width: 380px;
+  max-width: 380px;
   display: flex;
   flex-direction: column;
   .ant-input{
@@ -51,6 +51,8 @@ export const SignInContainer = styled.div`
   .description{
     margin-bottom:20px;
   }
+
+ 
 `
 
 export const ButtonsContainer = styled.div`

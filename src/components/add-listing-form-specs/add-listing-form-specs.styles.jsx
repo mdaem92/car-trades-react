@@ -17,6 +17,11 @@ export const GridContainer = styled.div`
   .ant-select{
     margin-right: 10px; 
   }
+  @media screen and (max-width:800px){
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
   
 `
 export const LabelContainer = styled.h4`
@@ -27,19 +32,22 @@ export const LabelContainer = styled.h4`
   font-size: 18px;
   margin-bottom: 0;
   margin-top: 5px;
+  @media screen and (max-width:800px){
+    display:none;
+  }
 `
 
 export const SelectsContainer = styled.div`
-  //display: grid;
-  //grid-template-columns: repeat(3,1fr);
-  //grid-auto-rows: auto;
-  //
-  ////grid-row-gap: ;
-  ////justify-content: space-around;
+  
   display: flex;
   flex-direction: row;
   .ant-input-number{
    margin-right: 10px;
+  }
+  @media screen and (max-width:800px){
+    /* flex-direction:column; */
+    flex-wrap:wrap;
+    margin-bottom:10px;
   }
   
 `

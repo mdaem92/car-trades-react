@@ -133,8 +133,6 @@ const ListingPreview = (
                                         getContainer={() => document.getElementById(`listing-${id}`)}
                                         afterVisibleChange={() => console.log('after visibility change')}
                                         width={window.innerWidth>800? 848 : 277}
-                                        // width={window.innerWidth}
-
                                     >
                                         <EditListingForm listing={listingData} />
                                     </Drawer>
@@ -162,11 +160,12 @@ const ListingPreview = (
                     })}
                     color={'primary'}
                     type={'link'}
+                    isFooter={false}
                     icon={isOpen?'up':'down'}
                 >
                     
                     {
-                        isOpen? "View less" : "View more"
+                        isOpen?"View less" : "View more"
                     }
                 </ToggleDetailsButton>
             </ListingContainer >
@@ -174,7 +173,7 @@ const ListingPreview = (
                 <CollapseContent >
                     {/*<CardBody >*/}
                     <ListingPreviewTabs {...listingData} />
-                    <ListingPreviewFooter>
+                    <ListingPreviewFooter id={'preview-footer'}>
                         <ListingPreviewFooterPriceContainer><Dollar className={'currency'}>$</Dollar>{price}</ListingPreviewFooterPriceContainer>
                         <ToggleDetailsButton
                             color={'primary'}
@@ -207,7 +206,6 @@ const ListingPreview = (
                         />
                     </ListingPreviewFooter>
 
-                    {/*</CardBody>*/}
                 </CollapseContent>
             </CollapseContainer>
         </Wrapper >

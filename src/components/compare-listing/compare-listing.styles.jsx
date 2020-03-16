@@ -21,13 +21,11 @@ const iconStyles = css`
 `
 export const CompareListingContainer = styled.div`
 
-    /* border:1px dashed grey; */
     position:relative;
-    bottom:30px;
-
     display:grid;
     grid-template-rows:3fr 4fr;
     margin:0 10px;
+    height:400px;
     .anticon-close{
         /* display:none; */
         ${iconStyles}
@@ -38,7 +36,7 @@ export const CompareListingContainer = styled.div`
         }
     }
 
-
+   
 `
 
 const blue ='#357ae8';
@@ -48,7 +46,7 @@ const grey = '#7f7f7f'
 
 export const Columns=styled.div`
     /* background-color:${offGrey}; */
-    margin-top:12px;
+    /* margin-top:12px; */
     display:flex;
     flex-direction:column;
     justify-content:space-around;
@@ -59,6 +57,7 @@ export const Columns=styled.div`
         padding-left:5px;
         font-size:15px;
         color:${blue};
+        height:fit-content;
     }
 `
 
@@ -66,11 +65,12 @@ export const EmptyImageContainer = styled.div`
     height:160px;
     width:250px;
     text-align:center;
-    margin-top:29px;
     /* background-color:grey; */
     border:1px dashed ${blue};
+    
     .anticon-plus{
         ${iconStyles};
+        /* position:absolute; */
         height:30px;
         top:70px;
         left:5px;

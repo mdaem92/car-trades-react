@@ -4,13 +4,13 @@ export const CompareTableContainer = styled.div`
     display:grid;
     grid-template-columns: 1fr 7fr 1fr;
     grid-template-rows:1fr 7fr 1fr;
-    min-height: calc(100vh - 150px)
-
+    min-height: calc(100vh - 150px);
+    @media screen and (max-width:800px){
+        overflow-y:hidden;
+    }
    
 `
-
 export const CompareTable = styled.div`
-
     display:flex;
     flex-direction:row;
     height:400px;
@@ -22,8 +22,8 @@ export const CompareTable = styled.div`
         flex-direction: row;
         margin:0;      
     }
-           
+
+       
         
     
 `
-

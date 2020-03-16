@@ -7,14 +7,14 @@ import { Badge } from 'antd'
 import { createStructuredSelector } from 'reselect'
 import { comparedCountSelector } from '../../redux/compare/compare.selectors';
 import { useLayoutEffect } from 'react';
-import { MenuOutlined ,PoweroffOutlined, UserOutlined} from '@ant-design/icons'
+import { MenuOutlined } from '@ant-design/icons'
 import { Menu, Dropdown } from 'antd'
 import { currentUserSelector } from '../../redux/auth/auth.selectors';
-import { signOutStart} from '../../redux/auth/auth.actions';
+import { signOutStart } from '../../redux/auth/auth.actions';
 import { withRouter } from 'react-router-dom';
 
-const { SubMenu  } = Menu
-const Header = ({ compareCount ,currentUser,signOut ,match}) => {
+
+const Header = ({ compareCount, currentUser, signOut, match , history }) => {
 
     const [scrolled, setScrolled] = useState(false)
 
@@ -35,10 +35,10 @@ const Header = ({ compareCount ,currentUser,signOut ,match}) => {
 
     const useWindowSize = () => {
         console.log('custom hook calling');
-        
+
         const [innerWidth, setInnerWidth] = useState(window.innerWidth)
         useLayoutEffect(() => {
-            function updateWidth(){
+            function updateWidth() {
                 setInnerWidth(window.innerWidth)
             }
             window.addEventListener('resize', updateWidth)
@@ -67,28 +67,7 @@ const Header = ({ compareCount ,currentUser,signOut ,match}) => {
             <Menu.Item>
                 <OptionLink activeClassName={'active'} className={'anchor'} to='/compare'>Compare</OptionLink>
             </Menu.Item>
-            
-            <SubMenu
-                key="sub2"
-                mode={'inline'}
-                title={   
-                    <span>{`Hi ${!!currentUser && currentUser.displayName}`}</span> 
-                }
-            >
-            <Menu.Item key="7">
-                <OptionLink activeClassName={'active'} className={'anchor'} to={`${match.url}${currentUser.displayName}/my-account`}>
-                    <UserOutlined />
-                    View Account
-                </OptionLink>
-            </Menu.Item>
-            <Menu.Item key="8" onClick={()=>signOut()}>
-                <PoweroffOutlined/>
-                Sign out
-            </Menu.Item>
-
-          </SubMenu>
-
-            
+            <HeaderUserAccount/>
         </Menu>
     );
     return width > 800 ?
@@ -121,7 +100,6 @@ const Header = ({ compareCount ,currentUser,signOut ,match}) => {
                         overlay={menu}
                         placement="bottomCenter"
                         trigger={['click']}
-                        // className={'dropdown'}
                         overlayClassName={'dropdown'}
                         getPopupContainer={() => document.getElementById('dropdown-container')}
                     >
@@ -137,11 +115,11 @@ const Header = ({ compareCount ,currentUser,signOut ,match}) => {
 
 const mapStateToProps = createStructuredSelector({
     compareCount: comparedCountSelector,
-    currentUser:currentUserSelector
+    currentUser: currentUserSelector
 })
-const mapDispatchToProps = (dispatch)=>({
-    signOut:()=>dispatch(signOutStart())
+const mapDispatchToProps = (dispatch) => ({
+    signOut: () => dispatch(signOutStart())
 })
 
 const WithRouterHeader = withRouter(Header)
-export default React.memo(connect(mapStateToProps,mapDispatchToProps)(WithRouterHeader))
+export default React.memo(connect(mapStateToProps, mapDispatchToProps)(WithRouterHeader))

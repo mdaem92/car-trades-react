@@ -7,6 +7,7 @@ const ListingPreviewContactModal = ({onCancel,onOk,...otherProps}) => {
             title="Contact dealer"
             centered
             closable={false}
+            getContainer={document.getElementById('preview-footer')}
             footer={[
                 <Button
                     key="back

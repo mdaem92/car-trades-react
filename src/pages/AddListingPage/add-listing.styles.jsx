@@ -29,13 +29,15 @@ export const BackgroundContainer = styled.div`
 `
 
 export const PageTitleContainer = styled.h3`
-  /* font-size: 20px; */
-  padding: 20px 0;
+  padding: 30px 10px;
   color:${blue};
-  /* display:flex; */
-  /* justify-content:center; */
-  margin: 10px;
   font-weight: bold;
   animation: ${fadeKeyFrame} 1s linear  ;
+  @media screen and (max-width:800px){
+    /* margin:5px 10px; */
+    padding:10px 5px ;
+    font-size:20px;
+    margin:auto;
+  }
 `
 

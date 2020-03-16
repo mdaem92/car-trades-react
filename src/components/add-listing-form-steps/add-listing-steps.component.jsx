@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { StepsActionContainer, StepsContentContainer } from './add-listing-steps.styles'
 import { Steps, Button, message } from 'antd';
@@ -62,12 +62,34 @@ const AddListingSteps = (
                 return null
         }
     }
+
+    const useWindowSize = () => {
+        console.log('custom hook calling');
+
+        const [innerWidth, setInnerWidth] = useState(window.innerWidth)
+        useLayoutEffect(() => {
+            function updateWidth() {
+                setInnerWidth(window.innerWidth)
+            }
+            window.addEventListener('resize', updateWidth)
+            updateWidth()
+            return () => window.removeEventListener('resize', updateWidth)
+        }, [])
+        return innerWidth
+    }
+    const width = useWindowSize()
+    console.log('width: ', width);
+
     return (
 
         <div>
 
-
-            <Steps progressDot current={current}>
+            <Steps 
+                progressDot 
+                current={current}
+                direction={width >= 800 ? 'horizontal' : 'vertical'}
+                style={{padding:10}}
+            >
                 {steps.map(item => (
                     <Step key={item.title} title={item.title} />
                 ))}

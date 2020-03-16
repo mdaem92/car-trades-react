@@ -10,23 +10,21 @@ const animateStep = keyframes`
 `
 
 export const StepsContentContainer = styled.div`
-margin-top: 35px;
+  margin-top: 35px;
   padding-top: 8px;
   padding-left: 8px;
-  height: auto;
-  
-  //margin-top: 16px;
+  height: auto; 
   border: 1px dashed #e9e9e9;
-  //border-radius: 6px;
   background-color: #fafafa;
-  //min-height: 200px;
-  //text-align: center;
-  //padding-top: 80px;
-  
+
   *{
     animation: ${animateStep} 0.3s linear;
   }
-  
+  @media screen and (max-width:800px){
+    margin-top:15px;
+    padding-top:5px;
+    padding-left:5px;
+  }
 
 `
 
@@ -35,4 +33,8 @@ export const StepsActionContainer = styled.div`
     .ant-btn{
       border-radius: 0;
     }
+    @media screen and (max-width:800px){
+    margin:15px 0;
+   
+  }
 `

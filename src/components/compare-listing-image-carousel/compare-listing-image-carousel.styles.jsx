@@ -1,7 +1,12 @@
 import styled from 'styled-components'
 import { Carousel } from 'antd';
 
-
+export const CompareListingContainer = styled.div`
+    .icon{
+        position:absolute;
+        top:70px;
+    }
+`
 
 export const CarouselContainer = styled(Carousel)`
 
@@ -10,6 +15,9 @@ export const CarouselContainer = styled(Carousel)`
     text-align: center;
     line-height: 160px;
     background: #364d79;
+    grid-row:1/span 1;
+
+    
     
 
     .single-image{

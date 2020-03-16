@@ -5,8 +5,6 @@ const blue ='#357ae8';
 const offGrey = '#f7f7f7'
 const grey = '#7f7f7f'
 export const TableVerticalHeader = styled.div`
-    /* grid-column:1/span 1;
-    grid-row:1/span 1; */
     display:grid;
     grid-template-rows:3fr 4fr;
 
@@ -33,6 +31,7 @@ export const HeaderLabel = styled.div`
     width:250px;
     animation:${fadeKeyFrame} 1s ease-in-out;
     /* border:1px solid green; */
+    
 `
 
 export const HeaderColumns=styled.div`

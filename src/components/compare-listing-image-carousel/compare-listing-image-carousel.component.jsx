@@ -1,5 +1,5 @@
 import React from 'react';
-import {CarouselContainer} from './compare-listing-image-carousel.styles'
+import {CarouselContainer,CompareListingContainer} from './compare-listing-image-carousel.styles'
 import { Tooltip} from 'antd'
 import{connect} from 'react-redux'
 import { removeFromCompare } from '../../redux/compare/compare.actions';
@@ -13,7 +13,7 @@ const CompareListingImageCarousel = ({images,id,remove}) => {
         remove(id)
     }
     return (
-        <div>
+        <CompareListingContainer>
             <Tooltip title={'Remove'}>
                 <Icon className={'icon'} type="close" onClick={handleRemove} />
             </Tooltip>
@@ -25,7 +25,7 @@ const CompareListingImageCarousel = ({images,id,remove}) => {
                     </div>)
                 }
             </CarouselContainer>
-        </div>
+        </CompareListingContainer>
         
 
     );

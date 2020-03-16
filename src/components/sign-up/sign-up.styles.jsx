@@ -15,7 +15,7 @@ const buttonStyles = css`
 export const SignUpContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 380px;
+  max-width: 380px;
   .ant-input{
     max-width:220px;
     border-radius:0;
@@ -36,7 +36,9 @@ export const SignUpContainer = styled.div`
     margin-bottom:20px;
   }
 
-
+@media screen and (max-width:800px){
+  
+}
 `
 
 export const ButtonsContainer = styled.div`

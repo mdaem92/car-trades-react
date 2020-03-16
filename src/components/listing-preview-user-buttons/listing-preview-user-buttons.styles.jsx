@@ -7,7 +7,7 @@ const iconStyles = css`
    margin: 0 5px;
    &:hover{
      width: 22px;
-     transition: width 100ms ease-in-out;
+     /* transition: width 100ms ease-in-out; */
    }
 `
 export const ButtonsContainer = styled.div`
@@ -16,6 +16,7 @@ export const ButtonsContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top:20px;
   .compare-icon {
     width: 20px;
     ${iconStyles};
@@ -37,6 +38,7 @@ export const ButtonsContainer = styled.div`
   }
   @media screen and (max-width:800px){
     justify-content:flex-end;
+    margin-top:5px;
     .compare-icon{
       path{
         ${props => props.isCompared ? css`

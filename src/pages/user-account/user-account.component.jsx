@@ -3,8 +3,10 @@ import{BackgroundContainer ,InventoryContainer,InventoryFiltersContainer,MyListi
 import MyListingsSidebar from '../../components/my-listings-sidebar/my-listings-sidebar.component'
 import UserAccountPageSwitch from '../../components/user-account-page-switch/user-account-page-switch.component'
 
+
 const UserAccountPage = ()=>{
 
+    
     return (
 
         <BackgroundContainer>

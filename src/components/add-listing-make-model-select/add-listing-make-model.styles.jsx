@@ -24,14 +24,19 @@ export const GridContainer = styled.div`
   .ant-input-number{
     margin-right: 10px;
   }
-  
+  @media screen and (max-width:800px){
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
 `
 export const SelectContainer = styled.div`
   display: flex;
   flex-direction: row;
-  
-  //   //   //justify-content: space-around;
-  //   //   //height: 300px;
+  @media screen and (max-width:800px){
+    flex-wrap:wrap;
+    margin-bottom:10px;
+  }
 `
 export const LabelContainer = styled.h4`
 
@@ -41,4 +46,7 @@ export const LabelContainer = styled.h4`
   font-size: 18px;
   margin-bottom: 0;
   margin-top: 5px;
+  @media screen and (max-width:800px){
+   display:none;
+  }
 `

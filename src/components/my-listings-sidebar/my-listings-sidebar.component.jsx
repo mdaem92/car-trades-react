@@ -32,7 +32,6 @@ const MyListingsSidebar = ({current,setCurrent}) => {
                 <ParkingIcon className='icon'/>
                 My Parking
             </Menu.Item>
-        
         </MenuContainer>
     );
 };
