@@ -7,6 +7,8 @@ const grey = '#7f7f7f'
 export const TableVerticalHeader = styled.div`
     display:grid;
     grid-template-rows:3fr 4fr;
+    padding:10px;
+   
 
 `
 const fadeKeyFrame = keyframes`
@@ -16,6 +18,11 @@ const fadeKeyFrame = keyframes`
   100% {
     opacity: 1;
   }
+`
+export const MobileHeader = styled.div`
+  display:flex;
+  justify-content:center;
+  align-items:center;
 `
 export const HeaderLabel = styled.div`
     /* background:${({imageUrl})=>`url(${imageUrl})`} */
@@ -30,7 +37,6 @@ export const HeaderLabel = styled.div`
     height:160px;
     width:250px;
     animation:${fadeKeyFrame} 1s ease-in-out;
-    /* border:1px solid green; */
     
 `
 
@@ -46,4 +52,5 @@ export const HeaderColumns=styled.div`
         font-size:15px;
         color:${grey};
     }
+    
 `

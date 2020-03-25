@@ -23,9 +23,12 @@ export const CompareListingContainer = styled.div`
 
     position:relative;
     display:grid;
+    background-color:white;
+    padding:10px;
     grid-template-rows:3fr 4fr;
     margin:0 10px;
     height:400px;
+    ${props=>props.isEmpty && css`grid-template-rows:1fr;height:max-content`}
     .anticon-close{
         /* display:none; */
         ${iconStyles}
@@ -35,7 +38,13 @@ export const CompareListingContainer = styled.div`
             opacity:0.8;
         }
     }
-
+    @media screen and (max-width:800px){
+        margin:10px ;
+        ${props=>props.isEmpty && css`
+            grid-template-rows:1fr;
+            height:max-content;
+        `}
+    }
    
 `
 

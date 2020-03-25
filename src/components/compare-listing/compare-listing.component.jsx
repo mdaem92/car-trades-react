@@ -27,17 +27,12 @@ const CompareListing = ({history,empty,make,condition,model,mileage,bodyType,fue
     )
     :
     (
-        <CompareListingContainer>
-            <div>
+        <CompareListingContainer isEmpty>
             <EmptyImageContainer>
                 <Tooltip title={'Add to compare'}>
                     <Icon className={'plus-icon'} type="plus" onClick={()=>history.push('/inventory')} />
                 </Tooltip>
             </EmptyImageContainer>
-            </div>
-            
-            <Columns>
-            </Columns>
         </CompareListingContainer>
        
     )

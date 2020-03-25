@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { HeaderContainer, LogoContainer, OptionLink, OptionsContainer } from './header.styles'
-import { ReactComponent as Logo } from '../../assets/crown.svg'
+import { HeaderContainer, LogoContainer, OptionLink, OptionsContainer ,BlueLogo} from './header.styles'
 import HeaderUserAccount from "../HeaderUserAccount/header-user-account.component";
 import { Badge } from 'antd'
 import { createStructuredSelector } from 'reselect'
@@ -76,7 +75,7 @@ const Header = ({ compareCount, currentUser, signOut, match , history }) => {
 
             <HeaderContainer scrolled={scrolled}>
                 <LogoContainer to='/'>
-                    <Logo className='logo' />
+                    <BlueLogo url={require('../../assets/logoB.png')}/>
                 </LogoContainer>
                 <OptionsContainer scrolled={scrolled}>
                     <OptionLink exact activeClassName={'active'} className={'anchor'} to='/'>Homepage</OptionLink>
@@ -93,7 +92,8 @@ const Header = ({ compareCount, currentUser, signOut, match , history }) => {
         (
             <HeaderContainer isMobile scrolled={scrolled}>
                 <LogoContainer isMobile to={'/'}>
-                    <Logo className='logo' />
+                    <BlueLogo url={require('../../assets/logoB.png')}/>
+
                 </LogoContainer>
                 <OptionsContainer isMobile scrolled={scrolled} id={'dropdown-container'}>
                     <Dropdown

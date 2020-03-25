@@ -8,7 +8,6 @@ const UserAccountPage = ()=>{
 
     
     return (
-
         <BackgroundContainer>
             <InventoryContainer>
                 <InventoryFiltersContainer >

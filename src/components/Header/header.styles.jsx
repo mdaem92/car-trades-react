@@ -34,7 +34,13 @@ const mobileHeaderContainer = css`
   background-color:white;
  
 `
-
+export const BlueLogo = styled.div`
+  height:50px;
+  width:50px;
+  background-size:cover;
+  background-position:center;
+  background-image:${({url})=>`url(${url})`};
+`
 
 export const HeaderContainer = styled.div`
   ${props => !!props.isMobile ? mobileHeaderContainer : webHeaderContainer};
@@ -48,11 +54,12 @@ const mobileLogoContainer = css`
   
 `
 const webLogoContainer = css`
-  height: 100%;
-  width: 70px;
-  padding: 15px 10px;
-  margin-left: 50px;
-  align-items: center;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-left:50px;
+
 `
 
 export const LogoContainer = styled(({ isMobile, ...otherProps }) => <Link {...otherProps} />)`

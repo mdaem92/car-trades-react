@@ -1,8 +1,11 @@
 import React from 'react';
-import { TableVerticalHeader,HeaderLabel,HeaderColumns } from './compare-table-vertical-header.styles';
+import { TableVerticalHeader,HeaderLabel,HeaderColumns , MobileHeader } from './compare-table-vertical-header.styles';
+import {useWindowSize} from '../../hooks/useWindowSize'
 
 const CompareTableVerticalHeader = () => {
-    return (
+    const width = useWindowSize()
+    return width > 500?
+    (
         <TableVerticalHeader>
             <HeaderLabel>Compare</HeaderLabel>
             <HeaderColumns>
@@ -12,7 +15,13 @@ const CompareTableVerticalHeader = () => {
                 }
             </HeaderColumns>
         </TableVerticalHeader>
-    );
+    )
+    :
+    (
+        <MobileHeader>
+            <HeaderLabel>Compare</HeaderLabel>
+        </MobileHeader>
+    )
 };
 
 export default CompareTableVerticalHeader;
