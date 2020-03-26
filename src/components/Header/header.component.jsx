@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { HeaderContainer, LogoContainer, OptionLink, OptionsContainer ,BlueLogo} from './header.styles'
-import HeaderUserAccount from "../HeaderUserAccount/header-user-account.component";
-import { Badge } from 'antd'
 import { createStructuredSelector } from 'reselect'
 import { comparedCountSelector } from '../../redux/compare/compare.selectors';
-import { useLayoutEffect } from 'react';
 import { MenuOutlined } from '@ant-design/icons'
-import { Menu, Dropdown } from 'antd'
+import { Menu, Dropdown , Badge } from 'antd'
 import { currentUserSelector } from '../../redux/auth/auth.selectors';
 import { signOutStart } from '../../redux/auth/auth.actions';
 import { withRouter } from 'react-router-dom';
-
+import NewHeaderAccount from '../new-header-account/new-header-account.component'
+import {useWindowSize} from '../../hooks/useWindowSize'
 
 const Header = ({ compareCount, currentUser, signOut, match , history }) => {
 
@@ -32,20 +30,7 @@ const Header = ({ compareCount, currentUser, signOut, match , history }) => {
         }
     }, [scrolled])
 
-    const useWindowSize = () => {
-        console.log('custom hook calling');
 
-        const [innerWidth, setInnerWidth] = useState(window.innerWidth)
-        useLayoutEffect(() => {
-            function updateWidth() {
-                setInnerWidth(window.innerWidth)
-            }
-            window.addEventListener('resize', updateWidth)
-            updateWidth()
-            return () => window.removeEventListener('resize', updateWidth)
-        }, [])
-        return innerWidth
-    }
 
     const width = useWindowSize()
     // just here as a remind that there is unnecessary rerendering
@@ -53,7 +38,7 @@ const Header = ({ compareCount, currentUser, signOut, match , history }) => {
 
 
     const menu = (
-        <Menu >
+        <Menu>
             <Menu.Item>
                 <OptionLink exact activeClassName={'active'} className={'anchor'} to='/'>Homepage</OptionLink>
             </Menu.Item>
@@ -66,7 +51,9 @@ const Header = ({ compareCount, currentUser, signOut, match , history }) => {
             <Menu.Item>
                 <OptionLink activeClassName={'active'} className={'anchor'} to='/compare'>Compare</OptionLink>
             </Menu.Item>
-            <HeaderUserAccount/>
+            <NewHeaderAccount width={width} activeClassName={'active'} anchorClassName={'anchor'}/>
+
+           
         </Menu>
     );
     return width > 800 ?
@@ -84,7 +71,8 @@ const Header = ({ compareCount, currentUser, signOut, match , history }) => {
                     <Badge count={compareCount} style={scrolled ? { backgroundColor: 'white', color: '#357ae8' } : { backgroundColor: '#357ae8' }}>
                         <OptionLink activeClassName={'active'} className={'anchor'} to='/compare'>Compare</OptionLink>
                     </Badge>
-                    <HeaderUserAccount scrolled={scrolled} />
+                        <NewHeaderAccount isScrolled={scrolled} width={width} />
+                    {/* <HeaderUserAccount scrolled={scrolled} /> */}
                 </OptionsContainer>
             </HeaderContainer >
         )

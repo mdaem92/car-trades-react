@@ -1,18 +1,11 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import {
-    DropdownMenu,
-    DropdownItem,
 
-} from 'reactstrap'
-
-import { Button, Menu } from 'antd'
+import { Menu} from 'antd'
 import {
-    DropdownContainer,
-    DropdownToggleContainer,
-    ButtonContainer
-} from "./header-user-account.styles";
+    HeaderMenu
+} from "./new-header-account.styles";
 
 import { createStructuredSelector } from "reselect";
 import { checkUserSession, googleSignInStart, signOutStart } from "../../redux/auth/auth.actions";
@@ -20,14 +13,16 @@ import { currentUserSelector } from "../../redux/auth/auth.selectors";
 import { parkingCountSelector } from '../../redux/parking/parking.selectors'
 import { myListingsCountSelector, isOwnListingsCollectedSelector } from '../../redux/listing/listing.selectors'
 import { fetchOwnListingsStart } from '../../redux/listing/listing.actions'
-
-const { SubMenu, Item } = Menu
-
+import {NavLink } from 'react-router-dom'
 
 
-const HeaderUserAccount = (
+const { SubMenu } = Menu
+
+
+
+const NewHeaderAccount = (
     {
-        scrolled,
+        isScrolled,
         history,
         location,
         match,
@@ -39,7 +34,8 @@ const HeaderUserAccount = (
         myListingsCount,
         fetchOwnListings,
         isOwnListingsCollected,
-        isMobile
+        width,
+        activeClassName        
     }) => {
     useEffect(() => {
         // checkUserSession()
@@ -50,47 +46,50 @@ const HeaderUserAccount = (
         }
     }, [fetchOwnListings, currentUser, isOwnListingsCollected])
 
-    const handleClick = ({ target: { value: path } }) => {
+
+    const handleClick = (path) => {
         history.push(`${match.url}${currentUser.displayName}/${path}`)
     }
+
     
-
     return (
-        <div>
-            {currentUser ? (
-                <div>
-                    <DropdownContainer nav inNavbar>
-                        <DropdownToggleContainer isScrolled={scrolled} nav caret>
-                            Hi {currentUser.displayName}
-                        </DropdownToggleContainer>
+        <HeaderMenu
+            mode={width > 800 ? 'horizontal' : 'inline'}
+            isScrolled={isScrolled}
+        >
+            {currentUser ?
+                (
 
-                        <DropdownMenu right className='menu'>
-                            <DropdownItem value={'my-account'} onClick={handleClick}>
-                                View Account
-                            </DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem onClick={() => signOut()}>
-                                Sign out
-                            </DropdownItem>
-                        </DropdownMenu>
-                    </DropdownContainer>
-                </div>
+                    <SubMenu title={`Hi ${currentUser.displayName}`} style={{border:'unset'}}>
+                        <Menu.Item onClick={handleClick.bind(this, 'my-account')}>View Account</Menu.Item>
+                        <Menu.Item onClick={() => signOut()}>Sign Out</Menu.Item>
+                    </SubMenu>
 
-                
+                )
+                :
+                (
+                    // <Menu.Item 
+                    //     onClick={() => history.push('/signin-signup')}
+                    //     className={'login'}
+                    // >
+                    //     <Icon type="poweroff" />
+                    //     Login
+                    // </Menu.Item>
+                    // <SubMenu title={'Log in'} onClick={() => history.push('/signin-signup')} className={'login'}/>
+                    <>
+                        <NavLink activeClassName={activeClassName} className={'login'} to={'/signin-signup'} >
+                            Log in
+                        </NavLink>
+                    </>
+                    
 
-            ) : (
-                    <ButtonContainer isScrolled={scrolled}>
-                        <Button
-                            className={'button'}
-                            type="link"
-                            icon="login"
-                            onClick={() => history.push('/signin-signup')}
-                        >
-                            Login
-                        </Button>
-                    </ButtonContainer>
                 )}
-        </div>
+        </HeaderMenu>
+ 
+
+
+
+
     )
 }
 const mapStateToProps = createStructuredSelector({
@@ -106,5 +105,5 @@ const mapDispatchToProps = (dispatch) => ({
     signOut: () => dispatch(signOutStart()),
     fetchOwnListings: (id) => dispatch(fetchOwnListingsStart(id))
 })
-const WithRouterUserAccount = withRouter(HeaderUserAccount)
+const WithRouterUserAccount = withRouter(NewHeaderAccount)
 export default connect(mapStateToProps, mapDispatchToProps)(WithRouterUserAccount)

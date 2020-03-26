@@ -35,7 +35,7 @@ const mobileHeaderContainer = css`
  
 `
 export const BlueLogo = styled.div`
-  height:50px;
+  height:51px;
   width:50px;
   background-size:cover;
   background-position:center;
