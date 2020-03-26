@@ -103,7 +103,7 @@ export const HeaderMenu = styled(({isScrolled,...otherProps})=><Menu {...otherPr
   .login{
     text-decoration:none;
     color:grey;
-    width:30px;
+
     ${props=>props.isScrolled && css`
       color:white;
     `}
@@ -111,7 +111,8 @@ export const HeaderMenu = styled(({isScrolled,...otherProps})=><Menu {...otherPr
   }
   
  @media screen and (max-width:800px){
-   height:unset;
+   padding:5px 12px;
+   font-size:12px;
  }
  
 `
