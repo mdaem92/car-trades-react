@@ -3,10 +3,10 @@ import{connect} from 'react-redux'
 import{Modal} from 'antd'
 import{createStructuredSelector} from 'reselect'
 import {authErrorMessageSelector}from '../../redux/auth/auth.selectors'
-import { resetAuthErrorMessage } from '../../redux/auth/auth.actions';
+import { resetAuthErrorMessage,setLoading } from '../../redux/auth/auth.actions';
 
 
-const SigninSignupModal = ({errorMessage,resetErrorMessage}) => {
+const SigninSignupModal = ({errorMessage,resetErrorMessage,setAuthLoading}) => {
     const [state,setState]=React.useState({
         visible:''
     })
@@ -25,14 +25,17 @@ const SigninSignupModal = ({errorMessage,resetErrorMessage}) => {
         setState({
             ...state,
             visible:''
-        })        
+        })     
+        setAuthLoading(false)   
       };
       
     const handleCancel = e => {
         setState({
             ...state,
             visible:''
-        })       
+        })    
+        setAuthLoading(false)   
+   
     };
     return (
         
@@ -54,6 +57,7 @@ const mapStateToProps = createStructuredSelector({
     errorMessage:authErrorMessageSelector
 })
 const mapDispatchToProps = (dispatch)=>({
-    resetErrorMessage:()=>dispatch(resetAuthErrorMessage())
+    resetErrorMessage:()=>dispatch(resetAuthErrorMessage()),
+    setAuthLoading:(isLoading)=>dispatch(setLoading(isLoading))
 })
 export default connect(mapStateToProps,mapDispatchToProps)(SigninSignupModal);

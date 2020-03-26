@@ -72,7 +72,6 @@ const Header = ({ compareCount, currentUser, signOut, match , history }) => {
                         <OptionLink activeClassName={'active'} className={'anchor'} to='/compare'>Compare</OptionLink>
                     </Badge>
                         <NewHeaderAccount isScrolled={scrolled} width={width} />
-                    {/* <HeaderUserAccount scrolled={scrolled} /> */}
                 </OptionsContainer>
             </HeaderContainer >
         )

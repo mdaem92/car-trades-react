@@ -1,7 +1,7 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { connect } from 'react-redux'
 import { SignInContainer, ButtonsContainer } from './sign-in.styles'
-import { emailSignInStart, googleSignInStart, checkUserSession } from '../../redux/auth/auth.actions'
+import { emailSignInStart, googleSignInStart, checkUserSession ,setLoading} from '../../redux/auth/auth.actions'
 import { authErrorMessageSelector, currentUserSelector, isAuthLoadingSelector } from '../../redux/auth/auth.selectors'
 import { createStructuredSelector } from 'reselect'
 import SigninSignupModal from '../signin-signup-modal/signin-signup-modal.component'
@@ -9,7 +9,7 @@ import { Redirect, withRouter } from 'react-router-dom'
 import { Input, Button, Divider } from 'antd'
 import Icon from 'antd/lib/icon';
 
-const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history ,isAuthLoading }) => {
+const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history ,isAuthLoading ,setAuthLoading}) => {
 
 
 
@@ -24,29 +24,23 @@ const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history 
         // setAuthLoading(true)
         event.preventDefault()
         const { email, password } = state
-        console.log(email, password)
         await emailSignIn(email, password)
-        console.log('error message from submit: ', errorMessage)
         
     }
 
     const handleChange = (event) => {
         const { value, name } = event.target
-        console.log(`[${name}]:${value}`);
         setState({
             ...state,
             [name]: value
         })
-        console.log(state);
 
     }
 
 
-    console.log('error message:', errorMessage, state.visible, typeof errorMessage === 'string', !!errorMessage)
-    // useEffect(()=>{
-    //     setAuthLoading(false)
-    // },[])
-    // console.log('state url: ',history.location.state.url)
+    useEffect(()=>{
+        setAuthLoading(false)
+    },[setAuthLoading])
     return !!currentUser ?
         (
             history.location.state ?
@@ -129,6 +123,7 @@ const mapDispatchToProps = (dispatch) => ({
     emailSignIn: (email, password) => dispatch(emailSignInStart(email, password)),
     checkUserSession: () => dispatch(checkUserSession()),
     googleSignIn: () => dispatch(googleSignInStart()),
+    setAuthLoading:(isLoading)=>dispatch(setLoading(isLoading))
 })
 
 const mapStateToProps = createStructuredSelector({

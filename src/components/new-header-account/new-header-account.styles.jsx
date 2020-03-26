@@ -111,6 +111,7 @@ export const HeaderMenu = styled(({isScrolled,...otherProps})=><Menu {...otherPr
   }
   
  @media screen and (max-width:800px){
+   height:unset;
    padding:5px 12px;
    font-size:12px;
  }
