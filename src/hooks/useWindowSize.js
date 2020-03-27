@@ -1,7 +1,6 @@
 import {useState,useLayoutEffect} from 'react'
 
 export const useWindowSize = () => {
-    console.log('custom hook calling');
 
     const [innerWidth, setInnerWidth] = useState(window.innerWidth)
     useLayoutEffect(() => {
@@ -12,5 +11,6 @@ export const useWindowSize = () => {
         updateWidth()
         return () => window.removeEventListener('resize', updateWidth)
     }, [])
+    
     return innerWidth
 }

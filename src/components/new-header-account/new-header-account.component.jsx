@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { Menu} from 'antd'
+import { Menu ,Icon} from 'antd'
 import {
     HeaderMenu
 } from "./new-header-account.styles";
@@ -50,6 +50,14 @@ const NewHeaderAccount = (
     const handleClick = (path) => {
         history.push(`${match.url}${currentUser.displayName}/${path}`)
     }
+    const setHeaderTitle = (userName)=>{
+        return(
+            <div style={{display:'flex',alignItems:'center'}}>
+                <Icon type='user'/>
+                <span>Hi, {userName}</span>
+            </div>
+        )
+    }
 
     
     return (
@@ -60,7 +68,7 @@ const NewHeaderAccount = (
             {currentUser ?
                 (
 
-                    <SubMenu title={`Hi ${currentUser.displayName}`} style={{border:'unset'}}>
+                    <SubMenu title={setHeaderTitle(currentUser.displayName)} style={{border:'unset'}}>
                         <Menu.Item onClick={handleClick.bind(this, 'my-account')}>View Account</Menu.Item>
                         <Menu.Item onClick={() => signOut()}>Sign Out</Menu.Item>
                     </SubMenu>
@@ -68,14 +76,7 @@ const NewHeaderAccount = (
                 )
                 :
                 (
-                    // <Menu.Item 
-                    //     onClick={() => history.push('/signin-signup')}
-                    //     className={'login'}
-                    // >
-                    //     <Icon type="poweroff" />
-                    //     Login
-                    // </Menu.Item>
-                    // <SubMenu title={'Log in'} onClick={() => history.push('/signin-signup')} className={'login'}/>
+                    
                     <>
                         <NavLink activeClassName={activeClassName} className={'login'} to={'/signin-signup'} >
                             Log in

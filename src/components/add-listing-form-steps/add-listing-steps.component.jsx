@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { StepsActionContainer, StepsContentContainer } from './add-listing-steps.styles'
 import { Steps, Button, message } from 'antd';
@@ -13,6 +13,7 @@ import {
 import { setNextStep, setPrevStep, setFieldValue } from "../../redux/add-listing-form/add-listing-form.actions";
 import { addListingStart } from "../../redux/listing/listing.actions";
 import { currentUserSelector } from "../../redux/auth/auth.selectors";
+import {useWindowSize} from '../../hooks/useWindowSize'
 
 const { Step } = Steps;
 
@@ -44,11 +45,11 @@ const AddListingSteps = (
         currentUser,
         showSteps
     }) => {
-    const isNextStepAllowed = () => {
+    const disableNextStep = () => {
         switch (current) {
             case 0: {
-                const { condition, make, model, bodyType, seatCount, mileage, registered } = formData
-                const firstStepData = { condition, make, model, bodyType, seatCount, mileage, registered }
+                const { condition, make, model, bodyType, seatCount, mileage, registered , color } = formData
+                const firstStepData = { condition, make, model, bodyType, seatCount, mileage, registered , color }
                 console.log(Object.values(firstStepData))
                 return Object.values(firstStepData).includes(undefined)
             }
@@ -58,27 +59,21 @@ const AddListingSteps = (
                 console.log(Object.values(secondStepData))
                 return Object.values(secondStepData).includes(undefined)
             }
+            case 2:{
+                const {imageFileList} = formData
+                console.log('length of image file list is: ',imageFileList.length);
+                
+                return !imageFileList.length>0
+            }
             default:
                 return null
         }
     }
-
-    const useWindowSize = () => {
-        console.log('custom hook calling');
-
-        const [innerWidth, setInnerWidth] = useState(window.innerWidth)
-        useLayoutEffect(() => {
-            function updateWidth() {
-                setInnerWidth(window.innerWidth)
-            }
-            window.addEventListener('resize', updateWidth)
-            updateWidth()
-            return () => window.removeEventListener('resize', updateWidth)
-        }, [])
-        return innerWidth
+    const disableLastStep = ()=>{
+        const {isAppraisalRequested , price} = formData
+        return !isAppraisalRequested || !!price
     }
     const width = useWindowSize()
-    console.log('width: ', width);
 
     return (
 
@@ -100,7 +95,7 @@ const AddListingSteps = (
             </StepsContentContainer>
             <StepsActionContainer>
                 {current < steps.length - 1 && (
-                    <Button type="primary" disabled={isNextStepAllowed()} onClick={() => next()}>
+                    <Button type="primary" disabled={disableNextStep()} onClick={() => next()}>
                         Next
                     </Button>
                 )}
@@ -108,6 +103,7 @@ const AddListingSteps = (
                     <Button
                         type="primary"
                         loading={loading}
+                        disabled={disableLastStep()}
                         onClick={() => {
                             console.log('clicking', formData)
                             const { displayName, id } = currentUser
@@ -120,6 +116,7 @@ const AddListingSteps = (
                             }
 
                         }}
+
                     >
                         Done
                     </Button>

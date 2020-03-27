@@ -34,7 +34,7 @@ export const StepsActionContainer = styled.div`
       border-radius: 0;
     }
     @media screen and (max-width:800px){
-    margin:15px 0;
+    margin:15px 10px;
    
   }
 `

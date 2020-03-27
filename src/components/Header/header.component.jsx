@@ -56,7 +56,7 @@ const Header = ({ compareCount, currentUser, signOut, match , history }) => {
            
         </Menu>
     );
-    return width > 800 ?
+    return width >800 ?
 
         (
 
