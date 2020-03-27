@@ -95,7 +95,7 @@ const mobileOptionsContainer = css`
 
 `
 const webOptionsContainer = css`
-width: 50%;
+  width: fit-content;
   height: 100%;
   display: flex;
   align-items: center;

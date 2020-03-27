@@ -10,6 +10,7 @@ import {resetFilters} from "../../redux/inventory-filters/inventory-filters.acti
 
 
 const Homepage = ({fetchListings,isListingsCollected})=>{
+    
     useEffect(()=>{
         // resetForm()
         if(!isListingsCollected){

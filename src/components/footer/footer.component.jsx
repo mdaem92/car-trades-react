@@ -7,12 +7,14 @@ import Icon from 'antd/lib/icon';
 
 const Footer = ({history:{location:{pathname}}})=>{
     console.log('footer history pathname: ',pathname)
+
+
     return (
         <FooterContainer isHomepage={pathname==='/'}>
             <SocialsContainer>
-                <Icon type="twitter" />
-                <Icon type="facebook" />
-                <Icon type="instagram" />
+                <Icon type="twitter" className='icon' />
+                <Icon type="facebook" className='icon' />
+                <Icon type="instagram" className='icon'/>
             </SocialsContainer>
         </FooterContainer>
         )

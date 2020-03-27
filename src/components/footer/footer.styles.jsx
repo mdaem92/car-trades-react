@@ -40,15 +40,31 @@ const HomepageStyles = css`
   background-color: #357ae8;
   margin-top: 50px;
   //border: 1px dashed white;
+  @media screen and (max-width:800px){
+    width:100%;
+    height:60px;
+  }
 
 `
 
 export const SocialsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100px;
-  margin-right: 50px;
+
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  width:100px;
+  margin-right:20px;
+  .icon{
+    &:hover{
+      svg{
+        width:17px;
+        height:17px;
+      }
+      
+    }
+  }
+  @media screen and (max-width:800px){
+    margin-right:10px;
+  }
 `
 
 

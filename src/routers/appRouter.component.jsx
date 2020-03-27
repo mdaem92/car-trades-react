@@ -31,14 +31,16 @@ const AppRouter = () => {
                 <Router history={history}>
                     <Header />
                     <Switch>
+                        {/* <ErrorBounday> */}
                         <Route exact path='/' component={Homepage} />
                         <Route exact path='/inventory' component={InventoryPage} />
                         <PrivateRoute exact path='/:username/my-account' component={UserAccountPage} />
                         <Route exact path='/compare' component={ComparePage} />
                         <PrivateRoute exact path='/add-listing' component={AddListingPage} />
                         <Route exact path='/signin-signup' component={SigninSignupPage} />
+                        {/* </ErrorBounday> */}
                     </Switch>
-                    <Footer/>
+                    <Footer />
                 </Router>
             </Suspense>
         </ErrorBounday>
