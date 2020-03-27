@@ -76,4 +76,5 @@ const mapDispatchToProps = (dispatch)=>({
     editListingStart:(id,userId,updates)=>dispatch(editListingStart(id,userId,updates)),
     doneEditting:(payload)=>dispatch(doneEditting(payload))
 })
-export default connect(mapStateToProps,mapDispatchToProps)(EditListingForm);
+const ConnectedComponent = connect(mapStateToProps,mapDispatchToProps)(EditListingForm)
+export default React.memo(ConnectedComponent);

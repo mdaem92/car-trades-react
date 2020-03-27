@@ -19,6 +19,8 @@ const ListingInfoSummary = (
         seatCount,
         mileage
     })=>{
+        console.log('listing info summary rendering');
+        
     return (
         <ListingInfoSummaryContainer>
             <SummaryItem title={`${engineCapacity}`} >
@@ -46,5 +48,5 @@ const ListingInfoSummary = (
 
 
 
-export default ListingInfoSummary
+export default React.memo(ListingInfoSummary)
 

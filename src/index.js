@@ -7,10 +7,11 @@ import store,{persistor} from '../src/redux/store'
 import {Provider} from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import * as serviceWorker from './serviceWorker';
+import Spinner from './components/spinner/spinner.component';
 
 const reduxApp = (
     <Provider store={store}>
-        <PersistGate persistor={persistor} loading={null} >
+        <PersistGate persistor={persistor} loading={<Spinner/>} >
             <App/>
         </PersistGate>
     </Provider>

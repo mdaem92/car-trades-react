@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { connect } from 'react-redux'
 import { ReactComponent as Dollar } from "../../assets/dollar-currency-sign.svg";
 import {
@@ -84,17 +84,17 @@ const ListingPreview = (
         drawerVisible: false,
         deleteModalVisible: false
     })
+    const { isOpen, showModal, drawerVisible } = state
 
-
-    const onDrawerClose = () => {
+    const onDrawerClose = useCallback(() => {
         console.log('closing')
         setState({
             ...state,
             drawerVisible: false
         })
 
-    };
-    const handleEdit = () => {
+    },[state]);
+    const handleEdit = useCallback(() => {
         const { isCompared, isParked, ...formProps } = listingData
         setInitialValues({ ...formProps, doneEditting: false })
         setState({
@@ -102,8 +102,15 @@ const ListingPreview = (
             drawerVisible: true
         })
 
-    }
-    const { isOpen, showModal, drawerVisible } = state
+    },[state,listingData,setInitialValues])
+
+    const toggleMoreDetails = useCallback(() => setState({
+        ...state,
+        isOpen: !state.isOpen
+    }),[state])
+    
+    console.log('rendering listing');
+    
     return (
         <Wrapper isOpen={isOpen}>
             <ListingContainer id={`listing-${id}`} >
@@ -124,14 +131,14 @@ const ListingPreview = (
                             (
                                 <div className={'buttons-container'}>
                                     <Drawer
-                                        // title="Edit listing"
                                         placement="right"
                                         className={'drawer'}
                                         closable
                                         onClose={onDrawerClose}
                                         visible={drawerVisible && !doneEditting}
                                         getContainer={() => document.getElementById(`listing-${id}`)}
-                                        afterVisibleChange={() => console.log('after visibility change')}
+
+                                        // afterVisibleChange={() => console.log('after visibility change')}
                                         width={window.innerWidth>800? 848 : 277}
                                     >
                                         <EditListingForm listing={listingData} />
@@ -154,10 +161,7 @@ const ListingPreview = (
                     <ListingInfoSummary {...listingData} />
                 </ListingInfoSummaryContainer>
                 <ToggleDetailsButton
-                    onClick={() => setState({
-                        ...state,
-                        isOpen: !state.isOpen
-                    })}
+                    onClick={toggleMoreDetails}
                     color={'primary'}
                     type={'link'}
                     isFooter={false}
@@ -171,7 +175,6 @@ const ListingPreview = (
             </ListingContainer >
             <CollapseContainer isOpen={isOpen}>
                 <CollapseContent >
-                    {/*<CardBody >*/}
                     <ListingPreviewTabs {...listingData} />
                     <ListingPreviewFooter id={'preview-footer'}>
                         <ListingPreviewFooterPriceContainer><Dollar className={'currency'}>$</Dollar>{price}</ListingPreviewFooterPriceContainer>

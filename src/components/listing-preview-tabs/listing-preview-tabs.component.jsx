@@ -21,8 +21,10 @@ const ListingPreviewTabs = (props)=>{
     const toggle = tab => {
         if(activeTab !== tab) setActiveTab(tab);
     }
-    return (
+    console.log('rerendering tabs');
 
+    return (
+        
         <TabContainer>
             <Nav >
                 {tabItems.map(({tabId,title})=>(
@@ -54,4 +56,4 @@ const ListingPreviewTabs = (props)=>{
         </TabContainer>
     )
 }
-export default ListingPreviewTabs
+export default React.memo(ListingPreviewTabs)

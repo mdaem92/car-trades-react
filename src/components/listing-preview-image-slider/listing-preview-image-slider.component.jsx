@@ -9,6 +9,8 @@ const ListingPreviewImageSlider = ({images}) => {
     const slides = items.map((item) => {
         const from = item.id*3
         const to = from+3
+        // console.log('slider rerendering');
+        
         return (
             <div key={item.id}>
                 <ListingPreviewImageGallery key={item.id} images={images.slice(from,to)}/>
@@ -21,4 +23,4 @@ const ListingPreviewImageSlider = ({images}) => {
         </CarouselContainer>
     );
 }
-export  default ListingPreviewImageSlider
+export  default React.memo(ListingPreviewImageSlider)

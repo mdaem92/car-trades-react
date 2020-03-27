@@ -29,12 +29,7 @@ const Header = ({ compareCount, currentUser, signOut, match , history }) => {
             window.removeEventListener('scroll', listenScrollEvent)
         }
     }, [scrolled])
-
-
-
     const width = useWindowSize()
-    // just here as a remind that there is unnecessary rerendering
-    // console.log('width: ', width)
 
 
     const menu = (
