@@ -66,3 +66,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### `Live Demo`
+You can view a live demo here: https://car-trade-demo.herokuapp.com
