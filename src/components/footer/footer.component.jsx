@@ -6,7 +6,6 @@ import Icon from 'antd/lib/icon';
 
 
 const Footer = ({history:{location:{pathname}}})=>{
-    console.log('footer history pathname: ',pathname)
 
 
     return (
@@ -20,6 +19,7 @@ const Footer = ({history:{location:{pathname}}})=>{
         )
 
 }
+
 
 
 

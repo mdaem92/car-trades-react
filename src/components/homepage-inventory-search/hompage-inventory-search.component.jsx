@@ -29,12 +29,12 @@ const HomepageInventorySearch = ({ history }) => {
             [name]: undefined
         })
     }
-    const onFocus = (e) => {
-        console.log('focusing', e)
-    }
-    const onBlur = (e) => {
-        console.log('bluring', e)
-    }
+    // const onFocus = (e) => {
+    //     console.log('focusing', e)
+    // }
+    // const onBlur = (e) => {
+    //     console.log('bluring', e)
+    // }
 
     // const filter = (inputValue, path) =>{
     //     return path.some(option => option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1);
@@ -57,8 +57,8 @@ const HomepageInventorySearch = ({ history }) => {
                         max={state.priceTo ? state.priceTo - 500 : 100000}
                         step={500}
                         onChange={onChange}
-                        onBlur={onBlur}
-                        onFocus={onFocus}
+                        // onBlur={onBlur}
+                        // onFocus={onFocus}
                     />
                 </InputContainer>
                 <InputContainer>
@@ -73,8 +73,8 @@ const HomepageInventorySearch = ({ history }) => {
                         max={100000}
                         step={500}
                         onChange={onChange}
-                        onFocus={onFocus}
-                        onBlur={onBlur}
+                        // onFocus={onFocus}
+                        // onBlur={onBlur}
                     />
                 </InputContainer>
             </div>

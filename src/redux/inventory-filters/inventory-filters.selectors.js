@@ -15,9 +15,6 @@ export const inventoryActiveFiltersTagSelector = createSelector(
     inventoryFilters=>{
   
         const {isFixed,openKeys,sortBy,sortType,...filters} = inventoryFilters
-        const values = Object.values(filters)
-        console.log(`values: ${values}`)
-        console.log('filters: ',filters)
 
         const cases = {
             make:filters.make?`${filters.make} ${filters.model?filters.model:''} `:undefined,
@@ -41,8 +38,6 @@ export const inventoryActiveFiltersTagSelector = createSelector(
             return cases[filter]
         })
 
-        console.log('active filters: ', activeFilters, 'cases: ',cases)
-        console.log('active filters: ',activeFilters.filter(filter=>!!filter))
 
         return activeFilters.filter(filter=>!!filter)
 

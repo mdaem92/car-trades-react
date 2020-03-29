@@ -19,7 +19,6 @@ const ListingInfoSummary = (
         seatCount,
         mileage
     })=>{
-        console.log('listing info summary rendering');
         
     return (
         <ListingInfoSummaryContainer>

@@ -4,7 +4,6 @@ import moment from 'moment'
 
 
 const formatAndFetch= ()=> {
-    console.log('fetching makes and models')
     const textByLine = text.toString().split("\n")
     const makes = []
     const data = []
@@ -32,7 +31,6 @@ const formatAndFetch= ()=> {
 
 }
 const formatAndFetchForAntD = ()=>{
-    console.log('fetching makes and models ANTD')
     const textByLine = text.toString().split("\n")
 
     return textByLine.map((line)=>{

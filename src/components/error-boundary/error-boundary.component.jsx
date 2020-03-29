@@ -9,7 +9,6 @@ export default class ErrorBounday extends React.Component{
     
 
     static getDerivedStateFromError(error){
-        console.log('getDerivedStateFromError');
         
         return {hasError:true }
     }
@@ -23,9 +22,7 @@ export default class ErrorBounday extends React.Component{
         if(this.state.hasError){
 
             return <ErrorPage/>
-        }else{
-            console.log(' no errors ');
-            
+        }else{            
             return this.props.children
 
         }

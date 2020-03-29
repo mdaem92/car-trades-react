@@ -87,7 +87,6 @@ const ListingPreview = (
     const { isOpen, showModal, drawerVisible } = state
 
     const onDrawerClose = useCallback(() => {
-        console.log('closing')
         setState({
             ...state,
             drawerVisible: false
@@ -109,7 +108,6 @@ const ListingPreview = (
         isOpen: !state.isOpen
     }),[state])
     
-    console.log('rendering listing');
     
     return (
         <Wrapper isOpen={isOpen}>
@@ -191,7 +189,6 @@ const ListingPreview = (
                         <ListingPreviewContactModal
                             visible={showModal}
                             onOk={() => {
-                                console.log('closing')
                                 setState({
                                     ...state,
                                     showModal: false,
@@ -199,7 +196,6 @@ const ListingPreview = (
                                 message.success('Message sent.')
                             }}
                             onCancel={() => {
-                                console.log('cancelling')
                                 setState({
                                     ...state,
                                     showModal: false

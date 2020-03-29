@@ -17,7 +17,6 @@ import {resetForm} from "../add-listing-form/add-listing-form.actions";
 export function* addListingAsync({listingData}){
     const {isSubmitted,currentStep,isLoading,userId,imageFileList,...otherProps} =listingData
     const convertedImageList = imageFileList.map((obj)=> Object.assign({}, obj));
-    console.log()
     try{
         yield put(setFieldValue('loading',true))
         const document = yield firestore.collection('listings').add({...otherProps,imageFileList:convertedImageList})
@@ -46,7 +45,6 @@ const getListingsFromSnapshot = (snapshot)=>{
     })
 }
 export function* fetchListingsAsync(){
-    console.log('fetching listings from database')
     try{
         const listingsRef =firestore.collection('listings')
         const snapshot = yield listingsRef.get()
@@ -66,10 +64,8 @@ export function* editListingAsync({id,userId,updates:{imageFileList,...otherProp
     try{
 
         // yield console.log('public ref:',publicListingRef);
-        const ownSnapshot = yield ownListingRef.update({imageFileList:convertedImageList,...otherProps})
-        const publicSnapshot = yield publicListingRef.update({imageFileList:convertedImageList,...otherProps})
-        yield console.log('public snapshot:',publicSnapshot); 
-        yield console.log('own snapshot:',ownSnapshot);       
+        yield ownListingRef.update({imageFileList:convertedImageList,...otherProps})
+        yield publicListingRef.update({imageFileList:convertedImageList,...otherProps})
         yield put(editListingSuccess(id,{imageFileList:convertedImageList,...otherProps}))
     }catch(e){
         yield put(editListingFailure(e))

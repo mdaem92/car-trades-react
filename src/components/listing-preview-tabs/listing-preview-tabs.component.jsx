@@ -21,7 +21,6 @@ const ListingPreviewTabs = (props)=>{
     const toggle = tab => {
         if(activeTab !== tab) setActiveTab(tab);
     }
-    console.log('rerendering tabs');
 
     return (
         

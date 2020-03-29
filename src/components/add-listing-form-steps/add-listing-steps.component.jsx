@@ -71,7 +71,8 @@ const AddListingSteps = (
     }
     const disableLastStep = ()=>{
         const {isAppraisalRequested , price} = formData
-        return !isAppraisalRequested || !!price
+        
+        return !isAppraisalRequested && typeof price !== 'number'
     }
     const width = useWindowSize()
 
