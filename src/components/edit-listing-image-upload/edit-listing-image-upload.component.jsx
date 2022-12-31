@@ -1,12 +1,12 @@
 import React,{useState} from 'react';
 import {connect} from 'react-redux'
 import{Upload,Modal,message as AntMessage}from 'antd'
-import { UploadOutlined } from '@ant-design/icons';
 import{ImageUploadContainer}from './edit-listing-image-upload.styles'
 import {createStructuredSelector} from 'reselect'
 import { editListingImageFileListSelector } from '../../redux/edit-listing-form/edit-listing-form.selectors';
 import firebase from '../../firebase/firebase.utils'
 import { editListingAddImage, editListingSetFileList } from '../../redux/edit-listing-form/edit-listing-form.actions';
+import {UploadOutLined} from '@ant-design/icons'
 
 function getBase64(file) {
     return new Promise((resolve, reject) => {

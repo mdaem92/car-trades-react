@@ -6,7 +6,7 @@ const InventoryActiveFilter = ()=>{
     return(
         <Tag
           closable
-          visible={this.state.visible}
+          open={this.state.visible}
           onClose={() => this.setState({ visible: false })}
         >
           Movies
