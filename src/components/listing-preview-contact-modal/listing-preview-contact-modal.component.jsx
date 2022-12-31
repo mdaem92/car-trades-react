@@ -10,8 +10,8 @@ const ListingPreviewContactModal = ({onCancel,onOk,...otherProps}) => {
             getContainer={document.getElementById('preview-footer')}
             footer={[
                 <Button
-                    key="back
-                    " onClick={onCancel}
+                    key="back" 
+                    onClick={onCancel}
                 >
                     Cancel
                 </Button>,
@@ -21,7 +21,7 @@ const ListingPreviewContactModal = ({onCancel,onOk,...otherProps}) => {
                     onClick={onOk}
                 >
                     Submit
-                </Button>,
+                </Button>
             ]}
             {...otherProps}
         >

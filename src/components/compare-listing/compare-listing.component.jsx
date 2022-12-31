@@ -2,8 +2,9 @@ import React from 'react';
 import {CompareListingContainer, Columns,EmptyImageContainer}from './compare-listing.styles'
 import CompareListingImageCarousel from '../compare-listing-image-carousel/compare-listing-image-carousel.component';
 import {Tooltip}from 'antd'
-import Icon from 'antd/lib/icon';
+// import Icon from 'antd/lib/icon';
 import {withRouter}from 'react-router-dom'
+import { PlusOutlined } from '@ant-design/icons';
 
 
 
@@ -30,7 +31,7 @@ const CompareListing = ({history,empty,make,condition,model,mileage,bodyType,fue
         <CompareListingContainer isEmpty>
             <EmptyImageContainer>
                 <Tooltip title={'Add to compare'}>
-                    <Icon className={'plus-icon'} type="plus" onClick={()=>history.push('/inventory')} />
+                    <PlusOutlined className={'plus-icon'} onClick={()=>history.push('/inventory')} />
                 </Tooltip>
             </EmptyImageContainer>
         </CompareListingContainer>

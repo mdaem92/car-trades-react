@@ -7,7 +7,8 @@ import { createStructuredSelector } from 'reselect'
 import SigninSignupModal from '../signin-signup-modal/signin-signup-modal.component'
 import { Redirect, withRouter } from 'react-router-dom'
 import { Input, Button, Divider } from 'antd'
-import Icon from 'antd/lib/icon';
+// import Icon from 'antd/lib/icon';
+import {UserOutlined,LockOutlined,LoginOutlined,GoogleOutlined} from '@ant-design/icons'
 
 const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history ,isAuthLoading ,setAuthLoading}) => {
 
@@ -62,7 +63,7 @@ const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history 
                         defaultValue={state.email}
                         required
                         onChange={handleChange}
-                        prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                        prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
 
                     />
                     <Input
@@ -73,7 +74,7 @@ const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history 
                         value={state.password}
                         required
                         onChange={handleChange}
-                        prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                        prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
 
                     />
                     <ButtonsContainer>
@@ -81,7 +82,7 @@ const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history 
                             <Button
                                 type="primary"
                                 htmlType={'submit'}
-                                icon="login"
+                                icon={<LoginOutlined/>}
                                 className={'button'}
                                 loading={isAuthLoading}
                             >
@@ -102,7 +103,7 @@ const SignIn = ({ emailSignIn, googleSignIn, errorMessage, currentUser, history 
                         </Divider>
                         <Button
                             type="button"
-                            icon="google"
+                            icon={<GoogleOutlined/>}
                             className={'google-button'}
                             // loading={this.state.iconLoading}
                             onClick={() => googleSignIn()}

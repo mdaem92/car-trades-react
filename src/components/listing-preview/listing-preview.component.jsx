@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback,useMemo } from 'react'
 import { connect } from 'react-redux'
 import { ReactComponent as Dollar } from "../../assets/dollar-currency-sign.svg";
 import {
@@ -25,6 +25,7 @@ import { currentUserSelector } from '../../redux/auth/auth.selectors';
 import { createStructuredSelector } from 'reselect'
 import { setInitialValues } from '../../redux/edit-listing-form/edit-listing-form.actions';
 import { doneEdittingSelector } from '../../redux/edit-listing-form/edit-listing-form.selectors';
+import {DownOutlined,UpOutlined,EditOutlined,DeleteOutlined} from '@ant-design/icons'
 
 const ListingPreview = (
     {
@@ -133,7 +134,7 @@ const ListingPreview = (
                                         className={'drawer'}
                                         closable
                                         onClose={onDrawerClose}
-                                        visible={drawerVisible && !doneEditting}
+                                        open={drawerVisible && !doneEditting}
                                         getContainer={() => document.getElementById(`listing-${id}`)}
 
                                         // afterVisibleChange={() => console.log('after visibility change')}
@@ -142,8 +143,8 @@ const ListingPreview = (
                                         <EditListingForm listing={listingData} />
                                     </Drawer>
 
-                                    <Button type={'link'} icon={'edit'} onClick={handleEdit}/>
-                                    <Button type={'link'} icon={'delete'} onClick={() => setState({ ...state, deleteModalVisible: !state.deleteModalVisible })}/>
+                                    <Button type={'link'} icon={<EditOutlined/>} onClick={handleEdit}/>
+                                    <Button type={'link'} icon={<DeleteOutlined/>} onClick={() => setState({ ...state, deleteModalVisible: !state.deleteModalVisible })}/>
 
                                 </div>
                             )
@@ -163,7 +164,9 @@ const ListingPreview = (
                     color={'primary'}
                     type={'link'}
                     isFooter={false}
-                    icon={isOpen?'up':'down'}
+                    // icon={isOpen?'up':'down'}
+                    icon={isOpen?<UpOutlined/>:<DownOutlined/>}
+
                 >
                     
                     {

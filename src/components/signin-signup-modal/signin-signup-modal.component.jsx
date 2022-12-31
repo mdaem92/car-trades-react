@@ -41,7 +41,7 @@ const SigninSignupModal = ({errorMessage,resetErrorMessage,setAuthLoading}) => {
         
         <Modal 
             title="Error"
-            visible={!!state.visible }
+            open={!!state.visible }
             onOk={handleOk}
             onCancel={handleCancel}
         >

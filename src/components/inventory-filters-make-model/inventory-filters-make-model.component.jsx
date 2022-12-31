@@ -43,7 +43,7 @@ const InventoryFiltersMakeModel = ({isHomepage,filtersData,setFieldValue}) => {
                 onChange={onMakeModelChange}
                 changeOnSelect
                 placeholder={'Select Make and Model'}
-                popupPlacement={'bottomLeft'}
+                placement={'bottomLeft'}
                 showSearch={{filter}}
             />
 

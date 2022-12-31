@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { Menu ,Icon} from 'antd'
+import { Menu } from 'antd'
+import UserOutlined from '@ant-design/icons'
 import {
     HeaderMenu
 } from "./new-header-account.styles";
@@ -53,7 +54,7 @@ const NewHeaderAccount = (
     const setHeaderTitle = (userName)=>{
         return(
             <div style={{display:'flex',alignItems:'center'}}>
-                <Icon type='user'/>
+                <UserOutlined />
                 <span>Hi, {userName}</span>
             </div>
         )

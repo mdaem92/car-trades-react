@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import {connect} from 'react-redux'
-import{Icon,Upload,Modal,message as AntMessage}from 'antd'
+import{Upload,Modal,message as AntMessage}from 'antd'
+import { UploadOutlined } from '@ant-design/icons';
 import{ImageUploadContainer}from './edit-listing-image-upload.styles'
 import {createStructuredSelector} from 'reselect'
 import { editListingImageFileListSelector } from '../../redux/edit-listing-form/edit-listing-form.selectors';
@@ -116,7 +117,8 @@ const EditListingPicturesWall = ({imageFileList,addImage,setFileList}) => {
     const {previewVisible, previewImage} = state;
     const uploadButton = (
         <div>
-            <Icon type="upload"/>
+            {/* <Icon type="upload"/> */}
+            <UploadOutlined />
             <div className="ant-upload-text">Add Images</div>
         </div>
     );

@@ -6,7 +6,7 @@ import { ImageUploadContainer } from "./image-upload.styles";
 import { createStructuredSelector } from "reselect";
 import { addImage, setFileList } from "../../redux/add-listing-form/add-listing-form.actions";
 import { fileListSelector } from "../../redux/add-listing-form/add-listing-form.selectors";
-import Icon from 'antd/lib/icon';
+import {UploadOutlined} from '@ant-design/icons';
 
 function getBase64(file) {
     return new Promise((resolve, reject) => {
@@ -167,7 +167,7 @@ const PicturesWall = ({ uploadedList, addImage, setFileList }) => {
     const { previewVisible, previewImage } = state;
     const uploadButton = (
         <div>
-            <Icon type="upload" />
+            <UploadOutlined  />
             <div className="ant-upload-text">Add Images</div>
         </div>
     );
@@ -188,7 +188,7 @@ const PicturesWall = ({ uploadedList, addImage, setFileList }) => {
             >
                 {uploadedList.length >= 8 ? null : uploadButton}
             </Upload>
-            <Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
+            <Modal open={previewVisible} footer={null} onCancel={handleCancel}>
                 <img alt="example" style={{ width: '100%' }} src={previewImage} />
             </Modal>
         </ImageUploadContainer>

@@ -5,7 +5,7 @@ import { SignUpContainer } from './sign-up.styles'
 import{message }from 'antd'
 import{signUpStart}from '../../redux/auth/auth.actions'
 import SignupAvatarUpload from '../signup-avatar-upload/signup-avatar-upload.component'
-import Icon from 'antd/lib/icon';
+import {UserOutlined,MailOutlined,LockOutlined,RocketOutlined} from '@ant-design/icons';
 import firebase from '../../firebase/firebase.utils'
 
 const SignUp =({dispatch})=>{
@@ -122,7 +122,7 @@ const SignUp =({dispatch})=>{
                     className={'input'}
                     required
                     onChange={handleChange}
-                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }}/>}
+                    prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }}/>}
                 />
                 {console.log('disabled:',!!photoURL)}
                 <SignupAvatarUpload
@@ -144,7 +144,7 @@ const SignUp =({dispatch})=>{
                     defaultValue={state.email}
                     required
                     onChange={handleChange}
-                    prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }}/>}
+                    prefix={<MailOutlined style={{ color: 'rgba(0,0,0,.25)' }}/>}
 
                 />
                 <Input
@@ -155,7 +155,7 @@ const SignUp =({dispatch})=>{
                     defaultValue={state.password}
                     required
                     onChange={handleChange}
-                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }}/>}
+                    prefix={<LockOutlined type="lock" style={{ color: 'rgba(0,0,0,.25)' }}/>}
 
                 />
                 <Input
@@ -166,7 +166,7 @@ const SignUp =({dispatch})=>{
                     defaultValue={state.confirmedPassword}
                     required
                     onChange={handleChange}
-                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }}/>}
+                    prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }}/>}
 
                 />
 
@@ -176,7 +176,7 @@ const SignUp =({dispatch})=>{
                     htmlType={'submit'}
                     onClick={handleSignUp}
                     className={'button'}
-                    icon={'rocket'}
+                    icon={<RocketOutlined/>}
                     loading={signupLoading}
                 >
                     Sign Up

@@ -2,7 +2,7 @@ import React from 'react'
 import {FooterContainer,SocialsContainer} from "./footer.styles";
 import {withRouter}from 'react-router-dom'
 // import {Icon}from 'antd'
-import Icon from 'antd/lib/icon';
+import {TwitterOutlined,FacebookOutlined,InstagramOutlined} from '@ant-design/icons'
 
 
 const Footer = ({history:{location:{pathname}}})=>{
@@ -11,9 +11,9 @@ const Footer = ({history:{location:{pathname}}})=>{
     return (
         <FooterContainer isHomepage={pathname==='/'}>
             <SocialsContainer>
-                <Icon type="twitter" className='icon' />
-                <Icon type="facebook" className='icon' />
-                <Icon type="instagram" className='icon'/>
+                <TwitterOutlined className='icon' />
+                <FacebookOutlined className='icon' />
+                <InstagramOutlined className='icon'/>
             </SocialsContainer>
         </FooterContainer>
         )

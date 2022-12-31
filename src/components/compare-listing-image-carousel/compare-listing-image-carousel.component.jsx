@@ -4,6 +4,7 @@ import { Tooltip} from 'antd'
 import{connect} from 'react-redux'
 import { removeFromCompare } from '../../redux/compare/compare.actions';
 import Icon from 'antd/lib/icon';
+import { CloseOutlined } from '@ant-design/icons';
 
 const CompareListingImageCarousel = ({images,id,remove}) => {
     console.log('from carousel: ', images)
@@ -15,7 +16,7 @@ const CompareListingImageCarousel = ({images,id,remove}) => {
     return (
         <CompareListingContainer>
             <Tooltip title={'Remove'}>
-                <Icon className={'icon'} type="close" onClick={handleRemove} />
+                <CloseOutlined className={'icon'} type="close" onClick={handleRemove} />
             </Tooltip>
             <CarouselContainer>
                 {

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { HeaderContainer, LogoContainer, OptionLink, OptionsContainer ,BlueLogo} from './header.styles'
+import { HeaderContainer, LogoContainer, OptionLink, OptionsContainer, BlueLogo } from './header.styles'
 import { createStructuredSelector } from 'reselect'
 import { comparedCountSelector } from '../../redux/compare/compare.selectors';
 import { MenuOutlined } from '@ant-design/icons'
-import { Menu, Dropdown , Badge } from 'antd'
+import { Menu, Dropdown, Badge } from 'antd'
 import { currentUserSelector } from '../../redux/auth/auth.selectors';
 import { signOutStart } from '../../redux/auth/auth.actions';
 import { withRouter } from 'react-router-dom';
 import NewHeaderAccount from '../new-header-account/new-header-account.component'
-import {useWindowSize} from '../../hooks/useWindowSize'
+import { useWindowSize } from '../../hooks/useWindowSize'
 
-const Header = ({ compareCount, currentUser, signOut, match , history }) => {
+const Header = ({ compareCount, currentUser, signOut, match, history }) => {
 
     const [scrolled, setScrolled] = useState(false)
 
@@ -31,7 +31,21 @@ const Header = ({ compareCount, currentUser, signOut, match , history }) => {
     }, [scrolled])
     const width = useWindowSize()
 
-
+    const menuItems = [
+        <Menu.Item>
+            <OptionLink exact activeClassName={'active'} className={'anchor'} to='/'>Homepage</OptionLink>
+        </Menu.Item>,
+        <Menu.Item>
+            <OptionLink activeClassName={'active'} className={'anchor'} to='/inventory'>Inventory</OptionLink>
+        </Menu.Item>,
+        <Menu.Item>
+            <OptionLink activeClassName={'active'} className={'anchor'} to='/add-listing'>Add Listing</OptionLink>
+        </Menu.Item>,
+        <Menu.Item>
+            <OptionLink activeClassName={'active'} className={'anchor'} to='/compare'>Compare</OptionLink>
+        </Menu.Item>,
+        <NewHeaderAccount width={width} activeClassName={'active'} anchorClassName={'anchor'} />
+    ]
     const menu = (
         <Menu>
             <Menu.Item>
@@ -46,18 +60,17 @@ const Header = ({ compareCount, currentUser, signOut, match , history }) => {
             <Menu.Item>
                 <OptionLink activeClassName={'active'} className={'anchor'} to='/compare'>Compare</OptionLink>
             </Menu.Item>
-            <NewHeaderAccount width={width} activeClassName={'active'} anchorClassName={'anchor'}/>
-
-           
+            <NewHeaderAccount width={width} activeClassName={'active'} anchorClassName={'anchor'} />
         </Menu>
+        // <Menu items={menuItems}/>
     );
-    return width >800 ?
+    return width > 800 ?
 
         (
 
             <HeaderContainer scrolled={scrolled}>
                 <LogoContainer to='/'>
-                    <BlueLogo url={require('../../assets/logoB.png')}/>
+                    <BlueLogo url={require('../../assets/logoB.png')} />
                 </LogoContainer>
                 <OptionsContainer scrolled={scrolled}>
                     <OptionLink exact activeClassName={'active'} className={'anchor'} to='/'>Homepage</OptionLink>
@@ -66,7 +79,7 @@ const Header = ({ compareCount, currentUser, signOut, match , history }) => {
                     <Badge count={compareCount} style={scrolled ? { backgroundColor: 'white', color: '#357ae8' } : { backgroundColor: '#357ae8' }}>
                         <OptionLink activeClassName={'active'} className={'anchor'} to='/compare'>Compare</OptionLink>
                     </Badge>
-                        <NewHeaderAccount isScrolled={scrolled} width={width} />
+                    <NewHeaderAccount isScrolled={scrolled} width={width} />
                 </OptionsContainer>
             </HeaderContainer >
         )
@@ -74,13 +87,13 @@ const Header = ({ compareCount, currentUser, signOut, match , history }) => {
         (
             <HeaderContainer isMobile scrolled={scrolled}>
                 <LogoContainer isMobile to={'/'}>
-                    <BlueLogo url={require('../../assets/logoB.png')}/>
+                    <BlueLogo url={require('../../assets/logoB.png')} />
 
                 </LogoContainer>
                 <OptionsContainer isMobile scrolled={scrolled} id={'dropdown-container'}>
                     <Dropdown
                         overlay={menu}
-                        placement="bottomCenter"
+                        placement="bottom"
                         trigger={['click']}
                         overlayClassName={'dropdown'}
                         getPopupContainer={() => document.getElementById('dropdown-container')}
