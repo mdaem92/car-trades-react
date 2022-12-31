@@ -6,7 +6,7 @@ import PriceAppraisalModal from "../add-listing-form-price-appraisal-modal/price
 import {createStructuredSelector} from "reselect";
 import {setPrice,requestAppraisal} from "../../redux/add-listing-form/add-listing-form.actions";
 import {isAppraisalRequested, priceSelector} from "../../redux/add-listing-form/add-listing-form.selectors";
-
+// test commit
 const AddListingFormPrice = ({price,setPrice,isAppraisalRequested,requestAppraisal}) => {
     const [state,setState] = useState({
         // price:null,
