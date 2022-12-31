@@ -6,7 +6,7 @@ import {createStructuredSelector} from 'reselect'
 import { editListingImageFileListSelector } from '../../redux/edit-listing-form/edit-listing-form.selectors';
 import firebase from '../../firebase/firebase.utils'
 import { editListingAddImage, editListingSetFileList } from '../../redux/edit-listing-form/edit-listing-form.actions';
-import {UploadOutLined} from '@ant-design/icons'
+import {UploadOutlined} from '@ant-design/icons'
 
 function getBase64(file) {
     return new Promise((resolve, reject) => {
@@ -139,7 +139,7 @@ const EditListingPicturesWall = ({imageFileList,addImage,setFileList}) => {
             >
                 {imageFileList.length >= 8 ? null : uploadButton}
             </Upload>
-            <Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
+            <Modal open={previewVisible} footer={null} onCancel={handleCancel}>
                 <img alt="example" style={{width: '100%'}} src={previewImage}/>
             </Modal>
         </ImageUploadContainer>
